@@ -8,7 +8,7 @@ function App() {
       <header className="App-header">
         <h1>Interspace.chat v.0</h1>
       </header>
-      <body>
+      <div className="body">
         <div className="container">
           <div className="video"></div>
           <div className="click-zone a" data-zone="Living Room"></div>
@@ -27,7 +27,7 @@ function App() {
             You're in the <span id="roomTitle">Graveyard</span>, Fucka!
           </p>
         </div>
-      </body>
+      </div>
     </div>
   );
 }
