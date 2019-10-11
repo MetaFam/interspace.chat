@@ -6,6 +6,7 @@
     "lib-jitsi-meet": "^1.0.6",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
+    "react-image-mapper": "^0.0.15",
     "react-scripts": "3.2.0"
   },
   "scripts": {
