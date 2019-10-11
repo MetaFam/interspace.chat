@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+// import * as JitsiMeetExternalAPI from "../dist/jitsi";
 
 const domain = "meet.jit.si";
 const options = {
