@@ -12,22 +12,22 @@ function Click(e) {
   // pavle.style.left = (offsetLeft)+"px";
   // e.preventDefault();     //prevents the page from redirecting
 
-  if (this.dataset.zone == "Living Room") {
+  if (this.dataset.zone === "Living Room") {
     console.log("works");
     let pavle = document.getElementsByClassName("pavle");
     document.getElementById("pavle").style.top = 75 + "px";
     document.getElementById("pavle").style.left = 200 + "px";
-  } else if (this.dataset.zone == "Dining Room") {
+  } else if (this.dataset.zone === "Dining Room") {
     console.log("works");
     let pavle = document.getElementsByClassName("pavle");
     document.getElementById("pavle").style.top = 75 + "px";
     document.getElementById("pavle").style.left = 300 + "px";
-  } else if (this.dataset.zone == "Sunset Patio") {
+  } else if (this.dataset.zone === "Sunset Patio") {
     console.log("works");
     let pavle = document.getElementsByClassName("pavle");
     document.getElementById("pavle").style.top = 200 + "px";
     document.getElementById("pavle").style.left = 300 + "px";
-  } else if (this.dataset.zone == "Portal Zone") {
+  } else if (this.dataset.zone === "Portal Zone") {
     console.log("works");
     let pavle = document.getElementsByClassName("pavle");
     document.getElementById("pavle").style.top = 200 + "px";
