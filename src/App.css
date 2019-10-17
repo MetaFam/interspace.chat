@@ -41,6 +41,9 @@ h1 {
   width: 100%;
   display: block;
   padding: auto;
+  :hover {
+   color: white; 
+  }
 }
 
 .map-background {

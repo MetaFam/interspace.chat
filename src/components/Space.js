@@ -35,6 +35,10 @@ const Space = () => {
     margin: 0.5rem;
     border-radius: 10px;
     border-color: greenyellow;
+    :hover {
+      color: white;
+      border-color: white;
+    }
   `;
 
   return (
