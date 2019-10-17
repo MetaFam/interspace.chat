@@ -6,10 +6,6 @@ const JitsiMeetExternalAPI = window.JitsiMeetExternalAPI;
 
 const JitsiInstance = () => {
   const { currentSpace } = useContext(SpaceContext);
-  function cleanupInstance() {
-    const instance = document.getElementById("meet");
-    instance.firstChild.remove();
-  }
 
   useEffect(() => {
     const domain = "meet.jit.si";
@@ -22,8 +18,8 @@ const JitsiInstance = () => {
     const api = new JitsiMeetExternalAPI(domain, options);
     api.executeCommand("displayName", "New Nickname");
 
-    return () => {
-      cleanupInstance();
+    return function cleanup() {
+      api.dispose();
     };
   });
 
