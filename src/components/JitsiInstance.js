@@ -19,7 +19,7 @@ const JitsiInstance = () => {
   const width = window.innerWidth;
 
   useEffect(() => {
-    const domain = "meet.jit.si";
+    const domain = "meet.jit.si/interspace";
     const options = {
       roomName: currentSpace,
       width: width,
