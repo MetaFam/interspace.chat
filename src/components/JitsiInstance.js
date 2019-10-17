@@ -16,7 +16,7 @@ const JitsiInstance = () => {
       parentNode: document.querySelector("#meet")
     };
     const api = new JitsiMeetExternalAPI(domain, options);
-    api.executeCommand("displayName", "New Nickname");
+    // api.executeCommand("displayName", "New Nickname");
 
     return function cleanup() {
       api.dispose();
