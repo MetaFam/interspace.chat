@@ -8,7 +8,6 @@ const JitsiMeetExternalAPI = window.JitsiMeetExternalAPI;
 
 const JitsiContainer = styled.div`
   width: 100vw;
-  height: ;
 `;
 
 const JitsiInstance = () => {

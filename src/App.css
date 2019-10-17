@@ -30,20 +30,12 @@ h1 {
   font-size: calc(10px + 1vmin);
 }
 
-
-.map-container {
-  
-}
-
 .spaceName {
   color: greenyellow;
   font-size: 12px;
   width: 100%;
   display: block;
   padding: auto;
-  :hover {
-   color: white; 
-  }
 }
 
 .map-background {
