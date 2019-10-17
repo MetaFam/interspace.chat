@@ -138,8 +138,9 @@ margin-left: -34px;
 
 .pavle {
 height: 70px;
-position: relative;
+position: absolute;
 border: none;
+background-color: #00000000;
 }
 
 .container2 {
