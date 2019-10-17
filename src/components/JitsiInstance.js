@@ -6,6 +6,11 @@ const JitsiMeetExternalAPI = window.JitsiMeetExternalAPI;
 
 const JitsiInstance = () => {
   const { currentSpace } = useContext(SpaceContext);
+  function cleanupInstance() {
+    const instance = document.getElementById("meet");
+    instance.firstChild.remove();
+  }
+
   useEffect(() => {
     const domain = "meet.jit.si";
     const options = {
@@ -16,9 +21,13 @@ const JitsiInstance = () => {
     };
     const api = new JitsiMeetExternalAPI(domain, options);
     api.executeCommand("displayName", "New Nickname");
+
+    return () => {
+      cleanupInstance();
+    };
   });
 
-  return JitsiInstance;
+  return <div id="meet"></div>;
 };
 
 export default JitsiInstance;

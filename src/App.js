@@ -13,7 +13,7 @@ function App() {
         <h1>Interspace.chat v.0</h1>
         <SpaceContextProvider>
           <Space />
-          <div id="meet"></div>
+          <div id="meetContainer"></div>
           <JitsiInstance />
         </SpaceContextProvider>
       </header>
