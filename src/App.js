@@ -7,14 +7,14 @@ import SpaceContextProvider from "./contexts/SpaceContext";
 // import Click from "./components/Click";
 
 function App() {
-  const [currentroom, setRoom] = useState("graveyard");
   return (
     <div className="App">
       <header className="App-header">
         <h1>Interspace.chat v.0</h1>
         <SpaceContextProvider>
-          <JitsiInstance />
           <Space />
+          <div id="meet"></div>
+          <JitsiInstance />
         </SpaceContextProvider>
       </header>
     </div>

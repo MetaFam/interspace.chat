@@ -1,22 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { SpaceContext } from "../contexts/SpaceContext";
 // import * as JitsiMeetExternalAPI from "../dist/jitsi";
-
-const domain = "meet.jit.si";
-const options = {
-  roomName: "livingroom",
-  width: 700,
-  height: 700,
-  parentNode: document.querySelector("#meet")
-};
 
 const JitsiMeetExternalAPI = window.JitsiMeetExternalAPI;
 
-function JitsiInstance() {
+const JitsiInstance = () => {
+  const { currentSpace } = useContext(SpaceContext);
   useEffect(() => {
-    const JitsiInstance = new JitsiMeetExternalAPI(domain, options);
+    const domain = "meet.jit.si";
+    const options = {
+      roomName: currentSpace,
+      width: 700,
+      height: 700,
+      parentNode: document.querySelector("#meet")
+    };
+    const api = new JitsiMeetExternalAPI(domain, options);
+    api.executeCommand("displayName", "New Nickname");
   });
 
-  return null;
-}
+  return JitsiInstance;
+};
 
 export default JitsiInstance;

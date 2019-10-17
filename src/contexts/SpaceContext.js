@@ -1,18 +1,14 @@
-import React, { Component, createContext } from "react";
+import React, { createContext, useState } from "react";
 
-export const SpaceContext = createContext();
+export const SpaceContext = createContext([{}, () => {}]);
 
-class SpaceContextProvider extends Component {
-  state = {
-    currentSpace: "graveyard"
-  };
-  render() {
-    return (
-      <SpaceContext.Provider value={{ ...this.state }}>
-        {this.props.children}
-      </SpaceContext.Provider>
-    );
-  }
-}
+const SpaceContextProvider = props => {
+  const [currentSpace, setSpace] = useState("graveyard");
+  return (
+    <SpaceContext.Provider value={{ currentSpace, setSpace }}>
+      {props.children}
+    </SpaceContext.Provider>
+  );
+};
 
 export default SpaceContextProvider;

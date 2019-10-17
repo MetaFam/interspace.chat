@@ -101,3 +101,8 @@ position: relative;
 .container2 {
   margin-top: 300px; margin-left: 200px;
 }
+
+#meet {
+  width: 60vw;
+  height: 700px;
+}
