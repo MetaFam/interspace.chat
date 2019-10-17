@@ -15,7 +15,7 @@ const JitsiInstance = () => {
   const { currentSpace } = useContext(SpaceContext);
   const { user } = useContext(UserContext);
 
-  const height = window.innerHeight - 200;
+  const height = window.innerHeight - 400;
   const width = window.innerWidth;
 
   useEffect(() => {
