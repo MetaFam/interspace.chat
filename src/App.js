@@ -4,19 +4,20 @@ import "./App.css";
 import Space from "./components/Space";
 import JitsiInstance from "./components/JitsiInstance.js";
 import SpaceContextProvider from "./contexts/SpaceContext";
+import UserContextProvider from "./contexts/UserContext";
 // import Click from "./components/Click";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>Interspace.chat v.0</h1>
+      <UserContextProvider>
         <SpaceContextProvider>
           <Space />
-          <div id="meetContainer"></div>
-          <JitsiInstance />
+          <div className="meetContainer">
+            <JitsiInstance />
+          </div>
         </SpaceContextProvider>
-      </header>
+      </UserContextProvider>
     </div>
   );
 }

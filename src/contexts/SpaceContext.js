@@ -3,7 +3,7 @@ import React, { createContext, useState } from "react";
 export const SpaceContext = createContext([{}, () => {}]);
 
 const SpaceContextProvider = props => {
-  const [currentSpace, setSpace] = useState("graveyard");
+  const [currentSpace, setSpace] = useState("womb");
   return (
     <SpaceContext.Provider value={{ currentSpace, setSpace }}>
       {props.children}

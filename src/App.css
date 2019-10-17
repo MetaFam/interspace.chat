@@ -1,3 +1,9 @@
+* {
+  font-family: "Courier New", Courier, monospace;
+  color: whitesmoke;
+  background-color: black;
+}
+
 .body {
   margin: auto;
 }
@@ -8,6 +14,7 @@ h1 {
 
 .App {
   text-align: center;
+  overflow-x: hidden;
 }
 
 .App-header {
@@ -100,4 +107,7 @@ position: relative;
 
 .container2 {
   margin-top: 300px; margin-left: 200px;
+}
+
+.meetContainer {
 }
