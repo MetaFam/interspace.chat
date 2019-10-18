@@ -25,6 +25,10 @@ const Space = () => {
     font-size: 2rem;
   `;
 
+  const Intro = styled.p`
+    font-size: 1.3rem;
+  `;
+
   const CurrentSpace = styled.span`
     color: pink;
   `;
@@ -45,8 +49,11 @@ const Space = () => {
     <SpaceSelector>
       <span>
         <Headline>Welcome to interspace.chat</Headline>
+        <Intro>
+          Click a room to join the conversation.
+        </Intro>
         <SpaceInfo>
-          You are in the <CurrentSpace>{currentSpace}</CurrentSpace> man!
+          You're in the <CurrentSpace>{currentSpace}</CurrentSpace>, man!
         </SpaceInfo>
         <SpaceButton onClick={() => setSpace("livingroom")}>
           Go to livingroom
@@ -59,34 +66,37 @@ const Space = () => {
         </SpaceButton>
       </span>
       <div className="map-container">
+      <img src="map0.png" className="image-map" />
+      </div>
+      <div className="map-container">
         <div className="map-background"></div>
         <div
           className="click-zone a"
           data-zone="Living Room"
           onClick={() => setSpace("living room")}
         >
-          <span className="spaceName">Living Room</span>
+          <span className="roomName">Living Room</span>
         </div>
         <div
           className="click-zone b"
           data-zone="Dining Room"
-          onClick={() => setSpace("dining room")}
+          onClick={() => setSpace("lava")}
         >
-          <span className="spaceName">Dining Room</span>
+          <span className="roomName">Lava</span>
         </div>
         <div
           className="click-zone c"
           data-zone="Sunset Patio"
-          onClick={() => setSpace("sunset patio")}
+          onClick={() => setSpace("fairy garden")}
         >
-          <span className="spaceName">Sunset Patio</span>
+          <span className="roomName">Fairy garden</span>
         </div>
         <div
-          className="hexagon"
+          className="click-zone d"
           data-zone="Portal Zone"
           onClick={() => setSpace("poOOOooOortal")}
         >
-          <span className="spaceName" style={portalStyle}>
+          <span className="roomName" style={portalStyle}>
             The Portal
           </span>
         </div>
