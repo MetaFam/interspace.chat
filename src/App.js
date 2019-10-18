@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import logo from "./logo.svg";
+import React from "react";
 import "./App.css";
 import Space from "./components/Space";
 import JitsiInstance from "./components/JitsiInstance.js";

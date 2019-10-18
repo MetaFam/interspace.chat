@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import { SpaceContext } from "../contexts/SpaceContext";
 import { UserContext } from "../contexts/UserContext";
 import styled from "styled-components";

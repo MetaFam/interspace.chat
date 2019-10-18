@@ -1,4 +1,3 @@
-import ImageMapper from "react-image-mapper";
 import React, { useContext } from "react";
 import { SpaceContext } from "../contexts/SpaceContext";
 import styled from "styled-components";
@@ -49,9 +48,7 @@ const Space = () => {
     <SpaceSelector>
       <span>
         <Headline>Welcome to interspace.chat</Headline>
-        <Intro>
-          Click a room to join the conversation.
-        </Intro>
+        <Intro>Click a room to join the conversation.</Intro>
         <SpaceInfo>
           You're in the <CurrentSpace>{currentSpace}</CurrentSpace>, man!
         </SpaceInfo>
@@ -66,7 +63,7 @@ const Space = () => {
         </SpaceButton>
       </span>
       <div className="map-container">
-      <img src="map0.png" className="image-map" />
+        <img src="map0.png" className="image-map" alt="map" />
       </div>
       <div className="map-container">
         <div className="map-background"></div>
@@ -105,6 +102,7 @@ const Space = () => {
           id="pavle"
           src="pavle.png"
           data-zone="Pavle"
+          alt="avatar"
         />
       </div>
     </SpaceSelector>
