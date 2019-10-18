@@ -12,7 +12,6 @@ const Space = () => {
   const Headline = styled.h6`
     font-weight: 100;
     font-size: 1rem;
-    text-align: left;
     padding: 1rem;
   `;
 
@@ -32,38 +31,18 @@ const Space = () => {
     color: pink;
   `;
 
-  const SpaceButton = styled.button`
-    color: greenyellow;
-    padding: 0.5rem;
-    margin: 0.5rem;
-    border-radius: 10px;
-    border-color: greenyellow;
-    :hover {
-      color: white;
-      border-color: white;
-    }
-  `;
-
   return (
     <SpaceSelector>
       <span>
-        <Headline>Welcome to interspace.chat</Headline>
-        <Intro>Click a room to join the conversation.</Intro>
+        <Headline>
+          Welcome to interspace.chat - Click a room to join the conversation.
+        </Headline>
         <SpaceInfo>
           You're in the <CurrentSpace>{currentSpace}</CurrentSpace>, man!
         </SpaceInfo>
-        <SpaceButton onClick={() => setSpace("livingroom")}>
-          Go to livingroom
-        </SpaceButton>
-        <SpaceButton onClick={() => setSpace("kitchen")}>
-          Go to kitchen
-        </SpaceButton>
-        <SpaceButton onClick={() => setSpace("pagoda")}>
-          Go to pagoda
-        </SpaceButton>
       </span>
       <div className="map-container">
-        <img src="map0.png" className="image-map" alt="map" />
+        <img src="map0.png" className="image-map" alt="map" opacity="50%" />
       </div>
       <div className="map-container">
         <div className="map-background"></div>
