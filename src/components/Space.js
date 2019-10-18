@@ -13,17 +13,26 @@ const Space = () => {
     font-weight: 100;
     font-size: 1rem;
     padding: 1rem;
+    margin-left: 25%;
   `;
 
   const SpaceSelector = styled.nav`
     padding-bottom: 1rem;
   `;
 
+
+
   const SpaceInfo = styled.p`
     font-size: 2rem;
+    margin-left: 25%;
+
   `;
 
   const Intro = styled.p`
+    font-size: 1.3rem;
+  `;
+
+  const roomName = styled.p`
     font-size: 1.3rem;
   `;
 
@@ -42,30 +51,30 @@ const Space = () => {
         </SpaceInfo>
       </span>
       <div className="map-container">
-        <img src="map0.png" className="image-map" alt="map" opacity="50%" />
+        <img src="map-liminal2.png" className="image-map" alt="map" opacity="50%" />
       </div>
       <div className="map-container">
         <div className="map-background"></div>
         <div
           className="click-zone a"
           data-zone="Living Room"
+          onClick={() => setSpace("kitchen")}
+        >
+          <span className="roomName">Kitchen</span>
+        </div>
+        <div
+          className="click-zone b"
+          data-zone="Dining Room"
           onClick={() => setSpace("living room")}
         >
           <span className="roomName">Living Room</span>
         </div>
         <div
-          className="click-zone b"
-          data-zone="Dining Room"
-          onClick={() => setSpace("lava")}
-        >
-          <span className="roomName">Lava</span>
-        </div>
-        <div
           className="click-zone c"
           data-zone="Sunset Patio"
-          onClick={() => setSpace("fairy garden")}
+          onClick={() => setSpace("patio")}
         >
-          <span className="roomName">Fairy garden</span>
+          <span className="roomName">Patio</span>
         </div>
         <div
           className="click-zone d"
@@ -73,7 +82,7 @@ const Space = () => {
           onClick={() => setSpace("poOOOooOortal")}
         >
           <span className="roomName" style={portalStyle}>
-            The Portal
+          Portal
           </span>
         </div>
         <img

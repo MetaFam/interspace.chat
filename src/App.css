@@ -49,11 +49,15 @@ h1 {
     border: 3px groove yellow;
 } */
 
+.map-container {
+  /* opacity: 0.5; */
+}
+
 .image-map {
   position: absolute;
-  left: -40px;
-  top: -20px;
-  opacity: 0.8;
+  left: 0px;
+  top: 0px;
+  opacity: 0.7;
 }
 
 
@@ -71,6 +75,10 @@ h1 {
   border: 3px groove yellow;
 }
 
+.click-zone.pavle {
+  display: none;
+}
+
 .click-zone {
   position: absolute;
   cursor: pointer;
@@ -79,38 +87,42 @@ h1 {
 }
 
 .click-zone.a {
-  left: 25px;
-  top: 15px;
-  width: 200px;
-  height: 120px;
+  left: 9px;
+  top: 10px;
+  width: 100px;
+  height: 110px;
   background-color: transparent;
+  /* border: solid 1px blue; */
   border: none;
 }
 
 .click-zone.b {
-  left: 320px;
-  top: 40px;
-  width: 65px;
-  height: 65px;
+  left: 140px;
+  top: 15px;
+  width: 165px;
+  height: 115px;
   background-color: transparent;
+  /* border: solid 1px blue; */
   border: none;
 }
 
 .click-zone.c {
-  left: 30px;
-  top: 200px;
-  width: 120px;
-  height: 130px;
+  left: 60px;
+  top: 150px;
+  width: 240px;
+  height: 70px;
   background-color: transparent;
+  /* border: solid 1px blue; */
   border: none;
 }
 
 .click-zone.d {
-  left: 240px;
-  top: 250px;
-  width: 180px;
-  height: 60px;
+  left: 365px;
+  top: 100px;
+  width: 100px;
+  height: 80px;
   background-color: transparent;
+  /* border: solid 1px blue; */
   border: none;
 }
 
