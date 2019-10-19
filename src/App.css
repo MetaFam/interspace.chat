@@ -2,9 +2,16 @@
   font-family: "Courier New", Courier, monospace;
   color: whitesmoke;
   background-color: black;
+  --liminal2-left: 20px;
+  --liminal2-top: 400px;
+  --liminal2-height: 228px;
+  --liminal2-scale-ratio: 1.4;
+  --liminal2-width: 474px;
 }
+
 .body {
   margin: auto;
+
 }
 
 h1 {
@@ -55,10 +62,39 @@ h1 {
 
 .image-map {
   position: absolute;
-  left: 0px;
-  top: 0px;
-  opacity: 0.7;
+  left: var(--liminal2-left);
+  top: var(--liminal2-top);
+  height: calc(var(--liminal2-scale-ratio) * var(--liminal2-height));
+  opacity: 0.8;
+  cursor: pointer;
+  border: solid 2px transparent;
+  box-sizing: border-box;
+  /* z-index: 0; */
 }
+
+.mapInstructions {
+  position: absolute;
+  left: calc(var(--liminal2-left));
+  top: calc(var(--liminal2-top) - 7%);
+  color: white;
+  font-size: 1.3rem;
+}
+
+.defaultRoomName {
+  position: absolute;
+  left: calc(var(--liminal2-left) + var(--liminal2-width)*var(--liminal2-scale-ratio) - 5%);
+  top: calc(var(--liminal2-top) + 5%);
+  color: greenyellow;
+}
+
+.image-map:hover {
+  border: solid 2px purple;
+  box-sizing: border-box;
+}
+
+/* .map-container:hover > * {
+  opacity: 1;
+} */
 
 
 .container {
@@ -82,48 +118,52 @@ h1 {
 .click-zone {
   position: absolute;
   cursor: pointer;
-  z-index: 2;
-  border: 1px solid grey;
+  /* z-index: 2; */
+  /* border: 1px solid grey; */
 }
 
 .click-zone.a {
-  left: 9px;
-  top: 10px;
-  width: 100px;
-  height: 110px;
+  left: calc(var(--liminal2-left) + 9px * var(--liminal2-scale-ratio));
+  top: calc(var(--liminal2-top) + 10px);
+  width: calc(100px * var(--liminal2-scale-ratio));
+  height: calc(110px * var(--liminal2-scale-ratio));
   background-color: transparent;
-  /* border: solid 1px blue; */
-  border: none;
+  border: solid 1px transparent;
+  /* box-sizing: border-box; */
 }
 
 .click-zone.b {
-  left: 140px;
-  top: 15px;
-  width: 165px;
-  height: 115px;
+  left: calc(var(--liminal2-left) + 140px * var(--liminal2-scale-ratio));
+  top: calc(var(--liminal2-top) + 15px * var(--liminal2-scale-ratio));
+  width: calc(165px* var(--liminal2-scale-ratio));
+  height: calc(115px* var(--liminal2-scale-ratio));
   background-color: transparent;
   /* border: solid 1px blue; */
   border: none;
 }
 
 .click-zone.c {
-  left: 60px;
-  top: 150px;
-  width: 240px;
-  height: 70px;
+  left: calc(var(--liminal2-left) + 60px * var(--liminal2-scale-ratio));
+  top: calc(var(--liminal2-top) + 150px * var(--liminal2-scale-ratio));
+  width: calc(240px* var(--liminal2-scale-ratio));
+  height: calc(70px* var(--liminal2-scale-ratio));
   background-color: transparent;
   /* border: solid 1px blue; */
   border: none;
 }
 
 .click-zone.d {
-  left: 365px;
-  top: 100px;
-  width: 100px;
-  height: 80px;
+  left: calc(var(--liminal2-left) + 365px * var(--liminal2-scale-ratio));
+  top: calc(var(--liminal2-top) + 100px * var(--liminal2-scale-ratio));
+  width: calc(100px* var(--liminal2-scale-ratio));
+  height: calc(80px* var(--liminal2-scale-ratio));
   background-color: transparent;
   /* border: solid 1px blue; */
   border: none;
+}
+
+.click-zone:hover {
+  border: solid 0.5px purple;
 }
 
 .hexagon:hover {

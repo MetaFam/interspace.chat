@@ -7,15 +7,16 @@ import styled from "styled-components";
 const JitsiMeetExternalAPI = window.JitsiMeetExternalAPI;
 
 const JitsiContainer = styled.div`
-  width: 100vw;
+  width: auto;
+  float: right;
 `;
 
 const JitsiInstance = () => {
   const { currentSpace } = useContext(SpaceContext);
   const { user } = useContext(UserContext);
 
-  const height = window.innerHeight - 400;
-  const width = window.innerWidth;
+  const height = 600;
+  const width = 600;
 
   useEffect(() => {
     const domain = "meet.jit.si/interspace";

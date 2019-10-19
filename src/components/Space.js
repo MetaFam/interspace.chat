@@ -11,9 +11,8 @@ const Space = () => {
 
   const Headline = styled.h6`
     font-weight: 100;
-    font-size: 1rem;
+    font-size: 1.3rem;
     padding: 1rem;
-    margin-left: 25%;
   `;
 
   const SpaceSelector = styled.nav`
@@ -24,8 +23,6 @@ const Space = () => {
 
   const SpaceInfo = styled.p`
     font-size: 2rem;
-    margin-left: 25%;
-
   `;
 
   const Intro = styled.p`
@@ -44,17 +41,17 @@ const Space = () => {
     <SpaceSelector>
       <span>
         <Headline>
-          Welcome to interspace.chat - Click a room to join the conversation.
+          Welcome to interspace.
         </Headline>
         <SpaceInfo>
-          You're in the <CurrentSpace>{currentSpace}</CurrentSpace>, man!
+          You're in the <CurrentSpace>{currentSpace}</CurrentSpace>!
         </SpaceInfo>
       </span>
+
       <div className="map-container">
-        <img src="map-liminal2.png" className="image-map" alt="map" opacity="50%" />
-      </div>
-      <div className="map-container">
-        <div className="map-background"></div>
+        <span className="mapInstructions">Click a location below to join a conversation.</span>
+        <img src="map-liminal2.png" className="image-map" alt="map" onClick={() => setSpace("yard")}/>
+        <span className="defaultRoomName">Yard</span>
         <div
           className="click-zone a"
           data-zone="Living Room"
@@ -93,6 +90,7 @@ const Space = () => {
           alt="avatar"
         />
       </div>
+
     </SpaceSelector>
   );
 };
