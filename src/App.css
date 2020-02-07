@@ -1,12 +1,23 @@
+@font-face {
+  font-family: 'Blox2';
+  font-style: normal;
+  font-weight: 800;
+  src: url('./fonts/Blox2.ttf'); /* IE9 Compat Modes */
+  src: local('Blox2'), local('Blox2'),
+       url('./fonts/Blox2.ttf') format('truetype'), /* Safari, Android, iOS */
+}
+
 * {
   font-family: "Courier New", Courier, monospace;
+  font-weight: 800;
   color: whitesmoke;
-  background-color: black;
-  --liminal2-left: 20px;
-  --liminal2-top: 400px;
-  --liminal2-height: 228px;
-  --liminal2-scale-ratio: 1.4;
-  --liminal2-width: 474px;
+  background-image: url("./img/background.jpg");
+  background-size: cover;
+  --metagame-left: 20px;
+  --metagame-top: 400px;
+  --metagame-height: 228px;
+  --metagame-scale-ratio: 1.4;
+  --metagame-width: 474px;
 }
 
 .body {
@@ -38,12 +49,16 @@ h1 {
 }
 
 .roomName {
+  font-family: "Blox2", "Courier New", Courier, monospace;
   color: greenyellow;
+  text-shadow: 5px 0px 8px green;
   /* font-size: 12px; */
   width: 100%;
   /* display: block; */
   padding: auto;
   /* margin-top: -20px; */
+  background-color:rgba(0, 0, 255, 0);
+  background-image: unset;
 }
 
 /* .map-background {
@@ -58,38 +73,34 @@ h1 {
 
 .map-container {
   /* opacity: 0.5; */
+  
 }
 
 .image-map {
   position: absolute;
-  left: var(--liminal2-left);
-  top: var(--liminal2-top);
-  height: calc(var(--liminal2-scale-ratio) * var(--liminal2-height));
-  opacity: 0.8;
+  left: var(--metagame-left);
+  top: var(--metagame-top);
+  height: calc(var(--metagame-scale-ratio) * var(--metagame-height));
   cursor: pointer;
   border: solid 2px transparent;
+  background: unset;
   box-sizing: border-box;
   /* z-index: 0; */
 }
 
 .mapInstructions {
   position: absolute;
-  left: calc(var(--liminal2-left));
-  top: calc(var(--liminal2-top) - 7%);
+  left: calc(var(--metagame-left));
+  top: calc(var(--metagame-top) - 7%);
   color: white;
   font-size: 1.3rem;
 }
 
 .defaultRoomName {
   position: absolute;
-  left: calc(var(--liminal2-left) + var(--liminal2-width)*var(--liminal2-scale-ratio) - 5%);
-  top: calc(var(--liminal2-top) + 5%);
+  left: calc(var(--metagame-left) + var(--metagame-width)*var(--metagame-scale-ratio) - 5%);
+  top: calc(var(--metagame-top) + 5%);
   color: greenyellow;
-}
-
-.image-map:hover {
-  border: solid 2px purple;
-  box-sizing: border-box;
 }
 
 /* .map-container:hover > * {
@@ -111,10 +122,6 @@ h1 {
   border: 3px groove yellow;
 }
 
-.click-zone.pavle {
-  display: none;
-}
-
 .click-zone {
   position: absolute;
   cursor: pointer;
@@ -123,93 +130,59 @@ h1 {
 }
 
 .click-zone.a {
-  left: calc(var(--liminal2-left) + 9px * var(--liminal2-scale-ratio));
-  top: calc(var(--liminal2-top) + 10px);
-  width: calc(100px * var(--liminal2-scale-ratio));
-  height: calc(110px * var(--liminal2-scale-ratio));
+  left: calc(var(--metagame-left) + 70px * var(--metagame-scale-ratio));
+  top: calc(var(--metagame-top) + 130px);
+  width: calc(100px * var(--metagame-scale-ratio));
+  height: calc(70px * var(--metagame-scale-ratio));
   background-color: transparent;
+  background-image: unset;
   border: solid 1px transparent;
   /* box-sizing: border-box; */
 }
 
 .click-zone.b {
-  left: calc(var(--liminal2-left) + 140px * var(--liminal2-scale-ratio));
-  top: calc(var(--liminal2-top) + 15px * var(--liminal2-scale-ratio));
-  width: calc(165px* var(--liminal2-scale-ratio));
-  height: calc(115px* var(--liminal2-scale-ratio));
+  left: calc(var(--metagame-left) + 185px * var(--metagame-scale-ratio));
+  top: calc(var(--metagame-top) + 15px * var(--metagame-scale-ratio));
+  width: calc(60px* var(--metagame-scale-ratio));
+  height: calc(100px* var(--metagame-scale-ratio));
   background-color: transparent;
+  background-image: unset;
   /* border: solid 1px blue; */
   border: none;
 }
 
 .click-zone.c {
-  left: calc(var(--liminal2-left) + 60px * var(--liminal2-scale-ratio));
-  top: calc(var(--liminal2-top) + 150px * var(--liminal2-scale-ratio));
-  width: calc(240px* var(--liminal2-scale-ratio));
-  height: calc(70px* var(--liminal2-scale-ratio));
+  left: calc(var(--metagame-left) + 110px * var(--metagame-scale-ratio));
+  top: calc(var(--metagame-top) + 175px * var(--metagame-scale-ratio));
+  width: calc(60px* var(--metagame-scale-ratio));
+  height: calc(70px* var(--metagame-scale-ratio));
   background-color: transparent;
+  background-image: unset;
+  /* border: solid 1px blue; */
+  border: none;
+}
+.click-zone.d {
+  left: calc(var(--metagame-left) + 255px * var(--metagame-scale-ratio));
+  top: calc(var(--metagame-top) + 160px * var(--metagame-scale-ratio));
+  width: calc(100px* var(--metagame-scale-ratio));
+  height: calc(80px* var(--metagame-scale-ratio));
+  background-color: transparent;
+  background-image: unset;
   /* border: solid 1px blue; */
   border: none;
 }
 
-.click-zone.d {
-  left: calc(var(--liminal2-left) + 365px * var(--liminal2-scale-ratio));
-  top: calc(var(--liminal2-top) + 100px * var(--liminal2-scale-ratio));
-  width: calc(100px* var(--liminal2-scale-ratio));
-  height: calc(80px* var(--liminal2-scale-ratio));
+.click-zone.e {
+  left: calc(var(--metagame-left) + 245px * var(--metagame-scale-ratio));
+  top: calc(var(--metagame-top) + 100px * var(--metagame-scale-ratio));
+  width: calc(100px* var(--metagame-scale-ratio));
+  height: calc(40px* var(--metagame-scale-ratio));
   background-color: transparent;
+  background-image: unset;
   /* border: solid 1px blue; */
   border: none;
 }
 
 .click-zone:hover {
-  border: solid 0.5px purple;
-}
-
-.hexagon:hover {
-  cursor: pointer;
-}
-
-.hexagon {
-position: absolute;
-width: 70px;
-height: 40.41px;
-background-color: #64C7CC;
-margin: 20.21px 0;
-left: 450px;
-top: 200px;
-}
-
-.hexagon:before,
-.hexagon:after {
-content: "";
-position: absolute;
-width: 0;
-border-left: 35px solid transparent;
-border-right: 35px solid transparent;
-}
-
-.hexagon:before {
-bottom: 100%;
-border-bottom: 20.21px solid #64C7CC;
-margin-left: -34px;
-}
-
-.hexagon:after {
-top: 100%;
-width: 0;
-border-top: 20.21px solid #64C7CC;
-margin-left: -34px;
-
-}
-
-.pavle {
-height: 70px;
-position: absolute;
-border: none;
-background-color: #00000000;
-}
-
-.container2 {
-  margin-top: 300px; margin-left: 200px;
+  border: solid 0.5px greenyellow;;
 }

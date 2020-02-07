@@ -4,7 +4,6 @@ import Space from "./components/Space";
 import JitsiInstance from "./components/JitsiInstance.js";
 import SpaceContextProvider from "./contexts/SpaceContext";
 import UserContextProvider from "./contexts/UserContext";
-// import Click from "./components/Click";
 
 function App() {
   return (
