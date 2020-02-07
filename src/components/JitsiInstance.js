@@ -19,7 +19,7 @@ const JitsiInstance = () => {
   const width = 600;
 
   useEffect(() => {
-    const domain = "meet.jit.si/interspace";
+    const domain = "meet.jit.si/interspace-metagame";
     const options = {
       roomName: currentSpace,
       width: width,
