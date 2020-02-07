@@ -16,7 +16,7 @@ const JitsiInstance = () => {
   const { user } = useContext(UserContext);
 
   const height = 600;
-  const width = 600;
+  const width = 800;
 
   useEffect(() => {
     const domain = "meet.jit.si/interspace-metagame";
