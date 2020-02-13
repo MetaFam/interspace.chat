@@ -28,7 +28,7 @@ const JitsiInstance = () => {
     };
     const api = new JitsiMeetExternalAPI(domain, options);
 
-    api.executeCommand("displayName", user);
+    // api.executeCommand("displayName", user);
 
     return function cleanup() {
       api.dispose();
