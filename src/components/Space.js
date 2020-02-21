@@ -27,10 +27,19 @@ const Space = () => {
     color: pink;
   `;
 
+  const Disclaimer = styled.div`
+    position: relative;
+    top: 700px;
+    background: unset;
+  `;
+
   return (
     <SpaceSelector>
       <span>
         <Headline>Welcome to MetaGame</Headline>
+        <span>
+          More Info on <a href="https://metagame.wtf">the main website</a>
+        </span>
         <SpaceInfo>
           You're in the <CurrentSpace>{currentSpace}</CurrentSpace>!
         </SpaceInfo>
@@ -71,6 +80,14 @@ const Space = () => {
           </span>
         </div>
       </div>
+      <Disclaimer>
+        This map looks pretty horrible, we know. If you want to make it better,
+        download the .psd file{" "}
+        <a href="https://www.dropbox.com/s/cocwaannzy8lqty/Interspace%20v0.2.psd?dl=0">
+          here
+        </a>{" "}
+        and share with us <a href="https://discord.gg/cZjqQmE">there</a>
+      </Disclaimer>
     </SpaceSelector>
   );
 };
