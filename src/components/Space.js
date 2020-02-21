@@ -37,9 +37,11 @@ const Space = () => {
       </span>
 
       <div className="map-container">
+        {/*
         <span className="mapInstructions">
-          Click a location below to join a conversation.
+          Click a location to join a conversation.
         </span>
+        */}
         <img src="metaspace.png" className="image-map" alt="map" />
         <div
           className="click-zone e"

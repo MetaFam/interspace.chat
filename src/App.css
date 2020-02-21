@@ -14,10 +14,10 @@
   background-image: url("./img/background.jpg");
   background-size: cover;
   --metagame-left: 20px;
-  --metagame-top: 400px;
-  --metagame-height: 228px;
-  --metagame-scale-ratio: 1.4;
-  --metagame-width: 474px;
+  --metagame-top: 120px;
+  --metagame-height: 707px;
+  --metagame-scale-ratio: 1;
+  --metagame-width: 600px;
 }
 
 .body {
@@ -50,8 +50,8 @@ h1 {
 
 .roomName {
   font-family: "Blox2", "Courier New", Courier, monospace;
+  font-size: 1.2rem;
   color: greenyellow;
-  text-shadow: 5px 0px 8px green;
   /* font-size: 12px; */
   width: 100%;
   /* display: block; */
@@ -59,6 +59,11 @@ h1 {
   /* margin-top: -20px; */
   background-color:rgba(0, 0, 255, 0);
   background-image: unset;
+  -webkit-text-stroke: 1px rgba(0, 0, 0, 0.247);
+}
+
+.roomName:hover {
+  text-shadow: 5px 0px 10px greenyellow;
 }
 
 /* .map-background {
@@ -81,7 +86,6 @@ h1 {
   left: var(--metagame-left);
   top: var(--metagame-top);
   height: calc(var(--metagame-scale-ratio) * var(--metagame-height));
-  cursor: pointer;
   border: solid 2px transparent;
   background: unset;
   box-sizing: border-box;
@@ -124,16 +128,22 @@ h1 {
 
 .click-zone {
   position: absolute;
+
+  /* z-index: 2; */
+  /* border: 1px solid grey; */
+}
+.click-zone:hover {
+  text-shadow: 5px 0px 10px greenyellow;
   cursor: pointer;
   /* z-index: 2; */
   /* border: 1px solid grey; */
 }
 
 .click-zone.a {
-  left: calc(var(--metagame-left) + 70px * var(--metagame-scale-ratio));
-  top: calc(var(--metagame-top) + 130px);
+  left: calc(var(--metagame-left) + 100px * var(--metagame-scale-ratio));
+  top: calc(var(--metagame-top) + 480px);
   width: calc(100px * var(--metagame-scale-ratio));
-  height: calc(70px * var(--metagame-scale-ratio));
+  height: calc(120px * var(--metagame-scale-ratio));
   background-color: transparent;
   background-image: unset;
   border: solid 1px transparent;
@@ -141,10 +151,10 @@ h1 {
 }
 
 .click-zone.b {
-  left: calc(var(--metagame-left) + 185px * var(--metagame-scale-ratio));
-  top: calc(var(--metagame-top) + 15px * var(--metagame-scale-ratio));
-  width: calc(60px* var(--metagame-scale-ratio));
-  height: calc(100px* var(--metagame-scale-ratio));
+  left: calc(var(--metagame-left) + 230px * var(--metagame-scale-ratio));
+  top: calc(var(--metagame-top) + 350px * var(--metagame-scale-ratio));
+  width: calc(140px* var(--metagame-scale-ratio));
+  height: calc(160px* var(--metagame-scale-ratio));
   background-color: transparent;
   background-image: unset;
   /* border: solid 1px blue; */
@@ -152,9 +162,9 @@ h1 {
 }
 
 .click-zone.c {
-  left: calc(var(--metagame-left) + 110px * var(--metagame-scale-ratio));
-  top: calc(var(--metagame-top) + 175px * var(--metagame-scale-ratio));
-  width: calc(60px* var(--metagame-scale-ratio));
+  left: calc(var(--metagame-left) + 125px * var(--metagame-scale-ratio));
+  top: calc(var(--metagame-top) + 610px * var(--metagame-scale-ratio));
+  width: calc(100px* var(--metagame-scale-ratio));
   height: calc(70px* var(--metagame-scale-ratio));
   background-color: transparent;
   background-image: unset;
@@ -162,10 +172,10 @@ h1 {
   border: none;
 }
 .click-zone.d {
-  left: calc(var(--metagame-left) + 255px * var(--metagame-scale-ratio));
-  top: calc(var(--metagame-top) + 160px * var(--metagame-scale-ratio));
+  left: calc(var(--metagame-left) + 390px * var(--metagame-scale-ratio));
+  top: calc(var(--metagame-top) + 580px * var(--metagame-scale-ratio));
   width: calc(100px* var(--metagame-scale-ratio));
-  height: calc(80px* var(--metagame-scale-ratio));
+  height: calc(100px* var(--metagame-scale-ratio));
   background-color: transparent;
   background-image: unset;
   /* border: solid 1px blue; */
@@ -173,10 +183,10 @@ h1 {
 }
 
 .click-zone.e {
-  left: calc(var(--metagame-left) + 245px * var(--metagame-scale-ratio));
-  top: calc(var(--metagame-top) + 100px * var(--metagame-scale-ratio));
-  width: calc(100px* var(--metagame-scale-ratio));
-  height: calc(40px* var(--metagame-scale-ratio));
+  left: calc(var(--metagame-left) + 365px * var(--metagame-scale-ratio));
+  top: calc(var(--metagame-top) + 470px * var(--metagame-scale-ratio));
+  width: calc(120px* var(--metagame-scale-ratio));
+  height: calc(100px* var(--metagame-scale-ratio));
   background-color: transparent;
   background-image: unset;
   /* border: solid 1px blue; */
