@@ -53,12 +53,6 @@ const Space = () => {
         */}
         <img src="metaspace.png" className="image-map" alt="map" />
         <div
-          className="click-zone e"
-          onClick={() => setSpace("House of Adoption")}
-        >
-          <span className="roomName">House of Adoption</span>
-        </div>
-        <div
           className="click-zone a"
           onClick={() => setSpace("House of Defiance")}
         >
@@ -78,6 +72,18 @@ const Space = () => {
           <span className="roomName" style={portalStyle}>
             Stress Test Arena
           </span>
+        </div>
+        <div
+          className="click-zone e"
+          onClick={() => setSpace("House of Adoption")}
+        >
+          <span className="roomName">House of Adoption</span>
+        </div>
+        <div
+          className="click-zone f"
+          onClick={() => setSpace("loft.radio")}
+        >
+          <span className="roomName">loft.radio</span>
         </div>
       </div>
       <Disclaimer>
