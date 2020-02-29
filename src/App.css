@@ -210,31 +210,3 @@ h1 {
 .click-zone:hover {
   border: solid 0.5px greenyellow;;
 }
-
-.dot-grid-background {
-  /* Credit: https://stackoverflow.com/a/13609510/4773625 */
-  background-image: -moz-linear-gradient(45deg, #5a5a5a 25%, transparent 25%), 
-        -moz-linear-gradient(-45deg, #5a5a5a 25%, transparent 25%), 
-        -moz-linear-gradient(45deg, transparent 75%, #5a5a5a 75%), 
-        -moz-linear-gradient(-45deg, transparent 75%, #5a5a5a 75%);
-    background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.25, #5a5a5a), color-stop(.25, transparent)), 
-        -webkit-gradient(linear, 0 0, 100% 100%, color-stop(.25, #5a5a5a), color-stop(.25, transparent)), 
-        -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.75, transparent), color-stop(.75, #5a5a5a)), 
-        -webkit-gradient(linear, 0 0, 100% 100%, color-stop(.75, transparent), color-stop(.75, #5a5a5a));
-    background-image: -webkit-linear-gradient(45deg, #5a5a5a 25%, transparent 25%), 
-        -webkit-linear-gradient(-45deg, #5a5a5a 25%, transparent 25%), 
-        -webkit-linear-gradient(45deg, transparent 75%, #5a5a5a 75%), 
-        -webkit-linear-gradient(-45deg, transparent 75%, #5a5a5a 75%);
-    background-image: -o-linear-gradient(45deg, #5a5a5a 25%, transparent 25%), 
-        -o-linear-gradient(-45deg, #5a5a5a 25%, transparent 25%), 
-        -o-linear-gradient(45deg, transparent 75%, #5a5a5a 75%), 
-        -o-linear-gradient(-45deg, transparent 75%, #5a5a5a 75%);
-    background-image: linear-gradient(45deg, #5a5a5a 25%, transparent 25%), 
-        linear-gradient(-45deg, #5a5a5a 25%, transparent 25%), 
-        linear-gradient(45deg, transparent 75%, #5a5a5a 75%), 
-        linear-gradient(-45deg, transparent 75%, #5a5a5a 75%);
-    -moz-background-size: 2px 2px;
-    background-size: 3px 3px;
-    -webkit-background-size: 2px 2.1px; /* override value for webkit */
-    background-position: 0 0, 1px 0, 1px -1px, 0px 1px;
-}

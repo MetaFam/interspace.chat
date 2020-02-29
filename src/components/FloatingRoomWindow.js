@@ -40,6 +40,8 @@ const FloatingRoomWindowCloser = styled.div`
 const DraggableController = styled.div`
     padding: 15px;
     padding-top: 0px;
+    background-color: #ffffff36;
+    cursor: all-scroll;
     &:active iframe {
         pointer-events: none;
     }
@@ -71,7 +73,7 @@ function FloatingRoomWindow() {
     <FloatingRoomWindowContainer>
         {floatingRoomWindow && 
             <Draggable>
-                <DraggableController className="dot-grid-background">
+                <DraggableController>
                     <FloatingRoomWindowCloser onClick={() => closeFloatingRoomWindow()}/>
                     {floatingRoomWindow}
                 </DraggableController>
