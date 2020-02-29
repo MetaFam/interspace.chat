@@ -2,17 +2,19 @@ import React from "react";
 import "./App.css";
 import Space from "./components/Space";
 import RoomWindow from "./components/RoomWindow";
-import SpaceContextProvider from "./contexts/SpaceContext";
+import FloatingRoomWindow from "./components/FloatingRoomWindow";
+import RootContextProvider from "./contexts/RootContext";
 import UserContextProvider from "./contexts/UserContext";
 
 function App() {
   return (
     <div className="App">
       <UserContextProvider>
-        <SpaceContextProvider>
+        <RootContextProvider>
           <Space />
           <RoomWindow/>
-        </SpaceContextProvider>
+          <FloatingRoomWindow/>
+        </RootContextProvider>
       </UserContextProvider>
     </div>
   );
