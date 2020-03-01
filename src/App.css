@@ -11,18 +11,15 @@
   font-family: "Courier New", Courier, monospace;
   font-weight: 800;
   color: whitesmoke;
+}
+
+html {
   background-image: url("./img/background.jpg");
   background-size: cover;
-  --metagame-left: 20px;
-  --metagame-top: 120px;
-  --metagame-height: 707px;
-  --metagame-scale-ratio: 1;
-  --metagame-width: 600px;
 }
 
 .body {
   margin: auto;
-
 }
 
 h1 {
@@ -78,7 +75,11 @@ h1 {
 
 .map-container {
   /* opacity: 0.5; */
-  
+  --metagame-left: 20px;
+  --metagame-top: 120px;
+  --metagame-height: 707px;
+  --metagame-scale-ratio: 1;
+  --metagame-width: 600px;
 }
 
 .image-map {

@@ -1,9 +1,11 @@
 import React, { useContext } from "react";
 import { SpaceContext } from "../contexts/SpaceContext";
+import { FloatingSpaceContext } from "../contexts/FloatingSpaceContext";
 import styled from "styled-components";
 
 const Space = () => {
   const { currentSpace, setSpace } = useContext(SpaceContext);
+  const { setFloatingSpace } = useContext(FloatingSpaceContext);
 
   const portalStyle = {
     marginTop: "10px"
@@ -81,7 +83,7 @@ const Space = () => {
         </div>
         <div
           className="click-zone f"
-          onClick={() => setSpace("loft.radio")}
+          onClick={() => setFloatingSpace("loft.radio")}
         >
           <span className="roomName">loft.radio</span>
         </div>

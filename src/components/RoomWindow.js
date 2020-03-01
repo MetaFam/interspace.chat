@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 import { SpaceContext } from "../contexts/SpaceContext";
 import JitsiInstance from "../components/JitsiInstance";
-import LoftRadioInstance from "./LoftRadioInstance";
 
 const JitsiInstances = [
   "House of Defiance",
@@ -34,10 +33,6 @@ function RoomWindow() {
     if(JitsiInstances.indexOf(currentSpace) > -1) {
         return (
             <JitsiInstance width={width} height={height}/>
-        )
-    } else if(currentSpace === "loft.radio") {
-        return (
-            <LoftRadioInstance width={width} height={height}/>
         )
     }
     return null;
