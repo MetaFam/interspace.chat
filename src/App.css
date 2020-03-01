@@ -152,9 +152,9 @@ h1 {
 
 .click-zone.b {
   left: calc(var(--metagame-left) + 230px * var(--metagame-scale-ratio));
-  top: calc(var(--metagame-top) + 350px * var(--metagame-scale-ratio));
+  top: calc(var(--metagame-top) + 400px * var(--metagame-scale-ratio));
   width: calc(140px* var(--metagame-scale-ratio));
-  height: calc(160px* var(--metagame-scale-ratio));
+  height: calc(120px* var(--metagame-scale-ratio));
   background-color: transparent;
   background-image: unset;
   /* border: solid 1px blue; */
@@ -194,16 +194,21 @@ h1 {
 }
 
 .click-zone.f {
+  opacity: 0;
   left: calc(var(--metagame-left) + 230px * var(--metagame-scale-ratio));
-  top: calc(var(--metagame-top) + 295px * var(--metagame-scale-ratio));
+  top: calc(var(--metagame-top) + 250px * var(--metagame-scale-ratio));
   width: calc(140px* var(--metagame-scale-ratio));
-  height: calc(25px* var(--metagame-scale-ratio));
+  height: calc(125px* var(--metagame-scale-ratio));
   background-color: transparent;
   background-image: unset;
   border: none;
   padding-left: 5px;
   padding-top: 10px;
   padding-bottom: 7px;
+}
+
+.click-zone.f:hover {
+  opacity: 1;
 }
 
 .click-zone:hover {
