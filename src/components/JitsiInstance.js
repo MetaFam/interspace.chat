@@ -20,7 +20,7 @@ const JitsiInstance = ({width, height, space}) => {
     return function cleanup() {
       api.dispose();
     };
-  });
+  }, [space, width, height]);
 
   return <div id="meet"></div>;
 };
