@@ -1,7 +1,6 @@
 import React from "react";
 import "./App.css";
 import Space from "./components/Space";
-import RoomWindow from "./components/RoomWindow";
 import FloatingRoomWindow from "./components/FloatingRoomWindow";
 import RootContextProvider from "./contexts/RootContext";
 
@@ -10,7 +9,6 @@ function App() {
     <div className="App">
       <RootContextProvider>
         <Space />
-        <RoomWindow/>
         <FloatingRoomWindow/>
       </RootContextProvider>
     </div>
