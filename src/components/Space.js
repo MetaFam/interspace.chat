@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { Fragment, useContext } from "react";
 import styled from "styled-components";
 
 import { FloatingSpaceContext } from "../contexts/FloatingSpaceContext";
@@ -84,11 +84,14 @@ const Space = () => {
         <span>
           More Info on <a href="https://metagame.wtf">the main website</a>
         </span>
-        {displayJoinedSpaces(currentFloatingSpaces) &&
-          <SpaceInfo>
-            You're in the <CurrentSpace>{displayJoinedSpaces(currentFloatingSpaces)}</CurrentSpace>!
-          </SpaceInfo>
-        }
+        <SpaceInfo>
+          {displayJoinedSpaces(currentFloatingSpaces) ?
+            <Fragment>
+              You're in the <CurrentSpace>{displayJoinedSpaces(currentFloatingSpaces)}</CurrentSpace>!
+            </Fragment>
+            : "Click a room on the map to join!"
+          }
+        </SpaceInfo>
       </span>
 
       <div className="map-container">

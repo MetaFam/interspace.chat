@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect } from "react";
 // import * as JitsiMeetExternalAPI from "../dist/jitsi";
 
 const JitsiMeetExternalAPI = window.JitsiMeetExternalAPI;
