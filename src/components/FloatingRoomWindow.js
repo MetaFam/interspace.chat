@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useContext, useState } from "react";
+import React, { Fragment, useEffect, useContext, useState, useRef } from "react";
 import ReactDOM from "react-dom";
 import styled from "styled-components";
 import Draggable from "react-draggable";
@@ -57,11 +57,23 @@ const DraggableController = styled.div`
 function FloatingRoomWindow() {
   const { currentFloatingSpaces, setFloatingSpaces } = useContext(FloatingSpaceContext);
   const [floatingRoomWindows, setFloatingRoomWindow] = useState(currentFloatingSpaces);
+  const [focusedWindow, setFocusedWindow] = useState(null);
+  const windowFrame = useRef();
 
   useEffect(() => {
     let useFloatingRoomWindow = getFloatingRoomWindow(currentFloatingSpaces);
     setFloatingRoomWindow(useFloatingRoomWindow);
   }, [currentFloatingSpaces])
+
+  useEffect(() => {
+    // Sets the focused window to the incremented
+    if(windowFrame.current) {
+      let newWindow = ReactDOM.findDOMNode(windowFrame.current).parentNode.querySelector(`[data-window="window-${focusedWindow}"]`);
+      if(newWindow){
+        ReactDOM.findDOMNode(windowFrame.current).parentNode.querySelector(`[data-window="window-${focusedWindow}"]`).style.zIndex = zIndexIterator++;
+      }
+    }
+  }, [focusedWindow])
 
   const getFloatingRoomWindow = (currentFloatingSpaces) => {
     let newFloatingRooms = [];
@@ -77,8 +89,12 @@ function FloatingRoomWindow() {
             key: currentSpace,
             element: <JitsiInstance width={innerWidth} space={currentSpace} height={height}/>
           });
+          
         } else if(currentSpace === null) {
           newFloatingRooms.push(null);
+        }
+        if(currentSpace !== null){
+          setFocusedWindow(currentSpace);
         }
       }
     }
@@ -91,6 +107,7 @@ function FloatingRoomWindow() {
       // Replaces the floating window with a null record, to prevent the existing windows from shifting position
       newFloatingSpaces.splice(newFloatingSpaces.indexOf(windowKey), 1, null);
       setFloatingSpaces(newFloatingSpaces);
+      setFocusedWindow(null);
     }
   }
 
@@ -102,16 +119,14 @@ function FloatingRoomWindow() {
     <Fragment>
       {floatingRoomWindows && floatingRoomWindows.length >= 1 && floatingRoomWindows.map(floatingWindow => 
         (floatingWindow && floatingWindow.key && floatingWindow.element) ? 
-          <div onMouseDown={(event) => setWindowFocus(event)}>
-            <FloatingRoomWindowContainer>
-              <Draggable>
-                  <DraggableController key={floatingWindow.key}>
-                      <FloatingRoomWindowCloser onClick={() => closeFloatingRoomWindow(floatingWindow.key)}/>
-                      {floatingWindow.element}
-                  </DraggableController>
-              </Draggable>
-            </FloatingRoomWindowContainer> 
-          </div>
+          <FloatingRoomWindowContainer key={floatingWindow.key} ref={windowFrame} onMouseDown={(event) => setWindowFocus(event)} data-window={`window-${floatingWindow.key}`}>
+            <Draggable>
+                <DraggableController>
+                    <FloatingRoomWindowCloser onClick={() => closeFloatingRoomWindow(floatingWindow.key)}/>
+                    {floatingWindow.element}
+                </DraggableController>
+            </Draggable>
+          </FloatingRoomWindowContainer>
         : null
       )}
     </Fragment>
