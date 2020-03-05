@@ -134,6 +134,12 @@ const Space = () => {
         >
           <span className="roomName">loft.radio</span>
         </div>
+        <div
+          className="click-zone g"
+          onClick={() => launchFloatingSpace("rTrees")}
+        >
+          <span className="roomName">rTrees</span>
+        </div>
       </div>
       <Disclaimer>
         This map looks pretty horrible, we know. If you want to make it better,
