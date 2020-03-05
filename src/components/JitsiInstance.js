@@ -1,18 +1,14 @@
-import React, { useEffect, useContext } from "react";
-import { SpaceContext } from "../contexts/SpaceContext";
-import { UserContext } from "../contexts/UserContext";
+import React, { useEffect } from "react";
 // import * as JitsiMeetExternalAPI from "../dist/jitsi";
 
 const JitsiMeetExternalAPI = window.JitsiMeetExternalAPI;
 
-const JitsiInstance = ({width, height}) => {
-  const { currentSpace } = useContext(SpaceContext);
-  const { user } = useContext(UserContext);
+const JitsiInstance = ({width, height, space}) => {
 
   useEffect(() => {
     const domain = "meet.jit.si/interspace-metagame";
     const options = {
-      roomName: currentSpace,
+      roomName: space,
       width: width,
       height: height,
       parentNode: document.querySelector("#meet")
@@ -24,7 +20,7 @@ const JitsiInstance = ({width, height}) => {
     return function cleanup() {
       api.dispose();
     };
-  });
+  }, [space, width, height]);
 
   return <div id="meet"></div>;
 };

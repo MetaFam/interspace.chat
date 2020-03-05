@@ -1,11 +1,39 @@
-import React, { useContext } from "react";
-import { SpaceContext } from "../contexts/SpaceContext";
-import { FloatingSpaceContext } from "../contexts/FloatingSpaceContext";
+import React, { Fragment, useContext } from "react";
 import styled from "styled-components";
 
+import { FloatingSpaceContext } from "../contexts/FloatingSpaceContext";
+import { JitsiInstances } from "../utils/constants";
+
 const Space = () => {
-  const { currentSpace, setSpace } = useContext(SpaceContext);
-  const { setFloatingSpace } = useContext(FloatingSpaceContext);
+  const { currentFloatingSpaces, setFloatingSpaces } = useContext(FloatingSpaceContext);
+
+  const launchFloatingSpace = (floatingSpace) => {
+    let resultantSpaces = null;
+    if(currentFloatingSpaces && currentFloatingSpaces.length > 0){
+      if(currentFloatingSpaces.indexOf(floatingSpace) > -1) {
+        resultantSpaces = currentFloatingSpaces;
+      } else if((JitsiInstances.indexOf(floatingSpace) > -1)){
+        let replaceIndex;
+        for(let instance of JitsiInstances) {
+          if(currentFloatingSpaces.indexOf(instance) > -1) {
+            replaceIndex = currentFloatingSpaces.indexOf(instance)
+          }
+        }
+        if(replaceIndex > -1){
+          let spliceJitsiDuplicates = [...currentFloatingSpaces]; // Prepare for splice
+          spliceJitsiDuplicates.splice(replaceIndex, 1, floatingSpace);
+          resultantSpaces = [...spliceJitsiDuplicates];
+        }else{
+          resultantSpaces = [...currentFloatingSpaces, floatingSpace];
+        }
+      } else {
+        resultantSpaces = [...currentFloatingSpaces, floatingSpace];
+      }
+    }else{
+      resultantSpaces = [floatingSpace];
+    }
+    setFloatingSpaces(resultantSpaces);
+  }
 
   const portalStyle = {
     marginTop: "10px"
@@ -35,6 +63,20 @@ const Space = () => {
     background: unset;
   `;
 
+  const displayJoinedSpaces = (floatingSpaceWindows) => {
+    let windowsWithoutPlaceholders = floatingSpaceWindows.filter(item => item);
+    if(windowsWithoutPlaceholders.length > 0) {
+      if(windowsWithoutPlaceholders.length > 2) {
+        let finalIndex = windowsWithoutPlaceholders.length - 1;
+        return windowsWithoutPlaceholders.slice(0, finalIndex - 1).join(",") + "," + windowsWithoutPlaceholders.slice(finalIndex - 1, finalIndex).join(" & ");
+      }else{
+        return windowsWithoutPlaceholders.join(" & ");
+      }
+    }else{
+      return null;
+    }
+  }
+
   return (
     <SpaceSelector>
       <span>
@@ -43,7 +85,12 @@ const Space = () => {
           More Info on <a href="https://metagame.wtf">the main website</a>
         </span>
         <SpaceInfo>
-          You're in the <CurrentSpace>{currentSpace}</CurrentSpace>!
+          {displayJoinedSpaces(currentFloatingSpaces) ?
+            <Fragment>
+              You're in the <CurrentSpace>{displayJoinedSpaces(currentFloatingSpaces)}</CurrentSpace>!
+            </Fragment>
+            : "Click a room on the map to join!"
+          }
         </SpaceInfo>
       </span>
 
@@ -56,20 +103,20 @@ const Space = () => {
         <img src="metaspace.png" className="image-map" alt="map" />
         <div
           className="click-zone a"
-          onClick={() => setSpace("House of Defiance")}
+          onClick={() => launchFloatingSpace("House of Defiance")}
         >
           <span className="roomName">House of Defiance</span>
         </div>
-        <div className="click-zone b" onClick={() => setSpace("House of DAOs")}>
+        <div className="click-zone b" onClick={() => launchFloatingSpace("House of DAOs")}>
           <span className="roomName">House of DAOs</span>
         </div>
-        <div className="click-zone c" onClick={() => setSpace("Raid Guild")}>
+        <div className="click-zone c" onClick={() => launchFloatingSpace("Raid Guild")}>
           <span className="roomName">Raid Guild</span>
         </div>
         <div
           className="click-zone d"
           data-zone="stress-test-arena"
-          onClick={() => setSpace("Stress Test Arena")}
+          onClick={() => launchFloatingSpace("Stress Test Arena")}
         >
           <span className="roomName" style={portalStyle}>
             Stress Test Arena
@@ -77,13 +124,13 @@ const Space = () => {
         </div>
         <div
           className="click-zone e"
-          onClick={() => setSpace("House of Adoption")}
+          onClick={() => launchFloatingSpace("House of Adoption")}
         >
           <span className="roomName">House of Adoption</span>
         </div>
         <div
           className="click-zone f"
-          onClick={() => setFloatingSpace("loft.radio")}
+          onClick={() => launchFloatingSpace("loft.radio")}
         >
           <span className="roomName">loft.radio</span>
         </div>

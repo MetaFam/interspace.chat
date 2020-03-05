@@ -3,9 +3,9 @@ import React, { createContext, useState } from "react";
 export const FloatingSpaceContext = createContext([{}, () => {}]);
 
 const FloatingSpaceContextProvider = props => {
-  const [currentFloatingSpace, setFloatingSpace] = useState(null);
+  const [currentFloatingSpaces, setFloatingSpaces] = useState([]);
   return (
-    <FloatingSpaceContext.Provider value={{ currentFloatingSpace, setFloatingSpace }}>
+    <FloatingSpaceContext.Provider value={{ currentFloatingSpaces, setFloatingSpaces }}>
       {props.children}
     </FloatingSpaceContext.Provider>
   );
