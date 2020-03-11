@@ -59,16 +59,22 @@ const Space = () => {
 
   const Disclaimer = styled.div`
     position: relative;
-    top: 700px;
+    top: 770px;
     background: unset;
+  `;
+
+  const SpaceWindowInfo = styled.p`
+    position: relative;
+    top: 790px;
+    font-size: 2rem;
   `;
 
   const displayJoinedSpaces = (floatingSpaceWindows) => {
     let windowsWithoutPlaceholders = floatingSpaceWindows.filter(item => item);
     if(windowsWithoutPlaceholders.length > 0) {
       if(windowsWithoutPlaceholders.length > 2) {
-        let finalIndex = windowsWithoutPlaceholders.length - 1;
-        return windowsWithoutPlaceholders.slice(0, finalIndex - 1).join(",") + "," + windowsWithoutPlaceholders.slice(finalIndex - 1, finalIndex).join(" & ");
+        let nameCount = windowsWithoutPlaceholders.length;
+        return windowsWithoutPlaceholders.slice(0, nameCount - 2).join(", ") + ", " + windowsWithoutPlaceholders.slice(nameCount - 2, nameCount).join(" & ");
       }else{
         return windowsWithoutPlaceholders.join(" & ");
       }
@@ -106,12 +112,15 @@ const Space = () => {
           onClick={() => launchFloatingSpace("House of Defiance")}
         >
           <span className="roomName">House of Defiance</span>
+          <div className="click-zone-highlight a"></div>
         </div>
         <div className="click-zone b" onClick={() => launchFloatingSpace("House of DAOs")}>
           <span className="roomName">House of DAOs</span>
+          <div className="click-zone-highlight b"></div>
         </div>
         <div className="click-zone c" onClick={() => launchFloatingSpace("Raid Guild")}>
           <span className="roomName">Raid Guild</span>
+          <div className="click-zone-highlight c"></div>
         </div>
         <div
           className="click-zone d"
@@ -121,34 +130,45 @@ const Space = () => {
           <span className="roomName" style={portalStyle}>
             Stress Test Arena
           </span>
+          <div className="click-zone-highlight d"></div>
         </div>
         <div
           className="click-zone e"
           onClick={() => launchFloatingSpace("House of Adoption")}
         >
           <span className="roomName">House of Adoption</span>
+          <div className="click-zone-highlight e"></div>
         </div>
         <div
           className="click-zone f"
           onClick={() => launchFloatingSpace("loft.radio")}
         >
           <span className="roomName">loft.radio</span>
+          <div className="click-zone-highlight f"></div>
         </div>
         <div
           className="click-zone g"
           onClick={() => launchFloatingSpace("rTrees")}
         >
           <span className="roomName">rTrees</span>
+          <div className="click-zone-highlight g"></div>
         </div>
       </div>
       <Disclaimer>
-        This map looks pretty horrible, we know. If you want to make it better,
+        Feel free to make improvements to the map,
         download the .psd file{" "}
         <a href="https://www.dropbox.com/s/cocwaannzy8lqty/Interspace%20v0.2.psd?dl=0">
           here
         </a>{" "}
         and share with us <a href="https://discord.gg/cZjqQmE">there</a>
       </Disclaimer>
+      <SpaceWindowInfo>
+        {displayJoinedSpaces(currentFloatingSpaces) ?
+          "Position your window(s) down below"
+          : null
+        }
+        
+      </SpaceWindowInfo>
     </SpaceSelector>
   );
 };
