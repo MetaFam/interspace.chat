@@ -16,7 +16,7 @@
 html {
   background-image: url("./img/background.jpg");
   background-size: cover;
-  min-height: 300%;
+  min-height: 110%;
 }
 
 .body {
