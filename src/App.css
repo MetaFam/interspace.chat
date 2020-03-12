@@ -314,3 +314,49 @@ h1 {
 .click-zone:hover .click-zone-highlight {
   border: solid 0.5px greenyellow;;
 }
+
+.modal {
+  /* display: none; Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 7% auto; /* 15% from the top and centered */
+  padding: 40px;
+  border: 1px solid #888;
+  width: 60%; /* Could be more or less, depending on screen size */
+  border-radius: 15px;
+}
+
+.modal-close {
+  margin-top: 24px;
+  width: 200px;
+  height: 40px;
+  border-radius: 8px;
+  font-size: 20px;
+  background: linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(93,93,102,0.97) 53%, rgba(0,6,8,1) 100%); 
+}
+.modal-close:hover {
+  background: linear-gradient(0deg, rgba(87,87,93,1) 0%, rgba(9,9,11,0.9794292717086834) 53%, rgba(77,82,84,1) 100%);
+}
+.modal_text {
+  color: black;
+  font-size: 18px;
+}
+.modal-link {
+  color: black;
+}
+
+.modal_logo {
+  height: 180px;
+}
