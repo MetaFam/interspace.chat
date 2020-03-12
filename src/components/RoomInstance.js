@@ -4,18 +4,22 @@ import styled from "styled-components";
 import { RoomURLs } from "../utils/constants";
 import JitsiInstance from './integrations/JitsiInstance';
 import YoutubeInstance from './integrations/YoutubeInstance';
-import HubInstance from './integrations/HubInstance';
+// import HubInstance from './integrations/HubInstance';
 
-const SERVICE_NAMES = {
-  jitsi: 'Jitsi',
-  mozillaHub: 'Hub',
-  youtube: 'Youtube',
-};
-
-const SERVICE_CONTAINERS = {
-  jitsi: JitsiInstance,
-  mozillaHub: HubInstance,
-  youtube: YoutubeInstance,
+const SERVICES = {
+  youtube: {
+    title: 'Youtube',
+    component: YoutubeInstance,
+  },
+  jitsi: {
+    title: 'Jitsi',
+    component: JitsiInstance,
+  },
+  mozillaHub: {
+    title: 'Virtual Hub',
+    component: () => null,
+    external: true,
+  },
 };
 
 
@@ -33,7 +37,7 @@ const ServiceButtonContainer = styled.div`
 const ServiceButton = styled.div`
   height: 100%;
   flex-grow: 1;
-  display: flex;  
+  display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
@@ -47,32 +51,46 @@ const ServiceButton = styled.div`
 
 const RoomInstance = ({width, height, space}) => {
   const roomURLs = RoomURLs[space];
-  const availableServiceNames = Object.keys(roomURLs);
+  const availableServiceNames = Object.keys(SERVICES).filter(serviceName => Object.keys(roomURLs).includes(serviceName));
 
-  const [serviceName, setServiceName] = useState(availableServiceNames[0]);
+  const [selectedServiceName, selectServiceName] = useState(availableServiceNames[0]);
 
   if(availableServiceNames.length === 0) return <div>Unknown room</div>;
 
-  const roomData = roomURLs[serviceName];
-  const RoomServiceContainer = SERVICE_CONTAINERS[serviceName];
+  const roomData = roomURLs[selectedServiceName];
+  const selectedService = SERVICES[selectedServiceName];
+  const RoomServiceComponent = selectedService.component;
+
+  function onServiceClick(name) {
+    const service = SERVICES[name];
+    if(service.external) {
+      const roomData = roomURLs[name];
+      window.open(roomData.externalUrl)
+    } else {
+      selectServiceName(name);
+    }
+  }
 
   return (
     <div>
       <ServiceButtonContainer>
         {
-          availableServiceNames.map(name =>
+          availableServiceNames.map(serviceName =>
             <ServiceButton
-              key={name}
-              onClick={() => setServiceName(name)}
-              className={serviceName === name && 'active'}
+              key={serviceName}
+              onClick={() => onServiceClick(serviceName)}
+              className={selectedServiceName === serviceName && 'active'}
             >
-              <span>{SERVICE_NAMES[name]}</span>
+              <span>{SERVICES[serviceName].title}</span>
+              {SERVICES[serviceName].external &&
+              <i className="fas fa-external-link-alt" style={{ marginLeft: 10 }}/>
+              }
             </ServiceButton>
           )
         }
       </ServiceButtonContainer>
 
-      <RoomServiceContainer width={width} height={height} roomData={roomData} />
+      <RoomServiceComponent width={width} height={height} roomData={roomData} />
     </div>
   );
 };

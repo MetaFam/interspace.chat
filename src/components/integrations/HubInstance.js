@@ -3,6 +3,7 @@ import React from "react";
 function HubInstance({width, height, roomData}) {
   return (
     <iframe
+      title="Mozilla hub conference room"
       width={width}
       height={height}
       frameBorder="0"
