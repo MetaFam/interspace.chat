@@ -6,8 +6,8 @@ import Draggable from "react-draggable";
 import { FloatingSpaceContext } from "../contexts/FloatingSpaceContext";
 import LoftRadioInstance from "./integrations/LoftRadioInstance";
 import RTreesInstance from "./integrations/RTreesInstance";
-import JitsiInstance from "./integrations/JitsiInstance";
-import { JitsiInstances } from "../utils/constants";
+import RoomInstance from "./RoomInstance";
+import { RoomNames } from "../utils/constants";
 
 const height = 600;
 const width = 850;
@@ -85,10 +85,10 @@ function FloatingRoomWindow() {
             key: currentSpace,
             element: <LoftRadioInstance width={innerWidth} height={height}></LoftRadioInstance>
           });
-        } else if(JitsiInstances.indexOf(currentSpace) > -1) {
+        } else if(RoomNames.indexOf(currentSpace) > -1) {
           newFloatingRooms.push({
             key: currentSpace,
-            element: <JitsiInstance width={innerWidth} space={currentSpace} height={height}/>
+            element: <RoomInstance width={innerWidth} space={currentSpace} height={height}/>
           });
         } else if(currentSpace === "rTrees"){
           newFloatingRooms.push({

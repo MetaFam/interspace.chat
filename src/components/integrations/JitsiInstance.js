@@ -3,24 +3,23 @@ import React, { useEffect } from "react";
 
 const JitsiMeetExternalAPI = window.JitsiMeetExternalAPI;
 
-const JitsiInstance = ({width, height, space}) => {
+const JitsiInstance = ({width, height, roomData}) => {
 
   useEffect(() => {
-    const domain = "meet.jit.si/interspace-metagame";
     const options = {
-      roomName: space,
+      roomName: roomData.roomName,
       width: width,
       height: height,
       parentNode: document.querySelector("#meet")
     };
-    const api = new JitsiMeetExternalAPI(domain, options);
+    const api = new JitsiMeetExternalAPI(roomData.domain, options);
 
     // api.executeCommand("displayName", user);
 
     return function cleanup() {
       api.dispose();
     };
-  }, [space, width, height]);
+  }, [roomData, width, height]);
 
   return <div id="meet"></div>;
 };

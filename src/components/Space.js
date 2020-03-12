@@ -2,7 +2,7 @@ import React, { Fragment, useContext } from "react";
 import styled from "styled-components";
 
 import { FloatingSpaceContext } from "../contexts/FloatingSpaceContext";
-import { JitsiInstances } from "../utils/constants";
+import { RoomNames } from "../utils/constants";
 
 const Space = () => {
   const { currentFloatingSpaces, setFloatingSpaces } = useContext(FloatingSpaceContext);
@@ -12,9 +12,9 @@ const Space = () => {
     if(currentFloatingSpaces && currentFloatingSpaces.length > 0){
       if(currentFloatingSpaces.indexOf(floatingSpace) > -1) {
         resultantSpaces = currentFloatingSpaces;
-      } else if((JitsiInstances.indexOf(floatingSpace) > -1)){
+      } else if((RoomNames.indexOf(floatingSpace) > -1)){
         let replaceIndex;
-        for(let instance of JitsiInstances) {
+        for(let instance of RoomNames) {
           if(currentFloatingSpaces.indexOf(instance) > -1) {
             replaceIndex = currentFloatingSpaces.indexOf(instance)
           }
