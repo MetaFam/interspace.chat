@@ -86,9 +86,9 @@ const Space = () => {
   return (
     <SpaceSelector>
       <span>
-        <Headline>Welcome to MetaGame</Headline>
+        <Headline>Welcome to <a href="https://metagame.wtf" target="_blank" style={{ textDecoration: 'none' }}>MetaGame</a></Headline>
         <span>
-          More Info on <a href="https://metagame.wtf">the main website</a>
+          Come to the chat on <a href="https://t.me/intercon13" target="_blank">Telegram</a>
         </span>
         <SpaceInfo>
           {displayJoinedSpaces(currentFloatingSpaces) ?
