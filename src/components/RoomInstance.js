@@ -12,7 +12,7 @@ const SERVICES = {
     component: JitsiInstance,
   },
   mozillaHub: {
-    title: 'Hub',
+    title: 'Virtual Hub',
     external: true,
   },
   youtube: {
@@ -36,7 +36,7 @@ const ServiceButtonContainer = styled.div`
 const ServiceButton = styled.div`
   height: 100%;
   flex-grow: 1;
-  display: flex;  
+  display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
