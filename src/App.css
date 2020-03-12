@@ -331,7 +331,7 @@ h1 {
 /* Modal Content/Box */
 .modal-content {
   background-color: #fefefe;
-  margin: 10% auto; /* 15% from the top and centered */
+  margin: 7% auto; /* 15% from the top and centered */
   padding: 40px;
   border: 1px solid #888;
   width: 60%; /* Could be more or less, depending on screen size */
@@ -355,4 +355,8 @@ h1 {
 }
 .modal-link {
   color: black;
+}
+
+.modal_logo {
+  height: 180px;
 }

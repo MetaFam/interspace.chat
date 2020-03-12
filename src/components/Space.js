@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import { FloatingSpaceContext } from "../contexts/FloatingSpaceContext";
 import { RoomNames } from "../utils/constants";
-
+import InterconLogo from "../img/intercon_logo.png"
 const Space = () => {
   const { currentFloatingSpaces, setFloatingSpaces } = useContext(FloatingSpaceContext);
   const [modalOpen, setModalOpen] = useState(true);
@@ -87,7 +87,7 @@ const Space = () => {
     <SpaceSelector>
       {modalOpen && <div id="myModal" class="modal">
         <div class="modal-content">
-          <span class="close">&times;</span>
+        <img src={InterconLogo} alt="logo" className="modal_logo"></img>
           <p className="modal_text">InterCon is an experimental virtual conference built for 20-30 people.
 As such, it is not ready to take all this traffic and will probably blow up.</p>
           <p className="modal_text">- You may try to join the call, but it's probably full and you'll get kicked.</p>
