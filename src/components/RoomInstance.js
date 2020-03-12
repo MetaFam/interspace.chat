@@ -7,17 +7,18 @@ import YoutubeInstance from './integrations/YoutubeInstance';
 // import HubInstance from './integrations/HubInstance';
 
 const SERVICES = {
+  youtube: {
+    title: 'Youtube',
+    component: YoutubeInstance,
+  },
   jitsi: {
-    title: 'Jisti',
+    title: 'Jitsi',
     component: JitsiInstance,
   },
   mozillaHub: {
     title: 'Virtual Hub',
+    component: () => null,
     external: true,
-  },
-  youtube: {
-    title: 'Youtube',
-    component: YoutubeInstance,
   },
 };
 
@@ -50,7 +51,7 @@ const ServiceButton = styled.div`
 
 const RoomInstance = ({width, height, space}) => {
   const roomURLs = RoomURLs[space];
-  const availableServiceNames = Object.keys(roomURLs);
+  const availableServiceNames = Object.keys(SERVICES).filter(serviceName => Object.keys(roomURLs).includes(serviceName));
 
   const [selectedServiceName, selectServiceName] = useState(availableServiceNames[0]);
 
