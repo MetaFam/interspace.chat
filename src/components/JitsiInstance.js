@@ -5,7 +5,7 @@ const JitsiMeetExternalAPI = window.JitsiMeetExternalAPI;
 
 const JitsiInstance = ({ width, height, space }) => {
 	useEffect(() => {
-		const domain = 'interspace.geleeroyale.work/metagame';
+		const domain = 'interspace.geleeroyale.work';
 		const options = {
 			roomName: space,
 			width: width,
