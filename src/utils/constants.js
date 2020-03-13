@@ -7,14 +7,14 @@ export const RoomURLs = {
 		mozillaHub: {
 			externalUrl: 'https://hubs.mozilla.com/nKCuNrg/house-of-defiance'
 		},
-		youtube: { videoId: 'X5k8Cbr0d44' }
+		youtube: { videoId: 'X5k8Cbr0d44', externalUrl: 'https://youtu.be/X5k8Cbr0d44' }
 	},
 	'House of DAOs': {
 		jitsi: { domain: 'interspace.geleeroyale.work', roomName: 'House of DAOs' },
 		mozillaHub: {
 			externalUrl: 'https://hubs.mozilla.com/eJZGNU5/house-of-daos'
 		},
-		youtube: { videoId: 'k0UpUwmKaHc' }
+		youtube: { videoId: 'k0UpUwmKaHc', externalUrl: 'https://youtu.be/k0UpUwmKaHc' }
 	},
 	'House of Adoption': {
 		jitsi: {
@@ -24,7 +24,7 @@ export const RoomURLs = {
 		mozillaHub: {
 			externalUrl: 'https://hubs.mozilla.com/tpKKcfA/house-of-adoption'
 		},
-		youtube: { videoId: '_DxQQKrxYFI' }
+		youtube: { videoId: '_DxQQKrxYFI', externalUrl: 'https://youtu.be/_DxQQKrxYFI' }
 	},
 	'Stress Test Arena': {
 		jitsi: {
@@ -34,12 +34,12 @@ export const RoomURLs = {
 		mozillaHub: {
 			externalUrl: 'https://hubs.mozilla.com/nx5rV57/stress-test-arena'
 		},
-		youtube: { videoId: 'pWfUAjIgoJM' }
+		youtube: { videoId: 'pWfUAjIgoJM', externalUrl: 'https://youtu.be/pWfUAjIgoJM' }
 	},
 	'Raid Guild': {
 		jitsi: { domain: 'interspace.geleeroyale.work', roomName: 'Raid Guild' },
 		mozillaHub: { externalUrl: 'https://hubs.mozilla.com/LmrJQqL/raid-guild' },
-		youtube: { videoId: 'f2bnDe5-3mM' }
+		youtube: { videoId: 'f2bnDe5-3mM', externalUrl: 'https://youtu.be/p7gJTpauAgk' }
 	}
 };
 

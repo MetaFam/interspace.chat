@@ -7,13 +7,14 @@ import YoutubeInstance from './integrations/YoutubeInstance';
 // import HubInstance from './integrations/HubInstance';
 
 const SERVICES = {
-  youtube: {
-    title: 'Youtube',
-    component: YoutubeInstance,
-  },
   jitsi: {
     title: 'Jitsi',
     component: JitsiInstance,
+  },
+  youtube: {
+    title: 'Youtube',
+    component: () => null,
+    external: true,
   },
   mozillaHub: {
     title: 'Virtual Hub',
