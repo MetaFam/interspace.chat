@@ -3,7 +3,53 @@ import styled from "styled-components";
 
 import { FloatingSpaceContext } from "../contexts/FloatingSpaceContext";
 import { RoomNames } from "../utils/constants";
-import InterconLogo from "../img/intercon_logo.png"
+import InterconLogo from "../img/intercon_logo.png";
+import pretopiaLogo from "../img/Pretopia_wartermark.png";
+
+const portalStyle = {
+  marginTop: "10px"
+};
+
+const Headline = styled.h6`
+    font-weight: 100;
+    font-size: 1.3rem;
+    padding: 1rem;
+  `;
+
+const SpaceSelector = styled.nav`
+    padding-bottom: 1rem;
+  `;
+
+const SpaceInfo = styled.p`
+    font-size: 2rem;
+  `;
+
+const CurrentSpace = styled.span`
+    color: pink;
+  `;
+
+const Disclaimer = styled.div`
+    position: relative;
+    top: 800px;
+    background: unset;
+  `;
+
+const Watermark = styled.div`
+    position: relative;
+    top: 770px;
+    background: unset;
+    width: 260px;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+  `;
+
+const SpaceWindowInfo = styled.p`
+    position: relative;
+    top: 790px;
+    font-size: 2rem;
+  `;
+
 const Space = () => {
   const { currentFloatingSpaces, setFloatingSpaces } = useContext(FloatingSpaceContext);
   const [modalOpen, setModalOpen] = useState(true);
@@ -34,40 +80,6 @@ const Space = () => {
     }
     setFloatingSpaces(resultantSpaces);
   }
-
-  const portalStyle = {
-    marginTop: "10px"
-  };
-
-  const Headline = styled.h6`
-    font-weight: 100;
-    font-size: 1.3rem;
-    padding: 1rem;
-  `;
-
-  const SpaceSelector = styled.nav`
-    padding-bottom: 1rem;
-  `;
-
-  const SpaceInfo = styled.p`
-    font-size: 2rem;
-  `;
-
-  const CurrentSpace = styled.span`
-    color: pink;
-  `;
-
-  const Disclaimer = styled.div`
-    position: relative;
-    top: 770px;
-    background: unset;
-  `;
-
-  const SpaceWindowInfo = styled.p`
-    position: relative;
-    top: 790px;
-    font-size: 2rem;
-  `;
 
   const displayJoinedSpaces = (floatingSpaceWindows) => {
     let windowsWithoutPlaceholders = floatingSpaceWindows.filter(item => item);
@@ -166,6 +178,10 @@ As such, it is not ready to take all this traffic and will probably blow up.</p>
           <div className="click-zone-highlight g"></div>
         </div>
       </div>
+      <Watermark>
+        <span>Sponsored by</span>
+        <img src={pretopiaLogo} width="100%"/>
+      </Watermark>
       <Disclaimer>
         Feel free to make improvements to the map,
         download the .psd file{" "}
