@@ -4,9 +4,10 @@ import styled from "styled-components";
 import Draggable from "react-draggable";
 
 import { FloatingSpaceContext } from "../contexts/FloatingSpaceContext";
-import LoftRadioInstance from "./LoftRadioInstance";
-import JitsiInstance from "./JitsiInstance";
-import { JitsiInstances } from "../utils/constants";
+import LoftRadioInstance from "./integrations/LoftRadioInstance";
+import RTreesInstance from "./integrations/RTreesInstance";
+import RoomInstance from "./RoomInstance";
+import { RoomNames } from "../utils/constants";
 
 const height = 600;
 const width = 850;
@@ -45,7 +46,8 @@ const FloatingRoomWindowCloser = styled.div`
 const DraggableController = styled.div`
     padding: 15px;
     padding-top: 0px;
-    background-color: #ffffff36;
+    background-color: #3e3d3deb;
+    border-radius: 10;
     cursor: all-scroll;
     pointer-events: all;
     box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
@@ -84,13 +86,17 @@ function FloatingRoomWindow() {
             key: currentSpace,
             element: <LoftRadioInstance width={innerWidth} height={height}></LoftRadioInstance>
           });
-        } else if(JitsiInstances.indexOf(currentSpace) > -1) {
+        } else if(RoomNames.indexOf(currentSpace) > -1) {
           newFloatingRooms.push({
             key: currentSpace,
-            element: <JitsiInstance width={innerWidth} space={currentSpace} height={height}/>
+            element: <RoomInstance width={innerWidth} space={currentSpace} height={height}/>
           });
-          
-        } else if(currentSpace === null) {
+        } else if(currentSpace === "rTrees"){
+          newFloatingRooms.push({
+            key: currentSpace,
+            element: <RTreesInstance backgroundColor={"white"} width={innerWidth} space={currentSpace} height={height}/>
+          });
+        }else if(currentSpace === null) {
           newFloatingRooms.push(null);
         }
         if(currentSpace !== null){
