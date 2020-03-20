@@ -77,7 +77,7 @@ h1 {
 .map-container {
   /* opacity: 0.5; */
   --metagame-left: 50%;
-  --metagame-top: 240px;
+  --metagame-top: 150px;
   --metagame-height: 800px;
   --metagame-scale-ratio: 1;
   --metagame-width: 750px;

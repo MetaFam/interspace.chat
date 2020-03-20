@@ -12,7 +12,6 @@ const Headline = styled.h6`
   font-weight: 100;
   font-size: 1.3rem;
   padding: 1rem;
-  margin-bottom: 1em;
 `;
 
 const SpaceSelector = styled.nav`
@@ -29,7 +28,8 @@ const CurrentSpace = styled.span`
 
 const Disclaimer = styled.div`
   position: relative;
-  top: 850px;
+  top: 830px;
+  margin-bottom: 25px;
   background: unset;
 `;
 
@@ -85,7 +85,7 @@ const Space = () => {
 
   return (
     <SpaceSelector>
-      <span>
+      <span style={{marginBottom:'0px'}}>
         <Headline>
           Welcome to{" "}
           <a
@@ -95,12 +95,6 @@ const Space = () => {
             MetaGame
           </a><i style={{fontSize:'0.6em'}}> v1.0</i>
         </Headline>
-        <span>
-          Come to the chat on{" "}
-          <a href="https://t.me/intercon13" target="_blank">
-            Telegram
-          </a>
-        </span>
         <SpaceInfo>
           {displayJoinedSpaces(currentFloatingSpaces) ? (
             <Fragment>
