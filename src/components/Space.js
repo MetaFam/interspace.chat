@@ -144,7 +144,7 @@ const Space = () => {
             target="_blank"
           >
             MetaGame
-          </a><i style={{fontSize:'0.6em'}}> v1.0</i>
+          </a><i style={{fontSize:'0.6em'}}> v0.1</i>
         </Headline>
         <span>
           Come to the chat on{" "}
