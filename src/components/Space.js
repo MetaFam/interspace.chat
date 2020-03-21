@@ -142,10 +142,9 @@ const Space = () => {
           <a
             href="https://metagame.wtf"
             target="_blank"
-            style={{ textDecoration: "none" }}
           >
             MetaGame
-          </a>
+          </a><i style={{fontSize:'0.6em'}}> v0.1</i>
         </Headline>
         <span>
           Come to the chat on{" "}
