@@ -50,6 +50,7 @@ h1 {
   font-family: "Blox2", "Courier New", Courier, monospace;
   font-size: 1.2rem;
   color: greenyellow;
+  visibility: hidden;
   /* font-size: 12px; */
   width: 100%;
   /* display: block; */
@@ -141,6 +142,10 @@ h1 {
   cursor: pointer;
   /* z-index: 2; */
   /* border: 1px solid grey; */
+}
+
+.click-zone:hover > .roomName {
+  visibility: visible;
 }
 
 .click-zone.a {
