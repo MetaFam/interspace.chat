@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { FloatingSpaceContext } from "../contexts/FloatingSpaceContext";
 
 const portalStyle = {
-	marginTop: '10px'
+  marginTop: '10px'
 };
 
 const Headline = styled.h6`
@@ -31,6 +31,12 @@ const Disclaimer = styled.div`
 	margin-bottom: 25px;
 	background: unset;
 `;
+
+
+function openInNewTab(url) {
+  let win = window.open(url, '_blank');
+  win.focus();
+}
 
 const Space = () => {
   const { currentFloatingSpaces, addFloatingSpace } = useContext(FloatingSpaceContext);
@@ -64,19 +70,19 @@ const Space = () => {
         </Headline>
         <SpaceInfo>
           {displayedJoinedSpaces &&
-            <Fragment>
-              You're in the{" "}
-              <CurrentSpace>
-                {displayedJoinedSpaces}
-              </CurrentSpace>
-              !
-            </Fragment>
+          <Fragment>
+            You're in the{" "}
+            <CurrentSpace>
+              {displayedJoinedSpaces}
+            </CurrentSpace>
+            !
+          </Fragment>
           }
         </SpaceInfo>
       </span>
 
-			<div className='map-container'>
-				{/*
+      <div className='map-container'>
+        {/*
         <span className="mapInstructions">
           Click a location to join a conversation.
         </span>
@@ -133,6 +139,13 @@ const Space = () => {
         >
           <span className="roomName">rTrees</span>
           <div className="click-zone-highlight g"></div>
+        </div>
+        <div
+          className='click-zone h'
+          onClick={() => openInNewTab('https://forum.metagame.wtf/')}
+        >
+          <span className='roomName'>Forum</span>
+          <div className='click-zone-highlight h'></div>
         </div>
       </div>
       <Disclaimer>
