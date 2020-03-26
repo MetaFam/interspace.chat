@@ -316,6 +316,37 @@ h1 {
   left: 40px;
 }
 
+.click-zone.h {
+  transform: var(--metagame-transform);
+  left: calc(var(--metagame-left) - 42px * var(--metagame-scale-ratio));
+  top: calc(var(--metagame-top) + 532px * var(--metagame-scale-ratio));
+  width: calc(66px* var(--metagame-scale-ratio));
+  height: calc(66px* var(--metagame-scale-ratio));
+  background-color: transparent;
+  background-image: unset;
+  border: none;
+  min-height: 30px;
+}
+
+.click-zone.h .roomName {
+  position: inherit;
+  left: 39px;
+  top: 20px;
+  opacity: 0;
+  transition: 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.click-zone.h:hover .roomName {
+  opacity: 1;
+}
+
+.click-zone-highlight.h {
+  position: relative;
+  height: 64px;
+  width: 60px;
+  left: 40px;
+}
+
 .click-zone:hover .click-zone-highlight {
   border: solid 0.5px greenyellow;;
 }

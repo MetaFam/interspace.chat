@@ -1,35 +1,35 @@
-import React, { Fragment, useContext } from "react";
-import styled from "styled-components";
+import React, { Fragment, useContext } from 'react';
+import styled from 'styled-components';
 
 import { FloatingSpaceContext } from "../contexts/FloatingSpaceContext";
 
 const portalStyle = {
-  marginTop: "10px"
+	marginTop: '10px'
 };
 
 const Headline = styled.h6`
-  font-weight: 100;
-  font-size: 1.3rem;
-  padding: 1rem;
+	font-weight: 100;
+	font-size: 1.3rem;
+	padding: 1rem;
 `;
 
 const SpaceSelector = styled.nav`
-  padding-bottom: 1rem;
+	padding-bottom: 1rem;
 `;
 
 const SpaceInfo = styled.p`
-  font-size: 2rem;
+	font-size: 2rem;
 `;
 
 const CurrentSpace = styled.span`
-  color: pink;
+	color: pink;
 `;
 
 const Disclaimer = styled.div`
-  position: relative;
-  top: 830px;
-  margin-bottom: 25px;
-  background: unset;
+	position: relative;
+	top: 830px;
+	margin-bottom: 25px;
+	background: unset;
 `;
 
 const Space = () => {
@@ -75,8 +75,8 @@ const Space = () => {
         </SpaceInfo>
       </span>
 
-      <div className="map-container">
-        {/*
+			<div className='map-container'>
+				{/*
         <span className="mapInstructions">
           Click a location to join a conversation.
         </span>
