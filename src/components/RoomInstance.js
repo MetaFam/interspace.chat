@@ -24,6 +24,14 @@ const SERVICES = {
 };
 
 
+const Container = styled.div`
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+`;
+
 const ServiceButtonContainer = styled.div`
   display: flex;
   flex-direction: row;
@@ -50,7 +58,11 @@ const ServiceButton = styled.div`
   }
 `;
 
-const RoomInstance = ({width, height, space}) => {
+const ServiceContent = styled.div`
+  flex: 1;
+`;
+
+const RoomInstance = ({space}) => {
   const roomURLs = RoomURLs[space];
   const availableServiceNames = Object.keys(SERVICES).filter(serviceName => Object.keys(roomURLs).includes(serviceName));
 
@@ -73,7 +85,7 @@ const RoomInstance = ({width, height, space}) => {
   }
 
   return (
-    <div>
+    <Container>
       <ServiceButtonContainer>
         {
           availableServiceNames.map(serviceName =>
@@ -91,8 +103,10 @@ const RoomInstance = ({width, height, space}) => {
         }
       </ServiceButtonContainer>
 
-      <RoomServiceComponent width={width} height={height} roomData={roomData} />
-    </div>
+      <ServiceContent>
+        <RoomServiceComponent roomData={roomData} />
+      </ServiceContent>
+    </Container>
   );
 };
 
