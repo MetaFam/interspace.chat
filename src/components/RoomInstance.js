@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import { RoomURLs } from "../utils/constants";
 import JitsiInstance from './integrations/JitsiInstance';
-import YoutubeInstance from './integrations/YoutubeInstance';
+// import YoutubeInstance from './integrations/YoutubeInstance';
 // import HubInstance from './integrations/HubInstance';
 
 const SERVICES = {

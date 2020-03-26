@@ -2,7 +2,6 @@ import React, { Fragment, useContext } from "react";
 import styled from "styled-components";
 
 import { FloatingSpaceContext } from "../contexts/FloatingSpaceContext";
-import { RoomNames } from "../utils/constants";
 
 const portalStyle = {
   marginTop: "10px"
@@ -34,54 +33,21 @@ const Disclaimer = styled.div`
 `;
 
 const Space = () => {
-  const { currentFloatingSpaces, setFloatingSpaces } = useContext(
-    FloatingSpaceContext
-  );
-  const launchFloatingSpace = floatingSpace => {
-    let resultantSpaces = null;
-    if (currentFloatingSpaces && currentFloatingSpaces.length > 0) {
-      if (currentFloatingSpaces.indexOf(floatingSpace) > -1) {
-        resultantSpaces = currentFloatingSpaces;
-      } else if (RoomNames.indexOf(floatingSpace) > -1) {
-        let replaceIndex;
-        for (let instance of RoomNames) {
-          if (currentFloatingSpaces.indexOf(instance) > -1) {
-            replaceIndex = currentFloatingSpaces.indexOf(instance);
-          }
-        }
-        if (replaceIndex > -1) {
-          let spliceJitsiDuplicates = [...currentFloatingSpaces]; // Prepare for splice
-          spliceJitsiDuplicates.splice(replaceIndex, 1, floatingSpace);
-          resultantSpaces = [...spliceJitsiDuplicates];
-        } else {
-          resultantSpaces = [...currentFloatingSpaces, floatingSpace];
-        }
-      } else {
-        resultantSpaces = [...currentFloatingSpaces, floatingSpace];
-      }
-    } else {
-      resultantSpaces = [floatingSpace];
-    }
-    setFloatingSpaces(resultantSpaces);
-  };
+  const { currentFloatingSpaces, addFloatingSpace } = useContext(FloatingSpaceContext);
 
-  const displayJoinedSpaces = floatingSpaceWindows => {
-    let windowsWithoutPlaceholders = floatingSpaceWindows.filter(item => item);
-    if (windowsWithoutPlaceholders.length > 0) {
-      if (windowsWithoutPlaceholders.length > 2) {
-        let nameCount = windowsWithoutPlaceholders.length;
-        return (
-          windowsWithoutPlaceholders.slice(0, nameCount - 2).join(", ") +
-          ", " +
-          windowsWithoutPlaceholders.slice(nameCount - 2, nameCount).join(" & ")
-        );
-      } else {
-        return windowsWithoutPlaceholders.join(" & ");
-      }
+  let displayedJoinedSpaces;
+  if (currentFloatingSpaces.length > 0) {
+    if (currentFloatingSpaces.length > 2) {
+      let nameCount = currentFloatingSpaces.length;
+      displayedJoinedSpaces = (
+        currentFloatingSpaces.slice(0, nameCount - 2).join(", ") +
+        ", " +
+        currentFloatingSpaces.slice(nameCount - 2, nameCount).join(" & ")
+      );
     } else {
-      return null;
+      displayedJoinedSpaces = currentFloatingSpaces.join(" & ");
     }
-  };
+  }
 
   return (
     <SpaceSelector>
@@ -91,20 +57,21 @@ const Space = () => {
           <a
             href="https://metagame.wtf"
             target="_blank"
+            rel="noopener noreferrer"
           >
             MetaGame
           </a><i style={{fontSize:'0.6em'}}> v0.1</i>
         </Headline>
         <SpaceInfo>
-          {displayJoinedSpaces(currentFloatingSpaces) ? (
+          {displayedJoinedSpaces &&
             <Fragment>
               You're in the{" "}
               <CurrentSpace>
-                {displayJoinedSpaces(currentFloatingSpaces)}
+                {displayedJoinedSpaces}
               </CurrentSpace>
               !
             </Fragment>
-          ) : null}
+          }
         </SpaceInfo>
       </span>
 
@@ -117,21 +84,21 @@ const Space = () => {
         <img src="metaspace.png" className="image-map" alt="map" />
         <div
           className="click-zone a"
-          onClick={() => launchFloatingSpace("House of Defiance")}
+          onClick={() => addFloatingSpace("House of Defiance")}
         >
           <span className="roomName">House of Defiance</span>
           <div className="click-zone-highlight a"></div>
         </div>
         <div
           className="click-zone b"
-          onClick={() => launchFloatingSpace("House of DAOs")}
+          onClick={() => addFloatingSpace("House of DAOs")}
         >
           <span className="roomName">House of DAOs</span>
           <div className="click-zone-highlight b"></div>
         </div>
         <div
           className="click-zone c"
-          onClick={() => launchFloatingSpace("Raid Guild")}
+          onClick={() => addFloatingSpace("Raid Guild")}
         >
           <span className="roomName">Raid Guild</span>
           <div className="click-zone-highlight c"></div>
@@ -139,7 +106,7 @@ const Space = () => {
         <div
           className="click-zone d"
           data-zone="stress-test-arena"
-          onClick={() => launchFloatingSpace("Stress Test Arena")}
+          onClick={() => addFloatingSpace("Stress Test Arena")}
         >
           <span className="roomName" style={portalStyle}>
             Stress Test Arena
@@ -148,21 +115,21 @@ const Space = () => {
         </div>
         <div
           className="click-zone e"
-          onClick={() => launchFloatingSpace("House of Adoption")}
+          onClick={() => addFloatingSpace("House of Adoption")}
         >
           <span className="roomName">House of Adoption</span>
           <div className="click-zone-highlight e"></div>
         </div>
         <div
           className="click-zone f"
-          onClick={() => launchFloatingSpace("loft.radio")}
+          onClick={() => addFloatingSpace("loft.radio")}
         >
           <span className="roomName">loft.radio</span>
           <div className="click-zone-highlight f"></div>
         </div>
         <div
           className="click-zone g"
-          onClick={() => launchFloatingSpace("rTrees")}
+          onClick={() => addFloatingSpace("rTrees")}
         >
           <span className="roomName">rTrees</span>
           <div className="click-zone-highlight g"></div>

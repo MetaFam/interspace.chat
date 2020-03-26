@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useContext, useState, useRef } from "react";
+import React, { useContext } from "react";
 import ReactDOM from "react-dom";
 import styled from "styled-components";
 import Draggable from "react-draggable";
@@ -56,86 +56,36 @@ const DraggableController = styled.div`
     }
 `
 
+function getFloatingRoomWindow(windowKey) {
+  if(windowKey === "loft.radio") {
+    return <LoftRadioInstance width={innerWidth} height={height}></LoftRadioInstance>;
+  } else if(RoomNames.indexOf(windowKey) > -1) {
+    return <RoomInstance width={innerWidth} space={windowKey} height={height}/>;
+  } else if(windowKey === "rTrees"){
+    return <RTreesInstance backgroundColor={"white"} width={innerWidth} space={windowKey} height={height}/>;
+  } else if(windowKey === null) {
+    return null;
+  }
+}
+
 function FloatingRoomWindow() {
-  const { currentFloatingSpaces, setFloatingSpaces } = useContext(FloatingSpaceContext);
-  const [floatingRoomWindows, setFloatingRoomWindow] = useState(currentFloatingSpaces);
-  const [focusedWindow, setFocusedWindow] = useState(null);
-  const windowFrame = useRef();
-
-  useEffect(() => {
-    let useFloatingRoomWindow = getFloatingRoomWindow(currentFloatingSpaces);
-    setFloatingRoomWindow(useFloatingRoomWindow);
-  }, [currentFloatingSpaces])
-
-  useEffect(() => {
-    // Sets the focused window to the incremented
-    if(windowFrame.current) {
-      let newWindow = ReactDOM.findDOMNode(windowFrame.current).parentNode.querySelector(`[data-window="window-${focusedWindow}"]`);
-      if(newWindow){
-        ReactDOM.findDOMNode(windowFrame.current).parentNode.querySelector(`[data-window="window-${focusedWindow}"]`).style.zIndex = zIndexIterator++;
-      }
-    }
-  }, [focusedWindow])
-
-  const getFloatingRoomWindow = (currentFloatingSpaces) => {
-    let newFloatingRooms = [];
-    if(currentFloatingSpaces){
-      for(let currentSpace of currentFloatingSpaces) {
-        if(currentSpace === "loft.radio") {
-          newFloatingRooms.push({
-            key: currentSpace,
-            element: <LoftRadioInstance width={innerWidth} height={height}></LoftRadioInstance>
-          });
-        } else if(RoomNames.indexOf(currentSpace) > -1) {
-          newFloatingRooms.push({
-            key: currentSpace,
-            element: <RoomInstance width={innerWidth} space={currentSpace} height={height}/>
-          });
-        } else if(currentSpace === "rTrees"){
-          newFloatingRooms.push({
-            key: currentSpace,
-            element: <RTreesInstance backgroundColor={"white"} width={innerWidth} space={currentSpace} height={height}/>
-          });
-        }else if(currentSpace === null) {
-          newFloatingRooms.push(null);
-        }
-        if(currentSpace !== null){
-          setFocusedWindow(currentSpace);
-        }
-      }
-    }
-    return newFloatingRooms.length > 0 ? newFloatingRooms : null;
-  }
-
-  const closeFloatingRoomWindow = (windowKey) => {
-    if(currentFloatingSpaces.indexOf(windowKey) > -1) {
-      let newFloatingSpaces = [...currentFloatingSpaces];
-      // Replaces the floating window with a null record, to prevent the existing windows from shifting position
-      newFloatingSpaces.splice(newFloatingSpaces.indexOf(windowKey), 1, null);
-      setFloatingSpaces(newFloatingSpaces);
-      setFocusedWindow(null);
-    }
-  }
+  const { currentFloatingSpaces, closeFloatingSpace } = useContext(FloatingSpaceContext);
 
   let setWindowFocus = (event) => {
     ReactDOM.findDOMNode(event.target).parentNode.style.zIndex = zIndexIterator++;
   }
 
   return (
-    <Fragment>
-      {floatingRoomWindows && floatingRoomWindows.length >= 1 && floatingRoomWindows.map(floatingWindow => 
-        (floatingWindow && floatingWindow.key && floatingWindow.element) ? 
-          <FloatingRoomWindowContainer key={floatingWindow.key} ref={windowFrame} onMouseDown={(event) => setWindowFocus(event)} data-window={`window-${floatingWindow.key}`}>
-            <Draggable>
-                <DraggableController>
-                    <FloatingRoomWindowCloser onClick={() => closeFloatingRoomWindow(floatingWindow.key)}/>
-                    {floatingWindow.element}
-                </DraggableController>
-            </Draggable>
-          </FloatingRoomWindowContainer>
-        : null
-      )}
-    </Fragment>
+    currentFloatingSpaces.map(windowKey => (
+      <FloatingRoomWindowContainer key={windowKey} onMouseDown={(event) => setWindowFocus(event)} data-window={`window-${windowKey}`}>
+        <Draggable>
+          <DraggableController>
+            <FloatingRoomWindowCloser onClick={() => closeFloatingSpace(windowKey)}/>
+            {getFloatingRoomWindow(windowKey)}
+          </DraggableController>
+        </Draggable>
+      </FloatingRoomWindowContainer>
+    ))
   );
 }
 
