@@ -3,24 +3,25 @@
   font-style: normal;
   font-weight: 800;
   src: url('./fonts/Blox2.ttf'); /* IE9 Compat Modes */
-  src: local('Blox2'), local('Blox2'),
-       url('./fonts/Blox2.ttf') format('truetype'), /* Safari, Android, iOS */
+  src: local('Blox2'), local('Blox2'), url('./fonts/Blox2.ttf') format('truetype'); /* Safari, Android, iOS */
 }
 
 * {
-  font-family: "Courier New", Courier, monospace;
+  font-family: 'Courier New', Courier, monospace;
   font-weight: 800;
   color: whitesmoke;
 }
 
 html {
-  background-image: url("./img/background.jpg");
+  /* background-image: url('./img/background.jpg'); */
+  background-color: black;
   background-size: cover;
   min-height: 110%;
 }
 
 .body {
   margin: auto;
+  height: 100%;
 }
 
 h1 {
@@ -29,6 +30,7 @@ h1 {
 
 .App {
   text-align: center;
+  height: 100%;
 }
 
 .App-header {
@@ -47,7 +49,7 @@ h1 {
 }
 
 .roomName {
-  font-family: "Blox2", "Courier New", Courier, monospace;
+  font-family: 'Blox2', 'Courier New', Courier, monospace;
   font-size: 1.2rem;
   color: greenyellow;
   visibility: hidden;
@@ -56,7 +58,7 @@ h1 {
   /* display: block; */
   padding: auto;
   /* margin-top: -20px; */
-  background-color:rgba(0, 0, 255, 0);
+  background-color: rgba(0, 0, 255, 0);
   background-image: unset;
   -webkit-text-stroke: 1px rgba(0, 0, 0, 0.247);
 }
@@ -107,7 +109,7 @@ h1 {
 
 .defaultRoomName {
   position: absolute;
-  left: calc(var(--metagame-left) + var(--metagame-width)*var(--metagame-scale-ratio) - 5%);
+  left: calc(var(--metagame-left) + var(--metagame-width) * var(--metagame-scale-ratio) - 5%);
   top: calc(var(--metagame-top) + 5%);
   color: greenyellow;
 }
@@ -115,7 +117,6 @@ h1 {
 /* .map-container:hover > * {
   opacity: 1;
 } */
-
 
 .container {
   position: relative;
@@ -177,8 +178,8 @@ h1 {
   transform: var(--metagame-transform);
   left: calc(var(--metagame-left) * var(--metagame-scale-ratio));
   top: calc(var(--metagame-top) + 365px * var(--metagame-scale-ratio));
-  width: calc(140px* var(--metagame-scale-ratio));
-  height: calc(160px* var(--metagame-scale-ratio));
+  width: calc(140px * var(--metagame-scale-ratio));
+  height: calc(160px * var(--metagame-scale-ratio));
   background-color: transparent;
   background-image: unset;
   /* border: solid 1px blue; */
@@ -201,8 +202,8 @@ h1 {
   transform: var(--metagame-transform);
   left: calc(var(--metagame-left) - 184px * var(--metagame-scale-ratio));
   top: calc(var(--metagame-top) + 549px * var(--metagame-scale-ratio));
-  width: calc(100px* var(--metagame-scale-ratio));
-  height: calc(70px* var(--metagame-scale-ratio));
+  width: calc(100px * var(--metagame-scale-ratio));
+  height: calc(70px * var(--metagame-scale-ratio));
   background-color: transparent;
   background-image: unset;
   /* border: solid 1px blue; */
@@ -217,13 +218,12 @@ h1 {
   width: 55px;
 }
 
-
 .click-zone.d {
   transform: var(--metagame-transform);
   left: calc(var(--metagame-left) + 168px * var(--metagame-scale-ratio));
   top: calc(var(--metagame-top) + 535px * var(--metagame-scale-ratio));
-  width: calc(100px* var(--metagame-scale-ratio));
-  height: calc(100px* var(--metagame-scale-ratio));
+  width: calc(100px * var(--metagame-scale-ratio));
+  height: calc(100px * var(--metagame-scale-ratio));
   background-color: transparent;
   background-image: unset;
   /* border: solid 1px blue; */
@@ -248,8 +248,8 @@ h1 {
   transform: var(--metagame-transform);
   left: calc(var(--metagame-left) + 85px * var(--metagame-scale-ratio));
   top: calc(var(--metagame-top) + 417px * var(--metagame-scale-ratio));
-  width: calc(120px* var(--metagame-scale-ratio));
-  height: calc(100px* var(--metagame-scale-ratio));
+  width: calc(120px * var(--metagame-scale-ratio));
+  height: calc(100px * var(--metagame-scale-ratio));
   background-color: transparent;
   background-image: unset;
   /* border: solid 1px blue; */
@@ -273,8 +273,8 @@ h1 {
   transform: var(--metagame-transform);
   left: calc(var(--metagame-left) - 2px * var(--metagame-scale-ratio));
   top: calc(var(--metagame-top) + 269px * var(--metagame-scale-ratio));
-  width: calc(140px* var(--metagame-scale-ratio));
-  height: calc(25px* var(--metagame-scale-ratio));
+  width: calc(140px * var(--metagame-scale-ratio));
+  height: calc(25px * var(--metagame-scale-ratio));
   background-color: transparent;
   background-image: unset;
   border: none;
@@ -294,8 +294,8 @@ h1 {
   transform: var(--metagame-transform);
   left: calc(var(--metagame-left) - 7px * var(--metagame-scale-ratio));
   top: calc(var(--metagame-top) + 580px * var(--metagame-scale-ratio));
-  width: calc(140px* var(--metagame-scale-ratio));
-  height: calc(25px* var(--metagame-scale-ratio));
+  width: calc(140px * var(--metagame-scale-ratio));
+  height: calc(25px * var(--metagame-scale-ratio));
   background-color: transparent;
   background-image: unset;
   border: none;
@@ -320,8 +320,8 @@ h1 {
   transform: var(--metagame-transform);
   left: calc(var(--metagame-left) - 42px * var(--metagame-scale-ratio));
   top: calc(var(--metagame-top) + 532px * var(--metagame-scale-ratio));
-  width: calc(66px* var(--metagame-scale-ratio));
-  height: calc(66px* var(--metagame-scale-ratio));
+  width: calc(66px * var(--metagame-scale-ratio));
+  height: calc(66px * var(--metagame-scale-ratio));
   background-color: transparent;
   background-image: unset;
   border: none;
@@ -348,7 +348,7 @@ h1 {
 }
 
 .click-zone:hover .click-zone-highlight {
-  border: solid 0.5px greenyellow;;
+  border: solid 0.5px greenyellow;
 }
 
 .modal {
@@ -360,8 +360,8 @@ h1 {
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 
 /* Modal Content/Box */
@@ -380,10 +380,20 @@ h1 {
   height: 40px;
   border-radius: 8px;
   font-size: 20px;
-  background: linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(93,93,102,0.97) 53%, rgba(0,6,8,1) 100%); 
+  background: linear-gradient(
+    0deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(93, 93, 102, 0.97) 53%,
+    rgba(0, 6, 8, 1) 100%
+  );
 }
 .modal-close:hover {
-  background: linear-gradient(0deg, rgba(87,87,93,1) 0%, rgba(9,9,11,0.9794292717086834) 53%, rgba(77,82,84,1) 100%);
+  background: linear-gradient(
+    0deg,
+    rgba(87, 87, 93, 1) 0%,
+    rgba(9, 9, 11, 0.9794292717086834) 53%,
+    rgba(77, 82, 84, 1) 100%
+  );
 }
 .modal_text {
   color: black;
