@@ -11,7 +11,8 @@ const portalStyle = {
 
 const Headline = styled.h6`
 	font-weight: 100;
-	font-size: 1.3rem;
+  font-size: 1.3rem;
+  margin-bottom: 0px;
 `;
 
 const SpaceSelector = styled.nav`
