@@ -78,11 +78,21 @@ h1 {
 .map-container {
   /* opacity: 0.5; */
   --metagame-left: 50%;
-  --metagame-top: 150px;
+  --metagame-top: 0px;
   --metagame-height: 800px;
   --metagame-scale-ratio: 1;
   --metagame-width: 750px;
   --metagame-transform: translateX(-50%);
+}
+
+.react-transform-component {
+  width: 100% !important;
+  height: calc(var(--metagame-scale-ratio) * var(--metagame-height)) !important;
+}
+
+.react-transform-element {
+  width: 100% !important;
+  height: calc(var(--metagame-scale-ratio) * var(--metagame-height)) !important;
 }
 
 .image-map {
