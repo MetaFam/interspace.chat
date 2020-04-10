@@ -113,6 +113,7 @@ function FloatingRoomWindow() {
           zIndex: zIndexes[windowKey] || 1,
         }}
         onDragStart={() => setWindowFocus(windowKey)}
+        maxWidth={'92%'}
       >
         <SpaceContainer>
           <SpaceHeader>
