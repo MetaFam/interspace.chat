@@ -34,7 +34,15 @@ const Space = () => {
 	return (
 		<div>
 			<span style={{ marginBottom: '0px' }}>
-				<div style={{ marginTop: '10px' }}>
+				<div
+					style={{
+						position: 'absolute',
+						top: '10px',
+						left: 0,
+						right: 0,
+						margin: 'auto',
+					}}
+				>
 					Welcome to{' '}
 					<a
 						href='https://metagame.wtf'
@@ -119,7 +127,7 @@ const Space = () => {
 			<div
 				style={{
 					position: 'absolute',
-					bottom: 1,
+					bottom: '10px',
 					left: 0,
 					right: 0,
 					margin: 'auto',
