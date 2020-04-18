@@ -1,68 +1,64 @@
 @font-face {
-  font-family: 'Blox2';
-  font-style: normal;
-  font-weight: 800;
-  src: url('./fonts/Blox2.ttf'); /* IE9 Compat Modes */
-  src: local('Blox2'), local('Blox2'),
-       url('./fonts/Blox2.ttf') format('truetype'), /* Safari, Android, iOS */
+	font-family: 'Blox2';
+	font-style: normal;
+	font-weight: 800;
+	src: url('./fonts/Blox2.ttf'); /* IE9 Compat Modes */
+	src: local('Blox2'), local('Blox2'),
+		url('./fonts/Blox2.ttf') format('truetype'); /* Safari, Android, iOS */
 }
 
 * {
-  font-family: "Courier New", Courier, monospace;
-  font-weight: 800;
-  color: whitesmoke;
+	font-family: 'Courier New', Courier, monospace;
+	font-weight: 800;
+	color: whitesmoke;
 }
 
 html {
-  background-image: url("./img/background.jpg");
-  background-size: cover;
-  min-height: 110%;
-}
-
-.body {
-  margin: auto;
+	background-image: url('https://wallpaperaccess.com/full/741557.jpg');
+	background-size: cover;
+	min-height: 100vh;
 }
 
 h1 {
-  margin-left: 50px;
+	margin-left: 50px;
 }
 
 .App {
-  text-align: center;
+	text-align: center;
 }
 
 .App-header {
-  background-color: #282c34;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+	background-color: #282c34;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	align-items: center;
+	justify-content: center;
+	font-size: calc(10px + 2vmin);
+	color: white;
 }
 
 .App-header p {
-  font-size: calc(10px + 1vmin);
+	font-size: calc(10px + 1vmin);
 }
 
 .roomName {
-  font-family: "Blox2", "Courier New", Courier, monospace;
-  font-size: 1.2rem;
-  color: greenyellow;
-  visibility: hidden;
-  /* font-size: 12px; */
-  width: 100%;
-  /* display: block; */
-  padding: auto;
-  /* margin-top: -20px; */
-  background-color:rgba(0, 0, 255, 0);
-  background-image: unset;
-  -webkit-text-stroke: 1px rgba(0, 0, 0, 0.247);
+	font-family: 'Blox2', 'Courier New', Courier, monospace;
+	font-size: 1.2rem;
+	color: greenyellow;
+	visibility: hidden;
+	/* font-size: 12px; */
+	width: 100%;
+	/* display: block; */
+	padding: auto;
+	/* margin-top: -20px; */
+	background-color: rgba(0, 0, 255, 0);
+	background-image: unset;
+	-webkit-text-stroke: 1px rgba(0, 0, 0, 0.247);
 }
 
 .roomName:hover {
-  text-shadow: 5px 0px 10px greenyellow;
+	text-shadow: 5px 0px 10px greenyellow;
 }
 
 /* .map-background {
@@ -76,323 +72,334 @@ h1 {
 } */
 
 .map-container {
-  /* opacity: 0.5; */
-  --metagame-left: 50%;
-  --metagame-top: 150px;
-  --metagame-height: 800px;
-  --metagame-scale-ratio: 1;
-  --metagame-width: 750px;
-  --metagame-transform: translateX(-50%);
+	/* opacity: 0.5; */
+	--metagame-left: 50%;
+	--metagame-top: 50px;
+	--metagame-height: 90%;
+	--metagame-scale-ratio: 1;
+	--metagame-width: 750px;
+	--metagame-transform: translateX(-50%);
 }
 
 .image-map {
-  position: absolute;
-  transform: var(--metagame-transform);
-  left: var(--metagame-left);
-  top: var(--metagame-top);
-  height: calc(var(--metagame-scale-ratio) * var(--metagame-height));
-  border: solid 2px transparent;
-  background: unset;
-  box-sizing: border-box;
-  /* z-index: 0; */
+	position: absolute;
+	transform: var(--metagame-transform);
+	left: var(--metagame-left);
+	top: var(--metagame-top);
+	height: calc(var(--metagame-scale-ratio) * var(--metagame-height));
+	border: solid 2px transparent;
+	background: unset;
+	box-sizing: border-box;
+	/* z-index: 0; */
 }
 
 .mapInstructions {
-  position: absolute;
-  left: calc(var(--metagame-left));
-  top: calc(var(--metagame-top) - 7%);
-  color: white;
-  font-size: 1.3rem;
+	position: absolute;
+	left: calc(var(--metagame-left));
+	top: calc(var(--metagame-top) - 7%);
+	color: white;
+	font-size: 1.3rem;
 }
 
 .defaultRoomName {
-  position: absolute;
-  left: calc(var(--metagame-left) + var(--metagame-width)*var(--metagame-scale-ratio) - 5%);
-  top: calc(var(--metagame-top) + 5%);
-  color: greenyellow;
+	position: absolute;
+	left: calc(
+		var(--metagame-left) + var(--metagame-width) *
+			var(--metagame-scale-ratio) - 5%
+	);
+	top: calc(var(--metagame-top) + 5%);
+	color: greenyellow;
 }
 
 /* .map-container:hover > * {
   opacity: 1;
 } */
 
-
 .container {
-  position: relative;
+	position: relative;
 }
 
 .video {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 640px;
-  height: 480px;
-  background: beige;
-  border: 3px groove yellow;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 640px;
+	height: 480px;
+	background: beige;
+	border: 3px groove yellow;
 }
 
 .click-zone {
-  position: absolute;
+	position: absolute;
 
-  /* z-index: 2; */
-  /* border: 1px solid grey; */
+	/* z-index: 2; */
+	/* border: 1px solid grey; */
 }
 .click-zone:hover {
-  text-shadow: 5px 0px 10px greenyellow;
-  cursor: pointer;
-  /* z-index: 2; */
-  /* border: 1px solid grey; */
+	text-shadow: 5px 0px 10px greenyellow;
+	cursor: pointer;
+	/* z-index: 2; */
+	/* border: 1px solid grey; */
 }
 
 .click-zone:hover > .roomName {
-  visibility: visible;
+	visibility: visible;
 }
 
 .click-zone.a {
-  transform: var(--metagame-transform);
-  left: calc(var(--metagame-left) - 89px * var(--metagame-scale-ratio));
-  top: calc(var(--metagame-top) + 400px);
-  width: calc(100px * var(--metagame-scale-ratio));
-  height: calc(120px * var(--metagame-scale-ratio));
-  background-color: transparent;
-  background-image: unset;
-  border: solid 1px transparent;
-  /* box-sizing: border-box; */
+	transform: var(--metagame-transform);
+	left: calc(var(--metagame-left) - 89px * var(--metagame-scale-ratio));
+	top: calc(var(--metagame-top) + 600px);
+	width: calc(100px * var(--metagame-scale-ratio));
+	height: calc(120px * var(--metagame-scale-ratio));
+	background-color: transparent;
+	background-image: unset;
+	border: solid 1px transparent;
+	/* box-sizing: border-box; */
 }
 
 .click-zone.a .roomName {
-  position: relative;
-  left: -82px;
+	position: relative;
+	left: -82px;
 }
 
 .click-zone-highlight.a {
-  height: 85px;
-  width: 82px;
-  left: 7px;
-  top: -2px;
-  position: relative;
+	height: 85px;
+	width: 82px;
+	left: 7px;
+	top: -2px;
+	position: relative;
 }
 
 .click-zone.b {
-  transform: var(--metagame-transform);
-  left: calc(var(--metagame-left) * var(--metagame-scale-ratio));
-  top: calc(var(--metagame-top) + 365px * var(--metagame-scale-ratio));
-  width: calc(140px* var(--metagame-scale-ratio));
-  height: calc(160px* var(--metagame-scale-ratio));
-  background-color: transparent;
-  background-image: unset;
-  /* border: solid 1px blue; */
-  border: none;
+	transform: var(--metagame-transform);
+	left: calc(var(--metagame-left) * var(--metagame-scale-ratio));
+	top: calc(var(--metagame-top) + 365px * var(--metagame-scale-ratio));
+	width: calc(140px * var(--metagame-scale-ratio));
+	height: calc(160px * var(--metagame-scale-ratio));
+	background-color: transparent;
+	background-image: unset;
+	/* border: solid 1px blue; */
+	border: none;
 }
 
 .click-zone.b .roomName {
-  position: relative;
-  top: 50px;
+	position: relative;
+	top: 50px;
 }
 
 .click-zone-highlight.b {
-  position: relative;
-  height: 100px;
-  width: 70px;
-  left: 30px;
+	position: relative;
+	height: 100px;
+	width: 70px;
+	left: 30px;
 }
 
 .click-zone.c {
-  transform: var(--metagame-transform);
-  left: calc(var(--metagame-left) - 184px * var(--metagame-scale-ratio));
-  top: calc(var(--metagame-top) + 549px * var(--metagame-scale-ratio));
-  width: calc(100px* var(--metagame-scale-ratio));
-  height: calc(70px* var(--metagame-scale-ratio));
-  background-color: transparent;
-  background-image: unset;
-  /* border: solid 1px blue; */
-  border: none;
+	transform: var(--metagame-transform);
+	left: calc(var(--metagame-left) - 184px * var(--metagame-scale-ratio));
+	top: calc(var(--metagame-top) + 549px * var(--metagame-scale-ratio));
+	width: calc(100px * var(--metagame-scale-ratio));
+	height: calc(70px * var(--metagame-scale-ratio));
+	background-color: transparent;
+	background-image: unset;
+	/* border: solid 1px blue; */
+	border: none;
 }
 
 .click-zone-highlight.c {
-  height: 60px;
-  left: 105px;
-  top: -39px;
-  position: relative;
-  width: 55px;
+	height: 60px;
+	left: 105px;
+	top: -39px;
+	position: relative;
+	width: 55px;
 }
 
-
 .click-zone.d {
-  transform: var(--metagame-transform);
-  left: calc(var(--metagame-left) + 168px * var(--metagame-scale-ratio));
-  top: calc(var(--metagame-top) + 535px * var(--metagame-scale-ratio));
-  width: calc(100px* var(--metagame-scale-ratio));
-  height: calc(100px* var(--metagame-scale-ratio));
-  background-color: transparent;
-  background-image: unset;
-  /* border: solid 1px blue; */
-  border: none;
+	transform: var(--metagame-transform);
+	left: calc(var(--metagame-left) + 168px * var(--metagame-scale-ratio));
+	top: calc(var(--metagame-top) + 535px * var(--metagame-scale-ratio));
+	width: calc(100px * var(--metagame-scale-ratio));
+	height: calc(100px * var(--metagame-scale-ratio));
+	background-color: transparent;
+	background-image: unset;
+	/* border: solid 1px blue; */
+	border: none;
 }
 
 .click-zone.d .roomName {
-  margin-top: 10px;
-  position: relative;
-  left: 5px;
+	margin-top: 10px;
+	position: relative;
+	left: 5px;
 }
 
 .click-zone-highlight.d {
-  height: 75px;
-  top: -62px;
-  left: -69px;
-  width: 70px;
-  position: relative;
+	height: 75px;
+	top: -62px;
+	left: -69px;
+	width: 70px;
+	position: relative;
 }
 
 .click-zone.e {
-  transform: var(--metagame-transform);
-  left: calc(var(--metagame-left) + 85px * var(--metagame-scale-ratio));
-  top: calc(var(--metagame-top) + 417px * var(--metagame-scale-ratio));
-  width: calc(120px* var(--metagame-scale-ratio));
-  height: calc(100px* var(--metagame-scale-ratio));
-  background-color: transparent;
-  background-image: unset;
-  /* border: solid 1px blue; */
-  border: none;
+	transform: var(--metagame-transform);
+	left: calc(var(--metagame-left) + 85px * var(--metagame-scale-ratio));
+	top: calc(var(--metagame-top) + 417px * var(--metagame-scale-ratio));
+	width: calc(120px * var(--metagame-scale-ratio));
+	height: calc(100px * var(--metagame-scale-ratio));
+	background-color: transparent;
+	background-image: unset;
+	/* border: solid 1px blue; */
+	border: none;
 }
 
 .click-zone.e .roomName {
-  position: relative;
-  left: 80px;
+	position: relative;
+	left: 80px;
 }
 
 .click-zone-highlight.e {
-  height: 65px;
-  position: relative;
-  top: -2px;
-  width: 92px;
-  left: 12px;
+	height: 65px;
+	position: relative;
+	top: -2px;
+	width: 92px;
+	left: 12px;
 }
 
 .click-zone.f {
-  transform: var(--metagame-transform);
-  left: calc(var(--metagame-left) - 2px * var(--metagame-scale-ratio));
-  top: calc(var(--metagame-top) + 269px * var(--metagame-scale-ratio));
-  width: calc(140px* var(--metagame-scale-ratio));
-  height: calc(25px* var(--metagame-scale-ratio));
-  background-color: transparent;
-  background-image: unset;
-  border: none;
-  padding-left: 5px;
-  padding-top: 10px;
-  padding-bottom: 7px;
+	transform: var(--metagame-transform);
+	left: calc(var(--metagame-left) - 2px * var(--metagame-scale-ratio));
+	top: calc(var(--metagame-top) + 269px * var(--metagame-scale-ratio));
+	width: calc(140px * var(--metagame-scale-ratio));
+	height: calc(25px * var(--metagame-scale-ratio));
+	background-color: transparent;
+	background-image: unset;
+	border: none;
+	padding-left: 5px;
+	padding-top: 10px;
+	padding-bottom: 7px;
 }
 
 .click-zone-highlight.f {
-  position: relative;
-  height: 82px;
-  width: 52px;
-  left: 38px;
+	position: relative;
+	height: 82px;
+	width: 52px;
+	left: 38px;
 }
 
 .click-zone.g {
-  transform: var(--metagame-transform);
-  left: calc(var(--metagame-left) - 7px * var(--metagame-scale-ratio));
-  top: calc(var(--metagame-top) + 580px * var(--metagame-scale-ratio));
-  width: calc(140px* var(--metagame-scale-ratio));
-  height: calc(25px* var(--metagame-scale-ratio));
-  background-color: transparent;
-  background-image: unset;
-  border: none;
-  padding-left: 5px;
-  padding-top: 10px;
-  padding-bottom: 7px;
+	transform: var(--metagame-transform);
+	left: calc(var(--metagame-left) - 7px * var(--metagame-scale-ratio));
+	top: calc(var(--metagame-top) + 580px * var(--metagame-scale-ratio));
+	width: calc(140px * var(--metagame-scale-ratio));
+	height: calc(25px * var(--metagame-scale-ratio));
+	background-color: transparent;
+	background-image: unset;
+	border: none;
+	padding-left: 5px;
+	padding-top: 10px;
+	padding-bottom: 7px;
 }
 
 .click-zone.g .roomName {
-  position: relative;
-  top: 90px;
+	position: relative;
+	top: 90px;
 }
 
 .click-zone-highlight.g {
-  position: relative;
-  height: 64px;
-  width: 60px;
-  left: 40px;
+	position: relative;
+	height: 64px;
+	width: 60px;
+	left: 40px;
 }
 
 .click-zone.h {
-  transform: var(--metagame-transform);
-  left: calc(var(--metagame-left) - 42px * var(--metagame-scale-ratio));
-  top: calc(var(--metagame-top) + 532px * var(--metagame-scale-ratio));
-  width: calc(66px* var(--metagame-scale-ratio));
-  height: calc(66px* var(--metagame-scale-ratio));
-  background-color: transparent;
-  background-image: unset;
-  border: none;
-  min-height: 30px;
+	transform: var(--metagame-transform);
+	left: calc(var(--metagame-left) - 42px * var(--metagame-scale-ratio));
+	top: calc(var(--metagame-top) + 532px * var(--metagame-scale-ratio));
+	width: calc(66px * var(--metagame-scale-ratio));
+	height: calc(66px * var(--metagame-scale-ratio));
+	background-color: transparent;
+	background-image: unset;
+	border: none;
+	min-height: 30px;
 }
 
 .click-zone.h .roomName {
-  position: inherit;
-  left: 39px;
-  top: 20px;
-  opacity: 0;
-  transition: 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+	position: inherit;
+	left: 39px;
+	top: 20px;
+	opacity: 0;
+	transition: 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .click-zone.h:hover .roomName {
-  opacity: 1;
+	opacity: 1;
 }
 
 .click-zone-highlight.h {
-  position: relative;
-  height: 64px;
-  width: 60px;
-  left: 40px;
+	position: relative;
+	height: 64px;
+	width: 60px;
+	left: 40px;
 }
 
 .click-zone:hover .click-zone-highlight {
-  border: solid 0.5px greenyellow;;
+	border: solid 0.5px greenyellow;
 }
 
 .modal {
-  /* display: none; Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+	/* display: none; Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Sit on top */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgb(0, 0, 0); /* Fallback color */
+	background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 
 /* Modal Content/Box */
 .modal-content {
-  background-color: #fefefe;
-  margin: 7% auto; /* 15% from the top and centered */
-  padding: 40px;
-  border: 1px solid #888;
-  width: 60%; /* Could be more or less, depending on screen size */
-  border-radius: 15px;
+	background-color: #fefefe;
+	margin: 7% auto; /* 15% from the top and centered */
+	padding: 40px;
+	border: 1px solid #888;
+	width: 60%; /* Could be more or less, depending on screen size */
+	border-radius: 15px;
 }
 
 .modal-close {
-  margin-top: 24px;
-  width: 200px;
-  height: 40px;
-  border-radius: 8px;
-  font-size: 20px;
-  background: linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(93,93,102,0.97) 53%, rgba(0,6,8,1) 100%); 
+	margin-top: 24px;
+	width: 200px;
+	height: 40px;
+	border-radius: 8px;
+	font-size: 20px;
+	background: linear-gradient(
+		0deg,
+		rgba(2, 0, 36, 1) 0%,
+		rgba(93, 93, 102, 0.97) 53%,
+		rgba(0, 6, 8, 1) 100%
+	);
 }
 .modal-close:hover {
-  background: linear-gradient(0deg, rgba(87,87,93,1) 0%, rgba(9,9,11,0.9794292717086834) 53%, rgba(77,82,84,1) 100%);
+	background: linear-gradient(
+		0deg,
+		rgba(87, 87, 93, 1) 0%,
+		rgba(9, 9, 11, 0.9794292717086834) 53%,
+		rgba(77, 82, 84, 1) 100%
+	);
 }
 .modal_text {
-  color: black;
-  font-size: 18px;
+	color: black;
+	font-size: 18px;
 }
 .modal-link {
-  color: black;
+	color: black;
 }
 
 .modal_logo {
-  height: 180px;
+	height: 180px;
 }
