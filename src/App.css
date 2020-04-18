@@ -13,6 +13,10 @@
 	color: whitesmoke;
 }
 
+body {
+	overflow: hidden;
+}
+
 html {
 	background-image: url('https://wallpaperaccess.com/full/741557.jpg');
 	background-size: cover;
@@ -44,14 +48,10 @@ h1 {
 
 .roomName {
 	font-family: 'Blox2', 'Courier New', Courier, monospace;
-	font-size: 1.2rem;
+	font-size: 0.9rem;
 	color: greenyellow;
-	visibility: hidden;
-	/* font-size: 12px; */
 	width: 100%;
-	/* display: block; */
 	padding: auto;
-	/* margin-top: -20px; */
 	background-color: rgba(0, 0, 255, 0);
 	background-image: unset;
 	-webkit-text-stroke: 1px rgba(0, 0, 0, 0.247);
@@ -61,18 +61,7 @@ h1 {
 	text-shadow: 5px 0px 10px greenyellow;
 }
 
-/* .map-background {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 640px;
-    height: 300px;
-    background: #ffffff46;
-    border: 3px groove yellow;
-} */
-
 .map-container {
-	/* opacity: 0.5; */
 	--metagame-left: 50%;
 	--metagame-top: 50px;
 	--metagame-height: 90%;
@@ -90,7 +79,11 @@ h1 {
 	border: solid 2px transparent;
 	background: unset;
 	box-sizing: border-box;
-	/* z-index: 0; */
+	max-width: 100%;
+	height: auto;
+	bottom: 0;
+	top: 0;
+	margin: auto;
 }
 
 .mapInstructions {
@@ -111,10 +104,6 @@ h1 {
 	color: greenyellow;
 }
 
-/* .map-container:hover > * {
-  opacity: 1;
-} */
-
 .container {
 	position: relative;
 }
@@ -131,15 +120,10 @@ h1 {
 
 .click-zone {
 	position: absolute;
-
-	/* z-index: 2; */
-	/* border: 1px solid grey; */
 }
 .click-zone:hover {
 	text-shadow: 5px 0px 10px greenyellow;
 	cursor: pointer;
-	/* z-index: 2; */
-	/* border: 1px solid grey; */
 }
 
 .click-zone:hover > .roomName {
@@ -148,14 +132,13 @@ h1 {
 
 .click-zone.a {
 	transform: var(--metagame-transform);
-	left: calc(var(--metagame-left) - 89px * var(--metagame-scale-ratio));
-	top: calc(var(--metagame-top) + 600px);
+	left: calc(var(--metagame-left) - 30px * var(--metagame-scale-ratio));
+	top: calc(var(--metagame-top) + 520px);
 	width: calc(100px * var(--metagame-scale-ratio));
 	height: calc(120px * var(--metagame-scale-ratio));
 	background-color: transparent;
 	background-image: unset;
 	border: solid 1px transparent;
-	/* box-sizing: border-box; */
 }
 
 .click-zone.a .roomName {
@@ -174,12 +157,11 @@ h1 {
 .click-zone.b {
 	transform: var(--metagame-transform);
 	left: calc(var(--metagame-left) * var(--metagame-scale-ratio));
-	top: calc(var(--metagame-top) + 365px * var(--metagame-scale-ratio));
+	top: calc(var(--metagame-top) + 315px * var(--metagame-scale-ratio));
 	width: calc(140px * var(--metagame-scale-ratio));
 	height: calc(160px * var(--metagame-scale-ratio));
 	background-color: transparent;
 	background-image: unset;
-	/* border: solid 1px blue; */
 	border: none;
 }
 
@@ -197,13 +179,12 @@ h1 {
 
 .click-zone.c {
 	transform: var(--metagame-transform);
-	left: calc(var(--metagame-left) - 184px * var(--metagame-scale-ratio));
-	top: calc(var(--metagame-top) + 549px * var(--metagame-scale-ratio));
+	left: calc(var(--metagame-left) - 164px * var(--metagame-scale-ratio));
+	top: calc(var(--metagame-top) + 409px * var(--metagame-scale-ratio));
 	width: calc(100px * var(--metagame-scale-ratio));
 	height: calc(70px * var(--metagame-scale-ratio));
 	background-color: transparent;
 	background-image: unset;
-	/* border: solid 1px blue; */
 	border: none;
 }
 
@@ -217,13 +198,12 @@ h1 {
 
 .click-zone.d {
 	transform: var(--metagame-transform);
-	left: calc(var(--metagame-left) + 168px * var(--metagame-scale-ratio));
-	top: calc(var(--metagame-top) + 535px * var(--metagame-scale-ratio));
+	left: calc(var(--metagame-left) + 118px * var(--metagame-scale-ratio));
+	top: calc(var(--metagame-top) + 525px * var(--metagame-scale-ratio));
 	width: calc(100px * var(--metagame-scale-ratio));
 	height: calc(100px * var(--metagame-scale-ratio));
 	background-color: transparent;
 	background-image: unset;
-	/* border: solid 1px blue; */
 	border: none;
 }
 
@@ -244,12 +224,11 @@ h1 {
 .click-zone.e {
 	transform: var(--metagame-transform);
 	left: calc(var(--metagame-left) + 85px * var(--metagame-scale-ratio));
-	top: calc(var(--metagame-top) + 417px * var(--metagame-scale-ratio));
+	top: calc(var(--metagame-top) + 407px * var(--metagame-scale-ratio));
 	width: calc(120px * var(--metagame-scale-ratio));
 	height: calc(100px * var(--metagame-scale-ratio));
 	background-color: transparent;
 	background-image: unset;
-	/* border: solid 1px blue; */
 	border: none;
 }
 
@@ -269,7 +248,7 @@ h1 {
 .click-zone.f {
 	transform: var(--metagame-transform);
 	left: calc(var(--metagame-left) - 2px * var(--metagame-scale-ratio));
-	top: calc(var(--metagame-top) + 269px * var(--metagame-scale-ratio));
+	top: calc(var(--metagame-top) + 220px * var(--metagame-scale-ratio));
 	width: calc(140px * var(--metagame-scale-ratio));
 	height: calc(25px * var(--metagame-scale-ratio));
 	background-color: transparent;
@@ -290,7 +269,7 @@ h1 {
 .click-zone.g {
 	transform: var(--metagame-transform);
 	left: calc(var(--metagame-left) - 7px * var(--metagame-scale-ratio));
-	top: calc(var(--metagame-top) + 580px * var(--metagame-scale-ratio));
+	top: calc(var(--metagame-top) + 490px * var(--metagame-scale-ratio));
 	width: calc(140px * var(--metagame-scale-ratio));
 	height: calc(25px * var(--metagame-scale-ratio));
 	background-color: transparent;
@@ -316,7 +295,7 @@ h1 {
 .click-zone.h {
 	transform: var(--metagame-transform);
 	left: calc(var(--metagame-left) - 42px * var(--metagame-scale-ratio));
-	top: calc(var(--metagame-top) + 532px * var(--metagame-scale-ratio));
+	top: calc(var(--metagame-top) + 460px * var(--metagame-scale-ratio));
 	width: calc(66px * var(--metagame-scale-ratio));
 	height: calc(66px * var(--metagame-scale-ratio));
 	background-color: transparent;
@@ -329,7 +308,6 @@ h1 {
 	position: inherit;
 	left: 39px;
 	top: 20px;
-	opacity: 0;
 	transition: 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 

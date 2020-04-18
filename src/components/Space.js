@@ -69,21 +69,21 @@ const Space = () => {
 					onClick={() => addFloatingSpace('House of Defiance')}
 				>
 					<span className='roomName'>House of Defiance</span>
-					<div className='click-zone-highlight a'></div>
+					{/* <div className='click-zone-highlight a'></div> */}
 				</div>
 				<div
 					className='click-zone b'
 					onClick={() => addFloatingSpace('House of DAOs')}
 				>
 					<span className='roomName'>House of DAOs</span>
-					<div className='click-zone-highlight b'></div>
+					{/* <div className='click-zone-highlight b'></div> */}
 				</div>
 				<div
 					className='click-zone c'
 					onClick={() => addFloatingSpace('Raid Guild')}
 				>
 					<span className='roomName'>Raid Guild</span>
-					<div className='click-zone-highlight c'></div>
+					{/* <div className='click-zone-highlight c'></div> */}
 				</div>
 				<div
 					className='click-zone d'
@@ -93,35 +93,35 @@ const Space = () => {
 					<span className='roomName' style={portalStyle}>
 						Stress Test Arena
 					</span>
-					<div className='click-zone-highlight d'></div>
+					{/* <div className='click-zone-highlight d'></div> */}
 				</div>
 				<div
 					className='click-zone e'
 					onClick={() => addFloatingSpace('House of Adoption')}
 				>
 					<span className='roomName'>House of Adoption</span>
-					<div className='click-zone-highlight e'></div>
+					{/* <div className='click-zone-highlight e'></div> */}
 				</div>
 				<div
 					className='click-zone f'
 					onClick={() => addFloatingSpace('loft.radio')}
 				>
 					<span className='roomName'>loft.radio</span>
-					<div className='click-zone-highlight f'></div>
+					{/* <div className='click-zone-highlight f'></div> */}
 				</div>
 				<div
 					className='click-zone g'
 					onClick={() => addFloatingSpace('rTrees')}
 				>
 					<span className='roomName'>rTrees</span>
-					<div className='click-zone-highlight g'></div>
+					{/* <div className='click-zone-highlight g'></div> */}
 				</div>
 				<div
 					className='click-zone h'
 					onClick={() => openInNewTab('https://forum.metagame.wtf/')}
 				>
 					<span className='roomName'>Forum</span>
-					<div className='click-zone-highlight h'></div>
+					{/* <div className='click-zone-highlight h'></div> */}
 				</div>
 			</div>
 			<div
