@@ -1,16 +1,16 @@
-import React from "react";
-import "./App.css";
-import Space from "./components/Space";
-import FloatingRoomWindow from "./components/FloatingRoomWindow";
-import RootContextProvider from "./contexts/RootContext";
-import Galaxy from "./components/Galaxy";
+import React from 'react';
+import './App.css';
+import Space from './components/Space';
+import FloatingRoomWindow from './components/FloatingRoomWindow';
+import RootContextProvider from './contexts/RootContext';
+import Galaxy from './components/Galaxy';
 
 function App() {
   return (
-    <div className="App">
+    <div className='App'>
       <RootContextProvider>
-        <div style={{ position: "relative" }}>
-          <div style={{ position: "absolute", width: "100%", height: "150vh" }}>
+        <div style={{ position: 'relative' }}>
+          <div style={{ position: 'absolute', width: '100%', height: '100vh', top: '0' }}>
             <Galaxy />
           </div>
           <Space />

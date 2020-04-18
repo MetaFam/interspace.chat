@@ -13,10 +13,9 @@
 }
 
 html {
-  /* background-image: url('./img/background.jpg'); */
-  background-color: black;
+  background-image: url('./img/background.jpg');
   background-size: cover;
-  min-height: 110%;
+  height: 100vh;
 }
 
 .body {
@@ -80,8 +79,8 @@ h1 {
 .map-container {
   /* opacity: 0.5; */
   --metagame-left: 50%;
-  --metagame-top: 150px;
-  --metagame-height: 800px;
+  --metagame-top: 50px;
+  --metagame-height: 90vh;
   --metagame-scale-ratio: 1;
   --metagame-width: 750px;
   --metagame-transform: translateX(-50%);
@@ -134,15 +133,6 @@ h1 {
 
 .click-zone {
   position: absolute;
-
-  /* z-index: 2; */
-  /* border: 1px solid grey; */
-}
-.click-zone:hover {
-  text-shadow: 5px 0px 10px greenyellow;
-  cursor: pointer;
-  /* z-index: 2; */
-  /* border: 1px solid grey; */
 }
 
 .click-zone:hover > .roomName {
@@ -151,10 +141,10 @@ h1 {
 
 .click-zone.a {
   transform: var(--metagame-transform);
-  left: calc(var(--metagame-left) - 89px * var(--metagame-scale-ratio));
-  top: calc(var(--metagame-top) + 400px);
-  width: calc(100px * var(--metagame-scale-ratio));
-  height: calc(120px * var(--metagame-scale-ratio));
+  left: calc(var(--metagame-left) - 5vw * var(--metagame-scale-ratio));
+  top: calc(var(--metagame-top) + 48vh);
+  width: calc(6vw * var(--metagame-scale-ratio));
+  height: calc(12vh * var(--metagame-scale-ratio));
   background-color: transparent;
   background-image: unset;
   border: solid 1px transparent;
@@ -166,20 +156,12 @@ h1 {
   left: -82px;
 }
 
-.click-zone-highlight.a {
-  height: 85px;
-  width: 82px;
-  left: 7px;
-  top: -2px;
-  position: relative;
-}
-
 .click-zone.b {
   transform: var(--metagame-transform);
   left: calc(var(--metagame-left) * var(--metagame-scale-ratio));
-  top: calc(var(--metagame-top) + 365px * var(--metagame-scale-ratio));
-  width: calc(140px * var(--metagame-scale-ratio));
-  height: calc(160px * var(--metagame-scale-ratio));
+  top: calc(var(--metagame-top) + 22vw * var(--metagame-scale-ratio));
+  width: calc(5vw * var(--metagame-scale-ratio));
+  height: calc(11vh * var(--metagame-scale-ratio));
   background-color: transparent;
   background-image: unset;
   /* border: solid 1px blue; */
@@ -188,42 +170,32 @@ h1 {
 
 .click-zone.b .roomName {
   position: relative;
-  top: 50px;
-}
-
-.click-zone-highlight.b {
-  position: relative;
-  height: 100px;
-  width: 70px;
-  left: 30px;
+  top: 0vh;
 }
 
 .click-zone.c {
   transform: var(--metagame-transform);
-  left: calc(var(--metagame-left) - 184px * var(--metagame-scale-ratio));
-  top: calc(var(--metagame-top) + 549px * var(--metagame-scale-ratio));
-  width: calc(100px * var(--metagame-scale-ratio));
-  height: calc(70px * var(--metagame-scale-ratio));
+  left: calc(var(--metagame-left) - 6vw * var(--metagame-scale-ratio));
+  top: calc(var(--metagame-top) + 60vh * var(--metagame-scale-ratio));
+  width: calc(5vw * var(--metagame-scale-ratio));
+  height: calc(8vh * var(--metagame-scale-ratio));
   background-color: transparent;
   background-image: unset;
   /* border: solid 1px blue; */
   border: none;
 }
 
-.click-zone-highlight.c {
-  height: 60px;
-  left: 105px;
-  top: -39px;
+.click-zone.c .roomName {
   position: relative;
-  width: 55px;
+  left: -82px;
 }
 
 .click-zone.d {
   transform: var(--metagame-transform);
-  left: calc(var(--metagame-left) + 168px * var(--metagame-scale-ratio));
-  top: calc(var(--metagame-top) + 535px * var(--metagame-scale-ratio));
-  width: calc(100px * var(--metagame-scale-ratio));
-  height: calc(100px * var(--metagame-scale-ratio));
+  left: calc(var(--metagame-left) + 5vw * var(--metagame-scale-ratio));
+  top: calc(var(--metagame-top) + 59vh * var(--metagame-scale-ratio));
+  width: calc(5vw * var(--metagame-scale-ratio));
+  height: calc(9vh * var(--metagame-scale-ratio));
   background-color: transparent;
   background-image: unset;
   /* border: solid 1px blue; */
@@ -231,25 +203,16 @@ h1 {
 }
 
 .click-zone.d .roomName {
-  margin-top: 10px;
   position: relative;
-  left: 5px;
-}
-
-.click-zone-highlight.d {
-  height: 75px;
-  top: -62px;
-  left: -69px;
-  width: 70px;
-  position: relative;
+  left: 70px;
 }
 
 .click-zone.e {
   transform: var(--metagame-transform);
-  left: calc(var(--metagame-left) + 85px * var(--metagame-scale-ratio));
-  top: calc(var(--metagame-top) + 417px * var(--metagame-scale-ratio));
-  width: calc(120px * var(--metagame-scale-ratio));
-  height: calc(100px * var(--metagame-scale-ratio));
+  left: calc(var(--metagame-left) + 5vw * var(--metagame-scale-ratio));
+  top: calc(var(--metagame-top) + 51vh * var(--metagame-scale-ratio));
+  width: calc(6vw * var(--metagame-scale-ratio));
+  height: calc(8vh * var(--metagame-scale-ratio));
   background-color: transparent;
   background-image: unset;
   /* border: solid 1px blue; */
@@ -261,20 +224,12 @@ h1 {
   left: 80px;
 }
 
-.click-zone-highlight.e {
-  height: 65px;
-  position: relative;
-  top: -2px;
-  width: 92px;
-  left: 12px;
-}
-
 .click-zone.f {
   transform: var(--metagame-transform);
-  left: calc(var(--metagame-left) - 2px * var(--metagame-scale-ratio));
-  top: calc(var(--metagame-top) + 269px * var(--metagame-scale-ratio));
-  width: calc(140px * var(--metagame-scale-ratio));
-  height: calc(25px * var(--metagame-scale-ratio));
+  left: calc(var(--metagame-left) - 0vw * var(--metagame-scale-ratio));
+  top: calc(var(--metagame-top) + 33vh * var(--metagame-scale-ratio));
+  width: calc(4vw * var(--metagame-scale-ratio));
+  height: calc(10vh * var(--metagame-scale-ratio));
   background-color: transparent;
   background-image: unset;
   border: none;
@@ -283,19 +238,18 @@ h1 {
   padding-bottom: 7px;
 }
 
-.click-zone-highlight.f {
+.click-zone.f .roomName {
   position: relative;
-  height: 82px;
-  width: 52px;
-  left: 38px;
+  left: -2vw;
+  top: -6vh;
 }
 
 .click-zone.g {
   transform: var(--metagame-transform);
-  left: calc(var(--metagame-left) - 7px * var(--metagame-scale-ratio));
-  top: calc(var(--metagame-top) + 580px * var(--metagame-scale-ratio));
-  width: calc(140px * var(--metagame-scale-ratio));
-  height: calc(25px * var(--metagame-scale-ratio));
+  left: calc(var(--metagame-left) - 0vw * var(--metagame-scale-ratio));
+  top: calc(var(--metagame-top) + 68vh * var(--metagame-scale-ratio));
+  width: calc(4vw * var(--metagame-scale-ratio));
+  height: calc(6vh * var(--metagame-scale-ratio));
   background-color: transparent;
   background-image: unset;
   border: none;
@@ -306,22 +260,15 @@ h1 {
 
 .click-zone.g .roomName {
   position: relative;
-  top: 90px;
-}
-
-.click-zone-highlight.g {
-  position: relative;
-  height: 64px;
-  width: 60px;
-  left: 40px;
+  top: 9vh;
 }
 
 .click-zone.h {
   transform: var(--metagame-transform);
-  left: calc(var(--metagame-left) - 42px * var(--metagame-scale-ratio));
-  top: calc(var(--metagame-top) + 532px * var(--metagame-scale-ratio));
-  width: calc(66px * var(--metagame-scale-ratio));
-  height: calc(66px * var(--metagame-scale-ratio));
+  left: calc(var(--metagame-left) - 0vw * var(--metagame-scale-ratio));
+  top: calc(var(--metagame-top) + 58vh * var(--metagame-scale-ratio));
+  width: calc(5vw * var(--metagame-scale-ratio));
+  height: calc(11vh * var(--metagame-scale-ratio));
   background-color: transparent;
   background-image: unset;
   border: none;
@@ -329,25 +276,15 @@ h1 {
 }
 
 .click-zone.h .roomName {
-  position: inherit;
-  left: 39px;
+  position: relative;
   top: 20px;
-  opacity: 0;
-  transition: 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .click-zone.h:hover .roomName {
   opacity: 1;
 }
 
-.click-zone-highlight.h {
-  position: relative;
-  height: 64px;
-  width: 60px;
-  left: 40px;
-}
-
-.click-zone:hover .click-zone-highlight {
+.click-zone:hover {
   border: solid 0.5px greenyellow;
 }
 
