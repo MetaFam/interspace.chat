@@ -133,8 +133,8 @@ h1 {
 
 .click-zone.a {
 	transform: var(--metagame-transform);
-	left: calc(var(--metagame-left) - 40px * var(--metagame-scale-ratio));
-	top: calc(var(--metagame-top) + 66%);
+	left: calc(var(--metagame-left) - 100px * var(--metagame-scale-ratio));
+	top: calc(var(--metagame-top) + 52%);
 	background-color: transparent;
 	background-image: unset;
 	border: solid 1px transparent;
@@ -176,8 +176,8 @@ h1 {
 
 .click-zone.c {
 	transform: var(--metagame-transform);
-	left: calc(var(--metagame-left) - 164px * var(--metagame-scale-ratio));
-	top: calc(var(--metagame-top) + 51% * var(--metagame-scale-ratio));
+	left: calc(var(--metagame-left) - 127px * var(--metagame-scale-ratio));
+	top: calc(var(--metagame-top) + 66% * var(--metagame-scale-ratio));
 	background-color: transparent;
 	background-image: unset;
 	border: none;
