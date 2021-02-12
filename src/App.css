@@ -8,7 +8,7 @@
 }
 
 * {
-	font-family: 'Courier New', Courier, monospace;
+	font-family: 'IBM Ples', sans-serif;
 	font-weight: 800;
 	color: whitesmoke;
 }
@@ -18,8 +18,7 @@ body {
 }
 
 html {
-	background-image: url('https://wallpaperaccess.com/full/741557.jpg');
-	background-size: cover;
+	background-image: url();
 	min-height: 100vh;
 }
 
