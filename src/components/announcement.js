@@ -27,7 +27,10 @@ const Announce = () => {
     <div
       style={{
         width: '100vw',
-        height: '100vh'
+        height: '100vh',
+        overflowY: 'auto',
+        display: 'grid',
+        placeItems: 'center'
       }}
     >
       <img src={HeaderImage} alt='MetaFest' />
@@ -35,10 +38,12 @@ const Announce = () => {
         <StyledHeadline>MARCH 7TH - APRIL 4TH</StyledHeadline>
         <Glow>MARCH 7TH - APRIL 4TH</Glow>
       </div>
-      <p style={{ color: '#685460' }}>Fill out an application to join:</p>
-      <StyledLink href='http://bit.ly/MetaFestMods'>MOD</StyledLink> //{' '}
-      <StyledLink href='http://bit.ly/MetaFestSpeakers'>SPEAKER</StyledLink> //{' '}
-      <StyledLink href='http://bit.ly/MetaFestMG'>METAFAM</StyledLink>
+      <div>
+        <p style={{ color: '#685460' }}>Fill out an application to join:</p>
+        <StyledLink href='http://bit.ly/MetaFestMods'>MOD</StyledLink> //{' '}
+        <StyledLink href='http://bit.ly/MetaFestSpeakers'>SPEAKER</StyledLink>{' '}
+        // <StyledLink href='http://bit.ly/MetaFestMG'>METAFAM</StyledLink>
+      </div>
     </div>
   )
 }

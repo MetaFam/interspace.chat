@@ -33,9 +33,7 @@ function App () {
 		*/}
         <div
           style={{
-            position: 'absolute',
-            width: '100vw',
-            height: '100vh',
+            position: 'relative',
             zIndex: '1'
           }}
         >
