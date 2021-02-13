@@ -45,14 +45,14 @@
 
 .stars {
 	background: #000
-		url(http://www.script-tutorials.com/demos/360/images/stars.png) repeat
+		url(./img/stars.png) repeat
 		top center;
 	z-index: -1;
 }
 
 .twinkling {
 	background: transparent
-		url(http://www.script-tutorials.com/demos/360/images/twinkling.png)
+		url(./img/twinkling.png)
 		repeat top center;
 
 	-moz-animation: move-twink-back 200s linear infinite;

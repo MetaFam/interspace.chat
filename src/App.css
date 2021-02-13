@@ -7,8 +7,17 @@
 		url('./fonts/Blox2.ttf') format('truetype'); /* Safari, Android, iOS */
 }
 
+@font-face {
+	font-family: 'NexaRustSans-Black';
+	font-style: normal;
+	font-weight: 800;
+	src: url('./fonts/NexaRustSans-Black.ttf'); /* IE9 Compat Modes */
+	src: local('NexaRustSans-Black'), local('NexaRustSans-Black'),
+		url('./fonts/NexaRustSans-Black.ttf') format('truetype'); /* Safari, Android, iOS */
+}
+
 * {
-	font-family: 'IBM Ples', sans-serif;
+	font-family: 'NexaRustSans-Black', sans-serif;
 	font-weight: 800;
 	color: whitesmoke;
 }
