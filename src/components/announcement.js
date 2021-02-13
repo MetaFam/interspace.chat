@@ -34,20 +34,20 @@ const Announce = () => {
           <img
             src={Date}
             alt='March 7th - April 4th'
-            width='30%'
+            width='50%'
             style={{
               position: 'fixed',
               marginLeft: 'auto',
               marginRight: 'auto',
               left: '0',
               right: '0',
-              top: '7rem'
+              top: '5rem'
             }}
           />
           <img
             src={HeaderImage}
             alt='MetaFest'
-            width='60%'
+            width='100%'
             style={{
               position: 'fixed',
               marginLeft: 'auto',
@@ -61,16 +61,15 @@ const Announce = () => {
             <img
               src={Flavortext}
               alt='a shitload of fun'
-              width='60%'
+              width='50%'
               style={{
                 position: 'absolute',
                 marginLeft: 'auto',
                 marginRight: 'auto',
                 left: '0',
                 right: '0',
-                top: '25vh',
-                zIndex: '1',
-                width: '30%'
+                top: '38vh',
+                zIndex: '1'
               }}
             />
           </div>
@@ -82,7 +81,7 @@ const Announce = () => {
               right: '0%',
               marginLeft: 'auto',
               marginRight: 'auto',
-              bottom: '40vh',
+              bottom: '30vh',
               backgroundColor: '#000000AA',
               padding: '1rem'
             }}
