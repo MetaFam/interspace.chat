@@ -189,7 +189,7 @@ const Announce = () => {
               right: '0%',
               marginLeft: 'auto',
               marginRight: 'auto',
-              bottom: '10vh',
+              bottom: '8vh',
               backgroundColor: '#000000AA',
               padding: '1rem'
             }}
