@@ -189,9 +189,10 @@ const Announce = () => {
                 width='60%'
                 style={{
                   position: 'absolute',
-                  top: '60%',
+                  top: '50%',
                   right: '0%',
-                  width: '30%'
+                  width: '30%',
+                  zIndex: '2'
                 }}
               />
             </div>
