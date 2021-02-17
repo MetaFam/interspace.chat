@@ -1,6 +1,7 @@
 import React, { Fragment, useContext } from 'react'
 import styled from 'styled-components'
 import { useMediaQuery } from 'react-responsive'
+import { FloatingSpaceContext } from '../contexts/FloatingSpaceContext'
 
 import HeaderImage from '../img/metafest-header.png'
 import Date from '../img/metafest-date.png'
@@ -19,6 +20,23 @@ const StyledLink = styled.a`
 const Announce = () => {
   const isPortrait = useMediaQuery({ query: '(orientation: portrait)' })
   const isMobile = useMediaQuery({ query: '(max-width: 1224px)' })
+  const { currentFloatingSpaces, addFloatingSpace } = useContext(
+    FloatingSpaceContext
+  )
+
+  let displayedJoinedSpaces
+  if (currentFloatingSpaces.length > 0) {
+    if (currentFloatingSpaces.length > 2) {
+      let nameCount = currentFloatingSpaces.length
+      displayedJoinedSpaces =
+        currentFloatingSpaces.slice(0, nameCount - 2).join(', ') +
+        ', ' +
+        currentFloatingSpaces.slice(nameCount - 2, nameCount).join(' & ')
+    } else {
+      displayedJoinedSpaces = currentFloatingSpaces.join(' & ')
+    }
+  }
+
   return (
     <React.Fragment>
       {isPortrait && isMobile ? (
@@ -87,114 +105,6 @@ const Announce = () => {
             }}
           >
             <h2 style={{ color: '#fff' }}>Fill out an application to join</h2>
-            <StyledLink href='http://bit.ly/MetaFestMods'>MOD</StyledLink>
-            {'   '}
-            <StyledLink href='http://bit.ly/MetaFestSpeakers'>
-              SPEAKER
-            </StyledLink>
-            {'   '}
-            <StyledLink href='http://bit.ly/MetaFestMG'>METAFAM</StyledLink>
-          </div>
-          <img
-            src={Wanderer}
-            alt=''
-            width='50%'
-            style={{
-              position: 'absolute',
-              bottom: '0%',
-              left: '0%',
-              zIndex: '10'
-            }}
-          />
-          <img
-            src={Rocks}
-            alt=''
-            width='100%'
-            style={{
-              position: 'fixed',
-              marginLeft: 'auto',
-              marginRight: 'auto',
-              left: '0',
-              right: '0',
-              bottom: '0',
-              zIndex: '1'
-            }}
-          />
-          <img
-            src={Grid}
-            alt=''
-            width='100%'
-            height='60%'
-            style={{
-              position: 'fixed',
-              bottom: '0',
-              zIndex: '0'
-            }}
-          />
-        </div>
-      ) : (
-        <div
-          style={{
-            width: '100vw',
-            height: '100vh',
-            overflowY: 'auto',
-            display: 'grid',
-            placeItems: 'center'
-          }}
-        >
-          <img
-            src={Date}
-            alt='March 7th - April 4th'
-            width='30%'
-            style={{
-              position: 'fixed',
-              marginLeft: 'auto',
-              marginRight: 'auto',
-              left: '0',
-              right: '0'
-            }}
-          />
-          <img
-            src={HeaderImage}
-            alt='MetaFest'
-            width='60%'
-            style={{
-              position: 'fixed',
-              marginLeft: 'auto',
-              marginRight: 'auto',
-              left: '0',
-              right: '0',
-              top: '-3rem'
-            }}
-          />
-          <div>
-            <img
-              src={Flavortext}
-              alt='a shitload of fun'
-              width='60%'
-              style={{
-                position: 'absolute',
-                top: '60%',
-                right: '0%',
-                zIndex: '1',
-                width: '30%'
-              }}
-            />
-          </div>
-          <div
-            style={{
-              position: 'absolute',
-              zIndex: '100',
-              left: '0%',
-              right: '0%',
-              marginLeft: 'auto',
-              marginRight: 'auto',
-              bottom: '8vh',
-              backgroundColor: '#000000AA',
-              padding: '1rem'
-            }}
-          >
-            <h2 style={{ color: '#fff' }}>Fill out an application to join</h2>
             <StyledLink href='https://form.typeform.com/to/BClVBF4E'>
               APPLY
             </StyledLink>
@@ -236,6 +146,113 @@ const Announce = () => {
             }}
           />
         </div>
+      ) : (
+        <React.Fragment>
+          <div
+            style={{
+              width: '100vw',
+              position: 'static',
+              height: '100vh',
+              display: 'grid',
+              placeItems: 'center'
+            }}
+          >
+            <img
+              src={Date}
+              alt='March 7th - April 4th'
+              width='30%'
+              style={{
+                position: 'fixed',
+                marginLeft: 'auto',
+                marginRight: 'auto',
+                left: '0',
+                right: '0'
+              }}
+            />
+            <img
+              src={HeaderImage}
+              alt='MetaFest'
+              width='60%'
+              style={{
+                position: 'fixed',
+                marginLeft: 'auto',
+                marginRight: 'auto',
+                left: '0',
+                right: '0',
+                top: '-3rem'
+              }}
+            />
+            <div>
+              <img
+                src={Flavortext}
+                alt='a shitload of fun'
+                width='60%'
+                style={{
+                  position: 'absolute',
+                  top: '60%',
+                  right: '0%',
+                  width: '30%'
+                }}
+              />
+            </div>
+            <div
+              style={{
+                position: 'absolute',
+                zIndex: '2',
+                left: '0%',
+                right: '0%',
+                marginLeft: 'auto',
+                marginRight: 'auto',
+                bottom: '8vh',
+                backgroundColor: '#000000AA',
+                padding: '1rem'
+              }}
+            >
+              <h2 style={{ color: '#fff' }}>Fill out an application to join</h2>
+              <button
+                onClick={() => addFloatingSpace('apply')}
+                style={{ color: '#310C4F' }}
+              >
+                APPLY
+              </button>
+            </div>
+            <img
+              src={Wanderer}
+              alt=''
+              width='50%'
+              style={{
+                position: 'absolute',
+                bottom: '0%',
+                left: '0%',
+                zIndex: '1'
+              }}
+            />
+            <img
+              src={Rocks}
+              alt=''
+              width='100%'
+              style={{
+                position: 'absolute',
+                marginLeft: 'auto',
+                marginRight: 'auto',
+                left: '0',
+                right: '0',
+                bottom: '0',
+                zIndex: '0'
+              }}
+            />
+            <img
+              src={Grid}
+              alt=''
+              width='100%'
+              height='30%'
+              style={{
+                position: 'absolute',
+                bottom: '0'
+              }}
+            />
+          </div>
+        </React.Fragment>
       )}
     </React.Fragment>
   )

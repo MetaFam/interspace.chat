@@ -27,8 +27,9 @@ body {
 }
 
 html {
-	background-image: url();
+	scroll-behavior: smooth;
 	min-height: 100vh;
+	background-color: black;
 }
 
 h1 {

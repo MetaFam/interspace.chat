@@ -38,6 +38,7 @@ function App () {
           }}
         >
           <Announce />
+          <FloatingRoomWindow />
         </div>
       </RootContextProvider>
     </div>
