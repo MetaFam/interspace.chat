@@ -195,13 +195,9 @@ const Announce = () => {
             }}
           >
             <h2 style={{ color: '#fff' }}>Fill out an application to join</h2>
-            <StyledLink href='http://bit.ly/MetaFestMods'>MOD</StyledLink>
-            {'   '}
-            <StyledLink href='http://bit.ly/MetaFestSpeakers'>
-              SPEAKER
+            <StyledLink href='https://form.typeform.com/to/BClVBF4E'>
+              APPLY
             </StyledLink>
-            {'   '}
-            <StyledLink href='http://bit.ly/MetaFestMG'>METAFAM</StyledLink>
           </div>
           <img
             src={Wanderer}
