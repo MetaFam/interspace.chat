@@ -10,8 +10,8 @@ import { RoomNames } from '../utils/constants'
 
 import TypeformInstance from './integrations/TypeformInstance'
 
-const height = 600
-const width = 850
+const width = window.innerWidth / 2
+const height = window.innerHeight / 2 + 200
 
 const SpaceHeader = styled.div`
   display: flex;
@@ -109,8 +109,8 @@ function FloatingRoomWindow () {
     <Rnd
       key={windowKey}
       default={{
-        x: width / 2 - 120,
-        y: height / 2 - 150,
+        x: width / 2,
+        y: 100,
         width,
         height
       }}
