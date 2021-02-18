@@ -3,6 +3,8 @@ import styled from 'styled-components'
 import { useMediaQuery } from 'react-responsive'
 import { FloatingSpaceContext } from '../contexts/FloatingSpaceContext'
 
+import Crawl from './crawltext/crawltext'
+
 import HeaderImage from '../img/metafest-header.png'
 import Date from '../img/metafest-date.png'
 import Flavortext from '../img/metafest-flavortext.png'
@@ -44,7 +46,6 @@ const Announce = () => {
           style={{
             width: '100vw',
             height: '100vh',
-            overflowY: 'auto',
             display: 'grid',
             placeItems: 'center'
           }}
@@ -65,14 +66,14 @@ const Announce = () => {
           <img
             src={HeaderImage}
             alt='MetaFest'
-            width='100%'
+            width='50%'
             style={{
               position: 'fixed',
               marginLeft: 'auto',
               marginRight: 'auto',
               left: '0',
               right: '0',
-              top: '4rem'
+              top: '5rem'
             }}
           />
           <div>
@@ -99,17 +100,26 @@ const Announce = () => {
               right: '0%',
               marginLeft: 'auto',
               marginRight: 'auto',
-              bottom: '30vh',
-              backgroundColor: '#000000AA',
+              bottom: '25vh',
               padding: '1rem'
             }}
           >
-            <h2 style={{ color: '#fff', fontSize: '2rem', padding: '0.5rem' }}>
-              Fill out an application to join
-            </h2>
-            <StyledLink href='https://form.typeform.com/to/BClVBF4E'>
-              Submit
-            </StyledLink>
+            <a href='https://form.typeform.com/to/BClVBF4E'>
+              <button
+                style={{
+                  backgroundColor: '#ffffff33',
+                  color: '#FFF',
+                  fontSize: '1rem',
+                  padding: '1rem',
+                  borderRadius: '1rem',
+                  borderColor: '#FF1B7F',
+                  borderSize: '3px',
+                  cursor: 'pointer'
+                }}
+              >
+                Fill out an application<br></br> to join
+              </button>
+            </a>
           </div>
           <img
             src={Wanderer}
@@ -140,7 +150,7 @@ const Announce = () => {
             src={Grid}
             alt=''
             width='100%'
-            height='60%'
+            height='30%'
             style={{
               position: 'fixed',
               bottom: '0',
@@ -160,6 +170,19 @@ const Announce = () => {
             }}
           >
             <img
+              src={HeaderImage}
+              alt='MetaFest'
+              width='40%'
+              style={{
+                position: 'relative',
+                marginLeft: 'auto',
+                marginRight: 'auto',
+                left: '0',
+                right: '0',
+                zIndex: '2'
+              }}
+            />
+            <img
               src={Date}
               alt='March 7th - April 4th'
               width='30%'
@@ -168,20 +191,8 @@ const Announce = () => {
                 marginLeft: 'auto',
                 marginRight: 'auto',
                 left: '0',
-                right: '0'
-              }}
-            />
-            <img
-              src={HeaderImage}
-              alt='MetaFest'
-              width='60%'
-              style={{
-                position: 'fixed',
-                marginLeft: 'auto',
-                marginRight: 'auto',
-                left: '0',
                 right: '0',
-                top: '-3rem'
+                zIndex: '2'
               }}
             />
             <div>
@@ -191,10 +202,10 @@ const Announce = () => {
                 width='60%'
                 style={{
                   position: 'absolute',
-                  top: '50%',
+                  top: '80%',
                   right: '0%',
                   width: '30%',
-                  zIndex: '2'
+                  zIndex: '3'
                 }}
               />
             </div>
@@ -206,42 +217,42 @@ const Announce = () => {
                 right: '0%',
                 marginLeft: 'auto',
                 marginRight: 'auto',
-                bottom: '8vh',
-                backgroundColor: '#000000AA',
+                bottom: '14vh',
                 padding: '1rem'
               }}
             >
-              <h2 style={{ color: '#fff' }}>Fill out an application to join</h2>
               <button
                 onClick={() => addFloatingSpace('apply')}
                 style={{
-                  backgroundColor: '#310C4F',
-                  color: '#fff',
-                  fontSize: '2rem',
+                  backgroundColor: '#ffffff33',
+                  color: '#FFF',
+                  fontSize: '1rem',
                   padding: '1rem',
                   borderRadius: '1rem',
-                  border: '0px',
+                  borderColor: '#FF1B7F',
+                  borderSize: '3px',
                   cursor: 'pointer'
                 }}
               >
-                Submit
+                Fill out an application<br></br> to join
               </button>
             </div>
             <img
               src={Wanderer}
               alt=''
-              width='50%'
+              width='35%'
               style={{
                 position: 'absolute',
                 bottom: '0%',
                 left: '0%',
-                zIndex: '1'
+                zIndex: '2'
               }}
             />
             <img
               src={Rocks}
               alt=''
               width='100%'
+              height='20%'
               style={{
                 position: 'absolute',
                 marginLeft: 'auto',
@@ -249,9 +260,10 @@ const Announce = () => {
                 left: '0',
                 right: '0',
                 bottom: '0',
-                zIndex: '0'
+                zIndex: '1'
               }}
             />
+            <Crawl style={{ zIndex: '-2' }} />
             <img
               src={Grid}
               alt=''
