@@ -104,9 +104,11 @@ const Announce = () => {
               padding: '1rem'
             }}
           >
-            <h2 style={{ color: '#fff' }}>Fill out an application to join</h2>
+            <h2 style={{ color: '#fff', fontSize: '2rem', padding: '0.5rem' }}>
+              Fill out an application to join
+            </h2>
             <StyledLink href='https://form.typeform.com/to/BClVBF4E'>
-              APPLY
+              Submit
             </StyledLink>
           </div>
           <img
@@ -212,9 +214,17 @@ const Announce = () => {
               <h2 style={{ color: '#fff' }}>Fill out an application to join</h2>
               <button
                 onClick={() => addFloatingSpace('apply')}
-                style={{ color: '#310C4F' }}
+                style={{
+                  backgroundColor: '#310C4F',
+                  color: '#fff',
+                  fontSize: '2rem',
+                  padding: '1rem',
+                  borderRadius: '1rem',
+                  border: '0px',
+                  cursor: 'pointer'
+                }}
               >
-                APPLY
+                Submit
               </button>
             </div>
             <img
