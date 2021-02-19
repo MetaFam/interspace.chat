@@ -55,12 +55,12 @@ const Announce = () => {
             alt='March 7th - April 4th'
             width='50%'
             style={{
-              position: 'fixed',
+              position: 'absolute',
               marginLeft: 'auto',
               marginRight: 'auto',
               left: '0',
               right: '0',
-              top: '5rem'
+              top: '1rem'
             }}
           />
           <img
@@ -68,12 +68,12 @@ const Announce = () => {
             alt='MetaFest'
             width='50%'
             style={{
-              position: 'fixed',
+              position: 'absolute',
               marginLeft: 'auto',
               marginRight: 'auto',
               left: '0',
               right: '0',
-              top: '5rem'
+              top: '4rem'
             }}
           />
           <div>
@@ -170,29 +170,31 @@ const Announce = () => {
             }}
           >
             <img
-              src={HeaderImage}
-              alt='MetaFest'
-              width='40%'
-              style={{
-                position: 'relative',
-                marginLeft: 'auto',
-                marginRight: 'auto',
-                left: '0',
-                right: '0',
-                zIndex: '2'
-              }}
-            />
-            <img
               src={Date}
               alt='March 7th - April 4th'
               width='30%'
               style={{
-                position: 'fixed',
+                position: 'absolute',
                 marginLeft: 'auto',
                 marginRight: 'auto',
                 left: '0',
                 right: '0',
-                zIndex: '2'
+                zIndex: '2',
+                top: '1rem'
+              }}
+            />
+            <img
+              src={HeaderImage}
+              alt='MetaFest'
+              width='40%'
+              style={{
+                position: 'absolute',
+                marginLeft: 'auto',
+                marginRight: 'auto',
+                left: '0',
+                right: '0',
+                zIndex: '2',
+                top: '1rem'
               }}
             />
             <div>
