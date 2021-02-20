@@ -15,7 +15,7 @@ body {
     display: flex;
     justify-content: center;
     position: relative;
-    height: 100vh;
+    height: 200vh;
     color: #FED141;
     font-family: 'NexaRustSans-Black', sans-serif;
     font-size: 200%;
@@ -27,7 +27,7 @@ body {
   
   .crawl {
     position: relative;
-    top: 9999px;
+    top: -9999px;
     transform-origin: 50% 100%;
     animation: crawl 120s linear;
   }
