@@ -18,7 +18,7 @@ body {
     height: 200vh;
     color: #FED141;
     font-family: 'NexaRustSans-Black', sans-serif;
-    font-size: 200%;
+    font-size: 300%;
     font-weight: 600;
     letter-spacing: 6px;
     line-height: 150%;
@@ -29,7 +29,7 @@ body {
     position: relative;
     top: -9999px;
     transform-origin: 50% 100%;
-    animation: crawl 120s linear;
+    animation: crawl 100s linear;
   }
   
   .crawl > .title {
