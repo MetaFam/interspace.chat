@@ -6,8 +6,7 @@ const Crawl = () => {
       <section className='star-warsI' >
         <div className=''>
           <div className=''>
-            <p>METAFEST</p>
-            <h1>Manifest the Future</h1>
+            <h1>METAFEST ... Manifest the Future</h1>
           </div>
 
           <p>
