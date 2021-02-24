@@ -1,4 +1,4 @@
-import React, { Fragment, useContext } from 'react'
+import React, { Fragment, useContext, useState } from 'react'
 import styled from 'styled-components'
 import { useMediaQuery } from 'react-responsive'
 import { FloatingSpaceContext } from '../contexts/FloatingSpaceContext'
@@ -13,16 +13,33 @@ import Future from '../img/metafest-manifest-the-future.png'
 import Noise from '../img/metafest-noise.gif'
 import Rocks from '../img/metafest-rocks.gif'
 import Wanderer from '../img/metafest-wanderer.png'
+import Loupe from '../img/loupe.svg'
 
 const StyledLink = styled.a`
   color: #e340a8;
   text-align: center;
 `
+const ImageButton = styled.button`
+cursor: pointer;
+transform: scale(1);
+transition: 1s;
+
+& :hover {
+  transform: scale(2);  
+}
+`
+
 
 const Announce = () => {
+  const [starwars, setStarwars] = useState(true)
+  const crawlSwitch = () => {
+    setStarwars(starwars => !starwars)
+    {starwars ? addFloatingSpace('Crawl') : closeFloatingSpace('Crawl')}
+  }
+
   const isPortrait = useMediaQuery({ query: '(orientation: portrait)' })
   const isMobile = useMediaQuery({ query: '(max-width: 1224px)' })
-  const { currentFloatingSpaces, addFloatingSpace } = useContext(
+  const { currentFloatingSpaces, addFloatingSpace, closeFloatingSpace } = useContext(
     FloatingSpaceContext
   )
 
@@ -129,7 +146,7 @@ const Announce = () => {
               position: 'absolute',
               bottom: '0%',
               left: '0%',
-              zIndex: '10'
+              zIndex: '2'
             }}
           />
           <img
@@ -207,7 +224,7 @@ const Announce = () => {
                   top: '80%',
                   right: '0%',
                   width: '30%',
-                  zIndex: '3'
+                  zIndex: '1'
                 }}
               />
             </div>
@@ -224,7 +241,7 @@ const Announce = () => {
               }}
             >
               <button
-                onClick={() => addFloatingSpace('apply')}
+                onClick={() => addFloatingSpace('Apply')}
                 style={{
                   backgroundColor: '#ffffff33',
                   color: '#FFF',
@@ -265,7 +282,13 @@ const Announce = () => {
                 zIndex: '1'
               }}
             />
-            <Crawl style={{ zIndex: '-2' }} />
+              <ImageButton
+                onClick={crawlSwitch}
+                style={{ position: 'absolute', top: '50%', right: '20%', zIndex: 1, backgroundColor: '#00000000', border: '0px solid #FED141', borderRadius: '5px' }}
+              >
+               <img src={Loupe} width='15px' height='15px' style={{padding: '0.5rem'}} />
+              </ImageButton>
+            {starwars && <Crawl style={{ zIndex: -2 }} />}
             <img
               src={Grid}
               alt=''

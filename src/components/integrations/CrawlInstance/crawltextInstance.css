@@ -1,0 +1,35 @@
+body {
+    overflow: scroll;
+  }
+  
+  .star-warsI {
+    margin: 1.5rem;
+    display: flex;
+    justify-content: center;
+    color: #FED141;
+    font-family: 'NexaRustSans-Black', sans-serif;
+    font-size: 1rem;
+    font-weight: 00;
+    height: 80%;
+  }
+  
+  .crawlI {
+    position: relative;
+    transform-origin: 50% 100%;
+    animation: crawl 130s linear;
+  }
+  
+  .crawlI > .title {
+    font-size: 90%;
+    text-align: center;
+  }
+  
+  
+  @keyframes crawlI {
+    0% {
+      top: '0%';
+    }
+    100% { 
+      top: '100%';
+    }
+  }

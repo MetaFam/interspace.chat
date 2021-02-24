@@ -4,7 +4,7 @@ import { Rnd } from 'react-rnd'
 
 import { FloatingSpaceContext } from '../contexts/FloatingSpaceContext'
 import LoftRadioInstance from './integrations/LoftRadioInstance'
-import RTreesInstance from './integrations/RTreesInstance'
+import Crawl from './integrations/CrawlInstance/CrawltextInstance'
 import RoomInstance from './RoomInstance'
 import { RoomNames } from '../utils/constants'
 
@@ -27,17 +27,19 @@ const SpaceContainer = styled.div`
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
+  overflow-y: scroll;
 `
 
 const SpaceContent = styled.div`
   width: 100%;
+  height: 100%;
   flex: 1;
 `
 
 const spaceContainerStyle = {
   padding: '15px',
   paddingTop: '0px',
-  backgroundColor: '#310C4FAA',
+  backgroundColor: '#310C4FDD',
   borderRadius: 10,
   cursor: 'all-scroll',
   pointerEvents: 'all',
@@ -68,9 +70,9 @@ function getFloatingRoomWindow (windowKey) {
     return <LoftRadioInstance />
   } else if (RoomNames.indexOf(windowKey) > -1) {
     return <RoomInstance space={windowKey} />
-  } else if (windowKey === 'rTrees') {
-    return <RTreesInstance backgroundColor={'white'} />
-  } else if (windowKey === 'apply') {
+  } else if (windowKey === 'Crawl') {
+    return <Crawl />
+  } else if (windowKey === 'Apply') {
     return <TypeformInstance />
   } else if (windowKey === null) {
     return null
@@ -125,7 +127,7 @@ function FloatingRoomWindow () {
           <SpaceHeaderElement onClick={() => closeFloatingSpace(windowKey)}>
             <Closer />
           </SpaceHeaderElement>
-          <SpaceHeaderElement>{windowKey}</SpaceHeaderElement>
+          <SpaceHeaderElement style={{color: '#ffffff22'}}>{windowKey}</SpaceHeaderElement>
           <SpaceHeaderElement></SpaceHeaderElement>
         </SpaceHeader>
         <SpaceContent>{getFloatingRoomWindow(windowKey)}</SpaceContent>

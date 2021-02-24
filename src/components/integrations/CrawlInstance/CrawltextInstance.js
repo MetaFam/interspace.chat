@@ -1,13 +1,11 @@
-import React, { useContext } from 'react'
-import './crawltext.css'
+import React from 'react'
+import './crawltextInstance.css'
+
 const Crawl = () => {
   return (
-    <React.Fragment>
-      <div className='fade'></div>
-
-      <section className='star-wars'>
-        <div className='crawl'>
-          <div className='title'>
+      <section className='star-warsI' >
+        <div className=''>
+          <div className=''>
             <p>METAFEST</p>
             <h1>Manifest the Future</h1>
           </div>
@@ -51,7 +49,6 @@ const Crawl = () => {
           <h1>Yes, I do.</h1>
         </div>
       </section>
-    </React.Fragment>
   )
 }
 
