@@ -27,17 +27,14 @@ function App () {
       />*/}
 
       <RootContextProvider>
-        {/**
-				<Space />
-				<FloatingRoomWindow />
-		*/}
+        
         <div
           style={{
             position: 'relative',
             zIndex: '1'
           }}
         >
-          <Announce />
+          <Space />
           <FloatingRoomWindow />
         </div>
       </RootContextProvider>
