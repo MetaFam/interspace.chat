@@ -3,17 +3,27 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emotion/core": "^11.0.0",
+    "@emotion/react": "^11.1.5",
+    "@emotion/styled": "^11.1.5",
+    "@widgetbot/react-embed": "^1.4.0",
+    "emotion": "^11.0.0",
+    "emotion-theming": "^11.0.0",
     "lib-jitsi-meet": "^1.0.6",
     "react": "^16.10.2",
+    "react-device-detect": "^1.15.0",
     "react-dom": "^16.10.2",
+    "react-draggable": "^4.4.3",
     "react-image-mapper": "^0.0.15",
     "react-responsive": "^8.2.0",
     "react-rnd": "^10.1.7",
     "react-scripts": "3.2.0",
     "react-starfield-animation": "^1.0.1",
-    "styled-components": "^5.0.0-beta.9"
+    "styled-components": "^5.0.0-beta.9",
+    "webfontloader": "^1.6.28"
   },
   "scripts": {
+    "svg-to-jsx": "svgr svgr/imagemap.svg --out-dir src/components/ --svgo-config svgr/svgo.json",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -33,5 +43,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@svgr/cli": "^5.5.0"
   }
 }

@@ -15,7 +15,7 @@ function App () {
     <div className='App'>
       <div className='stars'></div>
       <div className='twinkling'></div>
-      {/**<StarfieldAnimation
+      <StarfieldAnimation
         numParticles={300}
         lineWidth={2.0}
         depth={300}
@@ -24,10 +24,9 @@ function App () {
           width: '100%',
           height: '100%'
         }}
-      />*/}
+      />
 
       <RootContextProvider>
-        
         <div
           style={{
             position: 'relative',
