@@ -11,6 +11,7 @@ import TypeformInstance from './integrations/TypeformInstance'
 import YoutubeInstance from './integrations/YoutubeInstance'
 import ChatInstance from './integrations/ChatInstance'
 import WikiInstance from './integrations/WikiInstance'
+import StartMetagameInstance from './integrations/StartMetagameInstance'
 
 const width = window.innerWidth / 2
 const height = window.innerHeight / 2
@@ -21,7 +22,7 @@ const SpaceHeader = styled.div`
   align-items: center;
 `
 const SpaceHeaderElement = styled.div`
-  margin: 0.5rem;
+  margin: 0.1rem;
 `
 const SpaceContainer = styled.div`
   width: 100%;
@@ -38,7 +39,7 @@ const SpaceContent = styled.div`
 `
 
 const spaceContainerStyle = {
-  padding: '15px',
+  padding: '5px',
   paddingTop: '0px',
   backgroundColor: '#310C4FDD',
   borderRadius: 10,
@@ -81,7 +82,7 @@ function getFloatingRoomWindow (windowKey) {
   } else if (windowKey === 'Chat') {
     return <ChatInstance />
   } else if (windowKey === 'Start your game') {
-    return <WikiInstance />
+    return <StartMetagameInstance />
   } else if (windowKey === 'Apply') {
     return <TypeformInstance />
   } else if (windowKey === null) {
