@@ -13,7 +13,7 @@ ReactDOM.render(
         * {
           margin: 0px;
           padding: 0px;
-          font-family: 'Fira Code', monospace;
+          font-family: 'NexaRustSans-Black', monospace;
           font-weight: 300;
           font-size: 14px;
         }

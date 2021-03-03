@@ -9,6 +9,8 @@ import RoomInstance from './RoomInstance'
 import Crawl from './integrations/CrawlInstance/CrawltextInstance'
 import TypeformInstance from './integrations/TypeformInstance'
 import YoutubeInstance from './integrations/YoutubeInstance'
+import ChatInstance from './integrations/ChatInstance'
+import WikiInstance from './integrations/WikiInstance'
 
 const width = window.innerWidth / 2
 const height = window.innerHeight / 2
@@ -76,6 +78,10 @@ function getFloatingRoomWindow (windowKey) {
     return <RoomInstance space={windowKey} />
   } else if (windowKey === 'Crawl') {
     return <Crawl />
+  } else if (windowKey === 'Chat') {
+    return <ChatInstance />
+  } else if (windowKey === 'Start your game') {
+    return <WikiInstance />
   } else if (windowKey === 'Apply') {
     return <TypeformInstance />
   } else if (windowKey === null) {

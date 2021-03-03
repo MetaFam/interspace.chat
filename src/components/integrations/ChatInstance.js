@@ -1,13 +1,12 @@
 import React from 'react'
+import WidgetBot from '@widgetbot/react-embed'
 
-function TypeformInstance () {
+export default function ChatInstance () {
   return (
-    <iframe
-      title='Apply for Metafest'
-      src='https://form.typeform.com/to/BClVBF4E'
+    <WidgetBot
+      server='629411177947987986'
+      channel='814215103146623006'
       style={{ height: '100%', width: '100%', border: '0px' }}
     />
   )
 }
-
-export default TypeformInstance
