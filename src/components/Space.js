@@ -9,6 +9,9 @@ import SvgImagemapMobile from './MetaFestMobile'
 
 import triangle from '../img/triangle.svg'
 import Grid from '../img/metafest-grid.gif'
+import HeaderImage from '../img/metafest-header.png'
+import Date from '../img/metafest-date.png'
+import Future from '../img/metafest-manifest-the-future.png'
 
 const Header = styled.span``
 
@@ -51,6 +54,7 @@ const SpaceSelector = styled.div`
 
 const SpaceInfo = styled.div`
   text-align: center;
+  color: whitesmoke;
   bottom: 1rem;
   left: 50%;
   margin: 0 auto;
@@ -94,6 +98,12 @@ const StrongStyled = styled.strong`
 
 const Triangle = styled.img`
   align-self: baseline;
+`
+
+const HeaderContainer = styled.div`
+  grid-template-columns: auto auto auto;
+  justify-content: space-between;
+  place-items: center;
 `
 
 const ShowSection = () => {
@@ -184,6 +194,35 @@ const Space = () => {
   return (
     <SpaceSelector>
       <BrowserView viewClassName='space-container'>
+        <img
+          src={Date}
+          alt='March 7th - April 4th'
+          width='auto'
+          height='60px'
+          style={{ position: 'absolute', bottom: '10px', left: '1rem' }}
+        />
+        <img
+          src={HeaderImage}
+          alt='MetaFest'
+          width='auto'
+          height='150px'
+          style={{
+            position: 'absolute',
+            top: '10px',
+            marginLeft: 'auto',
+            marginRight: 'auto',
+            left: '0px',
+            right: '0px'
+          }}
+        />
+        <img
+          src={Future}
+          alt='manifest'
+          width='auto'
+          height='100px'
+          style={{ position: 'absolute', bottom: '10px', right: '1rem' }}
+        />
+
         <ImagemapContainer>
           <SvgImagemap />
         </ImagemapContainer>
@@ -202,7 +241,7 @@ const Space = () => {
             )}
           </SpaceInfo>
         </Header>
-        <img
+        {/**<img
           src={Grid}
           alt=''
           width='100%'
@@ -212,7 +251,7 @@ const Space = () => {
             bottom: '0',
             zIndex: -1
           }}
-        />
+        />*/}
       </BrowserView>
       <MobileView>
         <ShowSection />

@@ -12,6 +12,8 @@ import YoutubeInstance from './integrations/YoutubeInstance'
 import ChatInstance from './integrations/ChatInstance'
 import WikiInstance from './integrations/WikiInstance'
 import StartMetagameInstance from './integrations/StartMetagameInstance'
+import CalendarInstance from './integrations/CalendarInstance'
+import CryptovoxelsInstance from './integrations/CryptovoxelsInstance'
 
 const width = window.innerWidth / 2
 const height = window.innerHeight / 2
@@ -79,6 +81,10 @@ function getFloatingRoomWindow (windowKey) {
     return <RoomInstance space={windowKey} />
   } else if (windowKey === 'Crawl') {
     return <Crawl />
+  } else if (windowKey === 'Calendar') {
+    return <CalendarInstance />
+  } else if (windowKey === 'Metafest Booth') {
+    return <CryptovoxelsInstance />
   } else if (windowKey === 'Chat') {
     return <ChatInstance />
   } else if (windowKey === 'Start your game') {
