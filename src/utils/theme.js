@@ -13,11 +13,11 @@ const themeLight = {
 }
 
 const themeDark = {
-  background: gray,
-  body: black,
-  highlight: blue
+  background: black,
+  body: gray,
+  highlight: purple
 }
 
-const theme = mode => (mode === 'light' ? themeLight : themeDark)
+const theme = mode => (mode === 'dark' ? themeDark : themeLight)
 
 export default theme

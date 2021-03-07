@@ -5,7 +5,7 @@ import { BrowserView, MobileView } from 'react-device-detect'
 import { FloatingSpaceContext } from '../contexts/FloatingSpaceContext'
 
 import SvgImagemap from './MetaFest'
-import SvgImagemapMobile from './MetaFestMobile'
+import Mobile from './MetaFestMobile'
 
 import triangle from '../img/triangle.svg'
 import Grid from '../img/metafest-grid.gif'
@@ -115,9 +115,9 @@ const ShowSection = () => {
   const ButtonContainer = styled.div`
     position: absolute;
     background-color: ${props => props.theme.background};
-    opacity: 0.95;
-    width: 100%;
-    height: 100%;
+    // opacity: 0.7;
+    width: 100vw;
+    height: 100vh;
     display: grid;
     justify-self: center;
     justify-content: end;
@@ -127,11 +127,12 @@ const ShowSection = () => {
     border: 1px solid ${props => props.theme.highlight};
     border-radius: 100px;
     color: ${props => props.theme.highlight};
-    font-size: 2rem;
+    font-size: 1rem;
     font-weight: 100;
     padding: 1rem;
     justify-self: center;
     align-self: start;
+    max-width: 250px;
     & :focus {
       filter: invert(100%);
     }
@@ -154,10 +155,9 @@ const Element = () => (
     <p>
       This website is optimized for <StrongStyled>desktop</StrongStyled>.{' '}
     </p>
-    <p>To join the video-chat on your mobile, download the Jitsi Mobile App.</p>
-    <p>Solidity Summit livestream at:</p>
-    <a href='https://www.youtube.com/channel/UCNOfzGXD_C9YMYmnefmPH0g'>
-      Ethereum.org Youtube channel
+    <p style={{ marginTop: '2rem' }}>MetaFest livestreams happen at</p>
+    <a href='https://www.youtube.com/channel/UC6gdZ6Q7Fwfvn-Uu4QKDyhg'>
+      Metamedia Youtube channel
     </a>
   </Descripton>
 )
@@ -256,7 +256,7 @@ const Space = () => {
       <MobileView>
         <ShowSection />
         <ImagemapContainerMobile>
-          <SvgImagemap />
+          <Mobile />
         </ImagemapContainerMobile>
       </MobileView>
     </SpaceSelector>
