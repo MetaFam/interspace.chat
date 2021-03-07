@@ -100,6 +100,10 @@ const Triangle = styled.img`
   align-self: baseline;
 `
 
+const ClickImage = styled.img`
+  cursor: pointer;
+`
+
 const HeaderContainer = styled.div`
   grid-template-columns: auto auto auto;
   justify-content: space-between;
@@ -163,7 +167,9 @@ const Element = () => (
 )
 
 const Space = () => {
-  const { currentFloatingSpaces } = useContext(FloatingSpaceContext)
+  const { currentFloatingSpaces, addFloatingSpace } = useContext(
+    FloatingSpaceContext
+  )
 
   const space = currentFloatingSpaces
 
@@ -194,33 +200,50 @@ const Space = () => {
   return (
     <SpaceSelector>
       <BrowserView viewClassName='space-container'>
-        <img
+        <ClickImage
           src={Date}
           alt='March 7th - April 4th'
           width='auto'
           height='60px'
-          style={{ position: 'absolute', bottom: '10px', left: '1rem' }}
-        />
-        <img
-          src={HeaderImage}
-          alt='MetaFest'
-          width='auto'
-          height='150px'
           style={{
             position: 'absolute',
-            top: '10px',
-            marginLeft: 'auto',
-            marginRight: 'auto',
-            left: '0px',
-            right: '0px'
+            bottom: '10px',
+            left: '1rem',
+            zIndex: 2
           }}
+          className='click-zone'
+          onClick={() => addFloatingSpace('Calendar')}
         />
-        <img
+        <a href='/'>
+          <ClickImage
+            src={HeaderImage}
+            alt='MetaFest'
+            width='auto'
+            height='150px'
+            style={{
+              position: 'absolute',
+              top: '10px',
+              marginLeft: 'auto',
+              marginRight: 'auto',
+              left: '0px',
+              right: '0px',
+              zIndex: 2
+            }}
+          />
+        </a>
+        <ClickImage
           src={Future}
           alt='manifest'
           width='auto'
           height='100px'
-          style={{ position: 'absolute', bottom: '10px', right: '1rem' }}
+          style={{
+            position: 'absolute',
+            bottom: '10px',
+            right: '1rem',
+            zIndex: 2
+          }}
+          className='click-zone'
+          onClick={() => addFloatingSpace('Apply')}
         />
 
         <ImagemapContainer>
