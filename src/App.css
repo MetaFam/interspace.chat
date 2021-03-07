@@ -128,16 +128,21 @@ h1 {
 }
 
 .click-zone {
-	position: absolute;
-}
-.click-zone:hover {
-	text-shadow: 5px 0px 10px greenyellow;
+	transition: 0.01s cubic-bezier(0.2, 0.8, 0.2, 1);
 	cursor: pointer;
-}
-
-.click-zone:hover > .roomName {
-	visibility: visible;
-}
+	/* z-index: 2; */
+	/* border: 1px solid grey; */
+  }
+  .click-zone:hover {
+	
+	cursor: pointer;
+	
+	
+	/* transform: scale(2); */
+	
+	/* z-index: 2; */
+	/* border: 1px solid grey; */
+  }
 
 .click-zone.a {
 	transform: var(--metagame-transform);

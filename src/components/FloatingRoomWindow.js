@@ -3,15 +3,20 @@ import styled from 'styled-components'
 import { Rnd } from 'react-rnd'
 
 import { FloatingSpaceContext } from '../contexts/FloatingSpaceContext'
-import LoftRadioInstance from './integrations/LoftRadioInstance'
-import Crawl from './integrations/CrawlInstance/CrawltextInstance'
-import RoomInstance from './RoomInstance'
-import { RoomNames } from '../utils/constants'
 
+import { RoomNames } from '../utils/constants'
+import RoomInstance from './RoomInstance'
+import Crawl from './integrations/CrawlInstance/CrawltextInstance'
 import TypeformInstance from './integrations/TypeformInstance'
+import YoutubeInstance from './integrations/YoutubeInstance'
+import ChatInstance from './integrations/ChatInstance'
+import WikiInstance from './integrations/WikiInstance'
+import StartMetagameInstance from './integrations/StartMetagameInstance'
+import CalendarInstance from './integrations/CalendarInstance'
+import CryptovoxelsInstance from './integrations/CryptovoxelsInstance'
 
 const width = window.innerWidth / 2
-const height = window.innerHeight / 2 + 200
+const height = window.innerHeight / 2
 
 const SpaceHeader = styled.div`
   display: flex;
@@ -19,7 +24,7 @@ const SpaceHeader = styled.div`
   align-items: center;
 `
 const SpaceHeaderElement = styled.div`
-  margin: 0.5rem;
+  margin: 0.1rem;
 `
 const SpaceContainer = styled.div`
   width: 100%;
@@ -27,7 +32,6 @@ const SpaceContainer = styled.div`
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
-  overflow-y: scroll;
 `
 
 const SpaceContent = styled.div`
@@ -37,7 +41,7 @@ const SpaceContent = styled.div`
 `
 
 const spaceContainerStyle = {
-  padding: '15px',
+  padding: '5px',
   paddingTop: '0px',
   backgroundColor: '#310C4FDD',
   borderRadius: 10,
@@ -49,6 +53,11 @@ const spaceContainerStyle = {
     pointerEvents: 'none'
   }
 }
+
+const RoomLink = styled.a`
+  text-decoration: none;
+  padding-left: 1rem;
+`
 
 const Closer = styled.div`
   opacity: 0.7;
@@ -66,12 +75,20 @@ const Closer = styled.div`
 `
 
 function getFloatingRoomWindow (windowKey) {
-  if (windowKey === 'loft.radio') {
-    return <LoftRadioInstance />
+  if (windowKey === 'stage') {
+    return <YoutubeInstance />
   } else if (RoomNames.indexOf(windowKey) > -1) {
     return <RoomInstance space={windowKey} />
   } else if (windowKey === 'Crawl') {
     return <Crawl />
+  } else if (windowKey === 'Calendar') {
+    return <CalendarInstance />
+  } else if (windowKey === 'Metafest Booth') {
+    return <CryptovoxelsInstance />
+  } else if (windowKey === 'Chat') {
+    return <ChatInstance />
+  } else if (windowKey === 'Start your game') {
+    return <StartMetagameInstance />
   } else if (windowKey === 'Apply') {
     return <TypeformInstance />
   } else if (windowKey === null) {
@@ -91,6 +108,8 @@ function FloatingRoomWindow () {
     FloatingSpaceContext
   )
 
+  const space = currentFloatingSpaces
+
   const [zIndexes, setZIndexes] = useReducer(zIndexesReducer, {})
   const maxZ = Object.values(zIndexes).reduce((acc, el) => Math.max(acc, el), 1)
 
@@ -105,6 +124,131 @@ function FloatingRoomWindow () {
 
   function setWindowFocus (windowKey) {
     setZIndexes({ key: windowKey, value: maxZ + 1 })
+  }
+
+  const setStartingCoordinatesX = windowKey => {
+    let windowOriginX = 20
+    if (windowKey === 'discord chat') {
+      windowOriginX = width
+    } else if (windowKey === 'claim poap token') {
+      windowOriginX = width / 2
+    } else if (windowKey === 'calendar') {
+      windowOriginX = width / 2
+    } else if (windowKey === 'youtube' || windowKey === 'livepeer') {
+      windowOriginX = 20
+    } else if (
+      windowKey === 'VHackathon Solidity Summit' ||
+      windowKey === 'credits'
+    ) {
+      windowOriginX = width / 1.6
+    } else if (
+      windowKey === 'help' ||
+      windowKey === 'about' ||
+      windowKey === 'new room' ||
+      windowKey === 'loft.radio' ||
+      windowKey === 'claim poap token'
+    ) {
+      windowOriginX = width / 2
+    } else {
+      windowOriginX = 20
+    }
+    return windowOriginX
+  }
+  const setStartingCoordinatesY = windowKey => {
+    let windowOriginY = 40
+    if (
+      windowKey === 'VHackathon Solidity Summit' ||
+      windowKey === 'credits' ||
+      windowKey === 'discord chat'
+    ) {
+      windowOriginY = 40
+    } else if (windowKey === 'calendar') {
+      windowOriginY = height / 2 - 70
+    } else if (windowKey === 'youtube' || windowKey === 'livepeer') {
+      windowOriginY = height + 10
+    } else if (
+      windowKey === 'help' ||
+      windowKey === 'about' ||
+      windowKey === 'new room' ||
+      windowKey === 'livestream' ||
+      windowKey === 'loft.radio' ||
+      windowKey === 'claim poap token'
+    ) {
+      windowOriginY = height / 2 - 70
+    } else {
+      windowOriginY = 40
+    }
+    return windowOriginY
+  }
+
+  const setFloatingwindowColor = windowKey => {
+    let bgColor = '#FCE96Add'
+
+    if (windowKey === 'main-room') {
+      bgColor = '#FCE96Add'
+    } else if (windowKey === 'mentor-ring') {
+      bgColor = '#FCE96Add'
+    } else if (windowKey === 'lobby') {
+      bgColor = '#FCE96Add'
+    } else if (
+      windowKey === 'discord chat' &&
+      space.indexOf('main-room') > -1
+    ) {
+      bgColor = '#FCE96Add'
+    } else if (windowKey === 'discord chat' && space.indexOf('lobby') > -1) {
+      bgColor = '#FCE96Add'
+    } else if (
+      windowKey === 'discord chat' &&
+      space.indexOf('mentor-ring') > -1
+    ) {
+      bgColor = '#FCE96Add'
+    } else if (
+      (windowKey === 'youtube' || windowKey === 'livepeer') &&
+      space.indexOf('main-room') > -1
+    ) {
+      bgColor = '#FCE96Add'
+    } else if (
+      (windowKey === 'youtube' || windowKey === 'livepeer') &&
+      space.indexOf('lobby') > -1
+    ) {
+      bgColor = '#FCE96Add'
+    } else if (
+      (windowKey === 'youtube' || windowKey === 'livepeer') &&
+      space.indexOf('mentor-ring') > -1
+    ) {
+      bgColor = '#FCE96Add'
+    } else if (windowKey === 'calendar') {
+      bgColor = '#5C5C5Fdd'
+    } else if (windowKey === 'new room') {
+      bgColor = '#5C5C5Fdd'
+    } else if (windowKey === 'livestream') {
+      bgColor = '#5C5C5Fdd'
+    } else if (windowKey === 'claim poap token') {
+      bgColor = '#ff00e1dd'
+    } else {
+      bgColor = '#FCE96Add'
+    }
+    return bgColor
+  }
+
+  const setStartingWidth = windowKey => {
+    let windowWidth = width - 20
+    if (windowKey === 'credits' || windowKey === 'VHackathon Solidity Summit') {
+      windowWidth = width / 1.3
+    } else {
+      windowWidth = width - 20
+    }
+    return windowWidth
+  }
+
+  const setStartingHeight = windowKey => {
+    let windowHeight = height - 20
+    if (windowKey === 'credits' || windowKey === 'VHackathon Solidity Summit') {
+      windowHeight = height * 1.8
+    } else {
+      windowHeight = height - 20
+    }
+    return windowHeight
   }
 
   return currentFloatingSpaces.map(windowKey => (
@@ -127,7 +271,9 @@ function FloatingRoomWindow () {
           <SpaceHeaderElement onClick={() => closeFloatingSpace(windowKey)}>
             <Closer />
           </SpaceHeaderElement>
-          <SpaceHeaderElement style={{color: '#ffffff22'}}>{windowKey}</SpaceHeaderElement>
+          <SpaceHeaderElement style={{ color: '#ffffff22' }}>
+            {windowKey}
+          </SpaceHeaderElement>
           <SpaceHeaderElement></SpaceHeaderElement>
         </SpaceHeader>
         <SpaceContent>{getFloatingRoomWindow(windowKey)}</SpaceContent>
