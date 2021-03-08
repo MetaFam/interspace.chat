@@ -13,7 +13,7 @@ import HeaderImage from '../img/metafest-header.png'
 import Date from '../img/metafest-date.png'
 import Future from '../img/metafest-manifest-the-future.png'
 
-import Zeppelin from '../img/zeppelin.png'
+import Zeppelin from '../img/zeppelin.svg'
 
 const Header = styled.span``
 
@@ -107,8 +107,9 @@ const ClickImage = styled.img`
 `
 
 const MovingImage = styled.img`
+pointer-events: none;
 position: absolute;
-z-index: 3;
+z-index: 1;
 animation: slidein 300s linear;
 @keyframes slidein {
   from {
