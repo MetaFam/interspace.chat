@@ -13,6 +13,8 @@ import HeaderImage from '../img/metafest-header.png'
 import Date from '../img/metafest-date.png'
 import Future from '../img/metafest-manifest-the-future.png'
 
+import Zeppelin from '../img/zeppelin.png'
+
 const Header = styled.span``
 
 const ImagemapContainer = styled.div`
@@ -102,6 +104,21 @@ const Triangle = styled.img`
 
 const ClickImage = styled.img`
   cursor: pointer;
+`
+
+const MovingImage = styled.img`
+position: absolute;
+z-index: 3;
+animation: slidein 300s linear;
+@keyframes slidein {
+  from {
+    transform: translateX(130%) translateY(70%);
+  }
+
+  to {
+    transform: translateX(-30%) translateY(60%);
+  }
+}
 `
 
 const HeaderContainer = styled.div`
@@ -200,6 +217,7 @@ const Space = () => {
   return (
     <SpaceSelector>
       <BrowserView viewClassName='space-container'>
+        <MovingImage src={Zeppelin} width='auto' height='auto' />
         <ClickImage
           src={Date}
           alt='March 7th - April 4th'
