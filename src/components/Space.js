@@ -1,6 +1,11 @@
 import React, { Fragment, useContext, useState, useEffect } from 'react'
 import styled from '@emotion/styled'
-import { BrowserView, MobileView } from 'react-device-detect'
+import {
+  BrowserView,
+  isBrowser,
+  isMobile,
+  MobileView
+} from 'react-device-detect'
 
 import { FloatingSpaceContext } from '../contexts/FloatingSpaceContext'
 
@@ -107,19 +112,19 @@ const ClickImage = styled.img`
 `
 
 const MovingImage = styled.img`
-pointer-events: none;
-position: absolute;
-z-index: 1;
-animation: slidein 300s linear;
-@keyframes slidein {
-  from {
-    transform: translateX(130%) translateY(70%);
-  }
+  pointer-events: none;
+  position: absolute;
+  z-index: 1;
+  animation: slidein 300s linear;
+  @keyframes slidein {
+    from {
+      transform: translateX(130%) translateY(70%);
+    }
 
-  to {
-    transform: translateX(-30%) translateY(60%);
+    to {
+      transform: translateX(-30%) translateY(60%);
+    }
   }
-}
 `
 
 const HeaderContainer = styled.div`
@@ -136,13 +141,14 @@ const ShowSection = () => {
 
   const ButtonContainer = styled.div`
     position: absolute;
+    z-index: 5;
     background-color: ${props => props.theme.background};
-    // opacity: 0.7;
+    opacity: 0.9;
     width: 100vw;
     height: 100vh;
     display: grid;
     justify-self: center;
-    justify-content: end;
+    place-content: center;
   `
   const CloseButton = styled.button`
     background: unset;
@@ -163,16 +169,35 @@ const ShowSection = () => {
     <div>
       {isHidden ? null : (
         <ButtonContainer>
-          {isHidden ? null : <Element />}
+          <BrowserView>{isHidden ? null : <DesktopElement />}</BrowserView>
+          <MobileView>{isHidden ? null : <MobileElement />}</MobileView>
           <CloseButton onClick={onClick}>
-            {isHidden ? '' : 'Close this message'}
+            {isHidden ? '' : 'Click Me'}
           </CloseButton>
         </ButtonContainer>
       )}
     </div>
   )
 }
-const Element = () => (
+
+const DesktopElement = () => (
+  <Descripton>
+    <p>
+      To enter <StrongStyled>METAFEST</StrongStyled>, you will have to
+      <br />
+      <a
+        href='https://gitcoin.co/grants/213/metagame'
+        target='_blank'
+        rel='noopener noreferrer'
+      >
+        donate to our Gitcoin grant
+      </a>
+    </p>
+    <p style={{ marginTop: '2rem' }}>just joking ... here you go</p>
+  </Descripton>
+)
+
+const MobileElement = () => (
   <Descripton>
     <p>
       This website is optimized for <StrongStyled>desktop</StrongStyled>.{' '}
@@ -218,6 +243,7 @@ const Space = () => {
   return (
     <SpaceSelector>
       <BrowserView viewClassName='space-container'>
+        <ShowSection />
         <MovingImage src={Zeppelin} width='auto' height='auto' />
         <ClickImage
           src={Date}
