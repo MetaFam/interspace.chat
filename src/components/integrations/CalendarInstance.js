@@ -16,6 +16,13 @@ function CalendarInstance () {
   const [timezone, changeTimezone] = useState('Europe/London')
   return (
     <InstanceContainer>
+      <p
+        style={{
+          paddingTop: '1rem',
+          paddingBottom: '1rem',
+        }}>
+        We will be adding more events in the upcoming days. Make sure to check the calendar frequently
+      </p>
       <iframe
         title='Schedule'
         src={`https://calendar.google.com/calendar/embed?src=1qnbr9796nnenn53cibhvekh58%40group.calendar.google.com&ctz=${timezone}`}
