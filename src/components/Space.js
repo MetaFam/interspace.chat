@@ -1,6 +1,11 @@
 import React, { Fragment, useContext, useState, useEffect } from 'react'
 import styled from '@emotion/styled'
-import { BrowserView, MobileView } from 'react-device-detect'
+import {
+  BrowserView,
+  isBrowser,
+  isMobile,
+  MobileView
+} from 'react-device-detect'
 
 import { FloatingSpaceContext } from '../contexts/FloatingSpaceContext'
 
@@ -12,6 +17,8 @@ import Grid from '../img/metafest-grid.gif'
 import HeaderImage from '../img/metafest-header.png'
 import Date from '../img/metafest-date.png'
 import Future from '../img/metafest-manifest-the-future.png'
+
+import Zeppelin from '../img/zeppelin.svg'
 
 const Header = styled.span``
 
@@ -100,6 +107,26 @@ const Triangle = styled.img`
   align-self: baseline;
 `
 
+const ClickImage = styled.img`
+  cursor: pointer;
+`
+
+const MovingImage = styled.img`
+  pointer-events: none;
+  position: absolute;
+  z-index: 1;
+  animation: slidein 300s linear;
+  @keyframes slidein {
+    from {
+      transform: translateX(130%) translateY(70%);
+    }
+
+    to {
+      transform: translateX(-30%) translateY(60%);
+    }
+  }
+`
+
 const HeaderContainer = styled.div`
   grid-template-columns: auto auto auto;
   justify-content: space-between;
@@ -114,13 +141,14 @@ const ShowSection = () => {
 
   const ButtonContainer = styled.div`
     position: absolute;
+    z-index: 5;
     background-color: ${props => props.theme.background};
-    // opacity: 0.7;
+    opacity: 0.9;
     width: 100vw;
     height: 100vh;
     display: grid;
     justify-self: center;
-    justify-content: end;
+    place-content: center;
   `
   const CloseButton = styled.button`
     background: unset;
@@ -141,16 +169,35 @@ const ShowSection = () => {
     <div>
       {isHidden ? null : (
         <ButtonContainer>
-          {isHidden ? null : <Element />}
+          <BrowserView>{isHidden ? null : <DesktopElement />}</BrowserView>
+          <MobileView>{isHidden ? null : <MobileElement />}</MobileView>
           <CloseButton onClick={onClick}>
-            {isHidden ? '' : 'Close this message'}
+            {isHidden ? '' : 'Click Me'}
           </CloseButton>
         </ButtonContainer>
       )}
     </div>
   )
 }
-const Element = () => (
+
+const DesktopElement = () => (
+  <Descripton>
+    <p>
+      To enter <StrongStyled>METAFEST</StrongStyled>, you will have to
+      <br />
+      <a
+        href='https://gitcoin.co/grants/213/metagame'
+        target='_blank'
+        rel='noopener noreferrer'
+      >
+        donate to our Gitcoin grant
+      </a>
+    </p>
+    <p style={{ marginTop: '2rem' }}>just joking ... here you go</p>
+  </Descripton>
+)
+
+const MobileElement = () => (
   <Descripton>
     <p>
       This website is optimized for <StrongStyled>desktop</StrongStyled>.{' '}
@@ -163,7 +210,9 @@ const Element = () => (
 )
 
 const Space = () => {
-  const { currentFloatingSpaces } = useContext(FloatingSpaceContext)
+  const { currentFloatingSpaces, addFloatingSpace } = useContext(
+    FloatingSpaceContext
+  )
 
   const space = currentFloatingSpaces
 
@@ -194,33 +243,52 @@ const Space = () => {
   return (
     <SpaceSelector>
       <BrowserView viewClassName='space-container'>
-        <img
+        <ShowSection />
+        <MovingImage src={Zeppelin} width='auto' height='auto' />
+        <ClickImage
           src={Date}
           alt='March 7th - April 4th'
           width='auto'
           height='60px'
-          style={{ position: 'absolute', bottom: '10px', left: '1rem' }}
-        />
-        <img
-          src={HeaderImage}
-          alt='MetaFest'
-          width='auto'
-          height='150px'
           style={{
             position: 'absolute',
-            top: '10px',
-            marginLeft: 'auto',
-            marginRight: 'auto',
-            left: '0px',
-            right: '0px'
+            bottom: '10px',
+            left: '1rem',
+            zIndex: 2
           }}
+          className='click-zone'
+          onClick={() => addFloatingSpace('Calendar')}
         />
-        <img
+        <a href='/'>
+          <ClickImage
+            src={HeaderImage}
+            alt='MetaFest'
+            width='auto'
+            height='150px'
+            style={{
+              position: 'absolute',
+              top: '10px',
+              marginLeft: 'auto',
+              marginRight: 'auto',
+              left: '0px',
+              right: '0px',
+              zIndex: 2
+            }}
+          />
+        </a>
+        <ClickImage
           src={Future}
           alt='manifest'
           width='auto'
           height='100px'
-          style={{ position: 'absolute', bottom: '10px', right: '1rem' }}
+          style={{
+            position: 'absolute',
+            bottom: '10px',
+            right: '1rem',
+            zIndex: 2
+          }}
+          className='click-zone'
+          onClick={() => addFloatingSpace('Apply')}
         />
 
         <ImagemapContainer>

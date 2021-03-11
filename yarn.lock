@@ -9029,6 +9029,13 @@ react-starfield-animation@^1.0.1:
     raf "^3.4.0"
     react-sizeme "^2.4.2"
 
+react-timezone@^2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/react-timezone/-/react-timezone-2.4.0.tgz#abdc57d4075dd5cda09db155967f64f65af598cb"
+  integrity sha512-8s1lcqN0npbo7qDheCeNym6sCraMyEKeusdHl0//CDbRv+g3Iip9ceseAGM+ZuxsGQtN8h37GRmKI37PpSNy5g==
+  dependencies:
+    prop-types "^15.6.1"
+
 react@^16.10.2, react@^16.13.1:
   version "16.14.0"
   resolved "https://registry.yarnpkg.com/react/-/react-16.14.0.tgz#94d776ddd0aaa37da3eda8fc5b6b18a4c9a3114d"

@@ -3,17 +3,8 @@ import styled from 'styled-components'
 import { useMediaQuery } from 'react-responsive'
 import { FloatingSpaceContext } from '../contexts/FloatingSpaceContext'
 
-import Crawl from './crawltext/crawltext'
-
 import HeaderImage from '../img/metafest-header.png'
 import Date from '../img/metafest-date.png'
-import Flavortext from '../img/metafest-flavortext.png'
-import Grid from '../img/metafest-grid.gif'
-import Future from '../img/metafest-manifest-the-future.png'
-import Noise from '../img/metafest-noise.gif'
-import Rocks from '../img/metafest-rocks.gif'
-import Wanderer from '../img/metafest-wanderer.png'
-import Loupe from '../img/loupe.svg'
 
 const StyledLink = styled.a`
   color: #e340a8;
