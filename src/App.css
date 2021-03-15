@@ -16,9 +16,27 @@
 		url('./fonts/NexaRustSans-Black.ttf') format('truetype'); /* Safari, Android, iOS */
 }
 
-* {
-	font-family: 'NexaRustSans-Black', sans-serif;
+@font-face {
+	font-family: 'PressStart2P-Regular';
+	font-style: normal;
 	font-weight: 800;
+	src: url('./fonts/PressStart2P-Regular.ttf'); /* IE9 Compat Modes */
+	src: local('PressStart2P-Regular'), local('PressStart2P-Regular'),
+		url('./fonts/PressStart2P-Regular.ttf') format('truetype'); /* Safari, Android, iOS */
+}
+
+@font-face {
+	font-family: 'Jura-Regular';
+	font-style: normal;
+	font-weight: 400;
+	src: url('./fonts/Jura-Regular.ttf'); /* IE9 Compat Modes */
+	src: local('Jura-Regular'), local('Jura-Regular'),
+		url('./fonts/Jura-Regular.ttf') format('truetype'); /* Safari, Android, iOS */
+}
+
+* {
+	font-family: 'Jura-Regular', sans-serif;
+	font-weight: 400;
 }
 
 body {
@@ -33,6 +51,10 @@ html {
 
 h1 {
 	margin-left: 50px;
+}
+
+a {
+	color: #79f8fb;
 }
 
 .App {

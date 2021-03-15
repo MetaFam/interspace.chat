@@ -13,9 +13,13 @@ ReactDOM.render(
         * {
           margin: 0px;
           padding: 0px;
-          font-family: 'NexaRustSans-Black', monospace;
+          font-family: 'Jura-Regular', sans-serif;
           font-weight: 300;
-          font-size: 14px;
+          font-size: 18px;
+        }
+        h1 {
+          font-family: 'PressStart2P-Regular', monospace;
+          font-size: 26px;
         }
         body {
           margin: 0px;
