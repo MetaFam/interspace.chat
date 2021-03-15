@@ -26,9 +26,9 @@ function CalendarInstance () {
           border: '0px'
         }}
       />
-      <h1 style={{ color: '#65CBF6', marginTop: '1rem' }}>
+      <p style={{ color: '#65CBF6', marginTop: '1rem' }}>
         Please select your timezone
-      </h1>
+      </p>
       <TimezonePicker
         value={timezone}
         onChange={picktimezone => changeTimezone(picktimezone)}
