@@ -77,6 +77,7 @@ const Descripton = styled.div`
   margin: 0px;
   font-size: 0.8rem;
   padding-bottom: 0.4rem;
+  max-width: 650px;
   p {
     padding: 0.5rem;
     margin: 0px;
@@ -122,7 +123,7 @@ const MovingImage = styled.img`
     }
 
     to {
-      transform: translateX(-30%) translateY(60%);
+      transform: translateX(-130%) translateY(60%);
     }
   }
 `
@@ -182,6 +183,28 @@ const ShowSection = () => {
 
 const DesktopElement = () => (
   <Descripton>
+
+   <h1> Welcome to MetaFest</h1>
+    <p>
+    MetaFest is virtual festival/conference/hackathon powered by MetaGame <br />
+    with the goal of helping you level up & manifest a better future.
+  </p>
+  <p style={{textDecoration: 'line-through'}}>
+  Week I<br />
+  The week of gaming & social events
+  </p>
+  <p style={{border: '1px solid #BD96E9', borderRadius: '10px'}}>
+  Week II<br />
+  The week of talks 70+ great talks
+  </p>
+  <p>
+  Week III<br />
+  The week of 20+ epic workshops
+  </p>
+  <p>
+  Week IV<br />
+  The week of hacking things into reality
+    </p>
     <p>
       To enter <StrongStyled>METAFEST</StrongStyled>, you will have to
       <br />
