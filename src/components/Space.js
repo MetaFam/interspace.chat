@@ -116,13 +116,12 @@ const MovingImage = styled.img`
   pointer-events: none;
   position: absolute;
   z-index: 1;
-  animation: slidein 300s linear;
+  animation: slidein 30s linear;
   @keyframes slidein {
-    from {
-      transform: translateX(130%) translateY(70%);
+    0% {
+      transform: translateX(130%) translateY(80%);
     }
-
-    to {
+    100% {
       transform: translateX(-130%) translateY(60%);
     }
   }
@@ -233,6 +232,9 @@ const MobileElement = () => (
 )
 
 const Space = () => {
+  
+  const [live, setLive] = useState(false)
+
   const { currentFloatingSpaces, addFloatingSpace } = useContext(
     FloatingSpaceContext
   )
@@ -267,7 +269,7 @@ const Space = () => {
     <SpaceSelector>
       <BrowserView viewClassName='space-container'>
         <ShowSection />
-        <MovingImage src={Zeppelin} width='auto' height='auto' />
+        {live && <MovingImage src={Zeppelin} width='auto' height='auto' />}
         <ClickImage
           src={Date}
           alt='March 7th - April 4th'
