@@ -172,7 +172,7 @@ const ShowSection = () => {
           <BrowserView>{isHidden ? null : <DesktopElement />}</BrowserView>
           <MobileView>{isHidden ? null : <MobileElement />}</MobileView>
           <CloseButton onClick={onClick}>
-            {isHidden ? '' : 'Click Me'}
+            {isHidden ? '' : 'ENTER'}
           </CloseButton>
         </ButtonContainer>
       )}
@@ -204,7 +204,7 @@ const DesktopElement = () => (
   Week IV<br />
   The week of hacking things into reality
     </p>
-    <p>
+    <p style={{ marginTop: '1rem', fontSize: '1.3rem' }}>
       To enter <StrongStyled>METAFEST</StrongStyled>, you will have to
       <br />
       <a
@@ -215,7 +215,7 @@ const DesktopElement = () => (
         donate to our Gitcoin grant
       </a>
     </p>
-    <p style={{ marginTop: '2rem' }}>just joking ... here you go</p>
+    <p style={{ marginTop: '-1rem', marginBottom: '2rem', fontSize: '0.7rem' }}>jk jk just enter</p>
   </Descripton>
 )
 
