@@ -2,15 +2,15 @@ import React, { useState, useEffect, useContext } from 'react'
 import { FloatingSpaceContext } from '../../contexts/FloatingSpaceContext'
 
 function YoutubeInstance ({ roomData }) {
-  const [youtubeRoom, setYoutubeRoom] = useState('Euqu6tuAbT4')
+  const [youtubeRoom, setYoutubeRoom] = useState('BnO-3u64fO8')
   const { currentFloatingSpaces } = useContext(FloatingSpaceContext)
   const space = currentFloatingSpaces
 
   useEffect(() => {
     if (space.indexOf('stage') > -1) {
-      setYoutubeRoom('Euqu6tuAbT4')
+      setYoutubeRoom('BnO-3u64fO8')
     } else {
-      setYoutubeRoom('Euqu6tuAbT4')
+      setYoutubeRoom('BnO-3u64fO8')
     }
     return console.log(youtubeRoom)
   }, [space, youtubeRoom])
