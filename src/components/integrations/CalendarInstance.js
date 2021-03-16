@@ -18,7 +18,7 @@ function CalendarInstance () {
     <InstanceContainer>
       <iframe
         title='Schedule'
-        src={`https://calendar.google.com/calendar/embed?src=1qnbr9796nnenn53cibhvekh58%40group.calendar.google.com&ctz=${timezone}`}
+        src={`https://calendar.google.com/calendar/embed?src=1qnbr9796nnenn53cibhvekh58%40group.calendar.google.com&ctz=${timezone}&mode=AGENDA&amp`}
         style={{
           minHeight: '500px',
           height: '100%',
