@@ -14,6 +14,9 @@ import WikiInstance from './integrations/WikiInstance'
 import StartMetagameInstance from './integrations/StartMetagameInstance'
 import CalendarInstance from './integrations/CalendarInstance'
 import CryptovoxelsInstance from './integrations/CryptovoxelsInstance'
+import LoftRadioInstance from './integrations/LoftRadioInstance'
+import NftInstance from './integrations/NftInstance'
+
 
 const width = window.innerWidth / 2
 const height = window.innerHeight / 2
@@ -91,6 +94,10 @@ function getFloatingRoomWindow (windowKey) {
     return <StartMetagameInstance />
   } else if (windowKey === 'Apply') {
     return <TypeformInstance />
+  } else if (windowKey === 'NFT') {
+    return <NftInstance />
+  } else if (windowKey === 'loft.radio') {
+    return <LoftRadioInstance />
   } else if (windowKey === null) {
     return null
   }
