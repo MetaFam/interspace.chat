@@ -171,7 +171,7 @@ const ShowSection = () => {
         <ButtonContainer>
           <BrowserView>{isHidden ? null : <DesktopElement />}</BrowserView>
           <MobileView>{isHidden ? null : <MobileElement />}</MobileView>
-          <CloseButton onClick={onClick}>
+          <CloseButton onClick={onClick} className="click-zone">
             {isHidden ? '' : 'ENTER'}
           </CloseButton>
         </ButtonContainer>
