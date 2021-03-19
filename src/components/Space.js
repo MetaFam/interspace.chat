@@ -14,7 +14,7 @@ import Mobile from './MetaFestMobile'
 
 import triangle from '../img/triangle.svg'
 import Grid from '../img/metafest-grid.gif'
-import HeaderImage from '../img/metafest-header.png'
+import HeaderImage from '../img/metafest-header2.png'
 import Date from '../img/metafest-date.png'
 import Future from '../img/metafest-manifest-the-future.png'
 
