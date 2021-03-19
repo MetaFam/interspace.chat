@@ -4,9 +4,6 @@ import styled from '@emotion/styled'
 const Container = styled.div`
 grid-template-columns: 1fr;
 place-items: center;
-background-color: black;
-max-width: 650px;
-height: 80%;
 border-radius: 10px;
 margin: 1rem;
 padding: 1rem;

@@ -46,7 +46,6 @@ const SpaceContent = styled.div`
 const spaceContainerStyle = {
   padding: '5px',
   paddingTop: '0px',
-  backgroundColor: '#310C4FDD',
   borderRadius: 10,
   cursor: 'all-scroll',
   pointerEvents: 'all',
@@ -189,51 +188,12 @@ function FloatingRoomWindow () {
   }
 
   const setFloatingwindowColor = windowKey => {
-    let bgColor = '#FCE96Add'
+    let bgColor = '#310C4FDD'
 
-    if (windowKey === 'main-room') {
-      bgColor = '#FCE96Add'
-    } else if (windowKey === 'mentor-ring') {
-      bgColor = '#FCE96Add'
-    } else if (windowKey === 'lobby') {
-      bgColor = '#FCE96Add'
-    } else if (
-      windowKey === 'discord chat' &&
-      space.indexOf('main-room') > -1
-    ) {
-      bgColor = '#FCE96Add'
-    } else if (windowKey === 'discord chat' && space.indexOf('lobby') > -1) {
-      bgColor = '#FCE96Add'
-    } else if (
-      windowKey === 'discord chat' &&
-      space.indexOf('mentor-ring') > -1
-    ) {
-      bgColor = '#FCE96Add'
-    } else if (
-      (windowKey === 'youtube' || windowKey === 'livepeer') &&
-      space.indexOf('main-room') > -1
-    ) {
-      bgColor = '#FCE96Add'
-    } else if (
-      (windowKey === 'youtube' || windowKey === 'livepeer') &&
-      space.indexOf('lobby') > -1
-    ) {
-      bgColor = '#FCE96Add'
-    } else if (
-      (windowKey === 'youtube' || windowKey === 'livepeer') &&
-      space.indexOf('mentor-ring') > -1
-    ) {
-      bgColor = '#FCE96Add'
-    } else if (windowKey === 'calendar') {
-      bgColor = '#5C5C5Fdd'
-    } else if (windowKey === 'new room') {
-      bgColor = '#5C5C5Fdd'
-    } else if (windowKey === 'livestream') {
-      bgColor = '#5C5C5Fdd'
-    } else if (windowKey === 'claim poap token') {
-      bgColor = '#ff00e1dd'
+    if (windowKey === 'NFT') {
+      bgColor = '#000000DD'
     } else {
-      bgColor = '#FCE96Add'
+      bgColor = '#310C4FDD'
     }
     return bgColor
   }
@@ -269,6 +229,7 @@ function FloatingRoomWindow () {
       }}
       style={{
         ...spaceContainerStyle,
+        backgroundColor: setFloatingwindowColor(windowKey),
         zIndex: zIndexes[windowKey] || 1
       }}
       onDragStart={() => setWindowFocus(windowKey)}
