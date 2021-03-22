@@ -192,11 +192,11 @@ const DesktopElement = () => (
   Week I<br />
   The week of gaming & social events
   </p>
-  <p style={{border: '1px solid #BD96E9', borderRadius: '10px'}}>
+  <p style={{textDecoration: 'line-through'}}>
   Week II<br />
   The week of talks 70+ great talks
   </p>
-  <p>
+  <p style={{border: '1px solid #BD96E9', borderRadius: '10px'}}>
   Week III<br />
   The week of 20+ epic workshops
   </p>
