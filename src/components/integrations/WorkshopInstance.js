@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from '@emotion/styled'
+import { FloatingSpaceContext } from '../../contexts/FloatingSpaceContext'
 
 const Container = styled.div`
   grid-template-columns: 1fr;
@@ -45,17 +46,30 @@ class Soon extends React.Component {
 }
 
 const WorkshopInstance = () => {
+  const { addFloatingSpace } = useContext(FloatingSpaceContext)
+
   const openInNewTab = url => {
     let win = window.open(url, '_blank')
     win.focus()
   }
+
   return (
     <Container>
       <h1>Workshops</h1>
       <p>Welcome to a week of nice workshops</p>
       <br />
       <Highlight>When and What?</Highlight>
-      <p>Please check the Schedule for details.</p>
+      <p>
+        Please check the{' '}
+        <span
+          style={{ color: 'yellow' }}
+          className='click-zone'
+          onClick={() => addFloatingSpace('Calendar')}
+        >
+          Schedule
+        </span>
+        for details.
+      </p>
       <br />
       <Highlight>Where?</Highlight>
       <p>
