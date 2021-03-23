@@ -16,7 +16,7 @@ import CalendarInstance from './integrations/CalendarInstance'
 import CryptovoxelsInstance from './integrations/CryptovoxelsInstance'
 import LoftRadioInstance from './integrations/LoftRadioInstance'
 import NftInstance from './integrations/NftInstance'
-
+import WorkshopInstance from './integrations/WorkshopInstance'
 
 const width = window.innerWidth / 2
 const height = window.innerHeight / 2
@@ -95,6 +95,8 @@ function getFloatingRoomWindow (windowKey) {
     return <TypeformInstance />
   } else if (windowKey === 'NFT') {
     return <NftInstance />
+  } else if (windowKey === 'Workshops') {
+    return <WorkshopInstance />
   } else if (windowKey === 'loft.radio') {
     return <LoftRadioInstance />
   } else if (windowKey === null) {
@@ -190,7 +192,7 @@ function FloatingRoomWindow () {
   const setFloatingwindowColor = windowKey => {
     let bgColor = '#310C4FDD'
 
-    if (windowKey === 'NFT') {
+    if (windowKey === 'NFT' || windowKey === 'Workshops') {
       bgColor = '#000000DD'
     } else {
       bgColor = '#310C4FDD'
