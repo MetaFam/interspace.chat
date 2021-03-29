@@ -171,7 +171,7 @@ const ShowSection = () => {
         <ButtonContainer>
           <BrowserView>{isHidden ? null : <DesktopElement />}</BrowserView>
           <MobileView>{isHidden ? null : <MobileElement />}</MobileView>
-          <CloseButton onClick={onClick} className="click-zone">
+          <CloseButton onClick={onClick} className='click-zone'>
             {isHidden ? '' : 'ENTER'}
           </CloseButton>
         </ButtonContainer>
@@ -182,27 +182,30 @@ const ShowSection = () => {
 
 const DesktopElement = () => (
   <Descripton>
-
-   <h1> Welcome to MetaFest</h1>
+    <h1> Welcome to MetaFest</h1>
     <p>
-    MetaFest is virtual festival/conference/hackathon powered by MetaGame <br />
-    with the goal of helping you level up & manifest a better future.
-  </p>
-  <p style={{textDecoration: 'line-through'}}>
-  Week I<br />
-  The week of gaming & social events
-  </p>
-  <p style={{textDecoration: 'line-through'}}>
-  Week II<br />
-  The week of talks 70+ great talks
-  </p>
-  <p style={{border: '1px solid #BD96E9', borderRadius: '10px'}}>
-  Week III<br />
-  The week of 20+ epic workshops
-  </p>
-  <p>
-  Week IV<br />
-  The week of hacking things into reality
+      MetaFest is virtual festival/conference/hackathon powered by MetaGame{' '}
+      <br />
+      with the goal of helping you level up & manifest a better future.
+    </p>
+    <p style={{ textDecoration: 'line-through' }}>
+      Week I<br />
+      The week of gaming & social events
+    </p>
+    <p style={{ textDecoration: 'line-through' }}>
+      Week II
+      <br />
+      The week of talks 70+ great talks
+    </p>
+    <p style={{ textDecoration: 'line-through' }}>
+      Week III
+      <br />
+      The week of 20+ epic workshops
+    </p>
+    <p style={{ border: '1px solid #BD96E9', borderRadius: '10px' }}>
+      Week IV
+      <br />
+      The week of hacking things into reality
     </p>
     <p style={{ marginTop: '1rem', fontSize: '1.3rem' }}>
       To enter <StrongStyled>METAFEST</StrongStyled>, you will have to
@@ -215,7 +218,9 @@ const DesktopElement = () => (
         donate to our Gitcoin grant
       </a>
     </p>
-    <p style={{ marginTop: '-1rem', marginBottom: '2rem', fontSize: '0.7rem' }}>jk jk just enter</p>
+    <p style={{ marginTop: '-1rem', marginBottom: '2rem', fontSize: '0.7rem' }}>
+      jk jk just enter
+    </p>
   </Descripton>
 )
 
@@ -232,7 +237,6 @@ const MobileElement = () => (
 )
 
 const Space = () => {
-  
   const [live, setLive] = useState(false)
 
   const { currentFloatingSpaces, addFloatingSpace } = useContext(
