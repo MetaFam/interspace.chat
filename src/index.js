@@ -1,31 +1,40 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import './index.css'
-import App from './App'
-import * as serviceWorker from './serviceWorker'
-import { Global, css, jsx } from '@emotion/react'
-import { ThemeProvider } from './contexts/ThemeContext'
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import * as serviceWorker from "./serviceWorker";
+import { Global, css, jsx } from "@emotion/react";
+import { ThemeProvider } from "./contexts/ThemeContext";
+import { ChakraProvider } from "@chakra-ui/react";
 
 ReactDOM.render(
-  <ThemeProvider>
+  <ChakraProvider>
     <Global
       styles={css`
-        * {
-          margin: 0px;
-          padding: 0px;
-          font-family: 'Jura-Regular', sans-serif;
-          font-weight: 300;
-          font-size: 18px;
-        }
+      body {
+        background-color: black;
+        font-size: 16px;
+      }
         h1 {
-          font-family: 'PressStart2P-Regular', monospace;
-          font-size: 26px;
+          color: #fff;
+          font-size: 7vmin;
+          font-weight: 700;
         }
-        body {
-          margin: 0px;
-          padding: 0px;
-          color: whitesmoke;
-          background-color: black;
+        h1 span {
+          color: #fff;
+          font-size: 7vmin;
+        }
+        h2 {
+          color: #fff;
+          text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+        }
+        a {
+          color: #ffd700;
+          text-decoration: none;
+          transition: color 0.3s ease;
+        }
+        a:hover {
+          color: #0c5eb8;
         }
         .hidden {
           opacity: 0;
@@ -71,11 +80,11 @@ ReactDOM.render(
       `}
     />
     <App />
-  </ThemeProvider>,
-  document.getElementById('root')
-)
+  </ChakraProvider>,
+  document.getElementById("root")
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister()
+serviceWorker.unregister();
