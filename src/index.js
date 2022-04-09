@@ -6,8 +6,14 @@ import * as serviceWorker from "./serviceWorker";
 import { Global, css, jsx } from "@emotion/react";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { ChakraProvider } from "@chakra-ui/react";
+import * as ReactDOMClient from 'react-dom/client';
 
-ReactDOM.render(
+const container = document.getElementById('root');
+// Create a root
+const root = ReactDOMClient.createRoot(container);
+
+
+root.render(
   <ChakraProvider>
     <Global
       styles={css`
@@ -23,10 +29,15 @@ ReactDOM.render(
         h1 span {
           color: #fff;
           font-size: 7vmin;
+          font-weight: 700;
         }
         h2 {
           color: #fff;
+          font-size: 5vmin;
           text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+        }
+        h3 {
+          font-weight: 700;
         }
         a {
           color: #ffd700;
@@ -80,8 +91,7 @@ ReactDOM.render(
       `}
     />
     <App />
-  </ChakraProvider>,
-  document.getElementById("root")
+  </ChakraProvider>
 );
 
 // If you want your app to work offline and load faster, you can change

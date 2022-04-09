@@ -10,7 +10,8 @@
 html {
 	scroll-behavior: smooth;
 	min-height: 100vh;
-	background-color: black;
+	background: rgb(53,0,106);
+	background: linear-gradient(-15deg, rgba(53,0,106,1) 0%, rgba(25,0,50,1) 43%);
 }
 body {
 	overflow-x: clip;
@@ -112,6 +113,8 @@ a {
 	top: 0;
 	left: 0;
 	outline: none;
+	background: rgb(41,2,80);
+	background: linear-gradient(0deg, rgba(41,2,80,1) 0%, rgba(25,0,50,1) 40%);
 	z-index: 0;
 }
 
@@ -127,13 +130,12 @@ section
 	font-size: 2vmin;
 	padding-left: 10%;
 	padding-right: 10%;
-	z-index: 200000;
-	border: 1px solid white;
+	z-index: 2000;
 }
 /* .section:first-of-type {
 	align-items: center;
 } */
-section:nth-child(odd)
+section:nth-of-type(even)
 {
-	justify-content: flex-end;
+	/* justify-content: flex-end; */
 }

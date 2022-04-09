@@ -12,49 +12,56 @@ import * as dat from 'lil-gui'
 // Scene
 const scene = new THREE.Scene()
 export const galaxyColors = {
-    inside: '#C92F81',
-    outside: '#79F8FB'
+    inside: '#7C56FF',
+    outside: '#FF61E6'
 }
-
+export const galaxy2Colors = {
+    inside: '#DE3FFF',
+    outside: '#7C56FF'
+}
+export const galaxy3Colors = {
+    inside: '#76EBF2',
+    outside: '#7C56FF'
+}
 /**
  * Galaxy
  */
 export const galaxy1Params = {
-    count: 50000,
+    count: 500000,
     size: 0.033,
     radius: 4.86,
-    branches: 3,
-    spin: .9,
-    randomness: 5,
-    randomnessPower: 3.248,
-    insideColor: galaxyColors.inside,
-    outsideColor: galaxyColors.outside,
-    type: 2
-}
-export const galaxy2Params = {
-    count: 50000,
-    size: 0.01,
-    radius: 2,
-    branches: 3,
-    spin: 3,
-    randomness: 5,
-    randomnessPower: 3.62,
+    branches: 8,
+    spin: 8,
+    randomness: 1,
+    randomnessPower: 8,
     insideColor: galaxyColors.inside,
     outsideColor: galaxyColors.outside,
     type: 1
+}
+export const galaxy2Params = {
+    count: 2000000,
+    size: 0.01,
+    radius: 12,
+    branches: 8,
+    spin: 8,
+    randomness: 9,
+    randomnessPower: 8,
+    insideColor: galaxy2Colors.inside,
+    outsideColor: galaxy2Colors.outside,
+    type: 2
 }
 // gui.addColor(galaxy2Params, 'insideColor').onFinishChange()
 
 export const galaxy3Params = {
     count: 600000,
-    size: 0.023,
-    radius: 9.86,
-    branches: 10,
-    spin: 2,
-    randomness: 1,
-    randomnessPower: 2,
-    insideColor: galaxyColors.inside,
-    outsideColor: galaxyColors.outside,
+    size: 0.01,
+    radius: 1.86,
+    branches: 3,
+    spin: 32,
+    randomness: 13,
+    randomnessPower: 20,
+    insideColor: galaxy3Colors.inside,
+    outsideColor: galaxy3Colors.outside,
     type: 3
 }
 
