@@ -3,7 +3,6 @@ import * as THREE from "three";
 import { useFrame, useThree } from "@react-three/fiber";
 import gsap, { getUnit } from "gsap";
 
-
 import {
   galaxyColors,
   generateGalaxy,
@@ -35,8 +34,6 @@ export const Canvas = () => {
 
       console.log(NomadModel);
 
-
-
       /**
        * Colors
        */
@@ -53,9 +50,9 @@ export const Canvas = () => {
       const textureLoader = new THREE.TextureLoader();
       const babyOctoColorTexture = textureLoader.load(BabyOctoImg);
       const babyOctoAlphaTexture = textureLoader.load(BabyOctoAlpha);
-      babyOctoAlphaTexture.minFilter = THREE.NearestFilter
-      babyOctoAlphaTexture.magFilter = THREE.NearestFilter
-      babyOctoAlphaTexture.generateMipmaps = true
+      babyOctoAlphaTexture.minFilter = THREE.NearestFilter;
+      babyOctoAlphaTexture.magFilter = THREE.NearestFilter;
+      babyOctoAlphaTexture.generateMipmaps = true;
 
       const planeColorTexture = textureLoader.load(SeedLogo);
       const planeAlphaTexture = textureLoader.load(SeedLogo);
@@ -81,7 +78,6 @@ export const Canvas = () => {
         transparent: true,
       });
 
-
       const planeGeometry = new THREE.PlaneGeometry(1, 1, 1);
       const planeMaterial = new THREE.PointsMaterial();
       planeMaterial.transparent = true;
@@ -90,11 +86,16 @@ export const Canvas = () => {
 
       const plane1 = new THREE.Mesh(babyOctoGeometry, babyOctoMaterial);
       const plane2 = new THREE.Mesh(planeGeometry, planeMaterial);
+      const plane3 = new THREE.Mesh(babyOctoGeometry, babyOctoMaterial);
 
-      plane1.geometry.center()
+      plane1.geometry.center();
       plane1.position.x = 0;
       plane1.position.y = 0;
       sectionOne.add(plane1);
+      plane3.geometry.center();
+      plane3.position.x = 0;
+      plane3.position.y = 0;
+      // sectionFour.add(plane3);
 
       sectionTwo.add(plane2);
       // Galaxies
@@ -109,7 +110,6 @@ export const Canvas = () => {
       galaxy1.rotation.x = 4.8;
       galaxy1.rotation.y = 4.15;
       galaxy1.rotation.z = 4.75;
-
 
       galaxy2.position.x = -12;
       galaxy2.position.y = 25;
@@ -144,9 +144,8 @@ export const Canvas = () => {
       galaxy2.geometry.center();
       galaxy3.geometry.center();
       // galaxy2.scale.set(0.5, 0.5, 0.5)
-      galaxy3.scale.set(1.5,1.5,1.5)
+      galaxy3.scale.set(1.5, 1.5, 1.5);
       // sectionTwo.scale.set(0.5, 0.5, 0.5)
-
 
       /**
        * Particles
@@ -186,6 +185,9 @@ export const Canvas = () => {
       // Points
       const particles = new THREE.Points(particlesGeometry, particlesMaterial);
       scene.add(particles);
+
+      // Easter eggs
+      const easterEgg1 = document.querySelectorAll(".ee1");
 
       /**
        * Sizes
@@ -263,8 +265,8 @@ export const Canvas = () => {
         canvas: canvas,
         alpha: true,
       });
-      renderer.shadowMap.enabled = true
-      renderer.shadowMap.type = THREE.PCFSoftShadowMap
+      renderer.shadowMap.enabled = true;
+      renderer.shadowMap.type = THREE.PCFSoftShadowMap;
       renderer.setSize(sizes.width, sizes.height);
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
@@ -289,67 +291,70 @@ export const Canvas = () => {
                 ease: "power2.inOut",
                 y: "0",
                 x: "0",
-                z: "0"
+                z: "0",
               });
               gsap.to(cameraGroup.position, {
                 duration: 1.5,
-                ease: 'power2.inOut',
-                z: 0
-              })
+                ease: "power2.inOut",
+                z: 0,
+              });
               gsap.to(galaxy1.position, {
                 duration: 1.5,
-                ease: 'power2.inOut',
+                ease: "power2.inOut",
                 x: 6,
                 y: 0,
-                z: -13
-              })
+                z: -13,
+              });
               gsap.to(galaxy2.position, {
                 duration: 1.5,
-                ease: 'power2.inOut',
-                y: 25
-              })
+                ease: "power2.inOut",
+                y: 25,
+              });
               gsap.to(plane1.position, {
                 duration: 3,
-                ease: 'power2.inOut',
+                ease: "power2.inOut",
                 x: -8,
-                y: 0,
-                z: -2
-              })
+                y: -3,
+                z: -4,
+              });
               gsap.to(plane1.rotation, {
                 duration: 3,
-                ease: 'power2.inOut',
-                x: 0
-              })
+                ease: "power2.inOut",
+                x: 0,
+              });
               break;
+
+            // Schedule
             case 1:
               gsap.to(cameraGroup.rotation, {
                 duration: 1.5,
                 ease: "power2.inOut",
                 y: "0.33",
-                z: "0"
+                z: "0",
               });
               gsap.to(cameraGroup.position, {
                 duration: 1.5,
-                ease: 'power2.inOut',
-                z: -10
-              })
+                ease: "power2.inOut",
+                z: -10,
+              });
               gsap.to(galaxy1.position, {
                 duration: 1.5,
-                ease: 'power2.inOut',
+                ease: "power2.inOut",
                 x: 5,
-              })
+                z: -15,
+              });
               gsap.to(galaxy2.position, {
                 duration: 1.5,
-                ease: 'power2.inOut',
-                y: -18
-              })
+                ease: "power2.inOut",
+                y: -18,
+              });
               gsap.to(plane1.position, {
                 duration: 3,
-                ease: 'power2.inOut',
-                x: -2,
-                y: -7,
-                z: -5
-              })
+                ease: "power2.inOut",
+                x: 5,
+                y: -2,
+                z: -10,
+              });
               break;
 
             case 2:
@@ -358,39 +363,39 @@ export const Canvas = () => {
                 ease: "power2.inOut",
                 y: "-0.90",
                 x: "0.10",
-                z: "0"
+                z: "0",
               });
               gsap.to(cameraGroup.position, {
                 duration: 1.5,
-                ease: 'power2.inOut',
-                z: 0
-              })
+                ease: "power2.inOut",
+                z: 0,
+              });
               gsap.to(galaxy1.position, {
                 duration: 1.5,
-                ease: 'power2.inOut',
+                ease: "power2.inOut",
                 x: 5,
-                z: -20
-              })
+                z: 10,
+              });
               gsap.to(galaxy2.position, {
                 duration: 1.5,
-                ease: 'power2.inOut',
+                ease: "power2.inOut",
                 y: 1,
-                z: 10
-              })
+                z: 10,
+              });
               gsap.to(galaxy3.position, {
                 duration: 1.5,
-                ease: 'power2.inOut',
+                ease: "power2.inOut",
                 x: 1,
                 y: 1,
-                z: 3
-              })
+                z: 3,
+              });
               gsap.to(plane1.position, {
                 duration: 3,
-                ease: 'power2.inOut',
-                x: 10,
-                y: 6,
-                z: -5
-              })
+                ease: "power2.inOut",
+                x: 25,
+                y: 3,
+                z: -15,
+              });
               break;
 
             case 3:
@@ -399,61 +404,98 @@ export const Canvas = () => {
                 ease: "power2.inOut",
                 y: "0.03",
                 x: "0.25",
-                z: "-0.2"
+                z: "-0.2",
               });
               gsap.to(cameraGroup.position, {
                 duration: 1.5,
-                ease: 'power2.inOut',
-                z: -2
-              })
+                ease: "power2.inOut",
+                z: -2,
+              });
               gsap.to(galaxy1.position, {
                 duration: 1.5,
-                ease: 'power2.inOut',
+                ease: "power2.inOut",
                 x: 3,
-                z: 10
-              })
+                z: 10,
+              });
               gsap.to(galaxy2.position, {
                 duration: 1.5,
-                ease: 'power2.inOut',
+                ease: "power2.inOut",
+                x: -10,
                 y: 1,
-                z: -10
-              })
+                z: -10,
+              });
               break;
 
-              case 4:
-                gsap.to(cameraGroup.rotation, {
-                  duration: 1.5,
-                  ease: "power2.inOut",
-                  y: "2.8",
-                  x: "-.95",
-                  z: "0.4"
-                });
-                gsap.to(cameraGroup.position, {
-                  duration: 1.5,
-                  ease: 'power2.inOut',
-                  z: -2
-                })
-                gsap.to(galaxy1.position, {
-                  duration: 1.5,
-                  ease: 'power2.inOut',
-                  x: 0,
-                  y: 0,
-                  z: -13
-                })
-                gsap.to(galaxy2.position, {
-                  duration: 1.5,
-                  ease: 'power2.inOut',
-                  x: -14,
-                  y: 3,
-                  z: 5
-                })
-                gsap.to(plane1.position, {
-                  duration: 3,
-                  ease: 'power2.inOut',
-                  x: -26,
-                  y: 20,
-                  z: -5
-                })
+            case 4:
+              gsap.to(cameraGroup.rotation, {
+                duration: 1.5,
+                ease: "power2.inOut",
+                y: "2.8",
+                x: "-.95",
+                z: "0.4",
+              });
+              gsap.to(cameraGroup.position, {
+                duration: 1.5,
+                ease: "power2.inOut",
+                z: -2,
+              });
+              gsap.to(galaxy1.position, {
+                duration: 1.5,
+                ease: "power2.inOut",
+                x: 0,
+                y: 0,
+                z: -13,
+              });
+              gsap.to(galaxy2.position, {
+                duration: 1.5,
+                ease: "power2.inOut",
+                x: -14,
+                y: 3,
+                z: 5,
+              });
+              gsap.to(plane1.position, {
+                duration: 3,
+                ease: "power2.inOut",
+                x: -26,
+                y: 20,
+                z: -5,
+              });
+              break;
+
+            case 5:
+              gsap.to(cameraGroup.rotation, {
+                duration: 1.5,
+                ease: "power2.inOut",
+                y: "2.8",
+                x: "-.95",
+                z: "0.4",
+              });
+              gsap.to(cameraGroup.position, {
+                duration: 1.5,
+                ease: "power2.inOut",
+                z: -2,
+              });
+              gsap.to(galaxy1.position, {
+                duration: 1.5,
+                ease: "power2.inOut",
+                x: 0,
+                y: 0,
+                z: -13,
+              });
+              gsap.to(galaxy2.position, {
+                duration: 1.5,
+                ease: "power2.inOut",
+                x: -8,
+                y: 1,
+                z: 5,
+              });
+              gsap.to(plane1.position, {
+                duration: 3,
+                ease: "power2.inOut",
+                x: 0,
+                y: 0,
+                z: 0,
+              });
               break;
 
             default:
@@ -462,31 +504,61 @@ export const Canvas = () => {
                 ease: "power2.inOut",
                 y: "-.60",
                 x: "0",
-                z: "0"
+                z: "0",
               });
               gsap.to(cameraGroup.position, {
                 duration: 1.5,
-                ease: 'power2.inOut',
-                z: 0
-              })
+                ease: "power2.inOut",
+                z: 0,
+              });
               gsap.to(galaxy1.position, {
                 duration: 1.5,
-                ease: 'power2.inOut',
-                x: 6,
+                ease: "power2.inOut",
+                x: 3,
                 y: 0,
-                z: -13
-              })
+                z: -13,
+              });
+              gsap.to(galaxy2.position, {
+                duration: 1.5,
+                ease: "power2.inOut",
+                x: -12,
+                y: 20,
+                z: -20,
+              });
               gsap.to(plane1.position, {
                 duration: 3,
-                ease: 'power2.inOut',
+                ease: "power2.inOut",
                 x: -26,
                 y: 20,
-                z: 0
-              })
+                z: 0,
+              });
               break;
           }
         }
       });
+
+      /**
+       * Raycaster
+       */
+      const raycaster = new THREE.Raycaster();
+      let currentIntersect = null;
+
+      /**
+       * Hover
+       */
+      window.addEventListener("click", () => {
+        console.log("click click");
+        if (currentIntersect) {
+          if (currentIntersect.object === plane1) {
+            easterEgg1[0].classList.toggle('found')
+
+          } else if (currentIntersect.object === plane2) {
+            console.log("2 clicked");
+
+          }
+        }
+      });
+
 
       /**
        * Cursor / Mouse
@@ -494,11 +566,17 @@ export const Canvas = () => {
       const cursor = {};
       cursor.x = 0;
       cursor.y = 0;
+      const mouse = new THREE.Vector2()
 
       window.addEventListener("mousemove", (event) => {
         cursor.x = event.clientX / sizes.width - 0.5;
         cursor.y = event.clientY / sizes.height - 0.5;
+
+        mouse.x = event.clientX / sizes.width * 2 - 1;
+        mouse.y = -(event.clientY / sizes.height) * 2 + 1
       });
+
+
 
       /**
        * Animate
@@ -529,17 +607,45 @@ export const Canvas = () => {
         galaxy1.position.y = -scrollY * 0.0005;
         // galaxy1.rotation.y += (parallaxX - cameraGroup.position.x) * 2 * deltaTime
         galaxy1.rotation.z = scrollY * 0.0004;
-        galaxy1.rotation.x = -elapsedTime * 0.006
+        galaxy1.rotation.x = -elapsedTime * 0.006;
 
+        galaxy2.rotation.y = -elapsedTime * 0.05;
 
-        galaxy2.rotation.y = -elapsedTime * 0.1
+        galaxy2.rotation.y = -elapsedTime * 0.002;
 
-        plane1.position.x = -3.5 + Math.sin(elapsedTime * 0.05) * Math.PI * 0.5;
-        plane1.position.y = -1.5 + (-scrollY / sizes.height) * objectsDistance;
-        plane1.rotation.z = -elapsedTime * 0.06
+        plane1.position.x = -3.5 + Math.sin(elapsedTime * 0.9) * Math.PI * 0.05;
+        plane1.position.y = -1.5 - Math.cos(elapsedTime * 0.1) * Math.PI * 0.5;
+        plane1.rotation.z = -elapsedTime * 0.06;
 
         particles.position.y = scrollY * 0.0004;
+        particles.position.z = Math.cos(elapsedTime * 0.1) * Math.PI * 0.05;
 
+        // Cast ray
+        raycaster.setFromCamera(mouse, camera);
+
+        const objectsToTest = [plane1, plane2];
+        const intersects = raycaster.intersectObjects(objectsToTest);
+        // console.log(intersects);
+
+        for (const object of objectsToTest) {
+        }
+        for (const intersect of intersects) {
+        }
+
+        if (intersects.length) {
+          console.log("Something is being hovered");
+          if (currentIntersect === null) {
+            console.log("mouse enter");
+          }
+
+          currentIntersect = intersects[0];
+        } else {
+          if (currentIntersect) {
+            console.log("mouse leave");
+            // easterEgg1.classList.remove('found')
+          }
+          currentIntersect = null;
+        }
         // Update animations mixer
         if (mixer) {
           mixer.update(deltaTime);

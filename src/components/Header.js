@@ -31,16 +31,20 @@ const Links = [
     href: '#schedule',
   },
   {
+    name: 'Workshops',
+    href: '#workshops',
+  },
+  {
     name: 'Speakers',
     href: '#speakers',
   },
   {
-    name: 'CryptoVoxels',
-    href: '#cryptovoxels',
+    name: 'MetaFest Booth',
+    href: '#metafest-booth',
   },
   {
-    name: 'Contact',
-    href: '#contact'
+    name: 'Chat',
+    href: '#chat'
   }
   ];
 

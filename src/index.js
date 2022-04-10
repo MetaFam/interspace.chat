@@ -40,7 +40,7 @@ root.render(
           font-weight: 700;
         }
         a {
-          color: #ffd700;
+          color: #FF61E6;
           text-decoration: none;
           transition: color 0.3s ease;
         }
