@@ -21,6 +21,7 @@
     "react-device-detect": "^1.15.0",
     "react-dom": "^18.0.0",
     "react-draggable": "^4.4.3",
+    "react-helmet": "^6.1.0",
     "react-image-mapper": "^0.0.15",
     "react-responsive": "^8.2.0",
     "react-rnd": "^10.1.7",

@@ -2,21 +2,35 @@
 
 * {
 	font-family: 'Exo 2', sans-serif;
-	font-weight: 400;
+	font-weight: 300;
 }
-
-
 
 html {
 	scroll-behavior: smooth;
 	min-height: 100vh;
 	background: rgb(53,0,106);
-	background: linear-gradient(-15deg, rgba(53,0,106,1) 0%, rgba(25,0,50,1) 43%);
+	background: linear-gradient(0deg, rgba(53,0,106,1) 0%, rgba(25,0,50,1) 43%);
 }
 body {
 	overflow-x: clip;
 	overflow-y: auto;
 }
+body.booth-open ,
+body.chat-open {
+	/* overflow-y: hidden; */
+}
+/* body.booth-open header > *:not(a) {
+	opacity: 0.2;
+	transform: translateY(-120px);
+	pointer-events: none;
+}
+header > *:not(a) {
+	opacity: 1;
+	transform: translateY(0);
+	pointer-events: all;
+	transition: all 0.3s 0.2s ease-in-out;
+} */
+
 
 
 .roomName {
@@ -123,7 +137,6 @@ section
 	position: relative;
 	font-family: 'Exo 2', sans-serif;
 	color: #ffeded;
-	font-size: 2vmin;
 	padding-left: 10%;
 	padding-right: 10%;
 	z-index: 2000;

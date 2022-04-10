@@ -1,12 +1,13 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 
 export const HeadComponent = ({
-  title = 'MetaFest2',
-  description = 'MetaGame is a Massive Online Coordination Game! MetaGame is any approach to a game that transcends or operates outside of the prescribed rules of the game, uses external factors to affect the game, or goes beyond the supposed limits or environment set by the game.',
-  url = 'https://my.metagame.wtf/',
-  img = 'https://my.metagame.wtf/_next/image?url=%2Fassets%2Flogo.png&w=1920&q=75',
+  title = 'MetaFest2. Powered by MetaGame',
+  description = 'A virtual festival/conference/hackathon with the goal of helping you level up & manifest a better future.',
+  url = 'https://metafest2-website.vercel.app/',
+  img = 'https://metafest2-website.vercel.app/static/media/social.bc426e19.png',
 }) => (
-  <>
+  <Helmet>
     <title>{title}</title>
     <meta
       name="viewport"
@@ -18,7 +19,7 @@ export const HeadComponent = ({
     <meta name="theme-color" property="theme-color" content="#5a32e6" />
 
     <meta name="og:type" property="og:type" content="website" />
-    <meta name="og:site_name" property="og:site_name" content="MetaGame" />
+    <meta name="og:site_name" property="og:site_name" content="MetaFest2" />
     <meta name="og:locale" property="og:locale" content="en_US" />
 
     <meta name="og:title" property="og:title" content={title} />
@@ -40,5 +41,13 @@ export const HeadComponent = ({
       content={description}
     />
     <meta name="twitter:image" property="twitter:image" content={img} />
-  </>
+
+    <link rel="icon" href={`${url}/favicon.ico`} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;500;700&amp;display=swap" rel="stylesheet" />
+  </Helmet>
 );
+
+

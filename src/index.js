@@ -4,8 +4,7 @@ import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { Global, css, jsx } from "@emotion/react";
-import { ThemeProvider } from "./contexts/ThemeContext";
-import { ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import * as ReactDOMClient from 'react-dom/client';
 
 const container = document.getElementById('root');
@@ -13,80 +12,60 @@ const container = document.getElementById('root');
 const root = ReactDOMClient.createRoot(container);
 
 
+const theme = extendTheme({
+  styles: {
+    global: {
+      'html, body': {
+        fontFamily: '"Exo 2", sans-serif',
+        fontSize: '16px',
+        fontWeight: 300,
+        bg: 'linear-gradient(0deg, rgba(41,2,80,1) 0%, rgba(25,0,50,1) 40%)',
+      },
+      a: {
+        color: '#FF61E6',
+        textDecoration: 'none',
+        transition: 'color 0.2s ease',
+        _hover: {
+          color: '#0c5eb8'
+        },
+        '&.chakra-link': {
+          color: '#FF61E6',
+        }
+      },
+    },
+  },
+});
+
 root.render(
-  <ChakraProvider>
+  <ChakraProvider theme={theme}>
     <Global
       styles={css`
-      body {
-        background-color: black;
-        font-size: 16px;
-      }
         h1 {
           color: #fff;
-          font-size: 7vmin;
+          font-size: 4vmax;
           font-weight: 700;
         }
         h1 span {
           color: #fff;
-          font-size: 7vmin;
+          font-size: 5vmax;
           font-weight: 700;
         }
         h2 {
           color: #fff;
-          font-size: 5vmin;
+          font-size: 4vmax;
+          font-weight: 500;
           text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
         }
         h3 {
-          font-weight: 700;
+          font-size: 1.5vmax;
+          font-weight: 500;
         }
-        a {
-          color: #FF61E6;
-          text-decoration: none;
-          transition: color 0.3s ease;
+        h4 {
+          font-weight: 500;
+          font-size: 1vmax;
         }
-        a:hover {
-          color: #0c5eb8;
-        }
-        .hidden {
-          opacity: 0;
-          filter: url(#blur0);
-        }
-        .click-zone {
-          transition: 1s cubic-bezier(0.2, 0.8, 0.2, 1);
-          & :hover {
-            cursor: pointer;
-            filter: url(#glow);
-            & .hidden {
-              opacity: 1;
-            }
-          }
-        }
-        .no-click-zone {
-          & :hover {
-            cursor: pointer;
-            & .hidden {
-              opacity: 1;
-            }
-          }
-        }
-        .click-zone-mobile {
-          transition: 1s cubic-bezier(0.2, 0.8, 0.2, 1);
-          & :focus {
-            filter: url(#glow);
-            & .hidden {
-              opacity: 1;
-            }
-          }
-        }
-        .click-link {
-          transition: 1s cubic-bezier(0.2, 0.8, 0.2, 1);
-          & :hover {
-            cursor: pointer;
-            fill: #fce96a;
-          }
-        }
-        .title :hover {
-          fill: black;
+        p {
+          font-size: .9vmax;
         }
       `}
     />
