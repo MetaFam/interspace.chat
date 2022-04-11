@@ -1,9 +1,8 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
-import { Global, css, jsx } from "@emotion/react";
+import { Global, css } from "@emotion/react";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import * as ReactDOMClient from 'react-dom/client';
 
@@ -26,12 +25,23 @@ const theme = extendTheme({
         textDecoration: 'none',
         transition: 'color 0.2s ease',
         _hover: {
-          color: '#0c5eb8'
+          color: '#76EBF2',
+          textDecoration: 'none'
         },
         '&.chakra-link': {
           color: '#FF61E6',
+          _hover: {
+            color: '#76EBF2',
+            textDecoration: 'none'
+          },
         }
       },
+      '.__content__body': {
+        'p:first-of-type': {
+          fontSize: '1vmax',
+          fontWeight: 500
+        }
+      }
     },
   },
 });
@@ -54,7 +64,7 @@ root.render(
           color: #fff;
           font-size: 4vmax;
           font-weight: 500;
-          text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+          text-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
         }
         h3 {
           font-size: 1.5vmax;
@@ -66,6 +76,7 @@ root.render(
         }
         p {
           font-size: .9vmax;
+          text-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
         }
       `}
     />

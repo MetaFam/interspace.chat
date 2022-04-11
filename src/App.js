@@ -16,16 +16,14 @@ import { CloseIcon, ExternalLinkIcon } from "@chakra-ui/icons";
 // import Space from './components/Space'
 import { Canvas } from "./components/Canvas";
 import CryptovoxelsInstance from "./components/integrations/CryptovoxelsInstance";
-import CalendarInstance from "./components/integrations/CalendarInstance";
+// import CalendarInstance from "./components/integrations/CalendarInstance";
 import ChatInstance from "./components/integrations/ChatInstance";
-import FloatingRoomWindow from "./components/FloatingRoomWindow";
 import { useOnScreen } from "./utils/hooks";
 import { SiteHeader } from "./components/Header";
+import { SiteFooter } from "./components/Footer";
 import { HeadComponent } from "./components/HeadComponent";
-import "./stars.css";
-import StarfieldAnimation from "react-starfield-animation";
-import MF2Logo from "./static/assets/img/mf2-logo.png";
 import BabyOctoGif from "./static/assets/img/baby_octo_alpha.gif";
+import MindBlownImg from "./static/assets/img/mindblown.gif";
 
 import SocialImg from "./static/assets/img/social.png";
 
@@ -51,7 +49,6 @@ export const HomeSection = () => {
         transition="transform 0.3s 0.4s ease-in-out, opacity 0.6s 0.5s ease-in"
         pointerEvents="none"
       >
-        {/* <Image src={MF2Logo} className="mf-logo" /> */}
         <Text
           as="h1"
           className="gradient-cone"
@@ -110,16 +107,29 @@ export const ScheduleSection = () => {
       <Box
         ref={ref}
         className="__content"
-        w="4xl"
+        w="2xl"
         transform={`translate3d(${onScreen ? 0 : "-70px"}, 0, 0)`}
         opacity={onScreen ? 1 : 0}
         transition="transform 0.3s 0.4s ease-in-out, opacity 0.6s 0.5s ease-in"
-        sx={{}}
       >
         <Text as="h2">Schedule</Text>
         {/* <CalendarInstance /> */}
         <Box className="__content__body">
-          <Flex alignContent="flex-start" flexFlow="column wrap" mt={-5}>
+          <Text>
+            Our{" "}
+            <Text as="span" className="gradient">
+              community members
+            </Text>{" "}
+            are busy rn, booking guests &amp; organising workshops. Watch this
+            space...it's gonna blow your mind!{" "}
+            <Image
+              src={MindBlownImg}
+              boxSize="20px"
+              objectFit="cover"
+              d="inline-block"
+            />
+          </Text>
+          <Flex alignContent="flex-start" flexFlow="column wrap" mt={5}>
             <Box>
               <Text as="h3" className="gradient2">
                 <span>Week I</span>
@@ -140,12 +150,6 @@ export const ScheduleSection = () => {
               <Text>
                 If you didn't miss out last year, I can feel your{" "}
                 <span className="gradient">FOMO</span> from here!!{" "}
-                <Image
-                  src={BabyOctoGif}
-                  boxSize="20px"
-                  objectFit="cover"
-                  d="inline-block"
-                />
               </Text>
             </Box>
             <Box>
@@ -257,41 +261,50 @@ export const WorkshopsSection = () => {
       >
         <Text as="h2">Workshops</Text>
         <Box className="__content__body">
-          <p>Welcome to a week of nice workshops</p>
-          <Text as="h3" className="gradient2">
-            When and What?
-          </Text>
-          <Text>
-            Exact workshops and their dates & times tbc. Watch this space!
-          </Text>
-          <Text>
-            Please check the <Link href="#schedule">Schedule</Link> for the
-            latest info.
-          </Text>
-          <Text as="h3" className="gradient2">
-            Where?
-          </Text>
-          <Text>
-            All workshops happen in Metagame Discord #metafest-voice<sup>*</sup>
-          </Text>
-          <Text>
-            <sup>*</sup>no reservation required.
-          </Text>
+          <p>Welcome to a week of pretty sweet workshops...</p>
+          <Box mt={5}>
+            <Text as="h3" className="gradient2">
+              When and What?
+            </Text>
+            <Text>
+              Exact workshops and their dates & times tbc. Watch this space!
+            </Text>
+            <Text>
+              Please check the <Link href="#schedule">Schedule</Link> for the
+              latest info.
+            </Text>
+            <Text as="h3" className="gradient2">
+              Where?
+            </Text>
+            <Text>
+              All workshops happen in Metagame Discord{" "}
+              <Link href="#chat">#metafest-voice</Link>
+              <sup>*</sup>
+            </Text>
+            <Text>
+              <sup>*</sup>no reservation required.
+            </Text>
 
-          <Text as="h3" className="gradient2">
-            Open Quests!
-          </Text>
-          <Text>Get involved in the event!</Text>
-          <Text>
-            Watch this space for active quests and ways to help out with MetaFest2.
-            {/* We're curently looking for{" "}
+            <Text as="h3" className="gradient2">
+              Open Quests!
+            </Text>
+            <Text>Get involved in the event!</Text>
+            <Text>
+              Watch this space for active quests and ways to help out with
+              MetaFest2.
+              {/* We're curently looking for{" "}
             <strong className="gradient">community members</strong> to record
             the workshops to later upload them to youtube. We also need friendly
             folks to help with <strong className="gradient">Innkeeping</strong>. */}
-          </Text>
-          <Text>
-            You can always  <Link href="https://discord.gg/invite/metagame" isExternal>join our Discord</Link> and see what needs doing.
-          </Text>
+            </Text>
+            <Text>
+              You can always{" "}
+              <Link href="https://discord.gg/invite/metagame" isExternal>
+                join our Discord
+              </Link>{" "}
+              and see what needs doing.
+            </Text>
+          </Box>
         </Box>
       </Box>
     </Box>
@@ -319,6 +332,8 @@ export const CVSection = () => {
           bottom={20}
           right={6}
           colorScheme="pink"
+          boxShadow="0 0 10px rgba(0, 0, 0, 0.6)"
+          size="sm"
           transition="all 0.3s 0.8s ease"
           transform={`translateY(${open ? 0 : "-70px"})`}
           onClick={toggleBooth}
@@ -331,8 +346,8 @@ export const CVSection = () => {
         ref={ref}
         className="__content"
         maxW="2xl"
-        transform={`translate3d(${onScreen || !open ? 0 : "-70px"}, 0, 0)`}
-        opacity={onScreen || !open ? 1 : 0}
+        transform={`translate3d(${onScreen ? 0 : "-70px"}, 0, 0)`}
+        opacity={onScreen ? 1 : 0}
         transition="transform 0.3s 0.4s ease-in-out, opacity 0.6s 0.5s ease-in"
         zIndex={open ? 0 : 2001}
       >
@@ -364,8 +379,9 @@ export const CVSection = () => {
         >
           <CryptovoxelsInstance />
           <Box
+            display="flex"
             position="absolute"
-            bottom={2}
+            bottom={0}
             right={0}
             width="100%"
             textAlign="center"
@@ -373,15 +389,20 @@ export const CVSection = () => {
             <Link
               href="https://www.cryptovoxels.com/play?coords=S@379E,115S"
               isExternal
-              fontWeight={500}
+              fontWeight={700}
               fontSize="0.7vmax"
-              d="inline-block"
+              // d="inline-block"
               mx="auto"
+              p={3}
+              bg="linear-gradient(90.24deg, #640DFB99 0.3%, rgba(100, 13, 251, 0.9) 80.16%)"
+              borderRadius="5px 5px 0 0"
+              boxShadow="0 0 5px rgba(0,0,0,0.6)"
+              overflow="clip"
             >
               <span role="img" aria-label="Attention!">
                 📢
               </span>{" "}
-              Need moar CryptoVoxels? Open it up in a new tab.{" "}
+              Need more CryptoVoxels? Open it up in a new tab.{" "}
               <ExternalLinkIcon />
             </Link>
           </Box>
@@ -412,6 +433,8 @@ export const ChatSection = () => {
           bottom={20}
           right={6}
           colorScheme="pink"
+          boxShadow="0 0 10px rgba(0, 0, 0, 0.6)"
+          size="sm"
           transition="all 0.3s 0.8s ease"
           transform={`translateY(${open ? 0 : "-70px"})`}
           onClick={toggleChat}
@@ -454,7 +477,7 @@ export const ChatSection = () => {
           zIdex={2001}
         >
           <ChatInstance />
-          <Box position="absolute" top={2} right={5}>
+          <Box position="absolute" top={2} right={8}>
             <Link
               href="https://discord.com/channels/629411177947987986/629411178837442601"
               isExternal
@@ -464,7 +487,8 @@ export const ChatSection = () => {
               <span role="img" aria-label="Attention!">
                 📢
               </span>{" "}
-              Need moar Discord? Open it up in a new tab. <ExternalLinkIcon />
+              Hey octo, need more Discord? Open it up in a new tab.{" "}
+              <ExternalLinkIcon />
             </Link>
           </Box>
         </Box>
@@ -484,7 +508,7 @@ function App() {
   };
   getHostname();
 
-  const [toggleAnim, setToggleAnim] = useState(false)
+  // const [toggleAnim, setToggleAnim] = useState(false)
 
   return (
     <Box
@@ -497,6 +521,7 @@ function App() {
           backgroundClip: "text",
           WebkitTextFillColor: "transparent",
           textFillColor: "transparent",
+          filter: "drop-shadow(0 0 5px rgba(0,0,0,0.6))",
         },
         ".gradient2": {
           display: "inline-block",
@@ -507,6 +532,7 @@ function App() {
           backgroundClip: "text",
           textFillColor: "transparent",
           WebkitTextFillColor: "transparent",
+          filter: "drop-shadow(0 0 5px rgba(0,0,0,0.6))",
         },
         ".gradient-cone": {
           display: "inline-block",
@@ -518,6 +544,7 @@ function App() {
           textFillColor: "transparent",
           WebkitTextFillColor: "transparent",
           transition: "background 0.3s ease",
+          filter: "drop-shadow(0 0 5px rgba(0,0,0,0.6))",
         },
         ".highlight": {},
         h3: {
@@ -532,21 +559,24 @@ function App() {
         },
       }}
     >
-      {/* <Box className="stars" />
-      <Box className="twinkling" /> */}
       <RootContextProvider>
         <HeadComponent url={host} img={`${host}${SocialImg}`} />
         <SiteHeader />
 
         <Box
           sx={{
-            scrollSnapAlign: "start",
-            scrollSnapStop: "normal",
+            scrollSnapType: { base: "y proximity", md: "unset" },
             position: "relative",
             zIndex: "1",
+            section: {
+              scrollSnapAlign: { base: "center", md: "unset" },
+              scrollSnapStop: { base: "smooth", md: "unset" },
+            },
           }}
         >
-          <Canvas toggleAnim={toggleAnim}/>
+          <Suspense fallback={<Loader />}>
+            <Canvas />
+          </Suspense>
           <HomeSection />
           <ScheduleSection />
           <WorkshopsSection />
@@ -555,6 +585,7 @@ function App() {
           <ChatSection />
           <EasterEgg />
           <AlphaNotice />
+          {/* TODO: Need to figure out how to stop the animations, in gsap & three's `tick()` */}
           {/* <Button
           position="fixed"
           bottom={20}
@@ -566,6 +597,7 @@ function App() {
         >
           Turn off animations
         </Button> */}
+          <SiteFooter />
         </Box>
       </RootContextProvider>
     </Box>
@@ -610,7 +642,17 @@ export const AlphaNotice = () => {
       >
         <Image src={BabyOctoGif} boxSize="35px" objectFit="cover" />
         <Text fontSize="0.7vmax" fontWeight={700}>
-          The site is in Alpha. <span role="img" aria-label="watchful eyes">👀</span> We're still working on content, there's no Web3 connectivity and there are some bugs...especially on mobile. <br /> We're working to get it all ship shape for June!
+          The site is in{" "}
+          <Text as="span" color="#76EBF2" fontWeight="700">
+            Alpha
+          </Text>
+          .{" "}
+          <span role="img" aria-label="watchful eyes">
+            👀
+          </span>{" "}
+          We're still working on content, there's no Web3 connectivity and there
+          are some bugs...especially on mobile. <br /> We're working to get it
+          all ship shape for June!
         </Text>
         <Image src={BabyOctoGif} boxSize="35px" objectFit="cover" />
         <IconButton
@@ -619,6 +661,7 @@ export const AlphaNotice = () => {
           pos="fixed"
           bottom={3}
           right={6}
+          size="sm"
           aria-label="Close easter egg"
           icon={<CloseIcon />}
           zIndex={2001}
@@ -640,7 +683,8 @@ export const EasterEgg = () => {
     <Box
       ref={ref}
       className="ee1"
-      bg="rgba(0,0,0,0.7)"
+      bg="rgba(0,0,0,0.3)"
+      boxShadow="0 0 15px rgba(0,0,0,0.6)"
       backdropFilter="blur(7px)"
       color="white"
       position="fixed"
@@ -712,6 +756,7 @@ export const EasterEgg = () => {
           pos="absolute"
           top={3}
           right={-10}
+          size="sm"
           aria-label="Close easter egg"
           icon={<CloseIcon />}
           zIndex={2001}
@@ -719,4 +764,8 @@ export const EasterEgg = () => {
       </Box>
     </Box>
   );
+};
+
+export const Loader = () => {
+  return <Box>Loading...</Box>;
 };

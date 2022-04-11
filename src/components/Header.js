@@ -1,23 +1,16 @@
-import React, { ReactNode } from "react";
+import React, {useRef} from "react";
 import {
   Box,
   Flex,
-  Avatar,
   HStack,
   Link,
-  IconButton,
   Button,
   Image,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-  MenuDivider,
   useDisclosure,
-  useColorModeValue,
   Stack,
 } from "@chakra-ui/react";
-import { HamburgerIcon, CloseIcon, AddIcon } from "@chakra-ui/icons";
+import { useOnScreen } from "../utils/hooks";
+
 import MF2Logo from "../static/assets/img/mf2-logo.png";
 // import MetaGameLogo from '../static/assets/img/logo.png'
 
@@ -71,16 +64,23 @@ const NavLink = ({ href, children }) => (
 
 export function SiteHeader() {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const ref = useRef(null);
+  const onScreen = useOnScreen(ref);
 
   return (
     <>
       <Box
+        ref={ref}
         as="header"
         bg="transparent"
         position="fixed"
+        top={0}
         px={4}
         w="100%"
         h={"100px"}
+        transform={`translate3d(0, ${onScreen ? 0 : "-70px"}, 0)`}
+        opacity={onScreen ? 1 : 0}
+        transition="transform 0.3s 1s ease-in-out, opacity 0.4s 1.1s ease-in"
         zIndex={2000}
         sx={{
           a: {
@@ -163,7 +163,11 @@ export function SiteHeader() {
                 objectFit="cover"
                 transform={{ md: "translateY(15px) translateX(10px)" }}
                 sx={{
-                  filter: "drop-shadow(0 0 5px rgba(0,0,0,0.8))",
+                  transition: 'all 0.2s 0.1s ease',
+                  filter: "drop-shadow(0 0 15px rgba(0,0,0,0.6))",
+                  _hover: {
+                    filter: "drop-shadow(0 0 15px #FF61E696)",
+                  }
                 }}
               />
             </Link>
@@ -183,6 +187,7 @@ export function SiteHeader() {
             <Button
               variant={"solid"}
               colorScheme={"purple"}
+              boxShadow="0 0 10px rgba(0, 0, 0, 0.6)"
               size="sm"
               mr={0}
             >
