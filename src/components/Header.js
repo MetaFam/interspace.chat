@@ -78,7 +78,7 @@ export function SiteHeader() {
         px={4}
         w="100%"
         h={"100px"}
-        transform={`translate3d(0, ${onScreen ? 0 : "-70px"}, 0)`}
+        transform={`translate3d(0, ${onScreen ? 0 : "-120px"}, 0)`}
         opacity={onScreen ? 1 : 0}
         transition="transform 0.3s 1s ease-in-out, opacity 0.4s 1.1s ease-in"
         zIndex={2000}

@@ -30,7 +30,7 @@ export function SiteFooter() {
         transform={`translate3d(0, ${onScreen ? 0 : "70px"}, 0)`}
         opacity={onScreen ? 1 : 0}
         transition="transform 0.3s 0.4s ease-in-out, opacity 0.6s 0.5s ease-in"
-        zIndex={2}
+        zIndex={2000}
         sx={{
           a: {
             color: "white",
@@ -49,7 +49,7 @@ export function SiteFooter() {
         />
         <Flex h={"100px"} alignItems={"center"} justifyContent={"center"}>
           <Box className="gradient2">
-            <Text textShadow="none" ><span role="img" aria-label="Octopus mascot">🐙</span> &copy; 2022 MetaFam <span role="img" aria-label="Octopus mascot">🐙</span> <Link href="https;//metagame.wtf" isExternal>metagame.wtf</Link> <span role="img" aria-label="Octopus mascot">🐙</span></Text>
+            <Text textShadow="none" ><span role="img" aria-label="Octopus mascot">🐙</span> &copy; 2022 MetaFam <span role="img" aria-label="Octopus mascot">🐙</span> <Link href="https://metagame.wtf" isExternal>metagame.wtf</Link> <span role="img" aria-label="Octopus mascot">🐙</span></Text>
           </Box>
         </Flex>
       </Box>

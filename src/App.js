@@ -1,4 +1,4 @@
-import React, { Suspense, useRef, useState } from "react";
+import React, { Suspense, useEffect, useRef, useState } from "react";
 import "./App.css";
 import RootContextProvider from "./contexts/RootContext";
 import {
@@ -42,18 +42,38 @@ export const HomeSection = () => {
     >
       <Box
         ref={ref}
+        position="relative"
         className="__content"
         maxW="2xl"
         transform={`translate3d(${onScreen ? 0 : "-70px"}, 0, 0)`}
         opacity={onScreen ? 1 : 0}
         transition="transform 0.3s 0.4s ease-in-out, opacity 0.6s 0.5s ease-in"
         pointerEvents="none"
+        sx={{
+          '.fest-dates': {
+            d: 'block',
+            width: '100%',
+            color: '#FF61E6',
+            fontSize: '0.7vmax',
+            fontWeight: 700,
+            textAlign: 'right',
+            transform: 'translateY(15px)',
+            zIndex: 2001,
+          },
+        }}
       >
+        <Box
+          d="inline-flex"
+          flexFlow="column-reverse wrap"
+          alignItems="flex-start"
+          width="auto"
+        >
         <Text
           as="h1"
           className="gradient-cone"
           lineHeight={1}
           sx={{
+            position: 'relative',
             fontWeight: 700,
             mb: 0,
             strong: {
@@ -63,14 +83,13 @@ export const HomeSection = () => {
             em: {
               fontStyle: "normal",
             },
-            span: {
-              fontWeight: 500,
-              textDecoration: "line-through",
-            },
           }}
         >
           MetaFest2
         </Text>
+        <span className="fest-dates">9 - 23rd JUNE</span>
+
+        </Box>
         <Box className="__content__body">
           <Text as="p" fontSize="1vmax" fontWeight={300} mt={0}>
             powered by{" "}
@@ -498,16 +517,23 @@ export const ChatSection = () => {
 };
 
 function App() {
-  let host = "";
-  const getHostname = () => {
-    if (typeof window !== "undefined") {
-      host = window.location.origin;
-      console.log(window.location);
-      return host;
-    }
-  };
-  getHostname();
+  const curURL = useRef(null);
+  let host = curURL ?? curURL.current ;
 
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+    const getHostname = () => {
+      if (typeof window !== "undefined") {
+        curURL.current = window.location.origin;
+        console.log(window.location);
+        // return host;
+        return null
+      }
+    };
+      getHostname();
+    }
+  }, [curURL]);
   // const [toggleAnim, setToggleAnim] = useState(false)
 
   return (
@@ -562,7 +588,6 @@ function App() {
       <RootContextProvider>
         <HeadComponent url={host} img={`${host}${SocialImg}`} />
         <SiteHeader />
-
         <Box
           sx={{
             scrollSnapType: { base: "y proximity", md: "unset" },

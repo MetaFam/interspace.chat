@@ -4,8 +4,8 @@ import { Helmet } from 'react-helmet';
 export const HeadComponent = ({
   title = 'MetaFest2. Powered by MetaGame',
   description = 'A virtual festival/conference/hackathon with the goal of helping you level up & manifest a better future.',
-  url = 'https://metafest2-website.vercel.app/',
-  img = 'https://metafest2-website.vercel.app/static/media/social.bc426e19.png',
+  url = 'https://metafest2.metagame.wtf/',
+  img = 'https://metafest2.metagame.wtf/static/media/social.bc426e19.png',
 }) => (
   <Helmet>
     <title>{title}</title>
