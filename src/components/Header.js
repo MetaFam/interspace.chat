@@ -93,7 +93,9 @@ export function SiteHeader() {
           alignItems={"center"}
           justifyContent={"space-between"}
         >
-          <Box width="25%">
+          <Box width={{ base: "25%", md: 'auto' }} sx={{
+            d: {base: 'inline-block', md: 'none'},
+          }}>
             <Button
               onClick={isOpen ? onClose : onOpen}
               sx={{
@@ -153,13 +155,13 @@ export function SiteHeader() {
             </Button>
           </Box>
           <HStack spacing={8} alignItems={"center"}>
-            <Link href="#home" flex={1}>
+            <Link href="#home" flex={{base: 1}}>
               <Image
                 src={MF2Logo}
                 alt="MetaGame Logo"
-                boxSize={{ base: "80px", lg: "100px" }}
+                boxSize={{ base: "80px", md: "100px" }}
                 objectFit="cover"
-                transform={{ lg: "translateY(15px) translateX(10px)" }}
+                transform={{ md: "translateY(15px) translateX(10px)" }}
                 sx={{
                   filter: "drop-shadow(0 0 5px rgba(0,0,0,0.8))",
                 }}
@@ -168,7 +170,7 @@ export function SiteHeader() {
             <HStack
               as={"nav"}
               spacing={4}
-              display={{ base: "none", lg: "flex" }}
+              display={{ base: "none", md: "flex" }}
             >
               {Links.map((link) => (
                 <NavLink key={`desktop-${link.name}`} href={link.href}>
@@ -177,10 +179,9 @@ export function SiteHeader() {
               ))}
             </HStack>
           </HStack>
-          <Flex alignItems="center" width="25%">
+          <Flex alignItems="center" width={{base: "25%", md: 'auto'}}>
             <Button
               variant={"solid"}
-              // className="gradient"
               colorScheme={"purple"}
               size="sm"
               mr={0}
@@ -192,7 +193,7 @@ export function SiteHeader() {
 
         {isOpen ? (
           <Box
-            display={{ base: "flex", lg: "none" }}
+            display={{ base: "flex", md: "none" }}
             position="fixed"
             top={0}
             left={0}
