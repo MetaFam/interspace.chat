@@ -5,6 +5,10 @@ import {
   Box,
   Button,
   Flex,
+  Stack,
+Container,
+SimpleGrid,
+StackDivider,
   IconButton,
   Image,
   Link,
@@ -12,12 +16,18 @@ import {
   UnorderedList,
   ListItem,
 } from "@chakra-ui/react";
-import { CloseIcon, ExternalLinkIcon } from "@chakra-ui/icons";
+import { CalendarIcon, CloseIcon, ExternalLinkIcon } from "@chakra-ui/icons";
 // import Space from './components/Space'
 import { Canvas } from "./components/Canvas";
 import CryptovoxelsInstance from "./components/integrations/CryptovoxelsInstance";
-// import CalendarInstance from "./components/integrations/CalendarInstance";
+import CalendarInstance from "./components/integrations/CalendarInstance";
 import ChatInstance from "./components/integrations/ChatInstance";
+import {
+  AirtableSpeakerInstance,
+  AirtableContributorInstance,
+  AirtablePerformerInstance,
+  AirtableSponsorInstance,
+} from "./components/integrations/AirtableInstance";
 import { useOnScreen } from "./utils/hooks";
 import { SiteHeader } from "./components/Header";
 import { SiteFooter } from "./components/Footer";
@@ -50,14 +60,14 @@ export const HomeSection = () => {
         transition="transform 0.3s 0.4s ease-in-out, opacity 0.6s 0.5s ease-in"
         pointerEvents="none"
         sx={{
-          '.fest-dates': {
-            d: 'block',
-            width: '100%',
-            color: '#FF61E6',
-            fontSize: '0.7vmax',
+          ".fest-dates": {
+            d: "block",
+            width: "100%",
+            color: "#FF61E6",
+            fontSize: "0.7vmax",
             fontWeight: 700,
-            textAlign: 'right',
-            transform: 'translateY(15px)',
+            textAlign: "right",
+            transform: "translateY(15px)",
             zIndex: 2001,
           },
         }}
@@ -68,27 +78,26 @@ export const HomeSection = () => {
           alignItems="flex-start"
           width="auto"
         >
-        <Text
-          as="h1"
-          className="gradient-cone"
-          lineHeight={1}
-          sx={{
-            position: 'relative',
-            fontWeight: 700,
-            mb: 0,
-            strong: {
-              d: "block",
+          <Text
+            as="h1"
+            className="gradient-cone"
+            lineHeight={1}
+            sx={{
+              position: "relative",
               fontWeight: 700,
-            },
-            em: {
-              fontStyle: "normal",
-            },
-          }}
-        >
-          MetaFest2
-        </Text>
-        <span className="fest-dates">9 - 23rd JUNE</span>
-
+              mb: 0,
+              strong: {
+                d: "block",
+                fontWeight: 700,
+              },
+              em: {
+                fontStyle: "normal",
+              },
+            }}
+          >
+            MetaFest2
+          </Text>
+          <span className="fest-dates">9 - 23rd JUNE</span>
         </Box>
         <Box className="__content__body">
           <Text as="p" fontSize="1vmax" fontWeight={300} mt={0}>
@@ -120,9 +129,176 @@ export const HomeSection = () => {
 export const ScheduleSection = () => {
   const ref = useRef(null);
   const onScreen = useOnScreen(ref);
+  const [openCal, setOpenCal] = useState(false);
+  const [openSpeakerApplication, setOpenSpeakerApplication] = useState(false);
+  const [openContributorApplication, setOpenContributorApplication] = useState(
+    false
+  );
+  const [openPerformerApplication, setOpenPerformerApplication] = useState(
+    false
+  );
+  const [openSponsorApplication, setOpenSponsorApplication] = useState(false);
+
+  function Applications() {
+    return (
+      <Container maxW={'4xl'} p={12}
+        sx={{
+          bg: 'rgba(25,0,50,0.1)',
+          backdropFilter: 'blur(7px)',
+          borderRadius: '5px 30px 10px 0',
+          boxShadow: '0 0 30px #00000070'
+        }}
+      >
+        <SimpleGrid columns={{ base: 1, md: 1 }} spacing={10}>
+          <Stack spacing={4}>
+            <Text
+              textTransform={'uppercase'}
+              fontWeight={500}
+              fontSize={'sm'}
+              className="gradient"
+              p={0}
+              alignSelf={'flex-start'}
+              rounded={'md'}>
+              🎉 Join the party! 🎉
+            </Text>
+            <Text as="h3"><span>MetaFest2 needs YOU</span><span className="gradient" role="img" aria-label="Pointing at the forms below">👇</span></Text>
+            <Text fontSize={'lg'}>
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+              nonumy eirmod tempor invidunt ut labore
+            </Text>
+            <Stack
+              spacing={4}
+              divider={
+                <StackDivider />
+              }>
+              <Feature
+                iconBg={'yellow.900'}
+                text={'Speaker'}
+                call={() => setOpenSpeakerApplication(!openSpeakerApplication)}
+              />
+              <Feature
+                iconBg={'green.900'}
+                text={'Contributor'}
+                call={() => setOpenSpeakerApplication(!openContributorApplication)}
+              />
+              <Feature
+                iconBg={'purple.900'}
+                text={'Performer'}
+                call={() => setOpenPerformerApplication(!openPerformerApplication)}
+              />
+              <Feature
+                iconBg={'purple.900'}
+                text={'Sponsor'}
+                call={() => setOpenSponsorApplication(!openSponsorApplication)}
+              />
+            </Stack>
+          </Stack>
+          {/* <Flex>
+            <Image
+              rounded={'md'}
+              alt={'feature image'}
+              src={
+                'https://images.unsplash.com/photo-1554200876-56c2f25224fa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'
+              }
+              objectFit={'cover'}
+            />
+          </Flex> */}
+        </SimpleGrid>
+      </Container>
+    );
+  }
+
 
   return (
-    <Box as="section" id="schedule">
+    <Box
+      as="section"
+      id="schedule"
+      flexFlow="row nowrap"
+      justifyContent="space-between"
+    >
+      {openCal && (
+        <Button
+          position="absolute"
+          bottom={20}
+          right={6}
+          colorScheme="pink"
+          boxShadow="0 0 10px rgba(0, 0, 0, 0.6)"
+          size="sm"
+          transition="all 0.3s 0.8s ease"
+          transform={`translateY(${openCal ? 0 : "-70px"})`}
+          onClick={() => setOpenCal(!openCal)}
+          zIndex={2002}
+        >
+          Close Calendar
+        </Button>
+      )}
+      {openSpeakerApplication && (
+        <Button
+          position="absolute"
+          bottom={20}
+          right={6}
+          colorScheme="pink"
+          boxShadow="0 0 10px rgba(0, 0, 0, 0.6)"
+          size="sm"
+          transition="all 0.3s 0.8s ease"
+          transform={`translateY(${openSpeakerApplication ? 0 : "-70px"})`}
+          onClick={() => setOpenSpeakerApplication(!openSpeakerApplication)}
+          zIndex={2002}
+        >
+          Close form
+        </Button>
+      )}
+      {openContributorApplication && (
+        <Button
+          position="absolute"
+          bottom={20}
+          right={6}
+          colorScheme="pink"
+          boxShadow="0 0 10px rgba(0, 0, 0, 0.6)"
+          size="sm"
+          transition="all 0.3s 0.8s ease"
+          transform={`translateY(${openContributorApplication ? 0 : "-70px"})`}
+          onClick={() =>
+            setOpenContributorApplication(!openContributorApplication)
+          }
+          zIndex={2002}
+        >
+          Close form
+        </Button>
+      )}
+      {openPerformerApplication && (
+        <Button
+          position="absolute"
+          bottom={20}
+          right={6}
+          colorScheme="pink"
+          boxShadow="0 0 10px rgba(0, 0, 0, 0.6)"
+          size="sm"
+          transition="all 0.3s 0.8s ease"
+          transform={`translateY(${openPerformerApplication ? 0 : "-70px"})`}
+          onClick={() => setOpenPerformerApplication(!openPerformerApplication)}
+          zIndex={2002}
+        >
+          Close form
+        </Button>
+      )}
+      {openSponsorApplication && (
+        <Button
+          position="absolute"
+          bottom={20}
+          right={6}
+          colorScheme="pink"
+          boxShadow="0 0 10px rgba(0, 0, 0, 0.6)"
+          size="sm"
+          transition="all 0.3s 0.8s ease"
+          transform={`translateY(${openSponsorApplication ? 0 : "-70px"})`}
+          onClick={() => setOpenSponsorApplication(!openSponsorApplication)}
+          zIndex={2002}
+        >
+          Close form
+        </Button>
+      )}
+
       <Box
         ref={ref}
         className="__content"
@@ -131,8 +307,29 @@ export const ScheduleSection = () => {
         opacity={onScreen ? 1 : 0}
         transition="transform 0.3s 0.4s ease-in-out, opacity 0.6s 0.5s ease-in"
       >
-        <Text as="h2">Schedule</Text>
-        {/* <CalendarInstance /> */}
+        <Box
+          position="relative"
+          d="inline-flex"
+          flexFlow="row nowrap"
+          alignItems="flex-start"
+          justifyContent="space-between"
+          width="100%"
+        >
+          <Text as="h2" d="inline-block">
+            Schedule
+          </Text>
+          <IconButton
+            icon={<CalendarIcon />}
+            aria-label="Open event calendar"
+            flex={0}
+            fontSize="2vmax"
+            colorScheme="ghost"
+            onClick={() => setOpenCal(!openCal)}
+            alignSelf="center"
+            filter="drop-shadow(0 0 15px #FF61E6)"
+          />
+        </Box>
+
         <Box className="__content__body">
           <Text>
             Our{" "}
@@ -148,8 +345,8 @@ export const ScheduleSection = () => {
               d="inline-block"
             />
           </Text>
-          <Flex alignContent="flex-start" flexFlow="column wrap" mt={5}>
-            <Box>
+          <Box>
+            <Box className="week">
               <Text as="h3" className="gradient2">
                 <span>Week I</span>
               </Text>
@@ -161,24 +358,30 @@ export const ScheduleSection = () => {
                 moar!
               </Text>
             </Box>
-            <Box>
+            <Box className="week">
               <Text as="h3" className="gradient2">
                 <span>Week II</span>
               </Text>
-              <Text as="p">The week of talks 70+ great talks</Text>
+              <Text>The week of talks 70+ great talks</Text>
               <Text>
                 If you didn't miss out last year, I can feel your{" "}
                 <span className="gradient">FOMO</span> from here!!{" "}
               </Text>
             </Box>
-            <Box>
+            <Box className="week">
               <Text as="h3" className="gradient2">
                 <span>Week III</span>
               </Text>
-              <Text as="p">The week of 20+ epic workshops</Text>
+              <Text>The week of 20+ epic workshops</Text>
+              <Text>
+                A <Link href="#metafest-booth">Web3 job fair</Link>, pair
+                programming, learn to buidl in CryptoVoxels, find out how to
+                take advantage of the latest ReFi tech - there's something for
+                everyone.
+              </Text>
             </Box>
             <Box mt={5}>
-              <Text as="p">
+              <Text>
                 To enter METAFEST, you will have to{" "}
                 <a
                   href="https://gitcoin.co/grants/213/metagame"
@@ -196,11 +399,138 @@ export const ScheduleSection = () => {
                   donate to our Giveth project
                 </a>
               </Text>
-              <Text as="p">jk jk just enter!</Text>
+              <Text>jk jk just enter!</Text>
             </Box>
-          </Flex>
+          </Box>
         </Box>
       </Box>
+      <Box
+        ref={ref}
+        maxW="2xl"
+        transform={`translate3d(${onScreen ? 0 : "-70px"}, 0, 0)`}
+        opacity={onScreen ? 1 : 0}
+        transition="transform 0.3s 0.4s ease-in-out, opacity 0.6s 0.5s ease-in"
+      >
+
+          <Applications />
+      </Box>
+
+      {openCal && (
+        <Box
+          ref={ref}
+          position="absolute"
+          top="12.5vh"
+          left={0}
+          height="75vh"
+          minH="75vh"
+          minW="100vw"
+          boxShadow="0 0 30px rgba(0,0,0,0.8)"
+          opacity={onScreen ? 1 : 0}
+          transition="opacity 1.2s 0.8s ease-in-out"
+          zIdex={2001}
+        >
+          <CalendarInstance />
+          <Box
+            display="flex"
+            position="absolute"
+            bottom={0}
+            right={0}
+            width="100%"
+            textAlign="center"
+          >
+            <Link
+              href="https://calendar.google.com/calendar/u/0/r?cid=OWxpZWtudTVwbmVzMWw1MWVqNm4yOTE2dTBAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ"
+              isExternal
+              fontWeight={700}
+              fontSize="0.7vmax"
+              // d="inline-block"
+              mx="auto"
+              p={3}
+              bg="linear-gradient(90.24deg, #640DFB99 0.3%, rgba(100, 13, 251, 0.9) 80.16%)"
+              borderRadius="5px 5px 0 0"
+              boxShadow="0 0 5px rgba(0,0,0,0.6)"
+              overflow="clip"
+            >
+              <span role="img" aria-label="Attention!">
+                📢
+              </span>{" "}
+              Need more Calendar? Open it up in a new tab. <ExternalLinkIcon />
+            </Link>
+          </Box>
+        </Box>
+      )}
+      {openSpeakerApplication && (
+        <Box
+          ref={ref}
+          position="absolute"
+          top="12.5vh"
+          left={0}
+          height="75vh"
+          minH="75vh"
+          minW="100vw"
+          boxShadow="0 0 30px rgba(0,0,0,0.8)"
+          opacity={onScreen ? 1 : 0}
+          transition="opacity 1.2s 0.8s ease-in-out"
+          zIdex={2001}
+          overflowY="scroll"
+        >
+          <AirtableSpeakerInstance />
+        </Box>
+      )}
+      {openContributorApplication && (
+        <Box
+          ref={ref}
+          position="absolute"
+          top="12.5vh"
+          left={0}
+          height="75vh"
+          minH="75vh"
+          minW="100vw"
+          boxShadow="0 0 30px rgba(0,0,0,0.8)"
+          opacity={onScreen ? 1 : 0}
+          transition="opacity 1.2s 0.8s ease-in-out"
+          zIdex={2001}
+          overflowY="scroll"
+        >
+          <AirtableContributorInstance />
+        </Box>
+      )}
+      {openPerformerApplication && (
+        <Box
+          ref={ref}
+          position="absolute"
+          top="12.5vh"
+          left={0}
+          height="75vh"
+          minH="75vh"
+          minW="100vw"
+          boxShadow="0 0 30px rgba(0,0,0,0.8)"
+          opacity={onScreen ? 1 : 0}
+          transition="opacity 1.2s 0.8s ease-in-out"
+          zIdex={2001}
+          overflowY="scroll"
+        >
+          <AirtablePerformerInstance />
+        </Box>
+      )}
+      {openSponsorApplication && (
+        <Box
+          ref={ref}
+          position="absolute"
+          top="12.5vh"
+          left={0}
+          height="75vh"
+          minH="75vh"
+          minW="100vw"
+          boxShadow="0 0 30px rgba(0,0,0,0.8)"
+          opacity={onScreen ? 1 : 0}
+          transition="opacity 1.2s 0.8s ease-in-out"
+          zIdex={2001}
+          overflowY="scroll"
+        >
+          <AirtableSponsorInstance />
+        </Box>
+      )}
     </Box>
   );
 };
@@ -518,19 +848,18 @@ export const ChatSection = () => {
 
 function App() {
   const curURL = useRef(null);
-  let host = curURL ?? curURL.current ;
-
+  let host = curURL ?? curURL.current;
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-    const getHostname = () => {
-      if (typeof window !== "undefined") {
-        curURL.current = window.location.origin;
-        console.log(window.location);
-        // return host;
-        return null
-      }
-    };
+      const getHostname = () => {
+        if (typeof window !== "undefined") {
+          curURL.current = window.location.origin;
+          console.log(window.location);
+          // return host;
+          return null;
+        }
+      };
       getHostname();
     }
   }, [curURL]);
@@ -794,3 +1123,32 @@ export const EasterEgg = () => {
 export const Loader = () => {
   return <Box>Loading...</Box>;
 };
+
+export const Feature = ({ text, iconBg, call }) => {
+  return (
+    <Stack direction={'row'} align={'center'}>
+      <Flex
+        w={8}
+        h={8}
+        align={'center'}
+        justify={'center'}
+        rounded={'full'}
+        bg={iconBg}>
+        {/* {icon} */}
+      </Flex>
+      <Text fontWeight={500} flex={1}>{text}</Text>
+      <Button
+          onClick={() => call()}
+        colorScheme="pink"
+        justifySelf="right"
+        >
+         Apply
+      </Button>
+    </Stack>
+  );
+};
+
+
+
+
+

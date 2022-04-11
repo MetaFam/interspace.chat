@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Box } from "@chakra-ui/react";
 import TimezonePicker from 'react-timezone'
 import styled from '@emotion/styled'
 
@@ -15,10 +16,10 @@ const InstanceContainer = styled.div`
 function CalendarInstance () {
   const [timezone, changeTimezone] = useState('Europe/London')
   return (
-    <InstanceContainer>
+    <>
       <iframe
         title='Schedule'
-        src={`https://calendar.google.com/calendar/embed?src=1qnbr9796nnenn53cibhvekh58%40group.calendar.google.com&ctz=${timezone}&mode=AGENDA&amp`}
+        src={`https://calendar.google.com/calendar/u/0/r?cid=OWxpZWtudTVwbmVzMWw1MWVqNm4yOTE2dTBAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ%40group.calendar.google.com&ctz=${timezone}&mode=AGENDA&amp`}
         style={{
           minHeight: '500px',
           height: '100%',
@@ -43,7 +44,7 @@ function CalendarInstance () {
           width: '70%'
         }}
       />
-    </InstanceContainer>
+    </>
   )
 }
 
