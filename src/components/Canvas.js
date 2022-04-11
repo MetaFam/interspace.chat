@@ -97,7 +97,7 @@ export const Canvas = () => {
       plane3.position.y = 0;
       // sectionFour.add(plane3);
 
-      sectionTwo.add(plane2);
+      // sectionTwo.add(plane2);
       // Galaxies
       const galaxy1 = generateGalaxy(galaxy1Params);
       const galaxy2 = generateGalaxy(galaxy2Params);
@@ -605,7 +605,7 @@ export const Canvas = () => {
         // Cast ray
         raycaster.setFromCamera(mouse, camera);
 
-        const objectsToTest = [plane1, plane2];
+        const objectsToTest = [plane1];
         const intersects = raycaster.intersectObjects(objectsToTest);
         // console.log(intersects);
 
