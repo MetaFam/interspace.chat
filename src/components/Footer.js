@@ -30,7 +30,7 @@ export function SiteFooter() {
         transform={`translate3d(0, ${onScreen ? 0 : "70px"}, 0)`}
         opacity={onScreen ? 1 : 0}
         transition="transform 0.3s 0.4s ease-in-out, opacity 0.6s 0.5s ease-in"
-        zIndex={2000}
+        zIndex={1000}
         sx={{
           a: {
             color: "white",
@@ -39,10 +39,10 @@ export function SiteFooter() {
       >
         <Image
           src={OctopusImg}
-          boxSize="150px"
+          boxSize={{base: '90px', md: "150px"}}
           position="absolute"
           bottom={0}
-          left="calc(50% - 75px)"
+          left={{base: "calc(50% - 45px)", md: "calc(50% - 75px)"}}
           sx={{
             // filter: "drop-shadow(0 0 15px #FF61E697)",
           }}

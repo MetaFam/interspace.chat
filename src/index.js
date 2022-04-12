@@ -36,6 +36,34 @@ const theme = extendTheme({
           },
         }
       },
+      'h1': {
+        color: '#fff',
+        fontSize: '4vmax',
+        fontWeight: 700,
+        '& span': {
+          color: '#fff',
+          fontSize: '4vmax',
+          fontWeight: 700,
+        }
+      },
+      h2: {
+        color: '#fff',
+        fontSize: '4vmax',
+        fontweight: 500,
+        textShadow: '0 0 10px rgba(0, 0, 0, 0.6)',
+      },
+      h3: {
+        fontSize: '1.5vmax',
+        fontWeight: 500,
+      },
+      h4: {
+        fontSize: '1vmax',
+        fontWeight: 500,
+      },
+      p: {
+        fontSize: {base: '2.2vmin', md: '.9vmax'},
+        textShadow: '0 0 5px rgba(0, 0, 0, 0.6)',
+      },
       '.__content__body': {
         'p:first-of-type': {
           fontSize: '1vmax',
@@ -48,38 +76,6 @@ const theme = extendTheme({
 
 root.render(
   <ChakraProvider theme={theme}>
-    <Global
-      styles={css`
-        h1 {
-          color: #fff;
-          font-size: 4vmax;
-          font-weight: 700;
-        }
-        h1 span {
-          color: #fff;
-          font-size: 5vmax;
-          font-weight: 700;
-        }
-        h2 {
-          color: #fff;
-          font-size: 4vmax;
-          font-weight: 500;
-          text-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
-        }
-        h3 {
-          font-size: 1.5vmax;
-          font-weight: 500;
-        }
-        h4 {
-          font-weight: 500;
-          font-size: 1vmax;
-        }
-        p {
-          font-size: .9vmax;
-          text-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
-        }
-      `}
-    />
     <App />
   </ChakraProvider>
 );

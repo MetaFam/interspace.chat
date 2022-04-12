@@ -6,9 +6,9 @@ import {
   Button,
   Flex,
   Stack,
-Container,
-SimpleGrid,
-StackDivider,
+  Container,
+  SimpleGrid,
+  StackDivider,
   IconButton,
   Image,
   Link,
@@ -28,7 +28,7 @@ import {
   AirtablePerformerInstance,
   AirtableSponsorInstance,
 } from "./components/integrations/AirtableInstance";
-import { useOnScreen } from "./utils/hooks";
+import { useDisabledMobileNotify, useOnScreen } from "./utils/hooks";
 import { SiteHeader } from "./components/Header";
 import { SiteFooter } from "./components/Footer";
 import { HeadComponent } from "./components/HeadComponent";
@@ -64,10 +64,10 @@ export const HomeSection = () => {
             d: "block",
             width: "100%",
             color: "#FF61E6",
-            fontSize: "0.7vmax",
+            fontSize: {base: '2vmin', md: "0.7vmax"},
             fontWeight: 700,
             textAlign: "right",
-            transform: "translateY(15px)",
+            transform: {md:"translateY(15px)"},
             zIndex: 2001,
           },
         }}
@@ -128,6 +128,7 @@ export const HomeSection = () => {
 
 export const ScheduleSection = () => {
   const ref = useRef(null);
+  const appRef = useRef(null);
   const onScreen = useOnScreen(ref);
   const [openCal, setOpenCal] = useState(false);
   const [openSpeakerApplication, setOpenSpeakerApplication] = useState(false);
@@ -138,57 +139,87 @@ export const ScheduleSection = () => {
     false
   );
   const [openSponsorApplication, setOpenSponsorApplication] = useState(false);
+  const disabledMobNotify = useDisabledMobileNotify();
 
   function Applications() {
     return (
-      <Container maxW={'4xl'} p={12}
+      <Container
+        maxW={"4xl"}
+        p={{ base: 8, md: 12 }}
         sx={{
-          bg: 'rgba(25,0,50,0.1)',
-          backdropFilter: 'blur(7px)',
-          borderRadius: '5px 30px 10px 0',
-          boxShadow: '0 0 30px #00000070'
+          bg: "rgba(25,0,50,0.1)",
+          backdropFilter: "blur(7px)",
+          borderRadius: "5px 30px 10px 0",
+          boxShadow: "0 0 30px #00000070",
         }}
       >
-        <SimpleGrid columns={{ base: 1, md: 1 }} spacing={10}>
+        <SimpleGrid columns={{ base: 1 }} spacing={0}>
           <Stack spacing={4}>
+            {/* <IconButton
+              position="absolute"
+              top={5}
+              right={5}
+              icon={<CloseIcon />}
+              colorScheme="ghost"
+              size="xs"
+              onClick={() => setToggleJoin(!toggleJoin)}
+              zIndex={2001}
+            /> */}
+
             <Text
-              textTransform={'uppercase'}
+              textTransform={"uppercase"}
               fontWeight={500}
-              fontSize={'sm'}
+              fontSize={"sm"}
               className="gradient"
               p={0}
-              alignSelf={'flex-start'}
-              rounded={'md'}>
-              🎉 Join the party! 🎉
+              alignSelf={"flex-start"}
+              rounded={"md"}
+            >
+              <span role="img" aria-label="Yay, come join us!">
+                🎉
+              </span>{" "}
+              Join the party!{" "}
+              <span role="img" aria-label="Yay, come join us!">
+                🎉
+              </span>
             </Text>
-            <Text as="h3"><span>MetaFest2 needs YOU</span><span className="gradient" role="img" aria-label="Pointing at the forms below">👇</span></Text>
-            <Text fontSize={'lg'}>
+            <Text as="h3">
+              <span>MetaFest2 needs YOU</span>
+              <span
+                className="gradient"
+                role="img"
+                aria-label="Pointing at the forms below"
+              >
+                👇
+              </span>
+            </Text>
+            <Text fontSize={"lg"}>
               Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
               nonumy eirmod tempor invidunt ut labore
             </Text>
-            <Stack
-              spacing={4}
-              divider={
-                <StackDivider />
-              }>
+            <Stack spacing={4} divider={<StackDivider />}>
               <Feature
-                iconBg={'yellow.900'}
-                text={'Speaker'}
+                iconBg={"yellow.900"}
+                text={"Speaker"}
                 call={() => setOpenSpeakerApplication(!openSpeakerApplication)}
               />
               <Feature
-                iconBg={'green.900'}
-                text={'Contributor'}
-                call={() => setOpenSpeakerApplication(!openContributorApplication)}
+                iconBg={"green.900"}
+                text={"Contributor"}
+                call={() =>
+                  setOpenSpeakerApplication(!openContributorApplication)
+                }
               />
               <Feature
-                iconBg={'purple.900'}
-                text={'Performer'}
-                call={() => setOpenPerformerApplication(!openPerformerApplication)}
+                iconBg={"purple.900"}
+                text={"Performer"}
+                call={() =>
+                  setOpenPerformerApplication(!openPerformerApplication)
+                }
               />
               <Feature
-                iconBg={'purple.900'}
-                text={'Sponsor'}
+                iconBg={"purple.900"}
+                text={"Sponsor"}
                 call={() => setOpenSponsorApplication(!openSponsorApplication)}
               />
             </Stack>
@@ -207,7 +238,6 @@ export const ScheduleSection = () => {
       </Container>
     );
   }
-
 
   return (
     <Box
@@ -302,7 +332,7 @@ export const ScheduleSection = () => {
       <Box
         ref={ref}
         className="__content"
-        w="2xl"
+        w={{ base: "full", md: "2xl" }}
         transform={`translate3d(${onScreen ? 0 : "-70px"}, 0, 0)`}
         opacity={onScreen ? 1 : 0}
         transition="transform 0.3s 0.4s ease-in-out, opacity 0.6s 0.5s ease-in"
@@ -400,19 +430,40 @@ export const ScheduleSection = () => {
                 </a>
               </Text>
               <Text>jk jk just enter!</Text>
+              <Button
+                d={{md: 'none'}}
+                colorScheme="pink"
+                size="sm"
+                mt={5}
+                // isDisabled
+                onClick={disabledMobNotify}
+              >
+                <span role="img" aria-label="Yay, come join us!">
+                  🎉
+                </span>{" "}
+                Join the party!{" "}
+                <span role="img" aria-label="Yay, come join us!">
+                  🎉
+                </span>
+              </Button>
             </Box>
           </Box>
         </Box>
       </Box>
       <Box
-        ref={ref}
-        maxW="2xl"
+        ref={appRef}
+        d={{ base: "none", md: "inherit" }}
+        maxW={{ base: "full", md: "2xl" }}
         transform={`translate3d(${onScreen ? 0 : "-70px"}, 0, 0)`}
         opacity={onScreen ? 1 : 0}
         transition="transform 0.3s 0.4s ease-in-out, opacity 0.6s 0.5s ease-in"
+        sx={{
+          position: { base: "absolute", md: "inherit" },
+          top: { base: "15%", md: "auto" },
+          left: { base: 0, md: "unset" },
+        }}
       >
-
-          <Applications />
+        <Applications />
       </Box>
 
       {openCal && (
@@ -427,7 +478,11 @@ export const ScheduleSection = () => {
           boxShadow="0 0 30px rgba(0,0,0,0.8)"
           opacity={onScreen ? 1 : 0}
           transition="opacity 1.2s 0.8s ease-in-out"
-          zIdex={2001}
+          zIndex={2001}
+          sx={{
+            bg: "rgba(25,0,50,0.4)",
+            backdropFilter: "blur(7px)",
+          }}
         >
           <CalendarInstance />
           <Box
@@ -468,6 +523,10 @@ export const ScheduleSection = () => {
           height="75vh"
           minH="75vh"
           minW="100vw"
+          sx={{
+            bg: "rgba(25,0,50,0.4)",
+            backdropFilter: "blur(7px)",
+          }}
           boxShadow="0 0 30px rgba(0,0,0,0.8)"
           opacity={onScreen ? 1 : 0}
           transition="opacity 1.2s 0.8s ease-in-out"
@@ -486,6 +545,10 @@ export const ScheduleSection = () => {
           height="75vh"
           minH="75vh"
           minW="100vw"
+          sx={{
+            bg: "rgba(25,0,50,0.4)",
+            backdropFilter: "blur(7px)",
+          }}
           boxShadow="0 0 30px rgba(0,0,0,0.8)"
           opacity={onScreen ? 1 : 0}
           transition="opacity 1.2s 0.8s ease-in-out"
@@ -504,6 +567,10 @@ export const ScheduleSection = () => {
           height="75vh"
           minH="75vh"
           minW="100vw"
+          sx={{
+            bg: "rgba(25,0,50,0.4)",
+            backdropFilter: "blur(7px)",
+          }}
           boxShadow="0 0 30px rgba(0,0,0,0.8)"
           opacity={onScreen ? 1 : 0}
           transition="opacity 1.2s 0.8s ease-in-out"
@@ -522,6 +589,10 @@ export const ScheduleSection = () => {
           height="75vh"
           minH="75vh"
           minW="100vw"
+          sx={{
+            bg: "rgba(25,0,50,0.4)",
+            backdropFilter: "blur(7px)",
+          }}
           boxShadow="0 0 30px rgba(0,0,0,0.8)"
           opacity={onScreen ? 1 : 0}
           transition="opacity 1.2s 0.8s ease-in-out"
@@ -1126,29 +1197,23 @@ export const Loader = () => {
 
 export const Feature = ({ text, iconBg, call }) => {
   return (
-    <Stack direction={'row'} align={'center'}>
+    <Stack direction={"row"} align={"center"}>
       <Flex
         w={8}
         h={8}
-        align={'center'}
-        justify={'center'}
-        rounded={'full'}
-        bg={iconBg}>
+        align={"center"}
+        justify={"center"}
+        rounded={"full"}
+        bg={iconBg}
+      >
         {/* {icon} */}
       </Flex>
-      <Text fontWeight={500} flex={1}>{text}</Text>
-      <Button
-          onClick={() => call()}
-        colorScheme="pink"
-        justifySelf="right"
-        >
-         Apply
+      <Text fontWeight={500} flex={1}>
+        {text}
+      </Text>
+      <Button onClick={() => call()} colorScheme="pink" justifySelf="right">
+        Apply
       </Button>
     </Stack>
   );
 };
-
-
-
-
-

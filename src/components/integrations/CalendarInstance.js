@@ -19,7 +19,7 @@ function CalendarInstance () {
     <>
       <iframe
         title='Schedule'
-        src={`https://calendar.google.com/calendar/u/0/r?cid=OWxpZWtudTVwbmVzMWw1MWVqNm4yOTE2dTBAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ%40group.calendar.google.com&ctz=${timezone}&mode=AGENDA&amp`}
+        src={`https://calendar.google.com/calendar/u/0/r?cid=OWxpZWtudTVwbmVzMWw1MWVqNm4yOTE2dTBAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&ctz=${timezone}&mode=AGENDA`}
         style={{
           minHeight: '500px',
           height: '100%',

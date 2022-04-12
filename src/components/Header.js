@@ -9,7 +9,7 @@ import {
   useDisclosure,
   Stack,
 } from "@chakra-ui/react";
-import { useOnScreen } from "../utils/hooks";
+import { useDisabledGeneralNotify, useOnScreen } from "../utils/hooks";
 
 import MF2Logo from "../static/assets/img/mf2-logo.png";
 // import MetaGameLogo from '../static/assets/img/logo.png'
@@ -41,31 +41,37 @@ const Links = [
   },
 ];
 
-const NavLink = ({ href, children }) => (
-  <Link
-    fontWeight={{ base: 500, lg: 700 }}
-    px={2}
-    py={1}
-    rounded={"md"}
-    textShadow="0 0 10px rgba(0, 0, 0, 0.8)"
-    transition="all 0.2s ease"
-    _hover={{
-      textDecoration: "none",
-      background: "linear-gradient(-90deg, #FF61E6 -29.22%, #7C56FF 107.53%)",
-      backgroundClip: "text",
-      WebkitTextFillColor: "transparent",
-    }}
-    href={href}
-    color="white"
-  >
-    {children}
-  </Link>
-);
+
 
 export function SiteHeader() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const ref = useRef(null);
   const onScreen = useOnScreen(ref);
+  const disabledGenNotify = useDisabledGeneralNotify();
+
+
+  const NavLink = ({ href, children }) => (
+    <Link
+      fontWeight={{ base: 500, lg: 700 }}
+      px={2}
+      py={1}
+      rounded={"md"}
+      textShadow="0 0 10px rgba(0, 0, 0, 0.8)"
+      transition="all 0.2s ease"
+      _hover={{
+        textDecoration: "none",
+        background: "linear-gradient(-90deg, #FF61E6 -29.22%, #7C56FF 107.53%)",
+        backgroundClip: "text",
+        WebkitTextFillColor: "transparent",
+      }}
+      href={href}
+      onClick={onClose}
+      color="white"
+    >
+      {children}
+    </Link>
+  );
+
 
   return (
     <>
@@ -190,6 +196,7 @@ export function SiteHeader() {
               boxShadow="0 0 10px rgba(0, 0, 0, 0.6)"
               size="sm"
               mr={0}
+              onClick={disabledGenNotify}
             >
               Connect
             </Button>
