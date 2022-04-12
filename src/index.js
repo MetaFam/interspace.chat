@@ -68,8 +68,18 @@ const theme = extendTheme({
         'p:first-of-type': {
           fontSize: '1vmax',
           fontWeight: 500
+        },
+        '&--no-firstof': {
+          'p': {
+            fontSize: '0.9vmax',
+            fontWeight: 500,
+            '& + p': {
+              fontWeight: 300
+            }
+          }
         }
       }
+
     },
   },
 });

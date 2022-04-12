@@ -381,36 +381,30 @@ export const ScheduleSection = () => {
           <Box>
             <Box className="week">
               <Text as="h3" className="gradient2">
-                <span>Week I</span>
+                <span>Metaverse Week</span>
               </Text>
-              <Text>The week of gaming & social events</Text>
+              <Text>The week of gaming &amp; social events</Text>
               <Text>
                 Expect live music from Billy Idol and other artists streaming on
-                stage in the Metaverse, Discord & YouTube. A CryptoVoxel
-                treasure hunt. Gatherings in NEOS. NFT giveaways & POAPs and
+                stage in the Metaverse, Discord &amp; YouTube. A CryptoVoxel
+                treasure hunt. Gatherings in NEOS. NFT giveaways &amp; POAPs and
                 moar!
               </Text>
             </Box>
             <Box className="week">
               <Text as="h3" className="gradient2">
-                <span>Week II</span>
+                <span>DAO Week</span>
               </Text>
-              <Text>The week of talks 70+ great talks</Text>
-              <Text>
-                If you didn't miss out last year, I can feel your{" "}
-                <span className="gradient">FOMO</span> from here!!{" "}
-              </Text>
-            </Box>
-            <Box className="week">
-              <Text as="h3" className="gradient2">
-                <span>Week III</span>
-              </Text>
-              <Text>The week of 20+ epic workshops</Text>
+              <Text>The week of 70+ great talks &amp; workshops</Text>
               <Text>
                 A <Link href="#metafest-verse">Web3 job fair</Link>, pair
                 programming, learn to buidl in CryptoVoxels, find out how to
                 take advantage of the latest ReFi tech - there's something for
                 everyone.
+              </Text>
+              <Text>
+                If you didn't miss out last year, I can feel your{" "}
+                <span className="gradient">FOMO</span> from here!!{" "}
               </Text>
             </Box>
             <Box mt={5}>
@@ -632,11 +626,16 @@ export const SpeakersSection = () => {
             </span>
           </Text>
           <Flex alignItems="center" justiftyContent="space-between" mt={5}>
-            <Box flex="0 0 32%" w="32%">
+            <Box flex="0 0 48%" w="48%">
               <Text as="h3" className="gradient2">
-                Meta Day
+                Metaverse Week
               </Text>
-              <UnorderedList
+              <Text>Want to take part in Metaverse Week?</Text>
+              <Text>
+                Find the application forms on the{" "}
+                <Link href="#schedule">Schedule page</Link>
+              </Text>
+              {/* <UnorderedList
                 listStyleType="none"
                 ml={0}
                 sx={{
@@ -649,18 +648,25 @@ export const SpeakersSection = () => {
                   <Text as="h4">Speaker 1</Text>
                   <Text>description</Text>
                 </ListItem>
-              </UnorderedList>
+              </UnorderedList> */}
             </Box>
-            <Box flex="0 0 32%" w="32%">
+            <Box flex="0 0 48%" w="48%">
               <Text as="h3" className="gradient2">
-                ReFi Day
+                DAO Week
+              </Text>
+              <Text>Want to take part in DAO Week?</Text>
+              <Text>
+                Find the application forms on the{" "}
+                <Link href="#schedule">Schedule page</Link>
               </Text>
             </Box>
-            <Box flex="0 0 32%" w="32%">
+            {/* <Box flex="0 0 32%" w="32%">
               <Text as="h3" className="gradient2">
-                DAO Day
+                Other stuff...
               </Text>
-            </Box>
+              <Text>Details of ?</Text>
+              <Text>Find the application forms on the <Link href="#schedule">Schedule page</Link></Text>
+            </Box> */}
           </Flex>
         </Box>
       </Box>
@@ -693,9 +699,15 @@ export const WorkshopsSection = () => {
               Exact workshops and their dates & times tbc. Watch this space!
             </Text>
             <Text>
-              Please check the <Link href="#schedule">Schedule</Link> for the
-              latest info and application forms.
+              Head to the <Link href="#schedule">Schedule</Link> for the latest
+              info, calendar<sup>*</sup> and application forms.
             </Text>
+            <Text fontSize="sm">
+              <em>
+                <sup>*</sup> All times shown in UTC
+              </em>
+            </Text>
+
             <Text as="h3" className="gradient2">
               Where?
             </Text>
@@ -704,8 +716,10 @@ export const WorkshopsSection = () => {
               <Link href="#chat">#metafest-voice</Link>
               <sup>*</sup>
             </Text>
-            <Text>
-              <sup>*</sup>no reservation required.
+            <Text fontSize="sm">
+              <em>
+                <sup>*</sup>no reservation required.
+              </em>
             </Text>
 
             <Text as="h3" className="gradient2">
@@ -721,7 +735,8 @@ export const WorkshopsSection = () => {
             folks to help with <strong className="gradient">Innkeeping</strong>. */}
             </Text>
             <Text>
-              You can always{" "}
+              Check the <Link href="#schedule">Schedule page</Link> for the
+              contributors application form and as always, you can always{" "}
               <Link href="https://discord.gg/invite/metagame" isExternal>
                 join our Discord
               </Link>{" "}
@@ -783,26 +798,28 @@ export const CVSection = () => {
         transition="transform 0.3s 0.4s ease-in-out, opacity 0.6s 0.5s ease-in"
         zIndex={openHQ || openFair ? 0 : 2001}
       >
-        <Box className="__content__body" textAlign="right" mt={6}>
+        <Box className="__content__body--no-firstof" textAlign="right" mt={6}>
           <Text as="h2">MetaFest-a-verse</Text>
           <Text as="p" className="gradient">
             The MetaFest Booth: MetaFam's HQ in the Metaverse.
           </Text>
+          <Text>
+            From scavenger hunts to gigs, come explore our virtual HQ!{" "}
+          </Text>
+
+          <Button colorScheme="ghost" onClick={() => setOpenHQ(!openHQ)}>
+            Open the booth
+          </Button>
           <Text as="p">
-            <Button colorScheme="ghost" onClick={() => setOpenHQ(!openHQ)}>
-              Open the booth
-            </Button>
+            <span className="gradient">
+              Web3 JobFair: Seeking for honor and glory in the most meaningful
+              web3 orgs?
+            </span>
           </Text>
-          <Text as="p" className="gradient">
-            Web3 JobFair: Seeking for honor and glory in the most meaningful
-            web3 orgs? <br />
-            Come to the Job Fair and find your place!
-          </Text>
-          <Text as="p">
-            <Button colorScheme="ghost" onClick={() => setOpenFair(!openFair)}>
-              Open the fair
-            </Button>
-          </Text>
+          <Text>Come to the Job Fair and find your place!</Text>
+          <Button colorScheme="ghost" onClick={() => setOpenFair(!openFair)}>
+            Open the fair
+          </Button>
         </Box>
       </Box>
       {openHQ && (
