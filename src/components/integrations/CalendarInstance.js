@@ -18,8 +18,8 @@ function CalendarInstance () {
   return (
     <>
       <iframe
-        title='Schedule'
-        src={`https://calendar.google.com/calendar/u/0/r?cid=OWxpZWtudTVwbmVzMWw1MWVqNm4yOTE2dTBAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&ctz=${timezone}&mode=AGENDA`}
+        title='MetaFest2: Schedule'
+        src={`https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%238E24AA&ctz=UTC&mode=AGENDA&showTabs=0&src=OWxpZWtudTVwbmVzMWw1MWVqNm4yOTE2dTBAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&color=%23F4511E`}
         style={{
           minHeight: '500px',
           height: '100%',
