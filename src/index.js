@@ -2,7 +2,6 @@ import React from "react";
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
-import { Global, css } from "@emotion/react";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import * as ReactDOMClient from 'react-dom/client';
 

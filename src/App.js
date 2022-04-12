@@ -1204,13 +1204,6 @@ export const EasterEgg = () => {
     }
   };
 
-  const claimNFT = () => {
-    if (typeof window !== "undefined") {
-      setOpenClaim(!openClaim);
-      // setToggle(!toggle);
-      // ref.current.classList.remove("found");
-    }
-  };
   return (
     <>
       <Box

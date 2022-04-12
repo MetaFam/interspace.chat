@@ -1,5 +1,4 @@
 import * as THREE from 'three'
-import * as dat from 'lil-gui'
 
 /**
  * Base
@@ -96,7 +95,7 @@ export const generateGalaxy = (params) => {
             const branchAngle = (i % params.branches) / params.branches * Math.PI * 2
 
             const randomX = Math.pow(Math.random(), params.randomnessPower) * (Math.random() < 0.5 ? 1 : -1)
-            const randomY = Math.pow(Math.random(), params.randomnessPower) * (Math.random() < 0.5 ? 1 : -1)
+            // const randomY = Math.pow(Math.random(), params.randomnessPower) * (Math.random() < 0.5 ? 1 : -1)
             const randomZ = Math.pow(Math.random(), params.randomnessPower) * (Math.random() < 0.5 ? 1 : -1)
 
             positions[i3 + 0] = Math.cos(branchAngle + spinAngle) * radius + randomX
