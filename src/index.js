@@ -43,6 +43,9 @@ const theme = extendTheme({
           color: '#fff',
           fontSize: '4vmax',
           fontWeight: 700,
+        },
+        '& + .fest-dates': {
+          textAlign: 'right'
         }
       },
       h2: {
@@ -54,6 +57,8 @@ const theme = extendTheme({
       h3: {
         fontSize: '1.5vmax',
         fontWeight: 500,
+        lineHeight: {base: '1.5rem', md: 'inherit'}
+
       },
       h4: {
         fontSize: '1vmax',
@@ -77,8 +82,17 @@ const theme = extendTheme({
             }
           }
         }
+      },
+      ".fest-dates": {
+        d: "block",
+        width: "100%",
+        color: "#FF61E6",
+        fontSize: { base: "2vmin", md: "0.7vmax" },
+        fontWeight: 700,
+        textAlign: "left",
+        transform: { base: 'translateY(4px)', md: 'translateY(15px)' },
+        zIndex: 2001,
       }
-
     },
   },
 });
