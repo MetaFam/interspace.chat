@@ -12,11 +12,11 @@ import * as dat from 'lil-gui'
 // Scene
 const scene = new THREE.Scene()
 export const galaxyColors = {
-    inside: '#7C56FF',
+    inside: '#462080',
     outside: '#FF61E6'
 }
 export const galaxy2Colors = {
-    inside: '#DE3FFF',
+    inside: '#462080',
     outside: '#7C56FF'
 }
 export const galaxy3Colors = {
