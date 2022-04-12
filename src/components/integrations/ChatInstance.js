@@ -5,7 +5,7 @@ export default function ChatInstance () {
   return (
     <WidgetBot
       server='629411177947987986'
-      channel='814215103146623006'
+      channel='629411178837442601'
       style={{ height: '100%', width: '100%', border: '0px' }}
     />
   )

@@ -1,81 +1,86 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import './index.css'
-import App from './App'
-import * as serviceWorker from './serviceWorker'
-import { Global, css, jsx } from '@emotion/react'
-import { ThemeProvider } from './contexts/ThemeContext'
+import React from "react";
+import "./index.css";
+import App from "./App";
+import * as serviceWorker from "./serviceWorker";
+import { Global, css } from "@emotion/react";
+import { ChakraProvider, extendTheme } from "@chakra-ui/react";
+import * as ReactDOMClient from 'react-dom/client';
 
-ReactDOM.render(
-  <ThemeProvider>
-    <Global
-      styles={css`
-        * {
-          margin: 0px;
-          padding: 0px;
-          font-family: 'Jura-Regular', sans-serif;
-          font-weight: 300;
-          font-size: 18px;
+const container = document.getElementById('root');
+// Create a root
+const root = ReactDOMClient.createRoot(container);
+
+
+const theme = extendTheme({
+  styles: {
+    global: {
+      'html, body': {
+        fontFamily: '"Exo 2", sans-serif',
+        fontSize: '16px',
+        fontWeight: 300,
+        bg: 'linear-gradient(0deg, rgba(41,2,80,1) 0%, rgba(25,0,50,1) 40%)',
+      },
+      a: {
+        color: '#FF61E6',
+        textDecoration: 'none',
+        transition: 'color 0.2s ease',
+        _hover: {
+          color: '#76EBF2',
+          textDecoration: 'none'
+        },
+        '&.chakra-link': {
+          color: '#FF61E6',
+          _hover: {
+            color: '#76EBF2',
+            textDecoration: 'none'
+          },
         }
-        h1 {
-          font-family: 'PressStart2P-Regular', monospace;
-          font-size: 26px;
+      },
+      'h1': {
+        color: '#fff',
+        fontSize: '4vmax',
+        fontWeight: 700,
+        '& span': {
+          color: '#fff',
+          fontSize: '4vmax',
+          fontWeight: 700,
         }
-        body {
-          margin: 0px;
-          padding: 0px;
-          color: whitesmoke;
-          background-color: black;
+      },
+      h2: {
+        color: '#fff',
+        fontSize: '4vmax',
+        fontweight: 500,
+        textShadow: '0 0 10px rgba(0, 0, 0, 0.6)',
+      },
+      h3: {
+        fontSize: '1.5vmax',
+        fontWeight: 500,
+      },
+      h4: {
+        fontSize: '1vmax',
+        fontWeight: 500,
+      },
+      p: {
+        fontSize: {base: '2.2vmin', md: '.9vmax'},
+        textShadow: '0 0 5px rgba(0, 0, 0, 0.6)',
+      },
+      '.__content__body': {
+        'p:first-of-type': {
+          fontSize: '1vmax',
+          fontWeight: 500
         }
-        .hidden {
-          opacity: 0;
-          filter: url(#blur0);
-        }
-        .click-zone {
-          transition: 1s cubic-bezier(0.2, 0.8, 0.2, 1);
-          & :hover {
-            cursor: pointer;
-            filter: url(#glow);
-            & .hidden {
-              opacity: 1;
-            }
-          }
-        }
-        .no-click-zone {
-          & :hover {
-            cursor: pointer;
-            & .hidden {
-              opacity: 1;
-            }
-          }
-        }
-        .click-zone-mobile {
-          transition: 1s cubic-bezier(0.2, 0.8, 0.2, 1);
-          & :focus {
-            filter: url(#glow);
-            & .hidden {
-              opacity: 1;
-            }
-          }
-        }
-        .click-link {
-          transition: 1s cubic-bezier(0.2, 0.8, 0.2, 1);
-          & :hover {
-            cursor: pointer;
-            fill: #fce96a;
-          }
-        }
-        .title :hover {
-          fill: black;
-        }
-      `}
-    />
+      }
+    },
+  },
+});
+
+root.render(
+  <ChakraProvider theme={theme}>
     <App />
-  </ThemeProvider>,
-  document.getElementById('root')
-)
+  </ChakraProvider>
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister()
+serviceWorker.unregister();

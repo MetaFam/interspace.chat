@@ -1,7 +1,5 @@
-body {
-    overflow: hidden;
-  }
-  
+
+
   .fade {
     position: absolute;
     width: 100%;
@@ -10,7 +8,7 @@ body {
     background-image: linear-gradient(0deg, transparent, black 75%);
     z-index: 1;
   }
-  
+
   .star-wars {
     display: flex;
     justify-content: center;
@@ -24,29 +22,29 @@ body {
     line-height: 150%;
     perspective: 400px;
   }
-  
+
   .crawl {
     position: relative;
     top: -9999px;
     transform-origin: 50% 100%;
     animation: crawl 100s linear;
   }
-  
+
   .crawl > .title {
     font-size: 90%;
     text-align: center;
   }
-  
+
   .crawl > .title h1 {
     margin: 0 0 100px;
   }
-  
+
   @keyframes crawl {
     0% {
       top: 0;
       transform: rotateX(20deg)  translateZ(0);
     }
-    100% { 
+    100% {
       top: -6000px;
       transform: rotateX(25deg) translateZ(-2500px);
     }

@@ -1,6 +1,6 @@
 {
-  "short_name": "interspace.chat",
-  "name": "Chat in the interspace",
+  "short_name": "MetaFest2",
+  "name": "MetaFest2. Powered by MetaGame.",
   "icons": [
     {
       "src": "favicon.ico",
@@ -10,6 +10,7 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "orientation": "landscape",
+  "theme_color": "rgba(25,0,50,1)",
+  "background_color": "rgba(25,0,50,1)"
 }

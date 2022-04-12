@@ -188,24 +188,19 @@ const DesktopElement = () => (
       <br />
       with the goal of helping you level up & manifest a better future.
     </p>
-    <p style={{ textDecoration: 'line-through' }}>
+    <p style={{ border: '1px solid #BD96E9', borderRadius: '10px' }}>
       Week I<br />
       The week of gaming & social events
     </p>
-    <p style={{ textDecoration: 'line-through' }}>
+    <p style={{ textDecoration: 'none' }}>
       Week II
       <br />
       The week of talks 70+ great talks
     </p>
-    <p style={{ textDecoration: 'line-through' }}>
+    <p style={{ textDecoration: 'none' }}>
       Week III
       <br />
       The week of 20+ epic workshops
-    </p>
-    <p style={{ border: '1px solid #BD96E9', borderRadius: '10px' }}>
-      Week IV
-      <br />
-      The week of hacking things into reality
     </p>
     <p style={{ marginTop: '1rem', fontSize: '1.3rem' }}>
       To enter <StrongStyled>METAFEST</StrongStyled>, you will have to
@@ -216,6 +211,14 @@ const DesktopElement = () => (
         rel='noopener noreferrer'
       >
         donate to our Gitcoin grant
+      </a>{' '}
+      or{' '}
+      <a
+        href='https://giveth.io/project/metagame-0'
+        target='_blank'
+        rel='noopener noreferrer'
+      >
+        donate to our Giveth project
       </a>
     </p>
     <p style={{ marginTop: '-1rem', marginBottom: '2rem', fontSize: '0.7rem' }}>
