@@ -407,7 +407,7 @@ export const ScheduleSection = () => {
               </Text>
               <Text>The week of 20+ epic workshops</Text>
               <Text>
-                A <Link href="#metafest-booth">Web3 job fair</Link>, pair
+                A <Link href="#metafest-verse">Web3 job fair</Link>, pair
                 programming, learn to buidl in CryptoVoxels, find out how to
                 take advantage of the latest ReFi tech - there's something for
                 everyone.
@@ -415,7 +415,7 @@ export const ScheduleSection = () => {
             </Box>
             <Box mt={5}>
               <Text>
-                To enter METAFEST, you will have to{" "}
+                To enter MetaFest2, you will have to{" "}
                 <a
                   href="https://gitcoin.co/grants/213/metagame"
                   target="_blank"
@@ -694,7 +694,7 @@ export const WorkshopsSection = () => {
             </Text>
             <Text>
               Please check the <Link href="#schedule">Schedule</Link> for the
-              latest info.
+              latest info and application forms.
             </Text>
             <Text as="h3" className="gradient2">
               Where?
@@ -709,7 +709,7 @@ export const WorkshopsSection = () => {
             </Text>
 
             <Text as="h3" className="gradient2">
-              Open Quests!
+              Open Quests / Help Needed!
             </Text>
             <Text>Get involved in the event!</Text>
             <Text>
@@ -1305,7 +1305,7 @@ export const EasterEgg = () => {
       {openClaim && (
         <Box
           ref={claimRef}
-          position="absolute"
+          position="fixed"
           top="12.5vh"
           left={0}
           height="75vh"
