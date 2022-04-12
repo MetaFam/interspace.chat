@@ -19,7 +19,10 @@ import {
 import { CalendarIcon, CloseIcon, ExternalLinkIcon } from "@chakra-ui/icons";
 // import Space from './components/Space'
 import { Canvas } from "./components/Canvas";
-import CryptovoxelsInstance from "./components/integrations/CryptovoxelsInstance";
+import {
+  CryptovoxelsHQInstance,
+  CryptovoxelsJobFairInstance,
+} from "./components/integrations/CryptovoxelsInstance";
 import CalendarInstance from "./components/integrations/CalendarInstance";
 import ChatInstance from "./components/integrations/ChatInstance";
 import {
@@ -64,10 +67,10 @@ export const HomeSection = () => {
             d: "block",
             width: "100%",
             color: "#FF61E6",
-            fontSize: {base: '2vmin', md: "0.7vmax"},
+            fontSize: { base: "2vmin", md: "0.7vmax" },
             fontWeight: 700,
             textAlign: "right",
-            transform: {md:"translateY(15px)"},
+            transform: { md: "translateY(15px)" },
             zIndex: 2001,
           },
         }}
@@ -169,7 +172,7 @@ export const ScheduleSection = () => {
             <Text
               textTransform={"uppercase"}
               fontWeight={500}
-              fontSize={"sm"}
+              fontSize={{ base: "1vmin", md: "0.7vmax" }}
               className="gradient"
               p={0}
               alignSelf={"flex-start"}
@@ -194,8 +197,9 @@ export const ScheduleSection = () => {
               </span>
             </Text>
             <Text fontSize={"lg"}>
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-              nonumy eirmod tempor invidunt ut labore
+              What is an event without the amazing folks like you! People who
+              want to help organise &amp; greet, tell us about their projects,
+              teach, sing, code...we'd love to see you. Apply below.
             </Text>
             <Stack spacing={4} divider={<StackDivider />}>
               <Feature
@@ -362,8 +366,11 @@ export const ScheduleSection = () => {
 
         <Box className="__content__body">
           <Text>
-            Our community members are busy rn, booking guests &amp; organising workshops. Watch this
-            space<Text as="span" className="gradient2">...it's gonna blow your mind!</Text>
+            Our community members are busy rn, booking guests &amp; organising
+            workshops. Watch this space
+            <Text as="span" className="gradient2">
+              ...it's gonna blow your mind!
+            </Text>
             <Image
               src={MindBlownImg}
               boxSize="20px"
@@ -427,7 +434,7 @@ export const ScheduleSection = () => {
               </Text>
               <Text>jk jk just enter!</Text>
               <Button
-                d={{md: 'none'}}
+                d={{ md: "none" }}
                 colorScheme="pink"
                 size="sm"
                 mt={5}
@@ -490,7 +497,7 @@ export const ScheduleSection = () => {
             textAlign="center"
           >
             <Link
-              href="https://calendar.google.com/calendar/u/0/r?cid=OWxpZWtudTVwbmVzMWw1MWVqNm4yOTE2dTBAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ"
+              href="https://calendar.google.com/calendar/embed?src=9lieknu5pnes1l51ej6n2916u0%40group.calendar.google.com&ctz=Europe%2FLondon"
               isExternal
               fontWeight={700}
               fontSize="0.7vmax"
@@ -526,7 +533,7 @@ export const ScheduleSection = () => {
           boxShadow="0 0 30px rgba(0,0,0,0.8)"
           opacity={onScreen ? 1 : 0}
           transition="opacity 1.2s 0.8s ease-in-out"
-          zIdex={2001}
+          zIndex={2001}
           overflowY="scroll"
         >
           <AirtableSpeakerInstance />
@@ -548,7 +555,7 @@ export const ScheduleSection = () => {
           boxShadow="0 0 30px rgba(0,0,0,0.8)"
           opacity={onScreen ? 1 : 0}
           transition="opacity 1.2s 0.8s ease-in-out"
-          zIdex={2001}
+          zIndex={2001}
           overflowY="scroll"
         >
           <AirtableContributorInstance />
@@ -570,7 +577,7 @@ export const ScheduleSection = () => {
           boxShadow="0 0 30px rgba(0,0,0,0.8)"
           opacity={onScreen ? 1 : 0}
           transition="opacity 1.2s 0.8s ease-in-out"
-          zIdex={2001}
+          zIndex={2001}
           overflowY="scroll"
         >
           <AirtablePerformerInstance />
@@ -592,7 +599,7 @@ export const ScheduleSection = () => {
           boxShadow="0 0 30px rgba(0,0,0,0.8)"
           opacity={onScreen ? 1 : 0}
           transition="opacity 1.2s 0.8s ease-in-out"
-          zIdex={2001}
+          zIndex={2001}
           overflowY="scroll"
         >
           <AirtableSponsorInstance />
@@ -730,19 +737,12 @@ export const WorkshopsSection = () => {
 export const CVSection = () => {
   const ref = useRef(null);
   const onScreen = useOnScreen(ref);
-  const [open, setOpen] = useState(false);
-
-  const toggleBooth = () => {
-    setOpen(!open);
-    if (typeof window !== "undefined") {
-      const body = document.querySelector("body");
-      body.classList.toggle("booth-open");
-    }
-  };
+  const [openHQ, setOpenHQ] = useState(false);
+  const [openFair, setOpenFair] = useState(false);
 
   return (
-    <Box as="section" id="metafest-booth" position="relative">
-      {open && (
+    <Box as="section" id="metafest-verse" position="relative">
+      {openHQ && (
         <Button
           position="absolute"
           bottom={20}
@@ -751,11 +751,27 @@ export const CVSection = () => {
           boxShadow="0 0 10px rgba(0, 0, 0, 0.6)"
           size="sm"
           transition="all 0.3s 0.8s ease"
-          transform={`translateY(${open ? 0 : "-70px"})`}
-          onClick={toggleBooth}
+          transform={`translateY(${openHQ ? 0 : "-70px"})`}
+          onClick={() => setOpenHQ(!openHQ)}
           zIndex={2002}
         >
-          Close Booth
+          Close the booth
+        </Button>
+      )}
+      {openFair && (
+        <Button
+          position="absolute"
+          bottom={20}
+          right={6}
+          colorScheme="pink"
+          boxShadow="0 0 10px rgba(0, 0, 0, 0.6)"
+          size="sm"
+          transition="all 0.3s 0.8s ease"
+          transform={`translateY(${openFair ? 0 : "-70px"})`}
+          onClick={() => setOpenFair(!openFair)}
+          zIndex={2002}
+        >
+          Close Fair
         </Button>
       )}
       <Box
@@ -765,21 +781,31 @@ export const CVSection = () => {
         transform={`translate3d(${onScreen ? 0 : "-70px"}, 0, 0)`}
         opacity={onScreen ? 1 : 0}
         transition="transform 0.3s 0.4s ease-in-out, opacity 0.6s 0.5s ease-in"
-        zIndex={open ? 0 : 2001}
+        zIndex={openHQ || openFair ? 0 : 2001}
       >
         <Box className="__content__body" textAlign="right" mt={6}>
-          <Text as="h2">MetaFest2 Booth</Text>
+          <Text as="h2">MetaFest-a-verse</Text>
           <Text as="p" className="gradient">
-            MetaFam's HQ in the Metaverse.
+            The MetaFest Booth: MetaFam's HQ in the Metaverse.
           </Text>
           <Text as="p">
-            <Button colorScheme="ghost" onClick={toggleBooth}>
+            <Button colorScheme="ghost" onClick={() => setOpenHQ(!openHQ)}>
               Open the booth
+            </Button>
+          </Text>
+          <Text as="p" className="gradient">
+            Web3 JobFair: Seeking for honor and glory in the most meaningful
+            web3 orgs? <br />
+            Come to the Job Fair and find your place!
+          </Text>
+          <Text as="p">
+            <Button colorScheme="ghost" onClick={() => setOpenFair(!openFair)}>
+              Open the fair
             </Button>
           </Text>
         </Box>
       </Box>
-      {open && (
+      {openHQ && (
         <Box
           ref={ref}
           position="absolute"
@@ -791,9 +817,13 @@ export const CVSection = () => {
           boxShadow="0 0 30px rgba(0,0,0,0.8)"
           opacity={onScreen ? 1 : 0}
           transition="opacity 1.2s 0.8s ease-in-out"
-          zIdex={2001}
+          zIndex={2001}
+          sx={{
+            bg: "rgba(25,0,50,0.4)",
+            backdropFilter: "blur(7px)",
+          }}
         >
-          <CryptovoxelsInstance />
+          <CryptovoxelsHQInstance />
           <Box
             display="flex"
             position="absolute"
@@ -804,6 +834,55 @@ export const CVSection = () => {
           >
             <Link
               href="https://www.cryptovoxels.com/play?coords=S@379E,115S"
+              isExternal
+              fontWeight={700}
+              fontSize="0.7vmax"
+              // d="inline-block"
+              mx="auto"
+              p={3}
+              bg="linear-gradient(90.24deg, #640DFB99 0.3%, rgba(100, 13, 251, 0.9) 80.16%)"
+              borderRadius="5px 5px 0 0"
+              boxShadow="0 0 5px rgba(0,0,0,0.6)"
+              overflow="clip"
+            >
+              <span role="img" aria-label="Attention!">
+                📢
+              </span>{" "}
+              Need more CryptoVoxels? Open it up in a new tab.{" "}
+              <ExternalLinkIcon />
+            </Link>
+          </Box>
+        </Box>
+      )}
+      {openFair && (
+        <Box
+          ref={ref}
+          position="absolute"
+          top="12.5vh"
+          left={0}
+          height="75vh"
+          minH="75vh"
+          minW="100vw"
+          boxShadow="0 0 30px rgba(0,0,0,0.8)"
+          opacity={onScreen ? 1 : 0}
+          transition="opacity 1.2s 0.8s ease-in-out"
+          zIndex={2001}
+          sx={{
+            bg: "rgba(25,0,50,0.4)",
+            backdropFilter: "blur(7px)",
+          }}
+        >
+          <CryptovoxelsJobFairInstance />
+          <Box
+            display="flex"
+            position="absolute"
+            bottom={0}
+            right={0}
+            width="100%"
+            textAlign="center"
+          >
+            <Link
+              href="https://www.cryptovoxels.com/play?coords=E@399E,93S,7.5F"
               isExternal
               fontWeight={700}
               fontSize="0.7vmax"
@@ -890,7 +969,7 @@ export const ChatSection = () => {
           boxShadow="0 0 30px rgba(0,0,0,0.8)"
           opacity={onScreen ? 1 : 0}
           transition="opacity 1.2s 0.8s ease-in-out"
-          zIdex={2001}
+          zIndex={2001}
         >
           <ChatInstance />
           <Box position="absolute" top={2} right={8}>
@@ -1091,104 +1170,202 @@ export const AlphaNotice = () => {
     </Box>
   );
 };
+
+export const Loader = () => {
+  return <Box>Loading...</Box>;
+};
+
 export const EasterEgg = () => {
   const [toggle, setToggle] = useState(false);
+  const [openClaim, setOpenClaim] = useState(false);
   const ref = useRef(null);
+  const claimRef = useRef(null);
   const handleToggle = () => {
     if (typeof window !== "undefined") {
       setToggle(!toggle);
       ref.current.classList.remove("found");
     }
   };
-  return (
-    <Box
-      ref={ref}
-      className="ee1"
-      bg="rgba(0,0,0,0.3)"
-      boxShadow="0 0 15px rgba(0,0,0,0.6)"
-      backdropFilter="blur(7px)"
-      color="white"
-      position="fixed"
-      bottom={0}
-      left={0}
-      right={0}
-      width="100%"
-      textAlign="center"
-      height="auto"
-      opacity={0}
-      transform="translateY(100px)"
-      transition="transform 0.3s 0.2s ease-in-out, opacity 0.3s 0.3s ease-in-out"
-      zIndex={0}
-      // onClick={(event) => handleToggle(event)}
-      sx={{
-        h4: {
-          fontSize: "2vmax",
-          fontWeight: 700,
-        },
-        "&.found": {
-          opacity: 1,
-          transform: "translateY(0)",
-          zIndex: 2003,
-        },
-      }}
-    >
-      <Box
-        d="flex"
-        position="relative"
-        alignItems="center"
-        justifyContent="space-around"
-        flexFlow="row nowrap"
-        mx="auto"
-        maxW="5xl"
-        py={3}
-      >
-        <Image src={BabyOctoGif} boxSize="100px" objectFit="cover" />
-        <Box flex={1}>
-          <Text as="h4">
-            <span role="img" aria-label="Octo emoji">
-              🐙
-            </span>{" "}
-            Nova's blessings!!{" "}
-            <span role="img" aria-label="Octo emoji">
-              🐙
-            </span>
-          </Text>
-          <Text as="p" fontSize="1vmax" fontWeight={500}>
-            Welcome curious one!{" "}
-            <span role="img" aria-label="Cheers/Clinking glasses emoji">
-              🍻
-            </span>
-            <br />
-            You noticed little octo, all alone in space.{" "}
-            <span role="img" aria-label="Loved up emoji">
-              🥰
-            </span>{" "}
-            <br /> For that Nova will bestow wonderment upon you! Do you wish to
-            accept the gift?
-            <br />
-            <Link href="#">Connect your wallet to claim your NFT.</Link>
-          </Text>
-        </Box>
 
-        <Image src={BabyOctoGif} boxSize="100px" objectFit="cover" />
-        <IconButton
-          onClick={handleToggle}
-          colorScheme="ghost"
-          pos="absolute"
-          top={3}
-          right={-10}
-          size="sm"
-          aria-label="Close easter egg"
-          icon={<CloseIcon />}
-          zIndex={2001}
-        />
+  const claimNFT = () => {
+    if (typeof window !== "undefined") {
+      setOpenClaim(!openClaim);
+      // setToggle(!toggle);
+      // ref.current.classList.remove("found");
+    }
+  };
+  return (
+    <>
+      <Box
+        ref={ref}
+        className="ee1"
+        bg="rgba(0,0,0,0.3)"
+        boxShadow="0 0 15px rgba(0,0,0,0.6)"
+        backdropFilter="blur(7px)"
+        color="white"
+        position="fixed"
+        bottom={0}
+        left={0}
+        right={0}
+        width="100%"
+        textAlign="center"
+        height="auto"
+        opacity={0}
+        transform="translateY(100px)"
+        transition="transform 0.3s 0.2s ease-in-out, opacity 0.3s 0.3s ease-in-out"
+        zIndex={0}
+        // onClick={(event) => handleToggle(event)}
+        sx={{
+          h4: {
+            fontSize: "2vmax",
+            fontWeight: 700,
+          },
+          "&.found": {
+            opacity: 1,
+            transform: "translateY(0)",
+            zIndex: 2003,
+          },
+        }}
+      >
+        {openClaim && (
+          <Button
+            position="absolute"
+            bottom={20}
+            right={6}
+            colorScheme="pink"
+            boxShadow="0 0 10px rgba(0, 0, 0, 0.6)"
+            size="sm"
+            transition="all 0.3s 0.8s ease"
+            // transform={`translateY(${openClaim ? 0 : "-70px"})`}
+            onClick={() => setOpenClaim(!openClaim)}
+            zIndex={2004}
+          >
+            Close the claimer
+          </Button>
+        )}
+        <Box
+          d="flex"
+          position="relative"
+          alignItems="center"
+          justifyContent="space-around"
+          flexFlow="row nowrap"
+          mx="auto"
+          maxW="5xl"
+          py={3}
+        >
+          <Image src={BabyOctoGif} boxSize="100px" objectFit="cover" />
+          <Box flex={1}>
+            <Text as="h4">
+              <span role="img" aria-label="Octo emoji">
+                🐙
+              </span>{" "}
+              Nova's blessings!!{" "}
+              <span role="img" aria-label="Octo emoji">
+                🐙
+              </span>
+            </Text>
+            <Text as="p" fontSize="1vmax" fontWeight={500}>
+              Welcome curious one!{" "}
+              <span role="img" aria-label="Cheers/Clinking glasses emoji">
+                🍻
+              </span>
+              <br />
+              You noticed little octo, all alone in space.{" "}
+              <span role="img" aria-label="Loved up emoji">
+                🥰
+              </span>{" "}
+              <br /> For that Nova will bestow wonderment upon you! Do you wish
+              to accept the gift?
+              <br />
+            </Text>
+            <Button
+              href="#"
+              colorScheme="pink"
+              mt={5}
+              onClick={() => setOpenClaim(!openClaim)}
+            >
+              Claim your NFT
+            </Button>
+          </Box>
+
+          <Image src={BabyOctoGif} boxSize="100px" objectFit="cover" />
+          <IconButton
+            onClick={handleToggle}
+            colorScheme="ghost"
+            pos="absolute"
+            top={3}
+            right={-10}
+            size="sm"
+            aria-label="Close easter egg"
+            icon={<CloseIcon />}
+            zIndex={2001}
+          />
+        </Box>
       </Box>
-    </Box>
+      {openClaim && (
+        <Box
+          ref={claimRef}
+          position="absolute"
+          top="12.5vh"
+          left={0}
+          height="75vh"
+          minH="75vh"
+          minW="100vw"
+          boxShadow="0 0 30px rgba(0,0,0,0.8)"
+          // opacity={onScreen ? 1 : 0}
+          transition="opacity 1.2s 0.8s ease-in-out"
+          zIndex={2003}
+          sx={{
+            bg: "rgba(25,0,50,0.4)",
+            backdropFilter: "blur(7px)",
+          }}
+        >
+          <Container maxW="2xl" height="100%" py={12} align="center">
+            <MinterInstance />
+          </Container>
+          <Box
+            display="flex"
+            position="absolute"
+            bottom={0}
+            right={0}
+            width="100%"
+            textAlign="center"
+          >
+            <Link
+              href="https://testnets.opensea.io/assets?search[query]=0x91BBa1e0EE2DCC8d78Fa017588614f328d6d1885"
+              isExternal
+              fontWeight={700}
+              fontSize="0.7vmax"
+              // d="inline-block"
+              mx="auto"
+              p={3}
+              bg="linear-gradient(90.24deg, #640DFB99 0.3%, rgba(100, 13, 251, 0.9) 80.16%)"
+              borderRadius="5px 5px 0 0"
+              boxShadow="0 0 5px rgba(0,0,0,0.6)"
+              overflow="clip"
+            >
+              <span role="img" aria-label="Attention!">
+                📢
+              </span>{" "}
+              Need more NFTs? View the contract on OpenSea. <ExternalLinkIcon />
+            </Link>
+          </Box>
+        </Box>
+      )}
+    </>
   );
 };
 
-export const Loader = () => {
-  return <Box>Loading...</Box>;
+export const MinterInstance = () => {
+  return (
+    <iframe
+      title="Claim Easter Egg NFT"
+      src="https://gateway.ipfscdn.io/ipfs/QmQpHkDDWGJPBHFKkpX1DsfzvwZXQYNVoaW4R1Lhenp6T5/bundledrop.html?contract=0x91BBa1e0EE2DCC8d78Fa017588614f328d6d1885&chainId=80001&tokenId=0"
+      width="100%"
+      height="100%"
+      frameborder="0"
+    ></iframe>
+  );
 };
 
 export const Feature = ({ text, iconBg, call }) => {

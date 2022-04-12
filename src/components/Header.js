@@ -32,8 +32,8 @@ const Links = [
     href: "#speakers",
   },
   {
-    name: "MetaFest Booth",
-    href: "#metafest-booth",
+    name: "MetaFest-a-verse",
+    href: "#metafest-verse",
   },
   {
     name: "Chat",
