@@ -65,7 +65,6 @@ export function SiteHeader() {
         WebkitTextFillColor: "transparent",
       }}
       href={href}
-      onClick={onClose}
       color="white"
     >
       {children}

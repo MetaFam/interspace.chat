@@ -362,12 +362,8 @@ export const ScheduleSection = () => {
 
         <Box className="__content__body">
           <Text>
-            Our{" "}
-            <Text as="span" className="gradient">
-              community members
-            </Text>{" "}
-            are busy rn, booking guests &amp; organising workshops. Watch this
-            space...it's gonna blow your mind!{" "}
+            Our community members are busy rn, booking guests &amp; organising workshops. Watch this
+            space<Text as="span" className="gradient2">...it's gonna blow your mind!</Text>
             <Image
               src={MindBlownImg}
               boxSize="20px"
