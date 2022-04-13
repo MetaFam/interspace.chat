@@ -7,14 +7,14 @@ import {
   Flex,
   Stack,
   Container,
-  // SimpleGrid,
-  // StackDivider,
+  SimpleGrid,
+  StackDivider,
   IconButton,
   Image,
   Link,
   Text,
-  // UnorderedList,
-  // ListItem,
+  UnorderedList,
+  ListItem,
 } from "@chakra-ui/react";
 import { CalendarIcon, CloseIcon, ExternalLinkIcon } from "@chakra-ui/icons";
 // import Space from './components/Space'
@@ -40,91 +40,11 @@ import MindBlownImg from "./static/assets/img/mindblown.gif";
 
 import SocialImg from "./static/assets/img/social.png";
 
-export const HomeSection = () => {
-  const ref = useRef(null);
-  const onScreen = useOnScreen(ref);
 
-  return (
-    <Box
-      as="section"
-      id="home"
-      d="flex"
-      alignContent="center"
-      justifyContent="flex-start"
-      w="100vw"
-    >
-      <Box
-        ref={ref}
-        position="relative"
-        className="__content"
-        maxW="2xl"
-        transform={`translate3d(${onScreen ? 0 : "-70px"}, 0, 0)`}
-        opacity={onScreen ? 1 : 0}
-        transition="transform 0.3s 0.4s ease-in-out, opacity 0.6s 0.5s ease-in"
-        pointerEvents="none"
-      >
-        <Box
-          d="inline-flex"
-          flexFlow="column-reverse wrap"
-          alignItems="flex-start"
-          width="auto"
-        >
-          <Text
-            as="h1"
-            className="gradient-cone"
-            lineHeight={1}
-            sx={{
-              position: "relative",
-              fontWeight: 700,
-              mb: 0,
-              strong: {
-                d: "block",
-                fontWeight: 700,
-              },
-              em: {
-                fontStyle: "normal",
-              },
-            }}
-          >
-            MetaFest2
-          </Text>
-          <span className="fest-dates">9 - 23rd JUNE</span>
-        </Box>
-        <Box className="__content__body">
-          <Text as="p" fontSize="1vmax" fontWeight={300} mt={0}>
-            powered by{" "}
-            <Text as="strong" className="gradient">
-              MetaGame
-            </Text>
-          </Text>
-          <Text as="p" fontSize="1.5vmax" mt={6} fontWeight={500}>
-            A virtual festival/conference/hackathon.
-          </Text>
-          <Text as="p">
-            The goal? To help you{" "}
-            <Text as="span" className="gradient">
-              level up
-            </Text>{" "}
-            &{" "}
-            <Text as="span" className="gradient">
-              manifest a better future
-            </Text>
-            .
-          </Text>
-        </Box>
 
-        <Button colorScheme="pink" mt={5} size="sm" >
-          Apply Now!</Button>
 
-      </Box>
-    </Box>
-  );
-};
 
-export const ScheduleSection = () => {
-  const ref = useRef(null);
-  // const appRef = useRef(null);
-  const onScreen = useOnScreen(ref);
+function Applications() {
   const [openCal, setOpenCal] = useState(false);
   const [openSpeakerApplication, setOpenSpeakerApplication] = useState(false);
   const [openContributorApplication, setOpenContributorApplication] = useState(
@@ -134,31 +54,103 @@ export const ScheduleSection = () => {
     false
   );
   const [openSponsorApplication, setOpenSponsorApplication] = useState(false);
-  const disabledMobNotify = useDisabledMobileNotify();
 
   return (
-    <Box
-      as="section"
-      id="schedule"
-      flexFlow="row nowrap"
-      justifyContent="space-between"
-    >
-      {openCal && (
-        <Button
+    <>
+      <Container
+        maxW={"4xl"}
+        p={{ base: 8, md: 12 }}
+        sx={{
+          bg: "rgba(25,0,50,0.1)",
+          backdropFilter: "blur(7px)",
+          borderRadius: "5px 30px 10px 0",
+          boxShadow: "0 0 30px #00000070",
+        }}
+      >
+        <SimpleGrid columns={{ base: 1 }} spacing={0}>
+          <Stack spacing={4}>
+            {/* <IconButton
           position="absolute"
-          bottom={20}
-          right={6}
-          colorScheme="pink"
-          boxShadow="0 0 10px rgba(0, 0, 0, 0.6)"
-          size="sm"
-          transition="all 0.3s 0.8s ease"
-          transform={`translateY(${openCal ? 0 : "-70px"})`}
-          onClick={() => setOpenCal(!openCal)}
-          zIndex={2002}
-        >
-          Close Calendar
-        </Button>
-      )}
+          top={5}
+          right={5}
+          icon={<CloseIcon />}
+          colorScheme="ghost"
+          size="xs"
+          onClick={() => setToggleJoin(!toggleJoin)}
+          zIndex={2001}
+        /> */}
+
+            <Text
+              textTransform={"uppercase"}
+              fontWeight={500}
+              fontSize={{ base: "1vmin", md: "0.7vmax" }}
+              className="gradient"
+              p={0}
+              alignSelf={"flex-start"}
+              rounded={"md"}
+            >
+              <span role="img" aria-label="Yay, come join us!">
+                🎉
+              </span>{" "}
+              Join the party!{" "}
+              <span role="img" aria-label="Yay, come join us!">
+                🎉
+              </span>
+            </Text>
+            <Text as="h3">
+              <span>MetaFest2 needs YOU</span>
+              <span
+                className="gradient"
+                role="img"
+                aria-label="Pointing at the forms below"
+              >
+                👇
+              </span>
+            </Text>
+            <Text fontSize={"lg"}>
+              What is an event without the amazing folks like you! People who
+              want to help organise &amp; greet, tell us about their projects,
+              teach, sing, code...we'd love to see you. Apply below.
+            </Text>
+            <Stack spacing={4} divider={<StackDivider />}>
+              <Feature
+                iconBg={"yellow.900"}
+                text={"Speaker"}
+                call={() => setOpenSpeakerApplication(!openSpeakerApplication)}
+              />
+              <Feature
+                iconBg={"green.900"}
+                text={"Contributor"}
+                call={() =>
+                  setOpenSpeakerApplication(!openContributorApplication)
+                }
+              />
+              <Feature
+                iconBg={"purple.900"}
+                text={"Performer"}
+                call={() =>
+                  setOpenPerformerApplication(!openPerformerApplication)
+                }
+              />
+              <Feature
+                iconBg={"purple.900"}
+                text={"Sponsor"}
+                call={() => setOpenSponsorApplication(!openSponsorApplication)}
+              />
+            </Stack>
+          </Stack>
+          {/* <Flex>
+        <Image
+          rounded={'md'}
+          alt={'feature image'}
+          src={
+            'https://images.unsplash.com/photo-1554200876-56c2f25224fa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'
+          }
+          objectFit={'cover'}
+        />
+      </Flex> */}
+        </SimpleGrid>
+      </Container>
       {openSpeakerApplication && (
         <Button
           position="absolute"
@@ -225,6 +217,152 @@ export const ScheduleSection = () => {
           Close form
         </Button>
       )}
+    </>
+  );
+}
+
+export const HomeSection = () => {
+  const ref = useRef(null);
+  const applicationsRef = useRef(null);
+  const onScreen = useOnScreen(ref);
+  const [openApplications, setOpenApplications] = useState(false);
+
+  return (
+    <>
+      <Box
+        as="section"
+        position="relative"
+        id="home"
+        d="flex"
+        alignContent="center"
+        justifyContent="flex-start"
+        w="100vw"
+      >
+        <Box
+          ref={ref}
+          position="relative"
+          className="__content"
+          maxW="2xl"
+          transform={`translate3d(${onScreen ? 0 : "-70px"}, 0, 0)`}
+          opacity={onScreen ? 1 : 0}
+          transition="transform 0.3s 0.4s ease-in-out, opacity 0.6s 0.5s ease-in"
+          pointerEvents="none"
+        >
+          <Box
+            d="inline-flex"
+            flexFlow="column-reverse wrap"
+            alignItems="flex-start"
+            width="auto"
+          >
+            <Text
+              as="h1"
+              className="gradient-cone"
+              lineHeight={1}
+              sx={{
+                position: "relative",
+                fontWeight: 700,
+                mb: 0,
+                strong: {
+                  d: "block",
+                  fontWeight: 700,
+                },
+                em: {
+                  fontStyle: "normal",
+                },
+              }}
+            >
+              MetaFest2
+            </Text>
+            <span className="fest-dates">9 - 23rd JUNE</span>
+          </Box>
+          <Box className="__content__body">
+            <Text as="p" fontSize="1vmax" fontWeight={300} mt={0}>
+              powered by{" "}
+              <Text as="strong" className="gradient">
+                MetaGame
+              </Text>
+            </Text>
+            <Text as="p" fontSize="1.5vmax" mt={6} fontWeight={500}>
+              A virtual festival/conference/hackathon.
+            </Text>
+            <Text as="p">
+              The goal? To help you{" "}
+              <Text as="span" className="gradient">
+                level up
+              </Text>{" "}
+              &{" "}
+              <Text as="span" className="gradient">
+                manifest a better future
+              </Text>
+              .
+            </Text>
+          </Box>
+
+          <Button
+            colorScheme="pink"
+            mt={5}
+            size="sm"
+            onClick={() => setOpenApplications(!openApplications)}
+          >
+            Apply Now!
+          </Button>
+        </Box>
+        {!openApplications && (
+          <Box
+            ref={applicationsRef}
+            position="absolute"
+            top="12.5vh"
+            left={0}
+            height="75vh"
+            minH="75vh"
+            minW="100vw"
+            sx={{
+              bg: "rgba(25,0,50,0.4)",
+              backdropFilter: "blur(7px)",
+            }}
+            boxShadow="0 0 30px rgba(0,0,0,0.8)"
+            // opacity={onScreen ? 1 : 0}
+            transition="opacity 1.2s 0.8s ease-in-out"
+            zIndex={2001}
+            overflowY="scroll"
+          >
+            <Applications />
+          </Box>
+        )}
+      </Box>
+    </>
+  );
+};
+
+export const ScheduleSection = () => {
+  const ref = useRef(null);
+  // const appRef = useRef(null);
+  const onScreen = useOnScreen(ref);
+  const disabledMobNotify = useDisabledMobileNotify();
+
+  return (
+    <Box
+      as="section"
+      id="schedule"
+      flexFlow="row nowrap"
+      justifyContent="space-between"
+    >
+      {openCal && (
+        <Button
+          position="absolute"
+          bottom={20}
+          right={6}
+          colorScheme="pink"
+          boxShadow="0 0 10px rgba(0, 0, 0, 0.6)"
+          size="sm"
+          transition="all 0.3s 0.8s ease"
+          transform={`translateY(${openCal ? 0 : "-70px"})`}
+          onClick={() => setOpenCal(!openCal)}
+          zIndex={2002}
+        >
+          Close Calendar
+        </Button>
+      )}
 
       <Box
         ref={ref}
@@ -257,9 +395,6 @@ export const ScheduleSection = () => {
           />
         </Box>
 
-
-
-
         <Box className="__content__body">
           <Text>
             Our community members are busy rn, booking guests &amp; organising
@@ -280,201 +415,33 @@ export const ScheduleSection = () => {
             justifyContent="space-between"
             alignContent="flex-start"
             sx={{
-              '.week': {
-                flex: {base: '0 0 49%', md: '0 0 32%'},
-                w: {base: '49%', md:'32%'},
-                'h3': {
-                  mt: {base: 0, md: 'inherit'}
-                }
-              }
+              ".week": {
+                flex: { base: "0 0 49%", md: "0 0 32%" },
+                w: { base: "49%", md: "32%" },
+                h3: {
+                  mt: { base: 0, md: "inherit" },
+                },
+              },
             }}
           >
             <Box className="week">
               <Box display="inline-block">
-              <Text as="span" className="fest-dates">
-                <span>Thursday June 9th </span>
-              </Text>
-              <Text as="h3" className="gradient2">
-                <span>Opening Day </span>
-              </Text>
+                <Text as="span" className="fest-dates">
+                  <span>Thursday June 9th </span>
+                </Text>
+                <Text as="h3" className="gradient2">
+                  <span>Opening Day </span>
+                </Text>
               </Box>
               <Text>The week of gaming &amp; social events</Text>
               <Text>
-                Expect live music from Billy Idol and other artists streaming on
+                {/* Expect live music from Billy Idol and other artists streaming on
                 stage in the Metaverse, Discord &amp; YouTube. A CryptoVoxel
                 treasure hunt. Gatherings in NEOS. NFT giveaways &amp; POAPs and
-                moar!
-              </Text>
-            </Box>
-            <Box className="week">
-            <Box display="inline-block">
-              <Text as="span" className="fest-dates">
-                <span>Friday-Saturday June 10th-11th </span>
-              </Text>
-              <Text as="h3" className="gradient2">
-                <span>Tooling Days</span>
-              </Text>
-              </Box>
-              <Text>The week of 70+ great talks &amp; workshops</Text>
-              <Text>
-                A <Link href="#metafest-verse">Web3 job fair</Link>, pair
-                programming, learn to buidl in CryptoVoxels, find out how to
-                take advantage of the latest ReFi tech - there's something for
-                everyone.
-              </Text>
-              <Text>
-                If you didn't miss out last year, I can feel your{" "}
-                <span className="gradient">FOMO</span> from here!!{" "}
-              </Text>
-            </Box>
-            <Box className="week">
-            <Box display="inline-block">
-              <Text as="span" className="fest-dates">
-                <span>Sunday Monday June 12th-13th </span>
-              </Text>
-              <Text as="h3" className="gradient2">
-                <span>Metaverse Days</span>
-              </Text>
-              </Box>
-              <Text>The week of 70+ great talks &amp; workshops</Text>
-              <Text>
-                A <Link href="#metafest-verse">Web3 job fair</Link>, pair
-                programming, learn to buidl in CryptoVoxels, find out how to
-                take advantage of the latest ReFi tech - there's something for
-                everyone.
-              </Text>
-              <Text>
-                If you didn't miss out last year, I can feel your{" "}
-                <span className="gradient">FOMO</span> from here!!{" "}
-              </Text>
-            </Box>
-            <Box className="week">
-            <Box display="inline-block">
-              <Text as="span" className="fest-dates">
-                <span>Tuesday-Friday June 14th-17th </span>
-              </Text>
-              <Text as="h3" className="gradient2">
-                <span>MetaAlliance and Regen Days</span>
-              </Text>
-              </Box>
-              <Text>The week of 70+ great talks &amp; workshops</Text>
-              <Text>
-                A <Link href="#metafest-verse">Web3 job fair</Link>, pair
-                programming, learn to buidl in CryptoVoxels, find out how to
-                take advantage of the latest ReFi tech - there's something for
-                everyone.
-              </Text>
-              <Text>
-                If you didn't miss out last year, I can feel your{" "}
-                <span className="gradient">FOMO</span> from here!!{" "}
-              </Text>
-            </Box>
-            <Box className="week">
-            <Box display="inline-block">
-              <Text as="span" className="fest-dates">
-                <span>Saturday June 18th </span>
-              </Text>
-              <Text as="h3" className="gradient2">
-                <span>Tooling Presentations</span>
-              </Text>
-              </Box>
-              <Text>The week of 70+ great talks &amp; workshops</Text>
-              <Text>
-                A <Link href="#metafest-verse">Web3 job fair</Link>, pair
-                programming, learn to buidl in CryptoVoxels, find out how to
-                take advantage of the latest ReFi tech - there's something for
-                everyone.
-              </Text>
-              <Text>
-                If you didn't miss out last year, I can feel your{" "}
-                <span className="gradient">FOMO</span> from here!!{" "}
+                moar! */}
               </Text>
             </Box>
 
-            <Box className="week">
-            <Box display="inline-block">
-              <Text as="span" className="fest-dates">
-                <span>Sunday June 19th </span>
-              </Text>
-              <Text as="h3" className="gradient2">
-                <span>Live Concerts and Entertainment</span>
-              </Text>
-              </Box>
-              <Text>The week of 70+ great talks &amp; workshops</Text>
-              <Text>
-                A <Link href="#metafest-verse">Web3 job fair</Link>, pair
-                programming, learn to buidl in CryptoVoxels, find out how to
-                take advantage of the latest ReFi tech - there's something for
-                everyone.
-              </Text>
-              <Text>
-                If you didn't miss out last year, I can feel your{" "}
-                <span className="gradient">FOMO</span> from here!!{" "}
-              </Text>
-            </Box>
-            <Box className="week">
-            <Box display="inline-block">
-              <Text as="span" className="fest-dates">
-                <span>Monday June 20th </span>
-              </Text>
-              <Text as="h3" className="gradient2">
-                <span>DeFi Day</span>
-              </Text>
-              </Box>
-              <Text>The week of 70+ great talks &amp; workshops</Text>
-              <Text>
-                A <Link href="#metafest-verse">Web3 job fair</Link>, pair
-                programming, learn to buidl in CryptoVoxels, find out how to
-                take advantage of the latest ReFi tech - there's something for
-                everyone.
-              </Text>
-              <Text>
-                If you didn't miss out last year, I can feel your{" "}
-                <span className="gradient">FOMO</span> from here!!{" "}
-              </Text>
-            </Box>
-            <Box className="week">
-            <Box display="inline-block">
-              <Text as="span" className="fest-dates">
-                <span>Tuesday-Wednesday June 21st-22nd </span>
-              </Text>
-              <Text as="h3" className="gradient2">
-                <span>Job Fair and Meta-Days</span>
-              </Text>
-              </Box>
-              <Text>The week of 70+ great talks &amp; workshops</Text>
-              <Text>
-                A <Link href="#metafest-verse">Web3 job fair</Link>, pair
-                programming, learn to buidl in CryptoVoxels, find out how to
-                take advantage of the latest ReFi tech - there's something for
-                everyone.
-              </Text>
-              <Text>
-                If you didn't miss out last year, I can feel your{" "}
-                <span className="gradient">FOMO</span> from here!!{" "}
-              </Text>
-            </Box>
-            <Box className="week">
-            <Box display="inline-block">
-              <Text as="span" className="fest-dates">
-                <span>Wednesday June 23rd </span>
-              </Text>
-              <Text as="h3" className="gradient2">
-                <span>Closing Ceremonies and Awards</span>
-              </Text>
-              </Box>
-              <Text>The week of 70+ great talks &amp; workshops</Text>
-              <Text>
-                A <Link href="#metafest-verse">Web3 job fair</Link>, pair
-                programming, learn to buidl in CryptoVoxels, find out how to
-                take advantage of the latest ReFi tech - there's something for
-                everyone.
-              </Text>
-              <Text>
-                If you didn't miss out last year, I can feel your{" "}
-                <span className="gradient">FOMO</span> from here!!{" "}
-              </Text>
-            </Box>
             <Box mt={5}>
               <Text>
                 To enter MetaFest2, you will have to{" "}
@@ -1435,7 +1402,6 @@ export const EasterEgg = () => {
 //   <Applications />
 // </Box>
 
-
 // function Applications() {
 //   return (
 //     <Container
@@ -1534,9 +1500,6 @@ export const EasterEgg = () => {
 //     </Container>
 //   );
 // }
-
-
-
 
 export const MinterInstance = () => {
   return (
