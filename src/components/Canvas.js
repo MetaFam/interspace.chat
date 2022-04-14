@@ -9,6 +9,7 @@ import {
   galaxy1Params,
   galaxy2Params,
   galaxy3Params,
+  galaxy4Params,
 } from "./galaxies";
 // import { OctoA } from './models/Octopus'
 import NomadModel from "./models/CarbonNomad";
@@ -28,6 +29,10 @@ export const Canvas = () => {
       const sectionTwo = new THREE.Group();
       const sectionThree = new THREE.Group();
       const sectionFour = new THREE.Group();
+      const sectionFive = new THREE.Group();
+      const sectionSix = new THREE.Group();
+      const sectionSeven = new THREE.Group();
+
 
       const nomadModel = new THREE.Group();
       scene.add(nomadModel);
@@ -95,13 +100,16 @@ export const Canvas = () => {
       plane3.geometry.center();
       plane3.position.x = 0;
       plane3.position.y = 0;
+      plane3.rotation.y = 0;
       // sectionFour.add(plane3);
+      sectionSeven.add(plane3);
 
       // sectionTwo.add(plane2);
       // Galaxies
       const galaxy1 = generateGalaxy(galaxy1Params);
       const galaxy2 = generateGalaxy(galaxy2Params);
       const galaxy3 = generateGalaxy(galaxy3Params);
+      const galaxy4 = generateGalaxy(galaxy4Params);
 
       galaxy1.position.x = 6;
       galaxy1.position.y = 0;
@@ -122,10 +130,16 @@ export const Canvas = () => {
       galaxy3.position.y = 1;
       galaxy3.position.z = 5;
 
+      galaxy4.position.x = -1;
+      galaxy4.position.y = 1;
+      galaxy4.position.z = 2;
+      galaxy4.rotation.x = 7;
+      galaxy4.rotation.y = 3.3;
+
       sectionOne.add(galaxy1);
       sectionTwo.add(galaxy2);
       sectionThree.add(galaxy3);
-      // sectionFour.add(galaxy3);
+      // sectionSeven.add(galaxy4);
 
       sectionOne.position.x = 0;
       sectionOne.position.y = -objectsDistance * 0;
@@ -134,15 +148,24 @@ export const Canvas = () => {
       sectionThree.position.x = 0;
       sectionThree.position.y = -objectsDistance * 2;
       sectionFour.position.x = -1;
-      sectionFour.position.y = -objectsDistance * 4;
+      sectionFour.position.y = -objectsDistance * 3;
+      sectionFive.position.x = -1;
+      sectionFive.position.y = -objectsDistance * 4;
+      sectionSix.position.x = -1;
+      sectionSix.position.y = -objectsDistance * 5;
+      sectionSeven.position.x = 0;
+      sectionSeven.position.y = -objectsDistance * 6;
 
-      scene.add(sectionOne, sectionTwo, sectionThree, sectionFour);
-
+      scene.add(sectionOne, sectionTwo, sectionThree, sectionFour, sectionFive, sectionSix,
+        sectionSeven);
+      const sections = [sectionOne, sectionTwo, sectionThree, sectionFour, sectionFive, sectionSix,
+        sectionSeven]
       const galaxies = [galaxy1, galaxy2, galaxy3];
       // scene.add(planet1Group)
       galaxy1.geometry.center();
       galaxy2.geometry.center();
       galaxy3.geometry.center();
+      galaxy4.geometry.center();
       // galaxy2.scale.set(0.5, 0.5, 0.5)
       galaxy3.scale.set(1.5, 1.5, 1.5);
       // sectionTwo.scale.set(0.5, 0.5, 0.5)
@@ -154,7 +177,7 @@ export const Canvas = () => {
         materialColor: galaxyColors.inside,
         particleColor: "#fff",
       };
-      const particlesCount = 25000;
+      const particlesCount = 35000;
       const positions = new Float32Array(particlesCount * 3);
 
       for (let i = 0; i < particlesCount; i++) {
@@ -162,7 +185,7 @@ export const Canvas = () => {
         positions[i3 + 0] = (Math.random() - 0.5) * 40;
         positions[i3 + 1] =
           objectsDistance * 0.8 -
-          Math.random() * objectsDistance * (galaxies.length * 2);
+          Math.random() * objectsDistance * (sections.length * 2);
         positions[i3 + 2] = (Math.random() - 0.5) * 40;
       }
 
@@ -228,6 +251,16 @@ export const Canvas = () => {
       camera.position.z = 6;
       cameraGroup.add(camera);
 
+      /**
+       * Helpers
+       */
+      // Leave these.
+      // const cameraHelper = new THREE.CameraHelper( camera );
+      // scene.add(cameraHelper);
+      // const axesHelper = new THREE.AxesHelper( 5 );
+      // sectionThree.add(axesHelper);
+      // const axesHelper = new THREE.AxesHelper( 5 );
+      // sectionSeven.add( axesHelper );
       // Controls
       // const controls = new OrbitControls(camera, canvas)
       // controls.enableDamping = true
@@ -473,6 +506,22 @@ export const Canvas = () => {
               });
               break;
 
+              case 6:
+                gsap.to(cameraGroup.rotation, {
+                  duration: 1.5,
+                  ease: "power2.inOut",
+                  y: "0.0",
+                  x: "0",
+                  z: "0",
+                });
+                // gsap.to(cameraGroup.position, {
+                //   duration: 1.5,
+                //   ease: "power2.inOut",
+                //   z: -2,
+                // });
+              break;
+
+
             default:
               gsap.to(cameraGroup.rotation, {
                 duration: 1.5,
@@ -519,19 +568,18 @@ export const Canvas = () => {
       let currentIntersect = null;
 
       /**
-       * Hover
+       * Cursor / Mouse
        */
-      //  window.addEventListener("mouseenter", () => {
-      //   if (currentIntersect) {
-      //     if (currentIntersect.object === plane1) {
-      //       document.querySelector('html').style.cursor = 'crosshair'
+      const cursor = {};
+      cursor.x = 0;
+      cursor.y = 0;
+      const mouse = new THREE.Vector2();
 
-      //     } else if (currentIntersect.object === plane2) {
-      //       console.log("2 clicked");
+      /**
+       * Events
+       */
 
-      //     }
-      //   }
-      // });
+      //Click events
       window.addEventListener("click", () => {
         console.log("click click");
         if (currentIntersect) {
@@ -544,14 +592,7 @@ export const Canvas = () => {
         }
       });
 
-      /**
-       * Cursor / Mouse
-       */
-      const cursor = {};
-      cursor.x = 0;
-      cursor.y = 0;
-      const mouse = new THREE.Vector2();
-
+      // Mouse move
       window.addEventListener("mousemove", (event) => {
         cursor.x = event.clientX / sizes.width - 0.5;
         cursor.y = event.clientY / sizes.height - 0.5;
@@ -595,9 +636,16 @@ export const Canvas = () => {
 
         galaxy3.rotation.y = -elapsedTime * 0.006;
 
+        galaxy4.rotation.y = -elapsedTime * 0.01;
+
         plane1.position.x = -3.5 + Math.sin(elapsedTime * 0.9) * Math.PI * 0.05;
         plane1.position.y = -1.5 - Math.cos(elapsedTime * 0.1) * Math.PI * 0.5;
         plane1.rotation.z = -elapsedTime * 0.06;
+
+        plane3.position.x = 1.5 - Math.sin(elapsedTime * 0.02) * Math.PI * 0.9;
+        plane3.position.y = 1 - Math.cos(elapsedTime * 0.09) * Math.PI * 1;
+        plane3.position.z = 2 - Math.sin(elapsedTime * 0.1) * Math.PI * 0.9;
+        plane3.rotation.z = -elapsedTime * 0.1;
 
         particles.position.y = scrollY * 0.0004;
         particles.rotation.y = Math.cos(elapsedTime * 0.05) * Math.PI * 0.05;

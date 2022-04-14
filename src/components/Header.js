@@ -39,6 +39,10 @@ const Links = [
     name: "Chat",
     href: "#chat",
   },
+  {
+    name: "Apply",
+    href: "#apply",
+  },
 ];
 
 

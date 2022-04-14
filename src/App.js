@@ -13,8 +13,14 @@ import {
   Image,
   Link,
   Text,
-  UnorderedList,
-  ListItem,
+  HStack,
+  useDisclosure,
+  Drawer,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,
+  DrawerBody,
+  DrawerFooter,
 } from "@chakra-ui/react";
 import { CalendarIcon, CloseIcon, ExternalLinkIcon } from "@chakra-ui/icons";
 // import Space from './components/Space'
@@ -61,7 +67,7 @@ export const HomeSection = () => {
         transform={`translate3d(${onScreen ? 0 : "-70px"}, 0, 0)`}
         opacity={onScreen ? 1 : 0}
         transition="transform 0.3s 0.4s ease-in-out, opacity 0.6s 0.5s ease-in"
-        pointerEvents="none"
+        // pointerEvents="none"
         sx={{
           ".fest-dates": {
             d: "block",
@@ -123,125 +129,167 @@ export const HomeSection = () => {
             </Text>
             .
           </Text>
+          <HStack mt={5}>
+            <ApplicationDrawer />
+          </HStack>
         </Box>
       </Box>
     </Box>
   );
 };
 
-export const ScheduleSection = () => {
+export const ApplicationDrawer = () => {
   const ref = useRef(null);
   const appRef = useRef(null);
+  const btnRef = useRef(null);
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  return (
+    <>
+      <Link href="#appl"></Link>
+      {/* <Drawer
+        placement="right"
+        onClose={onClose}
+        isOpen={isOpen}
+        finalFocusRef={btnRef}
+        size="xl"
+      >
+        <DrawerOverlay />
+        <DrawerContent
+          sx={{
+            bg: "rgba(25,0,50,0.4)",
+            backdropFilter: "blur(7px)",
+            borderRadius: "5px 30px 10px 0",
+            boxShadow: "0 0 30px #00000070",
+            color: "white",
+          }}
+        >
+          <DrawerBody>
+            <Box
+              d="flex"
+              maxW="100%"
+              minH="100%"
+              maxH="100vh"
+              flexFlow="row nowrap"
+              alignItems="center"
+              justifyContent="space-between"
+            >
+              <Container
+                maxW={"2xl"}
+                maxH="75vh"
+                p={{ base: 8, md: 12 }}
+                sx={{
+                  bg: "rgba(255,255,255,0.1)",
+                  backdropFilter: "blur(7px)",
+                  borderRadius: "5px 30px 10px 0",
+                  boxShadow: "0 0 30px #00000070",
+                }}
+              >
+                <Button
+                  variant="outline"
+                  mr={3}
+                  onClick={onClose}
+                  pos="absolute"
+                  right={5}
+                  top={5}
+                >
+                  Cancel
+                </Button>
+                <SimpleGrid columns={{ base: 1 }} spacing={0}>
+                  <Stack spacing={4}>
+                    <Text
+                      textTransform={"uppercase"}
+                      fontWeight={500}
+                      fontSize={{ base: "1vmin", md: "0.7vmax" }}
+                      className="gradient"
+                      p={0}
+                      alignSelf={"flex-start"}
+                      rounded={"md"}
+                    >
+                      <span role="img" aria-label="Yay, come join us!">
+                        🎉
+                      </span>{" "}
+                      Join the party!{" "}
+                      <span role="img" aria-label="Yay, come join us!">
+                        🎉
+                      </span>
+                    </Text>
+                    <Text as="h3">
+                      <span>MetaFest2 needs YOU</span>
+                      <span
+                        className="gradient"
+                        role="img"
+                        aria-label="Pointing at the forms below"
+                      >
+                        👇
+                      </span>
+                    </Text>
+                    <Text fontSize={"lg"}>
+                      What is an event without the amazing folks like you!
+                      People who want to help organise &amp; greet, tell us
+                      about their projects, teach, sing, code...we'd love to see
+                      you. Apply below.
+                    </Text>
+                    <Stack spacing={4} divider={<StackDivider />}>
+                      <Feature
+                        iconBg={"yellow.900"}
+                        text={"Speaker"}
+                        call={() => loadForm("speaker")}
+                      />
+                      <Feature
+                        iconBg={"green.900"}
+                        text={"Contributor"}
+                        call={() => loadForm("contributor")}
+                      />
+                      <Feature
+                        iconBg={"purple.900"}
+                        text={"Performer"}
+                        call={() => loadForm("performer")}
+                      />
+                      <Feature
+                        iconBg={"purple.900"}
+                        text={"Sponsor"}
+                        call={() => loadForm("sponsor")}
+                      />
+                    </Stack>
+                  </Stack>
+                </SimpleGrid>
+              </Container>
+              {/* <Container
+                maxW="5xl"
+                minH="85vh"
+                maxH="85vh"
+                overflowY="auto"
+                overflowX="clip"
+                borderRadius="md"
+                p={0}
+              >
+                <Box
+                  ref={appRef}
+                  height="auto"
+                  width="calc(100% + 15px)"
+                  transition="opacity 1.2s 0.8s ease-in-out"
+                  zIndex={2001}
+                  overflowY="hidden"
+                >
+                  {currentForm && (
+                    currentForm()
+                  )}
+                </Box>
+              </Container>
+            </Box>
+          </DrawerBody>
+        </DrawerContent>
+      </Drawer> */}
+    </>
+  );
+};
+
+export const ScheduleSection = () => {
+  const ref = useRef(null);
   const onScreen = useOnScreen(ref);
   const [openCal, setOpenCal] = useState(false);
-  const [openSpeakerApplication, setOpenSpeakerApplication] = useState(false);
-  const [openContributorApplication, setOpenContributorApplication] = useState(
-    false
-  );
-  const [openPerformerApplication, setOpenPerformerApplication] = useState(
-    false
-  );
-  const [openSponsorApplication, setOpenSponsorApplication] = useState(false);
   const disabledMobNotify = useDisabledMobileNotify();
-
-  function Applications() {
-    return (
-      <Container
-        maxW={"4xl"}
-        p={{ base: 8, md: 12 }}
-        sx={{
-          bg: "rgba(25,0,50,0.1)",
-          backdropFilter: "blur(7px)",
-          borderRadius: "5px 30px 10px 0",
-          boxShadow: "0 0 30px #00000070",
-        }}
-      >
-        <SimpleGrid columns={{ base: 1 }} spacing={0}>
-          <Stack spacing={4}>
-            {/* <IconButton
-              position="absolute"
-              top={5}
-              right={5}
-              icon={<CloseIcon />}
-              colorScheme="ghost"
-              size="xs"
-              onClick={() => setToggleJoin(!toggleJoin)}
-              zIndex={2001}
-            /> */}
-
-            <Text
-              textTransform={"uppercase"}
-              fontWeight={500}
-              fontSize={{ base: "1vmin", md: "0.7vmax" }}
-              className="gradient"
-              p={0}
-              alignSelf={"flex-start"}
-              rounded={"md"}
-            >
-              <span role="img" aria-label="Yay, come join us!">
-                🎉
-              </span>{" "}
-              Join the party!{" "}
-              <span role="img" aria-label="Yay, come join us!">
-                🎉
-              </span>
-            </Text>
-            <Text as="h3">
-              <span>MetaFest2 needs YOU</span>
-              <span
-                className="gradient"
-                role="img"
-                aria-label="Pointing at the forms below"
-              >
-                👇
-              </span>
-            </Text>
-            <Text fontSize={"lg"}>
-              What is an event without the amazing folks like you! People who
-              want to help organise &amp; greet, tell us about their projects,
-              teach, sing, code...we'd love to see you. Apply below.
-            </Text>
-            <Stack spacing={4} divider={<StackDivider />}>
-              <Feature
-                iconBg={"yellow.900"}
-                text={"Speaker"}
-                call={() => setOpenSpeakerApplication(!openSpeakerApplication)}
-              />
-              <Feature
-                iconBg={"green.900"}
-                text={"Contributor"}
-                call={() =>
-                  setOpenSpeakerApplication(!openContributorApplication)
-                }
-              />
-              <Feature
-                iconBg={"purple.900"}
-                text={"Performer"}
-                call={() =>
-                  setOpenPerformerApplication(!openPerformerApplication)
-                }
-              />
-              <Feature
-                iconBg={"purple.900"}
-                text={"Sponsor"}
-                call={() => setOpenSponsorApplication(!openSponsorApplication)}
-              />
-            </Stack>
-          </Stack>
-          {/* <Flex>
-            <Image
-              rounded={'md'}
-              alt={'feature image'}
-              src={
-                'https://images.unsplash.com/photo-1554200876-56c2f25224fa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'
-              }
-              objectFit={'cover'}
-            />
-          </Flex> */}
-        </SimpleGrid>
-      </Container>
-    );
-  }
 
   return (
     <Box
@@ -264,72 +312,6 @@ export const ScheduleSection = () => {
           zIndex={2002}
         >
           Close Calendar
-        </Button>
-      )}
-      {openSpeakerApplication && (
-        <Button
-          position="absolute"
-          bottom={20}
-          right={6}
-          colorScheme="pink"
-          boxShadow="0 0 10px rgba(0, 0, 0, 0.6)"
-          size="sm"
-          transition="all 0.3s 0.8s ease"
-          transform={`translateY(${openSpeakerApplication ? 0 : "-70px"})`}
-          onClick={() => setOpenSpeakerApplication(!openSpeakerApplication)}
-          zIndex={2002}
-        >
-          Close form
-        </Button>
-      )}
-      {openContributorApplication && (
-        <Button
-          position="absolute"
-          bottom={20}
-          right={6}
-          colorScheme="pink"
-          boxShadow="0 0 10px rgba(0, 0, 0, 0.6)"
-          size="sm"
-          transition="all 0.3s 0.8s ease"
-          transform={`translateY(${openContributorApplication ? 0 : "-70px"})`}
-          onClick={() =>
-            setOpenContributorApplication(!openContributorApplication)
-          }
-          zIndex={2002}
-        >
-          Close form
-        </Button>
-      )}
-      {openPerformerApplication && (
-        <Button
-          position="absolute"
-          bottom={20}
-          right={6}
-          colorScheme="pink"
-          boxShadow="0 0 10px rgba(0, 0, 0, 0.6)"
-          size="sm"
-          transition="all 0.3s 0.8s ease"
-          transform={`translateY(${openPerformerApplication ? 0 : "-70px"})`}
-          onClick={() => setOpenPerformerApplication(!openPerformerApplication)}
-          zIndex={2002}
-        >
-          Close form
-        </Button>
-      )}
-      {openSponsorApplication && (
-        <Button
-          position="absolute"
-          bottom={20}
-          right={6}
-          colorScheme="pink"
-          boxShadow="0 0 10px rgba(0, 0, 0, 0.6)"
-          size="sm"
-          transition="all 0.3s 0.8s ease"
-          transform={`translateY(${openSponsorApplication ? 0 : "-70px"})`}
-          onClick={() => setOpenSponsorApplication(!openSponsorApplication)}
-          zIndex={2002}
-        >
-          Close form
         </Button>
       )}
 
@@ -447,22 +429,6 @@ export const ScheduleSection = () => {
           </Box>
         </Box>
       </Box>
-      <Box
-        ref={appRef}
-        d={{ base: "none", md: "inherit" }}
-        maxW={{ base: "full", md: "2xl" }}
-        transform={`translate3d(${onScreen ? 0 : "-70px"}, 0, 0)`}
-        opacity={onScreen ? 1 : 0}
-        transition="transform 0.3s 0.4s ease-in-out, opacity 0.6s 0.5s ease-in"
-        sx={{
-          position: { base: "absolute", md: "inherit" },
-          top: { base: "15%", md: "auto" },
-          left: { base: 0, md: "unset" },
-        }}
-      >
-        <Applications />
-      </Box>
-
       {openCal && (
         <Box
           ref={ref}
@@ -509,94 +475,6 @@ export const ScheduleSection = () => {
               Need more Calendar? Open it up in a new tab. <ExternalLinkIcon />
             </Link>
           </Box>
-        </Box>
-      )}
-      {openSpeakerApplication && (
-        <Box
-          ref={ref}
-          position="absolute"
-          top="12.5vh"
-          left={0}
-          height="75vh"
-          minH="75vh"
-          minW="100vw"
-          sx={{
-            bg: "rgba(25,0,50,0.4)",
-            backdropFilter: "blur(7px)",
-          }}
-          boxShadow="0 0 30px rgba(0,0,0,0.8)"
-          opacity={onScreen ? 1 : 0}
-          transition="opacity 1.2s 0.8s ease-in-out"
-          zIndex={2001}
-          overflowY="scroll"
-        >
-          <AirtableSpeakerInstance />
-        </Box>
-      )}
-      {openContributorApplication && (
-        <Box
-          ref={ref}
-          position="absolute"
-          top="12.5vh"
-          left={0}
-          height="75vh"
-          minH="75vh"
-          minW="100vw"
-          sx={{
-            bg: "rgba(25,0,50,0.4)",
-            backdropFilter: "blur(7px)",
-          }}
-          boxShadow="0 0 30px rgba(0,0,0,0.8)"
-          opacity={onScreen ? 1 : 0}
-          transition="opacity 1.2s 0.8s ease-in-out"
-          zIndex={2001}
-          overflowY="scroll"
-        >
-          <AirtableContributorInstance />
-        </Box>
-      )}
-      {openPerformerApplication && (
-        <Box
-          ref={ref}
-          position="absolute"
-          top="12.5vh"
-          left={0}
-          height="75vh"
-          minH="75vh"
-          minW="100vw"
-          sx={{
-            bg: "rgba(25,0,50,0.4)",
-            backdropFilter: "blur(7px)",
-          }}
-          boxShadow="0 0 30px rgba(0,0,0,0.8)"
-          opacity={onScreen ? 1 : 0}
-          transition="opacity 1.2s 0.8s ease-in-out"
-          zIndex={2001}
-          overflowY="scroll"
-        >
-          <AirtablePerformerInstance />
-        </Box>
-      )}
-      {openSponsorApplication && (
-        <Box
-          ref={ref}
-          position="absolute"
-          top="12.5vh"
-          left={0}
-          height="75vh"
-          minH="75vh"
-          minW="100vw"
-          sx={{
-            bg: "rgba(25,0,50,0.4)",
-            backdropFilter: "blur(7px)",
-          }}
-          boxShadow="0 0 30px rgba(0,0,0,0.8)"
-          opacity={onScreen ? 1 : 0}
-          transition="opacity 1.2s 0.8s ease-in-out"
-          zIndex={2001}
-          overflowY="scroll"
-        >
-          <AirtableSponsorInstance />
         </Box>
       )}
     </Box>
@@ -1009,6 +887,271 @@ export const ChatSection = () => {
   );
 };
 
+export const ApplySection = () => {
+  const ref = useRef(null);
+  const onScreen = useOnScreen(ref);
+  const [openSpeakerApplication, setOpenSpeakerApplication] = useState(false);
+  const [openContributorApplication, setOpenContributorApplication] = useState(
+    false
+  );
+  const [openPerformerApplication, setOpenPerformerApplication] = useState(
+    false
+  );
+  const [openSponsorApplication, setOpenSponsorApplication] = useState(false);
+
+  return (
+    <Box as="section" id="apply" position="relative">
+      <Box
+        ref={ref}
+        className="__content"
+        transform={`translate3d(${onScreen ? 0 : "70px"}, 0, 0)`}
+        opacity={onScreen ? 1 : 0}
+        transition="transform 0.3s 0.8s ease-in-out, opacity 0.6s 0.9s ease-in"
+      >
+        <Box className="__content__body">
+          <Container
+            maxW={"2xl"}
+            p={{ base: 8, md: 12 }}
+            sx={{
+              bg: "rgba(255,255,255,0.1)",
+              backdropFilter: "blur(7px)",
+              borderRadius: "5px 30px 10px 0",
+              boxShadow: "0 0 30px #00000070",
+            }}
+          >
+            <SimpleGrid columns={{ base: 1 }} spacing={0}>
+              <Stack spacing={4}>
+                <Text
+                  textTransform={"uppercase"}
+                  fontWeight={500}
+                  fontSize={{ base: "1vmin", md: "0.7vmax" }}
+                  className="gradient"
+                  p={0}
+                  alignSelf={"flex-start"}
+                  rounded={"md"}
+                >
+                  <span role="img" aria-label="Yay, come join us!">
+                    🎉
+                  </span>{" "}
+                  Join the party!{" "}
+                  <span role="img" aria-label="Yay, come join us!">
+                    🎉
+                  </span>
+                </Text>
+                <Text as="h3">
+                  <span>MetaFest2 needs YOU</span>
+                  <span
+                    className="gradient"
+                    role="img"
+                    aria-label="Pointing at the forms below"
+                  >
+                    👇
+                  </span>
+                </Text>
+                <Text fontSize={"lg"}>
+                  What is an event without the amazing folks like you! People
+                  who want to help organise &amp; greet, tell us about their
+                  projects, teach, sing, code...we'd love to see you. Apply
+                  below.
+                </Text>
+                <Stack spacing={4} divider={<StackDivider />}>
+                  <Feature
+                    iconBg={"yellow.900"}
+                    text={"Speaker"}
+                    call={() =>
+                      setOpenSpeakerApplication(!openSpeakerApplication)
+                    }
+                  />
+                  <Feature
+                    iconBg={"green.900"}
+                    text={"Contributor"}
+                    call={() =>
+                      setOpenContributorApplication(!openContributorApplication)
+                    }
+                  />
+                  <Feature
+                    iconBg={"purple.900"}
+                    text={"Performer"}
+                    call={() =>
+                      setOpenPerformerApplication(!openPerformerApplication)
+                    }
+                  />
+                  <Feature
+                    iconBg={"purple.900"}
+                    text={"Sponsor"}
+                    call={() =>
+                      setOpenSponsorApplication(!openSponsorApplication)
+                    }
+                  />
+                  />
+                </Stack>
+              </Stack>
+            </SimpleGrid>
+          </Container>
+        </Box>
+      </Box>
+      {openSpeakerApplication && (
+        <>
+          <Button
+            position="absolute"
+            bottom={20}
+            right={6}
+            colorScheme="pink"
+            boxShadow="0 0 10px rgba(0, 0, 0, 0.6)"
+            size="sm"
+            transition="all 0.3s 0.8s ease"
+            transform={`translateY(${openSpeakerApplication ? 0 : "-70px"})`}
+            onClick={() => setOpenSpeakerApplication(!openSpeakerApplication)}
+            zIndex={2002}
+          >
+            Close form
+          </Button>
+          <Box
+            ref={ref}
+            position="absolute"
+            top="12.5vh"
+            left={0}
+            height="75vh"
+            minH="75vh"
+            minW="100vw"
+            sx={{
+              bg: "rgba(25,0,50,0.4)",
+              backdropFilter: "blur(7px)",
+            }}
+            boxShadow="0 0 30px rgba(0,0,0,0.8)"
+            opacity={onScreen ? 1 : 0}
+            transition="opacity 1.2s 0.8s ease-in-out"
+            zIndex={2001}
+            overflowY="scroll"
+          >
+            <AirtableSpeakerInstance />
+          </Box>
+        </>
+      )}
+      {openContributorApplication && (
+        <>
+          <Button
+            position="absolute"
+            bottom={20}
+            right={6}
+            colorScheme="pink"
+            boxShadow="0 0 10px rgba(0, 0, 0, 0.6)"
+            size="sm"
+            transition="all 0.3s 0.8s ease"
+            transform={`translateY(${
+              openContributorApplication ? 0 : "-70px"
+            })`}
+            onClick={() =>
+              setOpenContributorApplication(!openContributorApplication)
+            }
+            zIndex={2002}
+          >
+            Close form
+          </Button>
+          <Box
+            ref={ref}
+            position="absolute"
+            top="12.5vh"
+            left={0}
+            height="75vh"
+            minH="75vh"
+            minW="100vw"
+            sx={{
+              bg: "rgba(25,0,50,0.4)",
+              backdropFilter: "blur(7px)",
+            }}
+            boxShadow="0 0 30px rgba(0,0,0,0.8)"
+            opacity={onScreen ? 1 : 0}
+            transition="opacity 1.2s 0.8s ease-in-out"
+            zIndex={2001}
+            overflowY="scroll"
+          >
+            <AirtableContributorInstance />
+          </Box>
+        </>
+      )}
+      {openPerformerApplication && (
+        <>
+          <Button
+            position="absolute"
+            bottom={20}
+            right={6}
+            colorScheme="pink"
+            boxShadow="0 0 10px rgba(0, 0, 0, 0.6)"
+            size="sm"
+            transition="all 0.3s 0.8s ease"
+            transform={`translateY(${openPerformerApplication ? 0 : "-70px"})`}
+            onClick={() =>
+              setOpenPerformerApplication(!openPerformerApplication)
+            }
+            zIndex={2002}
+          >
+            Close form
+          </Button>
+          <Box
+            ref={ref}
+            position="absolute"
+            top="12.5vh"
+            left={0}
+            height="75vh"
+            minH="75vh"
+            minW="100vw"
+            sx={{
+              bg: "rgba(25,0,50,0.4)",
+              backdropFilter: "blur(7px)",
+            }}
+            boxShadow="0 0 30px rgba(0,0,0,0.8)"
+            opacity={onScreen ? 1 : 0}
+            transition="opacity 1.2s 0.8s ease-in-out"
+            zIndex={2001}
+            overflowY="scroll"
+          >
+            <AirtablePerformerInstance />
+          </Box>
+        </>
+      )}
+      {openSponsorApplication && (
+        <>
+          <Button
+            position="absolute"
+            bottom={20}
+            right={6}
+            colorScheme="pink"
+            boxShadow="0 0 10px rgba(0, 0, 0, 0.6)"
+            size="sm"
+            transition="all 0.3s 0.8s ease"
+            transform={`translateY(${openSponsorApplication ? 0 : "-70px"})`}
+            onClick={() => setOpenSponsorApplication(!openSponsorApplication)}
+            zIndex={2002}
+          >
+            Close form
+          </Button>
+          <Box
+            ref={ref}
+            position="absolute"
+            top="12.5vh"
+            left={0}
+            height="75vh"
+            minH="75vh"
+            minW="100vw"
+            sx={{
+              bg: "rgba(25,0,50,0.4)",
+              backdropFilter: "blur(7px)",
+            }}
+            boxShadow="0 0 30px rgba(0,0,0,0.8)"
+            opacity={onScreen ? 1 : 0}
+            transition="opacity 1.2s 0.8s ease-in-out"
+            zIndex={2001}
+            overflowY="scroll"
+          >
+            <AirtableSponsorInstance />
+          </Box>
+        </>
+      )}
+    </Box>
+  );
+};
+
 function App() {
   const curURL = useRef(null);
   let host = curURL ?? curURL.current;
@@ -1032,39 +1175,6 @@ function App() {
     <Box
       className="App"
       sx={{
-        ".gradient": {
-          display: "inline-block",
-          background:
-            "linear-gradient(90deg, #FF61E6 -29.22%, #7C56FF 107.53%)",
-          backgroundClip: "text",
-          WebkitTextFillColor: "transparent",
-          textFillColor: "transparent",
-          filter: "drop-shadow(0 0 5px rgba(0,0,0,0.6))",
-        },
-        ".gradient2": {
-          display: "inline-block",
-          background:
-            "linear-gradient(90.24deg, #79F8FB 0.3%, #9032E6 55.76%, #E839B7 106.78%)",
-          backgroundPosition: "center",
-          backgroundSize: "100%",
-          backgroundClip: "text",
-          textFillColor: "transparent",
-          WebkitTextFillColor: "transparent",
-          filter: "drop-shadow(0 0 5px rgba(0,0,0,0.6))",
-        },
-        ".gradient-cone": {
-          display: "inline-block",
-          background:
-            "conic-gradient(from 92.2deg at 60.45% 74.83%, #8EBBFF 0deg, #DE3FFF 88.12deg, #79F8FB 105deg, #7C56FF 165deg, #FF61E6 251.25deg, #927CFF 286.87deg, #76EBF2 326.25deg, #8EBBFF 360deg)",
-          backgroundPosition: "-254%",
-          backgroundSize: "100%",
-          backgroundClip: "text",
-          textFillColor: "transparent",
-          WebkitTextFillColor: "transparent",
-          transition: "background 0.3s ease",
-          filter: "drop-shadow(0 0 5px rgba(0,0,0,0.6))",
-        },
-        ".highlight": {},
         h3: {
           lineHeight: "2rem",
           mt: 5,
@@ -1100,6 +1210,7 @@ function App() {
           <SpeakersSection />
           <CVSection />
           <ChatSection />
+          <ApplySection />
           <EasterEgg />
           <AlphaNotice />
           {/* TODO: Need to figure out how to stop the animations, in gsap & three's `tick()` */}
