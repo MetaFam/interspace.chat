@@ -904,13 +904,25 @@ export const ApplySection = () => {
       <Box
         ref={ref}
         className="__content"
+        width="100%"
         transform={`translate3d(${onScreen ? 0 : "70px"}, 0, 0)`}
         opacity={onScreen ? 1 : 0}
         transition="transform 0.3s 0.8s ease-in-out, opacity 0.6s 0.9s ease-in"
       >
-        <Box className="__content__body">
-          <Container
+        <Box className="__content__body" d="flex" w="100%" flexFlow={{base: 'column wrap', md: "row nowrap"}} alignItems="center" justifyContent="space-between">
+        <Container
             maxW={"2xl"}
+          >
+          <Text
+            as="h2"
+          >
+            Apply here
+          </Text>
+          {/* <span className="fest-dates">9 - 23rd JUNE</span> */}
+          </Container>
+          <Container maxW={{base: '100%', md: "2xl"}} p={0}>
+          <Box
+            maxW={{base: '100%', md: "2xl"}}
             p={{ base: 8, md: 12 }}
             sx={{
               bg: "rgba(255,255,255,0.1)",
@@ -983,18 +995,19 @@ export const ApplySection = () => {
                       setOpenSponsorApplication(!openSponsorApplication)
                     }
                   />
-                  />
                 </Stack>
               </Stack>
             </SimpleGrid>
+          </Box>
           </Container>
+
         </Box>
       </Box>
       {openSpeakerApplication && (
         <>
           <Button
             position="absolute"
-            bottom={20}
+            bottom={{base: 10, md: 20}}
             right={6}
             colorScheme="pink"
             boxShadow="0 0 10px rgba(0, 0, 0, 0.6)"
@@ -1032,7 +1045,7 @@ export const ApplySection = () => {
         <>
           <Button
             position="absolute"
-            bottom={20}
+            bottom={{base: 10, md: 20}}
             right={6}
             colorScheme="pink"
             boxShadow="0 0 10px rgba(0, 0, 0, 0.6)"
@@ -1074,7 +1087,7 @@ export const ApplySection = () => {
         <>
           <Button
             position="absolute"
-            bottom={20}
+            bottom={{base: 10, md: 20}}
             right={6}
             colorScheme="pink"
             boxShadow="0 0 10px rgba(0, 0, 0, 0.6)"
@@ -1114,7 +1127,7 @@ export const ApplySection = () => {
         <>
           <Button
             position="absolute"
-            bottom={20}
+            bottom={{base: 10, md: 20}}
             right={6}
             colorScheme="pink"
             boxShadow="0 0 10px rgba(0, 0, 0, 0.6)"
@@ -1509,10 +1522,10 @@ export const Feature = ({ text, iconBg, call }) => {
       >
         {/* {icon} */}
       </Flex>
-      <Text fontWeight={500} flex={1}>
+      <Text fontWeight={500} fontSize={{base: '3vmin', md: '1.2vmax'}} flex={1}>
         {text}
       </Text>
-      <Button onClick={() => call()} colorScheme="pink" justifySelf="right">
+      <Button onClick={() => call()} colorScheme="pink" size="sm" justifySelf="right">
         Apply
       </Button>
     </Stack>
