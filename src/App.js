@@ -15,12 +15,12 @@ import {
   Text,
   HStack,
   useDisclosure,
-  Drawer,
-  DrawerOverlay,
-  DrawerContent,
-  DrawerCloseButton,
-  DrawerBody,
-  DrawerFooter,
+  // Drawer,
+  // DrawerOverlay,
+  // DrawerContent,
+  // DrawerCloseButton,
+  // DrawerBody,
+  // DrawerFooter,
 } from "@chakra-ui/react";
 import { CalendarIcon, CloseIcon, ExternalLinkIcon } from "@chakra-ui/icons";
 // import Space from './components/Space'
@@ -130,7 +130,7 @@ export const HomeSection = () => {
             .
           </Text>
           <HStack mt={5}>
-            <ApplicationDrawer />
+            <Link href="#apply"><Button colorScheme="pink" size="lg">Apply</Button></Link>
           </HStack>
         </Box>
       </Box>
@@ -138,152 +138,152 @@ export const HomeSection = () => {
   );
 };
 
-export const ApplicationDrawer = () => {
-  const ref = useRef(null);
-  const appRef = useRef(null);
-  const btnRef = useRef(null);
-  const { isOpen, onOpen, onClose } = useDisclosure();
+// export const ApplicationDrawer = () => {
+//   const ref = useRef(null);
+//   const appRef = useRef(null);
+//   const btnRef = useRef(null);
+//   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  return (
-    <>
-      <Link href="#appl"></Link>
-      {/* <Drawer
-        placement="right"
-        onClose={onClose}
-        isOpen={isOpen}
-        finalFocusRef={btnRef}
-        size="xl"
-      >
-        <DrawerOverlay />
-        <DrawerContent
-          sx={{
-            bg: "rgba(25,0,50,0.4)",
-            backdropFilter: "blur(7px)",
-            borderRadius: "5px 30px 10px 0",
-            boxShadow: "0 0 30px #00000070",
-            color: "white",
-          }}
-        >
-          <DrawerBody>
-            <Box
-              d="flex"
-              maxW="100%"
-              minH="100%"
-              maxH="100vh"
-              flexFlow="row nowrap"
-              alignItems="center"
-              justifyContent="space-between"
-            >
-              <Container
-                maxW={"2xl"}
-                maxH="75vh"
-                p={{ base: 8, md: 12 }}
-                sx={{
-                  bg: "rgba(255,255,255,0.1)",
-                  backdropFilter: "blur(7px)",
-                  borderRadius: "5px 30px 10px 0",
-                  boxShadow: "0 0 30px #00000070",
-                }}
-              >
-                <Button
-                  variant="outline"
-                  mr={3}
-                  onClick={onClose}
-                  pos="absolute"
-                  right={5}
-                  top={5}
-                >
-                  Cancel
-                </Button>
-                <SimpleGrid columns={{ base: 1 }} spacing={0}>
-                  <Stack spacing={4}>
-                    <Text
-                      textTransform={"uppercase"}
-                      fontWeight={500}
-                      fontSize={{ base: "1vmin", md: "0.7vmax" }}
-                      className="gradient"
-                      p={0}
-                      alignSelf={"flex-start"}
-                      rounded={"md"}
-                    >
-                      <span role="img" aria-label="Yay, come join us!">
-                        🎉
-                      </span>{" "}
-                      Join the party!{" "}
-                      <span role="img" aria-label="Yay, come join us!">
-                        🎉
-                      </span>
-                    </Text>
-                    <Text as="h3">
-                      <span>MetaFest2 needs YOU</span>
-                      <span
-                        className="gradient"
-                        role="img"
-                        aria-label="Pointing at the forms below"
-                      >
-                        👇
-                      </span>
-                    </Text>
-                    <Text fontSize={"lg"}>
-                      What is an event without the amazing folks like you!
-                      People who want to help organise &amp; greet, tell us
-                      about their projects, teach, sing, code...we'd love to see
-                      you. Apply below.
-                    </Text>
-                    <Stack spacing={4} divider={<StackDivider />}>
-                      <Feature
-                        iconBg={"yellow.900"}
-                        text={"Speaker"}
-                        call={() => loadForm("speaker")}
-                      />
-                      <Feature
-                        iconBg={"green.900"}
-                        text={"Contributor"}
-                        call={() => loadForm("contributor")}
-                      />
-                      <Feature
-                        iconBg={"purple.900"}
-                        text={"Performer"}
-                        call={() => loadForm("performer")}
-                      />
-                      <Feature
-                        iconBg={"purple.900"}
-                        text={"Sponsor"}
-                        call={() => loadForm("sponsor")}
-                      />
-                    </Stack>
-                  </Stack>
-                </SimpleGrid>
-              </Container>
-              {/* <Container
-                maxW="5xl"
-                minH="85vh"
-                maxH="85vh"
-                overflowY="auto"
-                overflowX="clip"
-                borderRadius="md"
-                p={0}
-              >
-                <Box
-                  ref={appRef}
-                  height="auto"
-                  width="calc(100% + 15px)"
-                  transition="opacity 1.2s 0.8s ease-in-out"
-                  zIndex={2001}
-                  overflowY="hidden"
-                >
-                  {currentForm && (
-                    currentForm()
-                  )}
-                </Box>
-              </Container>
-            </Box>
-          </DrawerBody>
-        </DrawerContent>
-      </Drawer> */}
-    </>
-  );
-};
+//   return (
+//     <>
+//       <Link href="#appl"></Link>
+//       {/* <Drawer
+//         placement="right"
+//         onClose={onClose}
+//         isOpen={isOpen}
+//         finalFocusRef={btnRef}
+//         size="xl"
+//       >
+//         <DrawerOverlay />
+//         <DrawerContent
+//           sx={{
+//             bg: "rgba(25,0,50,0.4)",
+//             backdropFilter: "blur(7px)",
+//             borderRadius: "5px 30px 10px 0",
+//             boxShadow: "0 0 30px #00000070",
+//             color: "white",
+//           }}
+//         >
+//           <DrawerBody>
+//             <Box
+//               d="flex"
+//               maxW="100%"
+//               minH="100%"
+//               maxH="100vh"
+//               flexFlow="row nowrap"
+//               alignItems="center"
+//               justifyContent="space-between"
+//             >
+//               <Container
+//                 maxW={"2xl"}
+//                 maxH="75vh"
+//                 p={{ base: 8, md: 12 }}
+//                 sx={{
+//                   bg: "rgba(255,255,255,0.1)",
+//                   backdropFilter: "blur(7px)",
+//                   borderRadius: "5px 30px 10px 0",
+//                   boxShadow: "0 0 30px #00000070",
+//                 }}
+//               >
+//                 <Button
+//                   variant="outline"
+//                   mr={3}
+//                   onClick={onClose}
+//                   pos="absolute"
+//                   right={5}
+//                   top={5}
+//                 >
+//                   Cancel
+//                 </Button>
+//                 <SimpleGrid columns={{ base: 1 }} spacing={0}>
+//                   <Stack spacing={4}>
+//                     <Text
+//                       textTransform={"uppercase"}
+//                       fontWeight={500}
+//                       fontSize={{ base: "1vmin", md: "0.7vmax" }}
+//                       className="gradient"
+//                       p={0}
+//                       alignSelf={"flex-start"}
+//                       rounded={"md"}
+//                     >
+//                       <span role="img" aria-label="Yay, come join us!">
+//                         🎉
+//                       </span>{" "}
+//                       Join the party!{" "}
+//                       <span role="img" aria-label="Yay, come join us!">
+//                         🎉
+//                       </span>
+//                     </Text>
+//                     <Text as="h3">
+//                       <span>MetaFest2 needs YOU</span>
+//                       <span
+//                         className="gradient"
+//                         role="img"
+//                         aria-label="Pointing at the forms below"
+//                       >
+//                         👇
+//                       </span>
+//                     </Text>
+//                     <Text fontSize={"lg"}>
+//                       What is an event without the amazing folks like you!
+//                       People who want to help organise &amp; greet, tell us
+//                       about their projects, teach, sing, code...we'd love to see
+//                       you. Apply below.
+//                     </Text>
+//                     <Stack spacing={4} divider={<StackDivider />}>
+//                       <Feature
+//                         iconBg={"yellow.900"}
+//                         text={"Speaker"}
+//                         call={() => loadForm("speaker")}
+//                       />
+//                       <Feature
+//                         iconBg={"green.900"}
+//                         text={"Contributor"}
+//                         call={() => loadForm("contributor")}
+//                       />
+//                       <Feature
+//                         iconBg={"purple.900"}
+//                         text={"Performer"}
+//                         call={() => loadForm("performer")}
+//                       />
+//                       <Feature
+//                         iconBg={"purple.900"}
+//                         text={"Sponsor"}
+//                         call={() => loadForm("sponsor")}
+//                       />
+//                     </Stack>
+//                   </Stack>
+//                 </SimpleGrid>
+//               </Container>
+//               {/* <Container
+//                 maxW="5xl"
+//                 minH="85vh"
+//                 maxH="85vh"
+//                 overflowY="auto"
+//                 overflowX="clip"
+//                 borderRadius="md"
+//                 p={0}
+//               >
+//                 <Box
+//                   ref={appRef}
+//                   height="auto"
+//                   width="calc(100% + 15px)"
+//                   transition="opacity 1.2s 0.8s ease-in-out"
+//                   zIndex={2001}
+//                   overflowY="hidden"
+//                 >
+//                   {currentForm && (
+//                     currentForm()
+//                   )}
+//                 </Box>
+//               </Container>
+//             </Box>
+//           </DrawerBody>
+//         </DrawerContent>
+//       </Drawer> */}
+//     </>
+//   );
+// };
 
 export const ScheduleSection = () => {
   const ref = useRef(null);
@@ -949,7 +949,7 @@ export const ApplySection = () => {
                   </span>
                 </Text>
                 <Text fontSize={"lg"}>
-                  What is an event without the amazing folks like you! People
+                  What is an event without amazing folks like you! People
                   who want to help organise &amp; greet, tell us about their
                   projects, teach, sing, code...we'd love to see you. Apply
                   below.
