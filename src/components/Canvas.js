@@ -594,11 +594,11 @@ export const Canvas = () => {
 
       // Mouse move
       window.addEventListener("mousemove", (event) => {
-        cursor.x = event.clientX / sizes.width - 0.5;
-        cursor.y = event.clientY / sizes.height - 0.5;
+        cursor.x = event.clientX / sizes.width - 0.3;
+        cursor.y = -event.clientY / sizes.height - 0.3;
 
         mouse.x = (event.clientX / sizes.width) * 2 - 1;
-        mouse.y = -(event.clientY / sizes.height) * 2 + 1;
+        mouse.y = -(event.clientY / sizes.height) * 2 - 1;
       });
 
       /**
@@ -644,6 +644,8 @@ export const Canvas = () => {
 
         plane3.position.x = 1.5 - Math.sin(elapsedTime * 0.02) * Math.PI * 0.9;
         plane3.position.y = 1 - Math.cos(elapsedTime * 0.09) * Math.PI * 1;
+        // plane3.position.x = mouse.x / 2;
+        // plane3.position.y = mouse.y;
         plane3.position.z = 2 - Math.sin(elapsedTime * 0.1) * Math.PI * 0.9;
         plane3.rotation.z = -elapsedTime * 0.1;
 
