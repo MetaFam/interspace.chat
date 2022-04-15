@@ -30,7 +30,7 @@ export const SpeakersSection = () => {
               😱
             </span>
           </Text>
-          <Flex alignItems="flex-start" justifyContent="space-between" mt={5}>
+          <Flex alignItems="flex-start" justifyContent="space-between">
             <Box flex="0 0 48%" w="48%">
               <Text as="h3" className="gradient2">
                 Metaverse Week

@@ -150,7 +150,7 @@ export const ApplySection = () => {
             transition="all 0.3s 0.8s ease"
             transform={`translateY(${openSpeakerApplication ? 0 : "-70px"})`}
             onClick={() => setOpenSpeakerApplication(!openSpeakerApplication)}
-            zIndex={2002}
+            zIndex={2003}
           >
             Close form
           </Button>

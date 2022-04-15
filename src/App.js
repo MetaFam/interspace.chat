@@ -120,7 +120,7 @@ export const AlphaNotice = () => {
       backdropFilter="blur(7px)"
       boxShadow="0 0 15px rgba(0,0,0,0.6)"
       color="#FF61E6"
-      position="absolute"
+      position="fixed"
       bottom={0}
       left={0}
       right={0}

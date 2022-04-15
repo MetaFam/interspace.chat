@@ -24,11 +24,6 @@ export const ScheduleSection = () => {
       id="schedule"
       flexFlow="row nowrap"
       justifyContent="space-between"
-      sx={{
-        '.week': {
-          mb: 5
-        }
-      }}
     >
       {openCal && (
         <Button
@@ -91,7 +86,7 @@ export const ScheduleSection = () => {
               d="inline"
             /> */}
           </Text>
-          <Box mt={5}>
+          <Box>
             <Box className="week">
               <Text as="h3" className="gradient2">
                 <span>Metaverse Week</span>

@@ -29,7 +29,7 @@ export function SiteFooter() {
         // transform={{md: `translate3d(0, ${onScreen ? 0 : "70px"}, 0)`}}
         opacity={onScreen ? 1 : 0}
         transition="transform 0.3s 0.4s ease-in-out, opacity 0.6s 0.3s ease-in"
-        zIndex={2000}
+        zIndex={0}
         sx={{
           a: {
             color: "white",
