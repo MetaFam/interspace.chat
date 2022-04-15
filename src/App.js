@@ -115,7 +115,6 @@ export const AlphaNotice = () => {
   return (
     <Box
       ref={ref}
-      display="none"
       bg="linear-gradient(90.24deg, #640DFB80 0.3%, rgba(100, 13, 251, 0.1) 80.16%)"
       backdropFilter="blur(7px)"
       boxShadow="0 0 15px rgba(0,0,0,0.6)"
@@ -202,7 +201,6 @@ export const EasterEgg = () => {
     <>
       <Box
         ref={ref}
-        display="none"
         className="ee1"
         bg="rgba(0,0,0,0.3)"
         boxShadow="0 0 15px rgba(0,0,0,0.6)"
