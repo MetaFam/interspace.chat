@@ -128,7 +128,7 @@ export const AlphaNotice = () => {
       textAlign="center"
       height="auto"
       opacity={toggle ? 1 : 0}
-      // transform={`translateY(${toggle ? 0 : 100}px)`}
+      transform={`translateY(${toggle ? 0 : 100}px)`}
       transition="transform 0.3s 0.2s ease-in-out, opacity 0.3s 0.3s ease-in-out"
       zIndex={3000}
     >

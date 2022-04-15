@@ -8,7 +8,6 @@ import {
   useBreakpointValue
 } from "@chakra-ui/react";
 import { useOnScreen } from "../../utils/hooks";
-import { revealRight } from "../animations";
 
 
 export const HomeSection = () => {
@@ -30,7 +29,8 @@ export const HomeSection = () => {
         className="__content"
         maxW={{base: '100%', md: "2xl"}}
         opacity={onScreen ? 1 : 0}
-        transition="transform 0.3s 0.4s ease-in-out, opacity 0.6s 0.3s ease-in"
+        transform={`translate3d(${onScreen ? 0 : "-70px"}, 0, 0)`}
+        transition="transform 0.3s 0.4s ease-in-out, opacity 0.6s 0.5s ease-in"
 
       >
         <Box

@@ -39,9 +39,9 @@ export const ApplySection = () => {
         ref={ref}
         className="__content"
         width="100%"
-        // transform={`translate3d(${onScreen ? 0 : "70px"}, 0, 0)`}
+        transform={`translate3d(${onScreen ? 0 : "-70px"}, 0, 0)`}
         opacity={onScreen ? 1 : 0}
-        transition="transform 0.3s 0.8s ease-in-out, opacity 0.6s 0.9s ease-in"
+        transition="transform 0.3s 0.4s ease-in-out, opacity 0.6s 0.5s ease-in"
         willChange={true}
       >
         <Box className="__content__body" d={{base: 'unset', md: "flex"}} w="100%" flexFlow={{base: 'column wrap', md: "row nowrap"}} alignItems="center" justifyContent="space-between">
