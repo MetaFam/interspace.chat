@@ -23,13 +23,12 @@ const theme = extendTheme({
         fontWeight: 300,
         m: '0 auto',
         minH: "100vh",
-        overflowY: "auto",
+        // overflowY: "auto",
       },
       "body *": {
         // outline: "1px solid red",
       },
       '#root': {
-        height: '100%',
         width: '100%',
       },
       a: {
@@ -84,14 +83,16 @@ const theme = extendTheme({
         textShadow: "0 0 5px rgba(0, 0, 0, 0.6)",
       },
       section: {
+        outline: '1px solid green',
+        position: "relative",
         display: 'flex',
         alignItems: "center",
         height: '100vh',
-        minH: "100%",
-        width: "100%",
-        position: "relative",
-        paddingLeft: { base: 4, md: "10%" },
-        paddingRight: { base: 4, md: "10%" },
+        maxH: "100vh",
+        w: '100%',
+        m: 0,
+        py: 0,
+        px: {base: 4, lg: '10%'},
         zIndex: 2000,
       },
       ".__content__body": {
