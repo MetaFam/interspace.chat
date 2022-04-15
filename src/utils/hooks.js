@@ -28,7 +28,6 @@ export const useDisabledGeneralNotify = (type) => {
     status: "info",
     duration: 8000,
     isClosable: true,
-    variant: 'subtle',
   });
   return notice;
 };
@@ -39,7 +38,6 @@ export const useDisabledMobileNotify = (type) => {
     status: "info",
     duration: 8000,
     isClosable: true,
-    variant: 'subtle',
   });
   return notice;
 };

@@ -61,7 +61,7 @@ export const HomeSection = () => {
           </Text>
           <span className="fest-dates">9th - 23rd JUNE</span>
         </Box>
-        <Box className="__content__body">
+        <Box className="__content__body" maxW={{base: '66vw', lg: 'unset'}}>
           <Text as="p" fontWeight={300} mt={-2}>
             powered by{" "}
             <Text as="strong" className="gradient">
@@ -71,7 +71,7 @@ export const HomeSection = () => {
           <Text as="p" fontSize="1.5vmax" mt={{base: 3, md: 6}} fontWeight={500}>
             A virtual festival/conference/hackathon.
           </Text>
-          <Text as="p" >
+          <Text as="p" fontSize={{base: '3vmin', lg: 'inherit' }} >
             The goal? To help you{" "}
             <Text as="span" className="gradient">
               level up

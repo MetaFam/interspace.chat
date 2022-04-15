@@ -17,6 +17,7 @@ export const ScheduleSection = () => {
   const [openCal, setOpenCal] = useState(false);
   const disabledMobNotify = useDisabledMobileNotify();
 
+
   return (
     <Box
       as="section"
@@ -63,7 +64,7 @@ export const ScheduleSection = () => {
             icon={<CalendarIcon />}
             aria-label="Open event calendar"
             flex={0}
-            fontSize="2vmax"
+            fontSize={{base: '8vmin', lg: "2vmax"}}
             colorScheme="ghost"
             onClick={() => setOpenCal(!openCal)}
             alignSelf="center"

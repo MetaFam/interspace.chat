@@ -111,7 +111,6 @@ export default App;
 export const AlphaNotice = () => {
   const [toggle, setToggle] = useState(true);
   const ref = useRef(null);
-
   return (
     <Box
       ref={ref}
@@ -139,12 +138,12 @@ export const AlphaNotice = () => {
         justifyContent="space-around"
         flexFlow="row nowrap"
         mx="auto"
-        maxW={{base: '100%', md: '66%', '2xl': "6xl"}}
-        px={3}
+        maxW={{base: '75%', md: '66%', '2xl': "6xl"}}
+        px={{base: 5, lg: 3}}
         py={3}
       >
         {/* <Image src={BabyOctoGif} boxSize="25px" objectFit="cover" /> */}
-        <Text fontSize="0.7vmax" fontWeight={700}>
+        <Text fontSize={{base: "2vmin", lg: '0.7vmax'}} fontWeight={700}>
           The site is in{" "}
           <Text as="span" color="#76EBF2" fontWeight="700">
             Alpha
@@ -154,16 +153,17 @@ export const AlphaNotice = () => {
             👀
           </span>{" "}
           We're still working on content, there's no Web3 connectivity and there
-          are some bugs...especially on mobile. <br /> We're working to get it
+          are some bugs. <br /> We're working to get it
           all ship shape for June!
         </Text>
         {/* <Image src={BabyOctoGif} boxSize="35px" objectFit="cover" /> */}
         <IconButton
           onClick={() => setToggle(!toggle)}
           colorScheme="ghost"
+          color="#927CFF"
           pos="fixed"
           bottom={3}
-          right={6}
+          right={{base: 2, lg: 6}}
           size="sm"
           aria-label="Close easter egg"
           icon={<CloseIcon />}

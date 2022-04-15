@@ -20,7 +20,11 @@ export const MetaverseSection = () => {
   const [openFair, setOpenFair] = useState(false);
 
   return (
-    <Box as="section" id="metafest-verse" position="relative">
+    <Box
+      as="section"
+      id="metafest-verse"
+      justifyContent={{base: 'flex-end', lg: 'inherit'}}
+    >
       {openHQ && (
         <Button
           position="absolute"

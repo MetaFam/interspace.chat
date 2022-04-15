@@ -4,11 +4,15 @@ import {
   Flex,
   HStack,
   Link,
+  IconButton,
   Button,
   Image,
+  useBreakpoint,
   useDisclosure,
   Stack,
 } from "@chakra-ui/react";
+import { BiWalletAlt } from 'react-icons/bi'
+
 import { useDisabledGeneralNotify, useOnScreen } from "../utils/hooks";
 
 import MF2Logo from "../static/assets/img/mf2-logo.png";
@@ -55,8 +59,10 @@ export function SiteHeader() {
   const linkOnScreen = useOnScreen(linkRef)
   const disabledGenNotify = useDisabledGeneralNotify();
   const handleToggle = () => (isOpen ? onClose() : onOpen());
+  const screenSize = useBreakpoint()
+  console.log('s',screenSize);
 
-  const NavLink = ({ href, children }) => (
+  const NavLink = ({ href, children, offset }) => (
     <Link
       ref={linkRef}
       fontWeight={{ base: 500, lg: 700 }}
@@ -64,9 +70,9 @@ export function SiteHeader() {
       py={1}
       rounded={"md"}
       textShadow="0 0 10px rgba(0, 0, 0, 0.8)"
-      // opacity={isOpen ? 1 : 0}
-      // transform={`translate3d(${linkOnScreen ? 0 : -200}, 0, 0)`}
-      transition="all 0.2s 0.6s ease"
+      opacity={!linkOnScreen ? 1 : 0}
+      transform={`translate3d(${!linkOnScreen ? 0 : -200}, 0, 0)`}
+      transition={`all 0.2s ${0.6 + offset}s ease`}
       _hover={{
         textDecoration: "none",
         background: "linear-gradient(-90deg, #FF61E6 -29.22%, #7C56FF 107.53%)",
@@ -109,8 +115,8 @@ export function SiteHeader() {
           alignItems={"center"}
           justifyContent={"space-between"}
         >
-          <Box width={{ base: "25%", md: 'auto' }} sx={{
-            d: {base: 'inline-block', md: 'none'},
+          <Box width={{ base: "25%" }} h="2.5rem" overflow="visible" sx={{
+            d: {base: 'inline-flex', md: 'none'},
           }}>
             <Button
               onClick={handleToggle}
@@ -120,14 +126,14 @@ export function SiteHeader() {
                 position: "relative",
                 flexDirection: "column",
                 justifyContent: "space-around",
-                w: { base: "2.25rem", xl: "2.5rem" },
-                h: { base: "2.25rem", xl: "2.5rem" },
-                borderRadius: { base: "0.25rem", xl: "1rem", "4xl": "1.25rem" },
+                overflow: 'visible',
+                w: { base: "2.25rem" },
+                h: { base: "2.25rem" },
                 background: "transparent",
                 border: "none",
                 cursor: "pointer",
                 padding: 0,
-                marginRight: 0,
+                mx: 0,
                 zIndex: 2003,
                 "&:hover, &:focus,  &[data-hover]": {
                   outline: "none",
@@ -135,13 +141,9 @@ export function SiteHeader() {
                   boxShadow: "none",
                 },
                 div: {
-                  w: "full",
-                  h: "full",
-                  borderRadius: {
-                    base: "0.25rem",
-                    xl: "1rem",
-                    "4xl": "1.25rem",
-                  },
+                  w: "100%",
+                  h: "100%",
+                  p: 0,
                   transition: "all 0.3s linear",
                   position: "relative",
                   transformOrigin: "1px",
@@ -149,7 +151,7 @@ export function SiteHeader() {
                 "path, circle": {
                   fill: isOpen ? "transparent" : "transparent",
                   transition: "all 0.2s 0.2s ease",
-                  stroke: isOpen ? "pink" : "white",
+                  stroke: isOpen ? "#7C56FF" : "#927CFF",
                 },
                 ".top-line": {
                   transition: "all 0.6s ease",
@@ -192,24 +194,38 @@ export function SiteHeader() {
               spacing={4}
               display={{ base: "none", md: "flex" }}
             >
-              {Links.map((link) => (
+              {Links.map((link, i) => (
                 <NavLink key={`desktop-${link.name}`} href={link.href}>
                   {link.name}
                 </NavLink>
               ))}
             </HStack>
           </HStack>
-          <Flex alignItems="center" justifyContent="end" width={{base: "25%", md: 'auto'}}>
-            <Button
-              variant={"solid"}
-              colorScheme={"purple"}
-              boxShadow="0 0 10px rgba(0, 0, 0, 0.6)"
-              size="sm"
-              mr={0}
+          <Flex alignItems="center" justifyContent="end" width={{ base: "25%", md: 'auto' }}>
+            {screenSize !== 'base' ? (
+              <Button
+                variant={"solid"}
+                colorScheme={"purple"}
+                boxShadow="0 0 10px rgba(0, 0, 0, 0.6)"
+                size="sm"
+                mr={0}
+                onClick={disabledGenNotify}
+              >
+                Connect
+              </Button>
+            ) : (
+              <IconButton
+              icon={<BiWalletAlt />}
+              aria-label="Connect Web3 wallet"
+              flex={0}
+              fontSize={{base: '12vmin', lg: "2vmax"}}
+              colorScheme="ghost"
+              color="#927CFF"
               onClick={disabledGenNotify}
-            >
-              Connect
-            </Button>
+              alignSelf="center"
+              // filter="drop-shadow(0 0 15px #FF61E6)"
+            />
+            )}
           </Flex>
         </Flex>
 
@@ -253,13 +269,9 @@ export const MenuIcon2SVG = ({ toggle }) => (
   <Box>
     <Box
       as="svg"
-      w={{ base: "2.25rem", xl: "2.5rem", "4xl": "2.9rem" }}
-      position="absolute"
-      ml={0.5}
-      mt={0.5}
-      left={0}
-      bottom={0}
-      top={0}
+      w={{ base: "100%", xl: "2.5rem", "4xl": "2.9rem" }}
+      h="100%"
+      overflow="visible"
       transition="transform 0.5s ease"
       transform={toggle ? "rotate(-90deg)" : "rotate(0)"}
       preserveAspectRatio="xMidYMid meet"
@@ -267,15 +279,16 @@ export const MenuIcon2SVG = ({ toggle }) => (
     >
       <path
         d="M46.8937 23.64C46.8937 36.4827 36.4827 46.8937 23.64 46.8937C10.7973 46.8937 0.386262 36.4827 0.386262 23.64C0.386262 10.7973 10.7973 0.386262 23.64 0.386262C36.4827 0.386262 46.8937 10.7973 46.8937 23.64Z"
+        className="circle"
         stroke="white"
-        strokeOpacity={0.9}
-        strokeWidth={1}
+        strokeOpacity={1}
+        strokeWidth={4}
       />
       <path
         d="M32.6262 20.7609L13.8833 20.7612"
         className="top-line"
         stroke="white"
-        strokeWidth={1}
+        strokeWidth={4}
         strokeLinecap="round"
         strokeLinejoin="round"
       />
@@ -287,7 +300,7 @@ export const MenuIcon2SVG = ({ toggle }) => (
         }
         className="bottom-line"
         stroke="white"
-        strokeWidth={1}
+        strokeWidth={4}
         strokeLinecap="round"
         strokeLinejoin="round"
       />

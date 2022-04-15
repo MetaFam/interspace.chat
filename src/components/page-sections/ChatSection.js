@@ -1,14 +1,8 @@
 import React, { useRef, useState } from "react";
-import {
-  Box,
-  Button,
-  Link,
-  Text,
-} from "@chakra-ui/react";
+import { Box, Button, Link, Text } from "@chakra-ui/react";
 import { ExternalLinkIcon } from "@chakra-ui/icons";
 import ChatInstance from "../integrations/ChatInstance";
 import { useOnScreen } from "../../utils/hooks";
-
 
 export const ChatSection = () => {
   const ref = useRef(null);
@@ -24,7 +18,11 @@ export const ChatSection = () => {
   };
 
   return (
-    <Box as="section" id="chat" position="relative">
+    <Box
+      as="section"
+      id="chat"
+      justifyContent={{ base: "flex-end", lg: "inherit" }}
+    >
       {open && (
         <Button
           position="absolute"
@@ -48,7 +46,6 @@ export const ChatSection = () => {
         transform={`translate3d(${onScreen ? 0 : "-70px"}, 0, 0)`}
         opacity={onScreen ? 1 : 0}
         transition="transform 0.3s 0.4s ease-in-out, opacity 0.6s 0.5s ease-in"
-
       >
         <Box className="__content__body" textAlign="right" mt={6}>
           <Text as="h2">MetaFest Chat</Text>
