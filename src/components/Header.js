@@ -50,18 +50,23 @@ const Links = [
 export function SiteHeader() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const ref = useRef(null);
+  const linkRef = useRef(null);
   const onScreen = useOnScreen(ref);
+  const linkOnScreen = useOnScreen(linkRef)
   const disabledGenNotify = useDisabledGeneralNotify();
-
+  const handleToggle = () => (isOpen ? onClose() : onOpen());
 
   const NavLink = ({ href, children }) => (
     <Link
+      ref={linkRef}
       fontWeight={{ base: 500, lg: 700 }}
       px={2}
       py={1}
       rounded={"md"}
       textShadow="0 0 10px rgba(0, 0, 0, 0.8)"
-      transition="all 0.2s ease"
+      // opacity={isOpen ? 1 : 0}
+      // transform={`translate3d(${linkOnScreen ? 0 : -200}, 0, 0)`}
+      transition="all 0.2s 0.6s ease"
       _hover={{
         textDecoration: "none",
         background: "linear-gradient(-90deg, #FF61E6 -29.22%, #7C56FF 107.53%)",
@@ -69,6 +74,7 @@ export function SiteHeader() {
         WebkitTextFillColor: "transparent",
       }}
       href={href}
+      onClick={handleToggle}
       color="white"
     >
       {children}
@@ -86,7 +92,8 @@ export function SiteHeader() {
         top={0}
         px={4}
         w="100%"
-        h={"100px"}
+        maxW="100vw"
+        h={{base: '75px', md: "100px"}}
         // transform={`translate3d(0, ${onScreen ? 0 : "-70px"}, 0)`}
         opacity={onScreen ? 1 : 0}
         transition="transform 0.3s 1s ease-in-out, opacity 0.6s 0.8s ease-in"
@@ -98,7 +105,7 @@ export function SiteHeader() {
         }}
       >
         <Flex
-          h={"100px"}
+          h={{base: '75px', md: "100px"}}
           alignItems={"center"}
           justifyContent={"space-between"}
         >
@@ -106,7 +113,7 @@ export function SiteHeader() {
             d: {base: 'inline-block', md: 'none'},
           }}>
             <Button
-              onClick={isOpen ? onClose : onOpen}
+              onClick={handleToggle}
               sx={{
                 alignSelf: "center",
                 justifySelf: "right",
@@ -168,7 +175,7 @@ export function SiteHeader() {
               <Image
                 src={MF2Logo}
                 alt="MetaGame Logo"
-                boxSize={{ base: "80px", md: "100px" }}
+                boxSize={{ base: "65px", md: "95px" }}
                 objectFit="cover"
                 transform={{ md: "translateY(15px) translateX(10px)" }}
                 sx={{
@@ -192,7 +199,7 @@ export function SiteHeader() {
               ))}
             </HStack>
           </HStack>
-          <Flex alignItems="center" width={{base: "25%", md: 'auto'}}>
+          <Flex alignItems="center" justifyContent="end" width={{base: "25%", md: 'auto'}}>
             <Button
               variant={"solid"}
               colorScheme={"purple"}
@@ -206,7 +213,7 @@ export function SiteHeader() {
           </Flex>
         </Flex>
 
-        {isOpen ? (
+        {/* {isOpen ? ( */}
           <Box
             display={{ base: "flex", md: "none" }}
             position="fixed"
@@ -219,8 +226,13 @@ export function SiteHeader() {
             justifyContent="center"
             p={5}
             pt="100px"
-            bg="linear-gradient(0deg, rgba(41,2,80,0.04) 0%, rgba(25,0,50,0.1) 40%)"
+            bg="linear-gradient(0deg, rgba(41,2,80,0.1) 0%, rgba(25,0,50,0.5) 40%)"
             backdropFilter="blur(7px)"
+          transition="transform 0.3s 0.1s ease, opacity 0.3s 0.2s"
+          boxShadow="0 0 15px #00000070"
+          willChange="transform"
+          opacity={isOpen ? 1 : 0}
+            transform={`translate3d(0, ${isOpen ? 0 : '-100vh'}, 0)`}
             zIndex={-1}
           >
             <Stack as={"nav"} spacing={4} height="auto">
@@ -231,7 +243,7 @@ export function SiteHeader() {
               ))}
             </Stack>
           </Box>
-        ) : null}
+        {/* ) : null} */}
       </Box>
     </>
   );

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import * as THREE from "three";
 // import { useFrame, useThree } from "@react-three/fiber";
 import gsap from "gsap";
-
+import * as dat from "lil-gui";
 import {
   galaxyColors,
   generateGalaxy,
@@ -33,11 +33,14 @@ export const Canvas = () => {
       const sectionSix = new THREE.Group();
       const sectionSeven = new THREE.Group();
 
-
       const nomadModel = new THREE.Group();
       scene.add(nomadModel);
 
-      console.log(NomadModel);
+
+      /**
+       * Debug
+       */
+      // const gui = new dat.GUI();
 
       /**
        * Colors
@@ -61,6 +64,10 @@ export const Canvas = () => {
 
       const planeColorTexture = textureLoader.load(SeedLogo);
       const planeAlphaTexture = textureLoader.load(SeedLogo);
+      planeAlphaTexture.minFilter = THREE.NearestFilter;
+      planeAlphaTexture.magFilter = THREE.NearestFilter;
+      planeAlphaTexture.generateMipmaps = true;
+
       /**
        * Models
        */
@@ -84,13 +91,15 @@ export const Canvas = () => {
       });
 
       const planeGeometry = new THREE.PlaneGeometry(1, 1, 1);
-      const planeMaterial = new THREE.PointsMaterial();
-      planeMaterial.transparent = true;
-      planeMaterial.map = planeColorTexture;
-      planeMaterial.alphaMap = planeAlphaTexture;
+      const planeMaterial = new THREE.PointsMaterial({
+        map: planeColorTexture,
+        alphaMap: planeAlphaTexture,
+        sizeAttenuation: true,
+        transparent: true,
+      });
 
       const plane1 = new THREE.Mesh(babyOctoGeometry, babyOctoMaterial);
-      const plane2 = new THREE.Mesh(planeGeometry, planeMaterial);
+      // const plane2 = new THREE.Mesh(planeGeometry, planeMaterial);
       const plane3 = new THREE.Mesh(babyOctoGeometry, babyOctoMaterial);
 
       plane1.geometry.center();
@@ -111,7 +120,7 @@ export const Canvas = () => {
       const galaxy3 = generateGalaxy(galaxy3Params);
       const galaxy4 = generateGalaxy(galaxy4Params);
 
-      galaxy1.position.x = 6;
+        galaxy1.position.x = 6;
       galaxy1.position.y = 0;
       galaxy1.position.z = -13;
 
@@ -156,10 +165,24 @@ export const Canvas = () => {
       sectionSeven.position.x = 0;
       sectionSeven.position.y = -objectsDistance * 6;
 
-      scene.add(sectionOne, sectionTwo, sectionThree, sectionFour, sectionFive, sectionSix,
-        sectionSeven);
-      const sections = [sectionOne, sectionTwo, sectionThree, sectionFour, sectionFive, sectionSix,
-        sectionSeven]
+      scene.add(
+        sectionOne,
+        sectionTwo,
+        sectionThree,
+        sectionFour,
+        sectionFive,
+        sectionSix,
+        sectionSeven
+      );
+      const sections = [
+        sectionOne,
+        sectionTwo,
+        sectionThree,
+        sectionFour,
+        sectionFive,
+        sectionSix,
+        sectionSeven,
+      ];
       const galaxies = [galaxy1, galaxy2, galaxy3];
       // scene.add(planet1Group)
       galaxy1.geometry.center();
@@ -197,9 +220,9 @@ export const Canvas = () => {
 
       // Material
       const particlesMaterial = new THREE.PointsMaterial({
-        map: particleTexture,
-        alphaMap: particleTexture,
-        color: parameters.particleColor,
+        map: planeColorTexture,
+        alphaMap: planeAlphaTexture,
+        // color: parameters.particleColor,
         transparent: true,
         sizeAttenuation: true,
         size: 0.03,
@@ -278,8 +301,24 @@ export const Canvas = () => {
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
       /**
-       * Scroll
+       * Raycaster
        */
+      const raycaster = new THREE.Raycaster();
+      let currentIntersect = null;
+
+      /**
+       * Cursor / Mouse
+       */
+      const cursor = {};
+      cursor.x = 0;
+      cursor.y = 0;
+      const mouse = new THREE.Vector2();
+
+      /**
+       * Events
+       */
+
+      // Scroll
       let scrollY = window.scrollY;
       let currentSection = 0;
 
@@ -506,21 +545,20 @@ export const Canvas = () => {
               });
               break;
 
-              case 6:
-                gsap.to(cameraGroup.rotation, {
-                  duration: 1.5,
-                  ease: "power2.inOut",
-                  y: "0.0",
-                  x: "0",
-                  z: "0",
-                });
-                // gsap.to(cameraGroup.position, {
-                //   duration: 1.5,
-                //   ease: "power2.inOut",
-                //   z: -2,
-                // });
+            case 6:
+              gsap.to(cameraGroup.rotation, {
+                duration: 1.5,
+                ease: "power2.inOut",
+                y: "0.0",
+                x: "0",
+                z: "0",
+              });
+              // gsap.to(cameraGroup.position, {
+              //   duration: 1.5,
+              //   ease: "power2.inOut",
+              //   z: -2,
+              // });
               break;
-
 
             default:
               gsap.to(cameraGroup.rotation, {
@@ -561,33 +599,14 @@ export const Canvas = () => {
         }
       });
 
-      /**
-       * Raycaster
-       */
-      const raycaster = new THREE.Raycaster();
-      let currentIntersect = null;
-
-      /**
-       * Cursor / Mouse
-       */
-      const cursor = {};
-      cursor.x = 0;
-      cursor.y = 0;
-      const mouse = new THREE.Vector2();
-
-      /**
-       * Events
-       */
-
       //Click events
       window.addEventListener("click", () => {
-        console.log("click click");
+        console.log(easterEgg1[0].classList);
         if (currentIntersect) {
+          console.log("i", currentIntersect);
           if (currentIntersect.object === plane1) {
             easterEgg1[0].classList.toggle("found");
             console.log(easterEgg1);
-          } else if (currentIntersect.object === plane2) {
-            console.log("2 clicked");
           }
         }
       });
@@ -657,13 +676,7 @@ export const Canvas = () => {
 
         const objectsToTest = [plane1];
         const intersects = raycaster.intersectObjects(objectsToTest);
-        // console.log(intersects);
-
-        // for (const object of objectsToTest) {
-        // }
-        // for (const intersect of intersects) {
-        // }
-
+        // console.log(intersects.length);
         if (intersects.length) {
           console.log("Something is being hovered");
           if (currentIntersect === null) {
@@ -678,6 +691,8 @@ export const Canvas = () => {
           }
           currentIntersect = null;
         }
+
+
         // Update animations mixer
         if (mixer) {
           mixer.update(deltaTime);
