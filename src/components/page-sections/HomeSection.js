@@ -8,25 +8,27 @@ import {
   useBreakpointValue
 } from "@chakra-ui/react";
 import { useOnScreen } from "../../utils/hooks";
+import { revealRight } from "../animations";
+
 
 export const HomeSection = () => {
   const ref = useRef(null);
   const onScreen = useOnScreen(ref);
   const buttonSize = useBreakpointValue({ base: 'sm', md: 'lg' })
+
+
   return (
     <Box
       as="section"
       id="home"
       alignContent="center"
       justifyContent="flex-start"
-      w="100vw"
     >
       <Box
         ref={ref}
         position="relative"
         className="__content"
         maxW={{base: '100%', md: "2xl"}}
-        transform={`translate3d(${onScreen ? 0 : "-70px"}, 0, 0)`}
         opacity={onScreen ? 1 : 0}
         transition="transform 0.3s 0.4s ease-in-out, opacity 0.6s 0.5s ease-in"
         willChange="transform"

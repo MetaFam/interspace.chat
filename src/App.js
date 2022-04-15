@@ -7,6 +7,7 @@ import {
   Container,
   IconButton,
   Image,
+  keyframes,
   Link,
   Text,
   useBreakpointValue,
@@ -51,32 +52,31 @@ function App() {
   // const [toggleAnim, setToggleAnim] = useState(false)
 
   return (
-    <Box
+    <div
       className="App"
-      position="relative"
-      width="100vw"
-      maxW="100%"
-      overflowX="hidden"
     >
-      <RootContextProvider>
         <HeadComponent url={host} img={`${host}${SocialImg}`} />
         <SiteHeader />
         <Box
           sx={{
             scrollSnapType: { base: "y proximity", md: "unset" },
+            d: 'block',
             position: "relative",
-            width: '100vw',
-            zIndex: "1",
-            mt: 0,
-            // section: {
-            //   scrollSnapAlign: { base: "start", md: "unset" },
-            //   scrollSnapStop: { base: "smooth", md: "unset" },
-            // },
+            width: '100%',
+            // maxW: '100vw',
+            overflowX: "hidden",
+            zIndex: 2,
+            m: 0,
+            p: 0,
+            section: {
+              scrollSnapAlign: { base: "start" },
+              scrollSnapStop: { base: "smooth" },
+            },
           }}
         >
-          <Suspense fallback={<Loader />}>
+          {/* <Suspense fallback={<Loader />}> */}
             <Canvas />
-          </Suspense>
+          {/* </Suspense> */}
           <HomeSection />
           <ScheduleSection />
           <WorkshopsSection />
@@ -85,7 +85,7 @@ function App() {
           <ChatSection />
           <ApplySection />
           <EasterEgg />
-          <AlphaNotice />
+          {/* <AlphaNotice /> */}
           {/* TODO: Need to figure out how to stop the animations, in gsap & three's `tick()` */}
           {/* <Button
           position="fixed"
@@ -99,10 +99,9 @@ function App() {
           Turn off animations
         </Button> */}
 
-        </Box>
           <SiteFooter />
-      </RootContextProvider>
-    </Box>
+        </Box>
+    </div>
   );
 }
 
@@ -115,11 +114,12 @@ export const AlphaNotice = () => {
   return (
     <Box
       ref={ref}
+      // display="none"
       bg="linear-gradient(90.24deg, #640DFB80 0.3%, rgba(100, 13, 251, 0.1) 80.16%)"
       backdropFilter="blur(7px)"
       boxShadow="0 0 15px rgba(0,0,0,0.6)"
       color="#FF61E6"
-      position="fixed"
+      position="absolute"
       bottom={0}
       left={0}
       right={0}
@@ -127,9 +127,9 @@ export const AlphaNotice = () => {
       textAlign="center"
       height="auto"
       opacity={toggle ? 1 : 0}
-      transform={`translateY(${toggle ? 0 : 100}px)`}
+      // transform={`translateY(${toggle ? 0 : 100}px)`}
       transition="transform 0.3s 0.2s ease-in-out, opacity 0.3s 0.3s ease-in-out"
-      zIndex={2002}
+      zIndex={3000}
     >
       <Box
         d="flex"
@@ -214,7 +214,7 @@ export const EasterEgg = () => {
         textAlign="center"
         height={{base: '150px', md: "auto"}}
         opacity={0}
-        transform="translateY(100px)"
+        // transform="translateY(100px)"
         transition="transform 0.3s 0.2s ease-in-out, opacity 0.3s 0.3s ease-in-out"
         zIndex={0}
         overflowX="clip"

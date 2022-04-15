@@ -24,12 +24,12 @@ export function SiteFooter() {
         bottom={0}
         left={0}
         px={4}
-        w="100%"
+        w="100vw"
         h={{base: '60px', md: "100px"}}
-        transform={{md: `translate3d(0, ${onScreen ? 0 : "70px"}, 0)`}}
+        // transform={{md: `translate3d(0, ${onScreen ? 0 : "70px"}, 0)`}}
         opacity={onScreen ? 1 : 0}
         transition="transform 0.3s 0.4s ease-in-out, opacity 0.6s 0.5s ease-in"
-        zIndex={1000}
+        zIndex={2000}
         sx={{
           a: {
             color: "white",
@@ -42,9 +42,6 @@ export function SiteFooter() {
           position="absolute"
           bottom={0}
           left={{base: "calc(50% - 45px)", md: "calc(50% - 75px)"}}
-          sx={{
-            // filter: "drop-shadow(0 0 15px #FF61E697)",
-          }}
         />
         <Flex h={"100px"} alignItems={"center"} justifyContent={"center"}>
           <Box className="gradient2">

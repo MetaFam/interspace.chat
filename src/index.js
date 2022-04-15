@@ -21,16 +21,18 @@ const theme = extendTheme({
         fontFamily: '"Exo 2", sans-serif',
         fontSize: "16px",
         fontWeight: 300,
+        p: 0,
         m: '0 auto',
         minH: "100vh",
+        width: '100%'
         // overflowY: "auto",
       },
-      "body *": {
-        // outline: "1px solid red",
-      },
-      '#root': {
-        width: '100%',
-      },
+      // "body *": {
+      //   outline: "1px solid red",
+      // },
+      // '#root': {
+      //   width: '100%',
+      // },
       a: {
         color: "#FF61E6",
         textDecoration: "none",
@@ -66,6 +68,7 @@ const theme = extendTheme({
       h3: {
         fontSize: { base: "4vmin", md: "1.5vmax" },
         fontWeight: 500,
+        mt: 5,
         "& + p": {
           fontSize: { base: "2.8vmin", md: "1vmax" },
           lineHeight: { base: "1.2", md: "inherit" },
@@ -83,13 +86,13 @@ const theme = extendTheme({
         textShadow: "0 0 5px rgba(0, 0, 0, 0.6)",
       },
       section: {
-        outline: '1px solid green',
         position: "relative",
         display: 'flex',
+        // display: 'none',
         alignItems: "center",
         height: '100vh',
-        maxH: "100vh",
-        w: '100%',
+        maxH: "100%",
+        w: '100vw',
         m: 0,
         py: 0,
         px: {base: 4, lg: '10%'},

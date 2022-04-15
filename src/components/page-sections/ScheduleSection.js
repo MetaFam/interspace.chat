@@ -5,6 +5,7 @@ import {
   IconButton,
   Link,
   Text,
+  useBreakpointValue,
 } from "@chakra-ui/react";
 import { CalendarIcon, ExternalLinkIcon } from "@chakra-ui/icons";
 import CalendarInstance from "../integrations/CalendarInstance";
@@ -143,9 +144,8 @@ export const ScheduleSection = () => {
               <Button
                 d={{ md: "none" }}
                 colorScheme="pink"
-                size="sm"
+                size={"sm"}
                 mt={5}
-                // isDisabled
                 onClick={disabledMobNotify}
               >
                 <span role="img" aria-label="Yay, come join us!">

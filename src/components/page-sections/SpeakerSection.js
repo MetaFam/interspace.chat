@@ -17,7 +17,7 @@ export const SpeakersSection = () => {
       <Box
         ref={ref}
         className="__content"
-        transform={`translate3d(${onScreen ? 0 : "-70px"}, 0, 0)`}
+        // transform={`translate3d(${onScreen ? 0 : "-70px"}, 0, 0)`}
         opacity={onScreen ? 1 : 0}
         transition="transform 0.3s 0.4s ease-in-out, opacity 0.6s 0.5s ease-in"
         width="100%"
