@@ -10,7 +10,7 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "orientation": "landscape",
+  "orientation": "portrait",
   "theme_color": "rgba(25,0,50,1)",
   "background_color": "rgba(25,0,50,1)"
 }

@@ -23,6 +23,10 @@ export const galaxy3Colors = {
     inside: '#76EBF2',
     outside: '#7C56FF'
 }
+export const galaxy4Colors = {
+    inside: '#462080',
+    outside: '#7C56FF'
+}
 /**
  * Galaxy
  */
@@ -63,6 +67,19 @@ export const galaxy3Params = {
     insideColor: galaxy3Colors.inside,
     outsideColor: galaxy3Colors.outside,
     type: 3
+}
+
+export const galaxy4Params = {
+    count: 100000,
+    size: 0.005,
+    radius: 1,
+    branches: 8,
+    spin: 5,
+    randomness: 4,
+    randomnessPower: 20,
+    insideColor: galaxy4Colors.inside,
+    outsideColor: galaxy4Colors.outside,
+    type: 4
 }
 
 let geometry = null
@@ -160,6 +177,33 @@ export const generateGalaxy = (params) => {
 
             const mixedColor = colorInside.clone()
             mixedColor.lerp(colorOutside, radius / params.radius * 1.05)
+
+            colors[i3 + 0] = mixedColor.r
+            colors[i3 + 1] = mixedColor.g
+            colors[i3 + 2] = mixedColor.b
+
+
+            if (i < 20) {
+                console.log(i, branchAngle)
+            }
+        }
+    } else if (params.type === 4) {
+        for (let i = 0; i < params.count; i++) {
+            const i3 = i * 3
+            const radius = Math.random() * params.radius
+            const spinAngle = radius * params.spin
+            const branchAngle = (i % params.branches) / params.branches * Math.PI * 2
+
+            const randomX = Math.pow(Math.random(), params.randomnessPower) * (Math.random() < 0.5 ? 1 : -1)
+            const randomY = Math.pow(Math.random(), params.randomnessPower) * (Math.random() < 0.5 ? 1 : -1)
+            const randomZ = Math.pow(Math.random(), params.randomnessPower) * (Math.random() < 0.5 ? 1 : -1)
+
+            positions[i3 + 0] = Math.cos(branchAngle + spinAngle)  * radius + randomX
+            positions[i3 + 1] = Math.sin(branchAngle - spinAngle) * radius + randomY
+            positions[i3 + 2] = Math.sin(branchAngle + spinAngle) * radius + randomZ
+
+            const mixedColor = colorInside.clone()
+            mixedColor.lerp(colorOutside, radius / params.radius * 1.5)
 
             colors[i3 + 0] = mixedColor.r
             colors[i3 + 1] = mixedColor.g
