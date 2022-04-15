@@ -16,7 +16,6 @@ export function SiteFooter() {
   const onScreen = useOnScreen(ref);
 
   return (
-    <>
       <Box
         ref={ref}
         as="footer"
@@ -26,8 +25,8 @@ export function SiteFooter() {
         left={0}
         px={4}
         w="100%"
-        h={"100px"}
-        transform={`translate3d(0, ${onScreen ? 0 : "70px"}, 0)`}
+        h={{base: '60px', md: "100px"}}
+        transform={{md: `translate3d(0, ${onScreen ? 0 : "70px"}, 0)`}}
         opacity={onScreen ? 1 : 0}
         transition="transform 0.3s 0.4s ease-in-out, opacity 0.6s 0.5s ease-in"
         zIndex={1000}
@@ -53,7 +52,6 @@ export function SiteFooter() {
           </Box>
         </Flex>
       </Box>
-    </>
   );
 }
 

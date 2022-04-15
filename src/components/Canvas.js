@@ -2,9 +2,9 @@ import React, { useEffect } from "react";
 import * as THREE from "three";
 // import { useFrame, useThree } from "@react-three/fiber";
 import gsap from "gsap";
-import * as dat from "lil-gui";
+// import * as dat from "lil-gui";
 import {
-  galaxyColors,
+  // galaxyColors,
   generateGalaxy,
   galaxy1Params,
   galaxy2Params,
@@ -12,7 +12,7 @@ import {
   galaxy4Params,
 } from "./galaxies";
 // import { OctoA } from './models/Octopus'
-import NomadModel from "./models/CarbonNomad";
+// import NomadModel from "./models/CarbonNomad";
 import SeedLogo from "../img/assets/textures/particles/seed_logo.png";
 import BabyOctoImg from "../static/assets/textures/baby_octo_alpha_0001.png";
 import BabyOctoAlpha from "../static/assets/textures/baby_octo_alpha_map.png";
@@ -80,7 +80,7 @@ export const Canvas = () => {
        */
       const objectsDistance = 4;
 
-      const particleTexture = textureLoader.load(SeedLogo);
+      // const particleTexture = textureLoader.load(SeedLogo);
 
       const babyOctoGeometry = new THREE.PlaneGeometry(1, 1, 1);
       const babyOctoMaterial = new THREE.MeshBasicMaterial({
@@ -90,13 +90,13 @@ export const Canvas = () => {
         transparent: true,
       });
 
-      const planeGeometry = new THREE.PlaneGeometry(1, 1, 1);
-      const planeMaterial = new THREE.PointsMaterial({
-        map: planeColorTexture,
-        alphaMap: planeAlphaTexture,
-        sizeAttenuation: true,
-        transparent: true,
-      });
+      // const planeGeometry = new THREE.PlaneGeometry(1, 1, 1);
+      // const planeMaterial = new THREE.PointsMaterial({
+      //   map: planeColorTexture,
+      //   alphaMap: planeAlphaTexture,
+      //   sizeAttenuation: true,
+      //   transparent: true,
+      // });
 
       const plane1 = new THREE.Mesh(babyOctoGeometry, babyOctoMaterial);
       // const plane2 = new THREE.Mesh(planeGeometry, planeMaterial);
@@ -183,7 +183,7 @@ export const Canvas = () => {
         sectionSix,
         sectionSeven,
       ];
-      const galaxies = [galaxy1, galaxy2, galaxy3];
+      // const galaxies = [galaxy1, galaxy2, galaxy3];
       // scene.add(planet1Group)
       galaxy1.geometry.center();
       galaxy2.geometry.center();
@@ -196,10 +196,10 @@ export const Canvas = () => {
       /**
        * Particles
        */
-      const parameters = {
-        materialColor: galaxyColors.inside,
-        particleColor: "#fff",
-      };
+      // const parameters = {
+      //   materialColor: galaxyColors.inside,
+      //   particleColor: "#fff",
+      // };
       const particlesCount = 35000;
       const positions = new Float32Array(particlesCount * 3);
 

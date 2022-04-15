@@ -58,7 +58,7 @@ export const MetaverseSection = () => {
       <Box
         ref={ref}
         className="__content"
-        maxW="2xl"
+        maxW={{base: '100%', md: "2xl"}}
         transform={`translate3d(${onScreen ? 0 : "-70px"}, 0, 0)`}
         opacity={onScreen ? 1 : 0}
         transition="transform 0.3s 0.4s ease-in-out, opacity 0.6s 0.5s ease-in"
@@ -67,7 +67,7 @@ export const MetaverseSection = () => {
       >
         <Box className="__content__body--no-firstof" textAlign="right" mt={6}>
           <Text as="h2">MetaFest-a-verse</Text>
-          <Text as="p" className="gradient">
+          <Text className="gradient">
             The MetaFest Booth: MetaFam's HQ in the Metaverse.
           </Text>
           <Text>
@@ -77,9 +77,9 @@ export const MetaverseSection = () => {
           <Button colorScheme="ghost" onClick={() => setOpenHQ(!openHQ)}>
             Open the booth
           </Button>
-          <Text as="p">
+          <Text>
             <span className="gradient">
-              Web3 JobFair: Seeking for honor and glory in the most meaningful
+              Web3 JobFair: Seeking honor and glory in the most meaningful
               web3 orgs?
             </span>
           </Text>
@@ -97,7 +97,7 @@ export const MetaverseSection = () => {
           left={0}
           height="75vh"
           minH="75vh"
-          minW="100vw"
+          width="100vw"
           boxShadow="0 0 30px rgba(0,0,0,0.8)"
           opacity={onScreen ? 1 : 0}
           transition="opacity 1.2s 0.8s ease-in-out"
@@ -146,7 +146,7 @@ export const MetaverseSection = () => {
           left={0}
           height="75vh"
           minH="75vh"
-          minW="100vw"
+          width="100vw"
           boxShadow="0 0 30px rgba(0,0,0,0.8)"
           opacity={onScreen ? 1 : 0}
           transition="opacity 1.2s 0.8s ease-in-out"

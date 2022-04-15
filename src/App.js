@@ -9,6 +9,7 @@ import {
   Image,
   Link,
   Text,
+  useBreakpointValue,
 } from "@chakra-ui/react";
 import { CloseIcon, ExternalLinkIcon } from "@chakra-ui/icons";
 import { Canvas } from "./components/Canvas";
@@ -52,6 +53,10 @@ function App() {
   return (
     <Box
       className="App"
+      position="relative"
+      width="100vw"
+      maxW="100%"
+      overflowX="hidden"
     >
       <RootContextProvider>
         <HeadComponent url={host} img={`${host}${SocialImg}`} />
@@ -60,11 +65,13 @@ function App() {
           sx={{
             scrollSnapType: { base: "y proximity", md: "unset" },
             position: "relative",
+            width: '100vw',
             zIndex: "1",
-            section: {
-              scrollSnapAlign: { base: "center", md: "unset" },
-              scrollSnapStop: { base: "smooth", md: "unset" },
-            },
+            mt: 0,
+            // section: {
+            //   scrollSnapAlign: { base: "start", md: "unset" },
+            //   scrollSnapStop: { base: "smooth", md: "unset" },
+            // },
           }}
         >
           <Suspense fallback={<Loader />}>
@@ -88,12 +95,12 @@ function App() {
           transition="all 0.3s 0.8s ease"
           onClick={setToggleAnim}
           zIndex={2002}
-        >
+          >
           Turn off animations
         </Button> */}
 
-          <SiteFooter />
         </Box>
+          <SiteFooter />
       </RootContextProvider>
     </Box>
   );
@@ -108,6 +115,7 @@ export const AlphaNotice = () => {
   return (
     <Box
       ref={ref}
+      display="none"
       bg="linear-gradient(90.24deg, #640DFB80 0.3%, rgba(100, 13, 251, 0.1) 80.16%)"
       backdropFilter="blur(7px)"
       boxShadow="0 0 15px rgba(0,0,0,0.6)"
@@ -131,11 +139,11 @@ export const AlphaNotice = () => {
         justifyContent="space-around"
         flexFlow="row nowrap"
         mx="auto"
-        maxW="6xl"
+        maxW={{base: '100%', md: '66%', '2xl': "6xl"}}
         px={3}
         py={3}
       >
-        <Image src={BabyOctoGif} boxSize="35px" objectFit="cover" />
+        {/* <Image src={BabyOctoGif} boxSize="25px" objectFit="cover" /> */}
         <Text fontSize="0.7vmax" fontWeight={700}>
           The site is in{" "}
           <Text as="span" color="#76EBF2" fontWeight="700">
@@ -149,7 +157,7 @@ export const AlphaNotice = () => {
           are some bugs...especially on mobile. <br /> We're working to get it
           all ship shape for June!
         </Text>
-        <Image src={BabyOctoGif} boxSize="35px" objectFit="cover" />
+        {/* <Image src={BabyOctoGif} boxSize="35px" objectFit="cover" /> */}
         <IconButton
           onClick={() => setToggle(!toggle)}
           colorScheme="ghost"
@@ -175,6 +183,7 @@ export const EasterEgg = () => {
   const [openClaim, setOpenClaim] = useState(false);
   const ref = useRef(null);
   const claimRef = useRef(null);
+  const responsiveButtonSize = useBreakpointValue({base: 'sm', lg: 'md'})
   const handleToggle = () => {
     if (typeof window !== "undefined") {
       setToggle(!toggle);
@@ -193,6 +202,7 @@ export const EasterEgg = () => {
     <>
       <Box
         ref={ref}
+        display="none"
         className="ee1"
         bg="rgba(0,0,0,0.3)"
         boxShadow="0 0 15px rgba(0,0,0,0.6)"
@@ -202,14 +212,14 @@ export const EasterEgg = () => {
         bottom={0}
         left={0}
         right={0}
-        width="100%"
+        maxW="100vw"
         textAlign="center"
-        height="auto"
+        height={{base: '150px', md: "auto"}}
         opacity={0}
         transform="translateY(100px)"
         transition="transform 0.3s 0.2s ease-in-out, opacity 0.3s 0.3s ease-in-out"
         zIndex={0}
-        // onClick={(event) => handleToggle(event)}
+        overflowX="clip"
         sx={{
           h4: {
             fontSize: "2vmax",
@@ -245,10 +255,10 @@ export const EasterEgg = () => {
           justifyContent="space-around"
           flexFlow="row nowrap"
           mx="auto"
-          maxW="5xl"
+          maxW={{base: '100%', md: "5xl"}}
           py={3}
         >
-          <Image src={BabyOctoGif} boxSize="100px" objectFit="cover" />
+          <Image src={BabyOctoGif} boxSize={{base: '35px', xl:"100px"}} objectFit="cover" />
           <Box flex={1}>
             <Text as="h4">
               <span role="img" aria-label="Octo emoji">
@@ -259,8 +269,8 @@ export const EasterEgg = () => {
                 🐙
               </span>
             </Text>
-            <Text as="p" fontSize="1vmax" fontWeight={500}>
-              Welcome curious one!{" "}
+            <Text as="p" fontWeight={500}>
+              Welcome Anon!{" "}
               <span role="img" aria-label="Cheers/Clinking glasses emoji">
                 🍻
               </span>
@@ -276,6 +286,7 @@ export const EasterEgg = () => {
             <Button
               href="#"
               colorScheme="pink"
+              size={responsiveButtonSize}
               mt={5}
               onClick={() => setOpenClaim(!openClaim)}
             >
@@ -283,13 +294,13 @@ export const EasterEgg = () => {
             </Button>
           </Box>
 
-          <Image src={BabyOctoGif} boxSize="100px" objectFit="cover" />
+          <Image src={BabyOctoGif} boxSize={{base: '35px', xl:"100px"}} objectFit="cover" />
           <IconButton
             onClick={handleToggle}
             colorScheme="ghost"
             pos="absolute"
             top={3}
-            right={-10}
+            right={0}
             size="sm"
             aria-label="Close easter egg"
             icon={<CloseIcon />}
@@ -305,7 +316,7 @@ export const EasterEgg = () => {
           left={0}
           height="75vh"
           minH="75vh"
-          minW="100vw"
+          width="100vw"
           boxShadow="0 0 30px rgba(0,0,0,0.8)"
           // opacity={onScreen ? 1 : 0}
           transition="opacity 1.2s 0.8s ease-in-out"
@@ -315,7 +326,7 @@ export const EasterEgg = () => {
             backdropFilter: "blur(7px)",
           }}
         >
-          <Container maxW="2xl" height="100%" py={12} align="center">
+          <Container maxW={{base: '100%', md: "2xl"}} height="100%" py={12} align="center">
             <MinterInstance />
           </Container>
           <Box

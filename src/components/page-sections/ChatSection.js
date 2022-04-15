@@ -48,7 +48,7 @@ export const ChatSection = () => {
         transform={`translate3d(${onScreen ? 0 : "-70px"}, 0, 0)`}
         opacity={onScreen ? 1 : 0}
         transition="transform 0.3s 0.8s ease-in-out, opacity 0.6s 0.9s ease-in"
-        willChange={true}
+
       >
         <Box className="__content__body" textAlign="right" mt={6}>
           <Text as="h2">MetaFest Chat</Text>
@@ -70,7 +70,7 @@ export const ChatSection = () => {
           left={0}
           height="75vh"
           minH="75vh"
-          minW="100vw"
+          width="100vw"
           boxShadow="0 0 30px rgba(0,0,0,0.8)"
           opacity={onScreen ? 1 : 0}
           transition="opacity 1.2s 0.8s ease-in-out"

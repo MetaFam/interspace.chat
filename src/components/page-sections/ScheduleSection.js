@@ -3,14 +3,12 @@ import {
   Box,
   Button,
   IconButton,
-  Image,
   Link,
   Text,
 } from "@chakra-ui/react";
 import { CalendarIcon, ExternalLinkIcon } from "@chakra-ui/icons";
 import CalendarInstance from "../integrations/CalendarInstance";
 import { useDisabledMobileNotify, useOnScreen } from "../../utils/hooks";
-import MindBlownImg from "../../static/assets/img/mindblown.gif";
 
 
 export const ScheduleSection = () => {
@@ -86,12 +84,12 @@ export const ScheduleSection = () => {
             <Text as="span" className="gradient2">
               ...it's gonna blow your mind!
             </Text>
-            <Image
+            {/* <Image
               src={MindBlownImg}
               boxSize="20px"
               objectFit="cover"
-              d="inline-block"
-            />
+              d="inline"
+            /> */}
           </Text>
           <Box mt={5}>
             <Box className="week">
@@ -170,7 +168,7 @@ export const ScheduleSection = () => {
           left={0}
           height="75vh"
           minH="75vh"
-          minW="100vw"
+          width="100vw"
           boxShadow="0 0 30px rgba(0,0,0,0.8)"
           opacity={onScreen ? 1 : 0}
           transition="opacity 1.2s 0.8s ease-in-out"

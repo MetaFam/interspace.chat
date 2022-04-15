@@ -220,7 +220,7 @@ export function SiteHeader() {
             top={0}
             left={0}
             w="100%"
-            minw="100%"
+            minW="100%"
             minH="100vh"
             alignItems="center"
             justifyContent="center"

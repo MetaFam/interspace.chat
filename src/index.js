@@ -1,5 +1,4 @@
 import React from "react";
-import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { ChakraProvider, CSSReset, extendTheme } from "@chakra-ui/react";
@@ -12,15 +11,27 @@ const root = ReactDOMClient.createRoot(container);
 const theme = extendTheme({
   styles: {
     global: {
-      "html, body": {
+      html: {
+        bg: "linear-gradient(0deg, rgba(41,2,80,1) 0%, rgba(25,0,50,1) 40%)",
+        scrollBehavior: "smooth",
+      },
+      body: {
+        bg: "linear-gradient(0deg, rgba(41,2,80,1) 0%, rgba(25,0,50,1) 40%)",
+        color: "#ffeded",
         fontFamily: '"Exo 2", sans-serif',
         fontSize: "16px",
         fontWeight: 300,
-        bg: "linear-gradient(0deg, rgba(41,2,80,1) 0%, rgba(25,0,50,1) 40%)",
+        m: '0 auto',
+        minH: "100vh",
+        overflowY: "auto",
       },
-      // "body, body *": {
-      //   outline: "1px solid red",
-      // },
+      "body *": {
+        // outline: "1px solid red",
+      },
+      '#root': {
+        height: '100%',
+        width: '100%',
+      },
       a: {
         color: "#FF61E6",
         textDecoration: "none",
@@ -54,11 +65,13 @@ const theme = extendTheme({
         textShadow: "0 0 10px rgba(0, 0, 0, 0.6)",
       },
       h3: {
-        fontSize: "1.5vmax",
+        fontSize: { base: "4vmin", md: "1.5vmax" },
         fontWeight: 500,
         "& + p": {
-          fontSize: "1vmax",
+          fontSize: { base: "2.8vmin", md: "1vmax" },
+          lineHeight: { base: "1.2", md: "inherit" },
           fontWeight: 500,
+          mt: 0,
           mb: 1,
         },
       },
@@ -70,14 +83,25 @@ const theme = extendTheme({
         fontSize: { base: "2.6vmin", md: ".9vmax" },
         textShadow: "0 0 5px rgba(0, 0, 0, 0.6)",
       },
+      section: {
+        display: 'flex',
+        alignItems: "center",
+        height: '100vh',
+        minH: "100%",
+        width: "100%",
+        position: "relative",
+        paddingLeft: { base: 4, md: "10%" },
+        paddingRight: { base: 4, md: "10%" },
+        zIndex: 2000,
+      },
       ".__content__body": {
-        "p:first-of-type": {
-          fontSize: {base: '2.6vmin', md: "1vmax"},
+        "& > p:first-of-type": {
+          fontSize: { base: "2.6vmin", md: "1vmax" },
           fontWeight: 500,
         },
         "&--no-firstof": {
           p: {
-            fontSize: "0.9vmax",
+            fontSize: { base: "2.6vmin", md: "0.9vmax" },
             fontWeight: 500,
             "& + p": {
               fontWeight: 300,
@@ -126,7 +150,11 @@ const theme = extendTheme({
         fontWeight: 700,
         justifyContent: "right",
         pr: 0.5,
-        transform: { base: "translateY(7px)", lg: "translateY(9px)", '2xl': "translateY(15px)" },
+        transform: {
+          base: "translateY(7px)",
+          lg: "translateY(9px)",
+          "2xl": "translateY(15px)",
+        },
         zIndex: 2001,
       },
     },
@@ -136,10 +164,10 @@ const theme = extendTheme({
 root.render(
   <>
     <CSSReset />
-  <ChakraProvider theme={theme}>
-    <App />
+    <ChakraProvider theme={theme}>
+      <App />
     </ChakraProvider>
-    </>
+  </>
 );
 
 // If you want your app to work offline and load faster, you can change

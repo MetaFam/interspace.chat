@@ -9,7 +9,8 @@ import {
   Container,
   SimpleGrid,
   StackDivider,
-  Text
+  Text,
+  useBreakpointValue
 } from "@chakra-ui/react";
 import {
   AirtableSpeakerInstance,
@@ -43,9 +44,9 @@ export const ApplySection = () => {
         transition="transform 0.3s 0.8s ease-in-out, opacity 0.6s 0.9s ease-in"
         willChange={true}
       >
-        <Box className="__content__body" d="flex" w="100%" flexFlow={{base: 'column wrap', md: "row nowrap"}} alignItems="center" justifyContent="space-between">
+        <Box className="__content__body" d={{base: 'unset', md: "flex"}} w="100%" flexFlow={{base: 'column wrap', md: "row nowrap"}} alignItems="center" justifyContent="space-between">
         <Container
-            maxW={"2xl"}
+            maxW={{base: '100%', md: "2xl"}}
           >
           <Text
             as="h2"
@@ -66,11 +67,11 @@ export const ApplySection = () => {
             }}
           >
             <SimpleGrid columns={{ base: 1 }} spacing={0}>
-              <Stack spacing={4}>
+              <Stack spacing={{base: 2, md: 4}} >
                 <Text
                   textTransform={"uppercase"}
                   fontWeight={500}
-                  fontSize={{ base: "1vmin", md: "0.7vmax" }}
+                  fontSize={{ base: "2.2vmin", md: "0.7vmax" }}
                   className="gradient"
                   p={0}
                   alignSelf={"flex-start"}
@@ -84,7 +85,7 @@ export const ApplySection = () => {
                     🎉
                   </span>
                 </Text>
-                <Text as="h3">
+                <Text as="h3" mt={1}>
                   <span>MetaFest2 needs YOU</span>
                   <span
                     className="gradient"
@@ -94,7 +95,7 @@ export const ApplySection = () => {
                     👇
                   </span>
                 </Text>
-                <Text fontSize={"lg"}>
+                <Text as="p" >
                   What is an event without amazing folks like you! People
                   who want to help organise &amp; greet, tell us about their
                   projects, teach, sing, code...we'd love to see you. Apply
@@ -160,7 +161,7 @@ export const ApplySection = () => {
             left={0}
             height="75vh"
             minH="75vh"
-            minW="100vw"
+            width="100vw"
             sx={{
               bg: "rgba(25,0,50,0.4)",
               backdropFilter: "blur(7px)",
@@ -202,7 +203,7 @@ export const ApplySection = () => {
             left={0}
             height="75vh"
             minH="75vh"
-            minW="100vw"
+            midth="100vw"
             sx={{
               bg: "rgba(25,0,50,0.4)",
               backdropFilter: "blur(7px)",
@@ -242,7 +243,7 @@ export const ApplySection = () => {
             left={0}
             height="75vh"
             minH="75vh"
-            minW="100vw"
+            width="100vw"
             sx={{
               bg: "rgba(25,0,50,0.4)",
               backdropFilter: "blur(7px)",
@@ -280,7 +281,7 @@ export const ApplySection = () => {
             left={0}
             height="75vh"
             minH="75vh"
-            minW="100vw"
+            width="100vw"
             sx={{
               bg: "rgba(25,0,50,0.4)",
               backdropFilter: "blur(7px)",
@@ -300,6 +301,7 @@ export const ApplySection = () => {
 };
 
 export const Feature = ({ text, iconBg, call }) => {
+  const responsiveSize = useBreakpointValue({base: 'xs', md: 'sm'})
   return (
     <Stack direction={"row"} align={"center"}>
       <Flex
@@ -312,10 +314,10 @@ export const Feature = ({ text, iconBg, call }) => {
       >
         {/* {icon} */}
       </Flex>
-      <Text fontWeight={500} fontSize={{base: '3vmin', md: '1.2vmax'}} flex={1}>
+      <Text fontWeight={500} fontSize={{base: '2.8vmin', md: '1.2vmax'}} flex={1}>
         {text}
       </Text>
-      <Button onClick={() => call()} colorScheme="pink" size="sm" justifySelf="right">
+      <Button onClick={() => call()} colorScheme="pink" size={responsiveSize} justifySelf="right">
         Apply
       </Button>
     </Stack>
