@@ -68,7 +68,7 @@ const theme = extendTheme({
       h3: {
         fontSize: { base: "4vmin", md: "1.5vmax" },
         fontWeight: 500,
-        mt: 5,
+        mt: {base: 2, md: 5},
         "& + p": {
           fontSize: { base: "2.8vmin", md: "1vmax" },
           lineHeight: { base: "1.2", md: "inherit" },
@@ -91,7 +91,6 @@ const theme = extendTheme({
         // display: 'none',
         alignItems: "center",
         height: '100vh',
-        maxH: "100%",
         w: '100vw',
         m: 0,
         py: 0,

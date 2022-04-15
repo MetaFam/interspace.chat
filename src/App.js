@@ -63,7 +63,7 @@ function App() {
             d: 'block',
             position: "relative",
             width: '100%',
-            // maxW: '100vw',
+            height: 'auto',
             overflowX: "hidden",
             zIndex: 2,
             m: 0,
@@ -77,6 +77,7 @@ function App() {
           {/* <Suspense fallback={<Loader />}> */}
             <Canvas />
           {/* </Suspense> */}
+
           <HomeSection />
           <ScheduleSection />
           <WorkshopsSection />
@@ -85,7 +86,7 @@ function App() {
           <ChatSection />
           <ApplySection />
           <EasterEgg />
-          {/* <AlphaNotice /> */}
+          <AlphaNotice />
           {/* TODO: Need to figure out how to stop the animations, in gsap & three's `tick()` */}
           {/* <Button
           position="fixed"

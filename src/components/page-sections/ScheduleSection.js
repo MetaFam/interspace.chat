@@ -39,7 +39,6 @@ export const ScheduleSection = () => {
           boxShadow="0 0 10px rgba(0, 0, 0, 0.6)"
           size="sm"
           transition="all 0.3s 0.8s ease"
-          transform={`translateY(${openCal ? 0 : "-70px"})`}
           onClick={() => setOpenCal(!openCal)}
           zIndex={2002}
         >
@@ -51,9 +50,9 @@ export const ScheduleSection = () => {
         ref={ref}
         className="__content"
         w={{ base: "full", md: "2xl" }}
-        transform={`translate3d(${onScreen ? 0 : "-70px"}, 0, 0)`}
+        // transform={`translate3d(${onScreen ? 0 : "-70px"}, 0, 0)`}
         opacity={onScreen ? 1 : 0}
-        transition="transform 0.3s 0.4s ease-in-out, opacity 0.6s 0.5s ease-in"
+        transition="transform 0.3s 0.4s ease-in-out, opacity 0.6s 0.3s ease-in"
       >
         <Box
           position="relative"

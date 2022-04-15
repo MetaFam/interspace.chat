@@ -230,7 +230,7 @@ export function SiteHeader() {
             backdropFilter="blur(7px)"
           transition="transform 0.3s 0.1s ease, opacity 0.3s 0.2s"
           boxShadow="0 0 15px #00000070"
-          willChange="transform"
+
           opacity={isOpen ? 1 : 0}
             transform={`translate3d(0, ${isOpen ? 0 : '-100vh'}, 0)`}
             zIndex={-1}

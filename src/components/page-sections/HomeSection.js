@@ -30,8 +30,8 @@ export const HomeSection = () => {
         className="__content"
         maxW={{base: '100%', md: "2xl"}}
         opacity={onScreen ? 1 : 0}
-        transition="transform 0.3s 0.4s ease-in-out, opacity 0.6s 0.5s ease-in"
-        willChange="transform"
+        transition="transform 0.3s 0.4s ease-in-out, opacity 0.6s 0.3s ease-in"
+
       >
         <Box
           d="inline-flex"
