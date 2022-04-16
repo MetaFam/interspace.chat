@@ -30,6 +30,7 @@ export const ScheduleSection = () => {
           bottom={20}
           right={6}
           colorScheme="pink"
+          bg="#FF61E6"
           boxShadow="0 0 10px rgba(0, 0, 0, 0.6)"
           size="sm"
           transition="all 0.3s 0.8s ease"
@@ -63,7 +64,7 @@ export const ScheduleSection = () => {
             icon={<CalendarIcon />}
             aria-label="Open event calendar"
             flex={0}
-            fontSize="2vmax"
+            fontSize={{base: '8vmin', lg: "2vmax"}}
             colorScheme="ghost"
             onClick={() => setOpenCal(!openCal)}
             alignSelf="center"
@@ -137,6 +138,7 @@ export const ScheduleSection = () => {
               <Button
                 d={{ md: "none" }}
                 colorScheme="pink"
+                bg="#FF61E6"
                 size={"sm"}
                 mt={5}
                 onClick={disabledMobNotify}
