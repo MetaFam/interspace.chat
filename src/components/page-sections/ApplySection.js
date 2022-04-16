@@ -10,7 +10,8 @@ import {
   SimpleGrid,
   StackDivider,
   Text,
-  useBreakpointValue
+  useBreakpointValue,
+  Image
 } from "@chakra-ui/react";
 import {
   AirtableSpeakerInstance,
@@ -19,6 +20,12 @@ import {
   AirtableSponsorInstance,
 } from "../integrations/AirtableInstance";
 import { useOnScreen } from "../../utils/hooks";
+
+//import { BiUserVoice } from 'react-icons/bi';
+import SpeakerIcon from "../../static/assets/img/icons/forum.svg"
+import ContributorIcon from "../../static/assets/img/icons/players.svg"
+import PerformerIcon from "../../static/assets/img/icons/xpearned.svg"
+import SponsorIcon from "../../static/assets/img/icons/patrons.svg"
 
 
 export const ApplySection = () => {
@@ -102,30 +109,34 @@ export const ApplySection = () => {
                   below.
                 </Text>
                 <Stack spacing={4} divider={<StackDivider />}>
-                  <Feature
+                    <Feature
+                      icon={SpeakerIcon}
                     iconBg={"yellow.900"}
-                    text={"Speaker"}
+                    text={"Speakers"}
                     call={() =>
                       setOpenSpeakerApplication(!openSpeakerApplication)
                     }
                   />
-                  <Feature
+                    <Feature
+                      icon={ContributorIcon}
                     iconBg={"green.900"}
-                    text={"Contributor"}
+                    text={"Contributors"}
                     call={() =>
                       setOpenContributorApplication(!openContributorApplication)
                     }
                   />
-                  <Feature
+                    <Feature
+                      icon={PerformerIcon}
                     iconBg={"purple.900"}
-                    text={"Performer"}
+                    text={"Performers"}
                     call={() =>
                       setOpenPerformerApplication(!openPerformerApplication)
                     }
                   />
-                  <Feature
+                    <Feature
+                      icon={SponsorIcon}
                     iconBg={"purple.900"}
-                    text={"Sponsor"}
+                    text={"Sponsors"}
                     call={() =>
                       setOpenSponsorApplication(!openSponsorApplication)
                     }
@@ -142,7 +153,8 @@ export const ApplySection = () => {
         <>
           <Button
             position="absolute"
-            bottom={{base: 10, md: 20}}
+            bottom={{ base: 10, md: 20 }}
+            aria-label="Open the speaker application form"
             right={6}
             colorScheme="pink"
             bg="#FF61E6"
@@ -180,6 +192,7 @@ export const ApplySection = () => {
       {openContributorApplication && (
         <>
           <Button
+            aria-label="Open the contributor application form"
             position="absolute"
             bottom={{base: 10, md: 20}}
             right={6}
@@ -223,6 +236,7 @@ export const ApplySection = () => {
       {openPerformerApplication && (
         <>
           <Button
+            aria-label="Open the performer application form"
             position="absolute"
             bottom={{base: 10, md: 20}}
             right={6}
@@ -264,6 +278,7 @@ export const ApplySection = () => {
       {openSponsorApplication && (
         <>
           <Button
+            aria-label="Open the sponsor application form"
             position="absolute"
             bottom={{base: 10, md: 20}}
             right={6}
@@ -304,7 +319,7 @@ export const ApplySection = () => {
   );
 };
 
-export const Feature = ({ text, iconBg, call }) => {
+export const Feature = ({ text, icon, iconBg, call }) => {
   const responsiveSize = useBreakpointValue({base: 'xs', md: 'sm'})
   return (
     <Stack direction={"row"} align={"center"}>
@@ -314,9 +329,9 @@ export const Feature = ({ text, iconBg, call }) => {
         align={"center"}
         justify={"center"}
         rounded={"full"}
-        bg={iconBg}
+        // bg={iconBg}
       >
-        {/* {icon} */}
+        <Image src={icon} />
       </Flex>
       <Text fontWeight={500} fontSize={{base: '2.8vmin', md: '1.2vmax'}} flex={1}>
         {text}
