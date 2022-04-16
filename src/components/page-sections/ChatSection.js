@@ -29,6 +29,7 @@ export const ChatSection = () => {
           bottom={20}
           right={6}
           colorScheme="pink"
+          bg="#FF61E6"
           boxShadow="0 0 10px rgba(0, 0, 0, 0.6)"
           size="sm"
           transition="all 0.3s 0.8s ease"

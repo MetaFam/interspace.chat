@@ -206,6 +206,7 @@ export function SiteHeader() {
               <Button
                 variant={"solid"}
                 colorScheme={"purple"}
+                bg="#927CFF"
                 boxShadow="0 0 10px rgba(0, 0, 0, 0.6)"
                 size="sm"
                 mr={0}

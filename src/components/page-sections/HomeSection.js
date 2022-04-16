@@ -83,7 +83,7 @@ export const HomeSection = () => {
             .
           </Text>
           <HStack mt={5}>
-            <Link href="#apply"><Button colorScheme="pink" size={buttonSize}>Apply</Button></Link>
+            <Link href="#apply"><Button colorScheme="pink" bg="#FF61E6" size={buttonSize}>Apply</Button></Link>
           </HStack>
         </Box>
       </Box>

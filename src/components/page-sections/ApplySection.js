@@ -145,6 +145,7 @@ export const ApplySection = () => {
             bottom={{base: 10, md: 20}}
             right={6}
             colorScheme="pink"
+            bg="#FF61E6"
             boxShadow="0 0 10px rgba(0, 0, 0, 0.6)"
             size="sm"
             transition="all 0.3s 0.8s ease"
@@ -183,6 +184,7 @@ export const ApplySection = () => {
             bottom={{base: 10, md: 20}}
             right={6}
             colorScheme="pink"
+            bg="#FF61E6"
             boxShadow="0 0 10px rgba(0, 0, 0, 0.6)"
             size="sm"
             transition="all 0.3s 0.8s ease"
@@ -225,6 +227,7 @@ export const ApplySection = () => {
             bottom={{base: 10, md: 20}}
             right={6}
             colorScheme="pink"
+            bg="#FF61E6"
             boxShadow="0 0 10px rgba(0, 0, 0, 0.6)"
             size="sm"
             transition="all 0.3s 0.8s ease"
@@ -265,6 +268,7 @@ export const ApplySection = () => {
             bottom={{base: 10, md: 20}}
             right={6}
             colorScheme="pink"
+            bg="#FF61E6"
             boxShadow="0 0 10px rgba(0, 0, 0, 0.6)"
             size="sm"
             transition="all 0.3s 0.8s ease"
@@ -317,7 +321,7 @@ export const Feature = ({ text, iconBg, call }) => {
       <Text fontWeight={500} fontSize={{base: '2.8vmin', md: '1.2vmax'}} flex={1}>
         {text}
       </Text>
-      <Button onClick={() => call()} colorScheme="pink" size={responsiveSize} justifySelf="right">
+      <Button onClick={() => call()} colorScheme="pink" bg="#FF61E6" size={responsiveSize} justifySelf="right">
         Apply
       </Button>
     </Stack>
