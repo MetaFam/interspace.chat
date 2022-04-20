@@ -69,7 +69,7 @@ export const HomeSection = () => {
             </Text>
           </Text>
           <Text as="p" fontSize="1.5vmax" mt={{base: 3, md: 6}} fontWeight={500}>
-            A virtual festival/conference/hackathon.
+            A virtual festival &amp; conference.
           </Text>
           <Text as="p" fontSize={{base: '3vmin', lg: 'inherit' }} >
             The goal? To help you{" "}

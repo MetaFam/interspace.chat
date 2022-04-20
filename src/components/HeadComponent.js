@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 
 export const HeadComponent = ({
   title = 'MetaFest2. Powered by MetaGame',
-  description = 'A virtual festival/conference/hackathon with the goal of helping you level up & manifest a better future.',
+  description = 'A virtual festival & conference with the goal of helping you level up & manifest a better future.',
   url = 'https://metafest2.metagame.wtf/',
   img = 'https://metafest2.metagame.wtf/static/media/social.bc426e19.png',
 }) => (
@@ -31,7 +31,7 @@ export const HeadComponent = ({
     <meta name="og:url" property="og:url" content={url} />
     <meta name="og:image" property="og:image" content={img} />
 
-    <meta name="twitter:card" property="twitter:card" content="summary" />
+    <meta name="twitter:card" property="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" property="twitter:url" content={url} />
     <meta name="twitter:site" property="twitter:site" content="@MetaFam" />
     <meta name="twitter:title" property="twitter:title" content={title} />
